@@ -3,542 +3,128 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Zenith Dispatch &middot; A Portfolio Filed from Bagbazar</title>
-  <meta name="description" content="A portfolio of Zenith Kandel — high school senior at Kathmandu Model Secondary School, self-taught since 2019, eighty-odd repositories deep, occasional bug hunter." />
+  <title>Zenith Kandel &middot; Portfolio</title>
+  <meta name="description" content="Zenith Kandel — Grade 12 at KMSS Bagbazar, Kathmandu. Self-taught web developer, hackathon builder, occasional bug hunter." />
   <meta name="theme-color" content="#f1e8d3" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Special+Elite&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Special+Elite&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- noise + paper grain (purely visual) -->
-  <div class="paper-grain" aria-hidden="true"></div>
-
-  <!-- ========================= TOP UTILITY BAR ========================= -->
-  <div class="utility-bar">
-    <div class="container utility-bar__row">
-      <span class="utility-bar__left">
-        <span class="dot"></span>
-        Now printing from <strong>Bagbazar, KTM&nbsp;29.6&deg;N&nbsp;85.3&deg;E</strong>
-      </span>
-      <span class="utility-bar__center" id="nepalClock">&mdash;</span>
-      <span class="utility-bar__right">
-        <span class="hide-sm">Reading time: </span><span id="readingTime">a moment</span>
-        &nbsp;&middot;&nbsp; <a href="#correspondence">Subscribe</a>
-      </span>
-    </div>
+  <div class="bar">
+    <span>Bagbazar, KTM &middot; <span id="clock">&mdash;&mdash;:&mdash;&mdash;:&mdash;&mdash;</span> NPT</span>
+    <span>Reading time: <span id="reading">&mdash;</span></span>
   </div>
 
-  <!-- ========================= MASTHEAD ========================= -->
   <header class="masthead">
-    <div class="container">
-      <div class="masthead__rule masthead__rule--top"></div>
 
-      <div class="masthead__top">
-        <span>Vol.&nbsp;<em>XVII</em></span>
-        <span>No.&nbsp;<em>01</em></span>
-        <span>Monday,&nbsp;the&nbsp;1<sup>st</sup>&nbsp;of&nbsp;June,&nbsp;2026</span>
-        <span class="hide-md">Established MMIX</span>
-        <span>Single&nbsp;Copy:&nbsp;One&nbsp;Good&nbsp;Story</span>
-      </div>
-
-      <h1 class="masthead__title">
-        <span class="masthead__pre">The</span>
-        <span class="masthead__main">Zenith&nbsp;Dispatch</span>
-        <span class="masthead__post">An Archive of Code, Mischief &amp; Kathmandu Weather</span>
-      </h1>
-
-      <div class="masthead__bottom">
-        <span><strong>Inside:</strong> five sections, eighty-one repositories, two disclosed bugs, one editor</span>
-        <span class="hide-md"><strong>Weather:</strong> Warm, pre-monsoon, occasional thunder &mdash; see p.&nbsp;5</span>
-      </div>
-
-      <div class="masthead__rule masthead__rule--bot"></div>
+    <div class="dateline">
+      <span>Vol. XVII</span>
+      <span>No. 01</span>
+      <span>June 2026</span>
+      <span>Bagbazar, Kathmandu</span>
     </div>
+
+    <h1 class="name">Zenith&nbsp;Kandel</h1>
+    <p class="subtitle"><em>Self-taught since 2019. Eighty-one repositories, currently.</em></p>
+    <p class="meta">Grade 12 &middot; KMSS Bagbazar &middot; Kathmandu, Nepal</p>
+
+    <div class="dateline">
+      <span>Filed by hand</span>
+      <span>Established MMIX</span>
+    </div>
+
   </header>
 
-  <!-- ========================= TABLE OF CONTENTS ========================= -->
-  <nav class="contents container" aria-label="Contents">
-    <div class="contents__head">
-      <span class="kicker">In This Edition</span>
-      <span class="contents__ornament">&mdash;&bull;&bull;&bull;&mdash;</span>
-    </div>
-    <ol class="contents__list">
-      <li><a href="#lead"><span class="num">I.</span> The Boy Who Wouldn&rsquo;t Stop Building <span class="pg">p.&nbsp;1</span></a></li>
-      <li><a href="#works"><span class="num">II.</span> Five Expeditions from the Hackathon Trenches <span class="pg">p.&nbsp;2</span></a></li>
-      <li><a href="#disclosures"><span class="num">III.</span> A Record of Uninvited Guests <span class="pg">p.&nbsp;3</span></a></li>
-      <li><a href="#ledger"><span class="num">IV.</span> The Ledger: Tools, Years, Trophies <span class="pg">p.&nbsp;4</span></a></li>
-      <li><a href="#correspondence"><span class="num">V.</span> How to Reach the Editor <span class="pg">p.&nbsp;5</span></a></li>
-    </ol>
-  </nav>
+  <p class="intro">
+    A high school senior who has been writing code since a pandemic handed him a laptop and too much free time. Eighty-one repositories, two disclosed bugs, five hackathon-grade projects, and a slowly growing MERN stack. Still learning, still filing.
+  </p>
 
-  <!-- ========================= I. LEAD / ABOUT ========================= -->
-  <main class="container">
+  <main>
 
-    <article id="lead" class="lead">
-      <div class="lead__grid">
+    <section>
+      <h2><span class="sec">&sect;</span> Projects</h2>
 
-        <div class="lead__body">
-          <p class="kicker">Lead Story &middot; The Portfolio, Properly Filed</p>
-          <h2 class="display">
-            Grade&nbsp;12, eighty-one repositories, two reported bugs, and a decade of not waiting for permission.
-          </h2>
-          <p class="subhead">
-            Zenith Kandel is seventeen, a senior at <em>Kathmandu Model Secondary School</em> in Bagbazar, and has been filing commits &mdash; and the occasional vulnerability disclosure &mdash; from a small apartment above the capital since a pandemic handed him a laptop and too much free time.
-          </p>
+      <ol class="projects">
 
-          <div class="byline">
-            <span>Filed by the subject, with reluctance</span>
-            <span class="byline__sep">&bull;</span>
-            <span>Photographs: engravings on the web</span>
-            <span class="byline__sep">&bull;</span>
-            <span>Bagbazar, this morning</span>
+        <li>
+          <span class="num">N&deg;&nbsp;01</span>
+          <div>
+            <h3>Sastomahango</h3>
+            <p>Crowd-sourced price index for daily goods &mdash; built to keep the bazaar honest.</p>
           </div>
-
-          <div class="columns">
-            <p>
-              <span class="dropcap">E</span>very portfolio on the internet, this one included, begins with an attempt to compress a life into a few neat paragraphs. Let us try anyway. In the autumn of 2019, a ten-year-old in Bagbazar opened a YouTube tab, copied his first <code>&lt;h1&gt;</code> from a tutorial, and discovered the slightly absurd truth that with a text file and a browser you can build a small piece of the world.
-            </p>
-            <p>
-              Seven years on, the text file has become a habit. The repository count on GitHub is now north of eighty. The project list includes a crowd-priced index for Nepali bazaars, a long-range radio for when the cell towers blink off, a Kathmandu bus router, a soil sensor that argues with farmers, and an RFID attendance system for schools that still take roll call by shouting names into a courtyard. Two of those projects have won hackathons. Two of them, more quietly, won the attention of a security team at a national television channel and at one of the most-used typing tools on the internet.
-            </p>
-            <p>
-              He is, by his own description, still learning. He is also, by the evidence, hard to keep up with &mdash; currently moving from PHP and MySQL into the MERN stack, and reading bug reports in the same week he submits his homework. Theodicy is not on the syllabus. The work, however, is.
-            </p>
-          </div>
-
-          <p class="pullquote">
-            &ldquo;It started as lockdown boredom. It became a way of paying attention.&rdquo;
-            <span class="pullquote__cite">&mdash; attributed, very loosely, to the editor</span>
-          </p>
-        </div>
-
-        <aside class="lead__side">
-          <figure class="portrait">
-            <div class="portrait__frame">
-              <img src="assets/portrait.svg" alt="Engraved schematic of the author, age seventeen" />
-            </div>
-            <figcaption>
-              <strong>Plate&nbsp;I.</strong> A blueprint of the author, drawn from life, age seventeen. <em>Engraved expressly for this edition.</em>
-            </figcaption>
-          </figure>
-
-          <div class="card quick-facts">
-            <p class="kicker">Quick Facts</p>
-            <dl class="quick-facts__list">
-              <div><dt>Born</dt><dd>12&nbsp;May&nbsp;2009, Kathmandu</dd></div>
-              <div><dt>School</dt><dd>KMSS Bagbazar &middot; Grade&nbsp;12</dd></div>
-              <div><dt>Coding since</dt><dd>Grade&nbsp;6 &middot; The Long Lockdown</dd></div>
-              <div><dt>Stack</dt><dd>HTML, CSS, JS, PHP, MySQL &middot; MERN in progress</dd></div>
-              <div><dt>Repositories</dt><dd>80+ &middot; most are unfinished, on purpose</dd></div>
-              <div><dt>Disclosures</dt><dd>2 &middot; both fixed, neither paid for</dd></div>
-            </dl>
-          </div>
-
-          <div class="card status">
-            <p class="kicker">Status</p>
-            <p class="status__line">
-              <span class="stamp stamp--ok">Available for hire</span>
-            </p>
-            <p class="status__line">
-              <span class="stamp stamp--soft">Open to internships</span>
-            </p>
-            <p class="status__line">
-              <span class="stamp stamp--soft">MERN stack, learning in public</span>
-            </p>
-          </div>
-        </aside>
-
-      </div>
-    </article>
-
-    <!-- ========================= II. WORKS / PROJECTS ========================= -->
-
-    <section id="works" class="works">
-      <div class="section-head">
-        <span class="kicker">Section&nbsp;II &middot; Works &amp; Expeditions</span>
-        <h2 class="section-title">Five Expeditions from the Hackathon Trenches</h2>
-        <p class="section-sub">
-          The following are projects submitted, demoed, and &mdash; in two cases &mdash; judged worthy of a small trophy and a slightly larger certificate. Filed chronologically, with the usual disclaimers.
-        </p>
-      </div>
-
-      <div class="works__grid">
-
-        <!-- Project 1 -->
-        <article class="project">
-          <div class="project__plate">
-            <img src="assets/diagram-1.svg" alt="Patent-style diagram of a price index: stacked price tags over a bar chart" />
-            <span class="project__no">N&deg;&nbsp;01</span>
-          </div>
-          <div class="project__body">
-            <p class="kicker">Crowd-Sourced Price Index &middot; Web App</p>
-            <h3 class="project__title">Sastomahango</h3>
-            <p class="project__tag"><em>n.&nbsp;</em>the small, civic-minded art of not getting overcharged for rice.</p>
-            <p class="project__copy">
-              Sastomahango is a crowd-sourced price index for daily goods &mdash; built for a country where haggling is the default and receipts are not. Users submit what they actually paid, others check before they buy, and the wisdom of the bazaar accumulates in a small, queryable ledger. A modest, useful, mildly subversive civic tool.
-            </p>
-            <ul class="project__meta">
-              <li><span>Filed under</span> hackathon &middot; civic tech</li>
-              <li><span>Stack</span> HTML &middot; CSS &middot; JS &middot; PHP &middot; MySQL</li>
-              <li><span>Verdict</span> award &middot; applause, also</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project project--alt">
-          <div class="project__plate">
-            <img src="assets/diagram-2.svg" alt="Patent-style diagram of a radio transmitter sending waves toward a mountain" />
-            <span class="project__no">N&deg;&nbsp;02</span>
-          </div>
-          <div class="project__body">
-            <p class="kicker">Off-Grid RF &middot; Hardware &amp; Firmware</p>
-            <h3 class="project__title">Lifeline</h3>
-            <p class="project__tag"><em>n.&nbsp;</em>a small box of electronics, a large moral argument.</p>
-            <p class="project__copy">
-              Lifeline is a low-power, off-grid radio-frequency emergency signal system, designed for the parts of Nepal where the mobile network has no opinion &mdash; the landslide, the flood, the hill, the night. It is the kind of project that looks, in photographs, like a handful of components and reads, in practice, like a polite request that nobody be left out of the conversation.
-            </p>
-            <ul class="project__meta">
-              <li><span>Filed under</span> hackathon &middot; emergency tech</li>
-              <li><span>Stack</span> RF modules &middot; embedded C &middot; antennas, mostly improvised</li>
-              <li><span>Verdict</span> built under pressure, still works</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project">
-          <div class="project__plate">
-            <img src="assets/diagram-3.svg" alt="Patent-style diagram of a bus on a winding route with stop markers" />
-            <span class="project__no">N&deg;&nbsp;03</span>
-          </div>
-          <div class="project__body">
-            <p class="kicker">Public Transit Router &middot; Web App</p>
-            <h3 class="project__title">Sawari</h3>
-            <p class="project__tag"><em>n.&nbsp;</em>a love letter to a chaotic system, written by a frequent rider.</p>
-            <p class="project__copy">
-              Sawari takes a starting point and a destination inside Kathmandu and returns, in plain language, the entire choreography of getting from one to the other on a public bus &mdash; fare, ETA, road conditions, the microbend where you change from the 12 to the 21. It is, in essence, Google Maps for a city that runs on conductors shouting at helpers.
-            </p>
-            <ul class="project__meta">
-              <li><span>Filed under</span> hackathon &middot; urban transit</li>
-              <li><span>Stack</span> HTML &middot; CSS &middot; JS &middot; PHP &middot; MySQL</li>
-              <li><span>Verdict</span> awarded, then used by the author daily</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project project--alt">
-          <div class="project__plate">
-            <img src="assets/diagram-4.svg" alt="Patent-style diagram of a soil cross-section with a sensor probe and a plant" />
-            <span class="project__no">N&deg;&nbsp;04</span>
-          </div>
-          <div class="project__body">
-            <p class="kicker">Soil Monitor &middot; IoT &amp; Recommendation</p>
-            <h3 class="project__title">AgroPan</h3>
-            <p class="project__tag"><em>n.&nbsp;</em>soil that talks back, in plain language.</p>
-            <p class="project__copy">
-              AgroPan combines in-ground sensors with a small web application to monitor soil moisture, nutrients, and pH, and to recommend &mdash; in language a farmer can act on &mdash; what to do next. It is one of the rare projects that crosses the line from <em>app</em> into <em>thing you can put in a field</em>, and it carries the marks of that journey: cable ties, data sheets, and real dirt.
-            </p>
-            <ul class="project__meta">
-              <li><span>Filed under</span> exhibition &middot; agri-tech</li>
-              <li><span>Stack</span> sensors &middot; microcontrollers &middot; JS dashboard &middot; MySQL</li>
-              <li><span>Verdict</span> exhibited, deployed, still being calibrated</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Project 5 -->
-        <article class="project">
-          <div class="project__plate">
-            <img src="assets/diagram-5.svg" alt="Patent-style diagram of an RFID card emitting waves to a reader and a roster" />
-            <span class="project__no">N&deg;&nbsp;05</span>
-          </div>
-          <div class="project__body">
-            <p class="kicker">RFID Attendance &middot; Hardware &amp; Web</p>
-            <h3 class="project__title">Edu&nbsp;Track&nbsp;Pro</h3>
-            <p class="project__tag"><em>n.&nbsp;</em>replacing the morning roll call with a small piece of plastic.</p>
-            <p class="project__copy">
-              Edu Track Pro is an RFID-based attendance system built for Nepali schools, where the alternative to automation is shouting names into a courtyard. The hardware is simple, the data is useful, and the result is that a teacher can take attendance in roughly the time it used to take to sharpen a pencil.
-            </p>
-            <ul class="project__meta">
-              <li><span>Filed under</span> school &middot; ed-tech</li>
-              <li><span>Stack</span> RFID &middot; microcontrollers &middot; PHP &middot; MySQL</li>
-              <li><span>Verdict</span> shipped to a real classroom, briefly, in pride</li>
-            </ul>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ========================= III. DISCLOSURES ========================= -->
-
-    <section id="disclosures" class="disclosures">
-      <div class="section-head">
-        <span class="kicker">Section&nbsp;III &middot; Disclosed Vulnerabilities</span>
-        <h2 class="section-title">A Record of Uninvited Guests</h2>
-        <p class="section-sub">
-          The author, in his spare time, looks at things. Sometimes, gently, the things look back. The following entries are public, responsible, and, as far as can be confirmed, both fixed and acknowledged.
-        </p>
-      </div>
-
-      <ol class="ledger">
-
-        <li class="ledger__row">
-          <div class="ledger__mark">
-            <span class="ledger__index">01</span>
-            <span class="ledger__seal" aria-hidden="true">
-              <svg viewBox="0 0 100 100" width="100" height="100">
-                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="0.8"/>
-                <text x="50" y="38" text-anchor="middle" font-family="Special Elite, monospace" font-size="9" fill="currentColor" letter-spacing="2">REPORTED</text>
-                <text x="50" y="56" text-anchor="middle" font-family="Special Elite, monospace" font-size="14" fill="currentColor" font-weight="700">FIXED</text>
-                <text x="50" y="72" text-anchor="middle" font-family="Special Elite, monospace" font-size="8" fill="currentColor" letter-spacing="2">MMXXV</text>
-              </svg>
-            </span>
-          </div>
-          <div class="ledger__body">
-            <p class="kicker">Web Application &middot; National Broadcaster</p>
-            <h3 class="ledger__title">Kantipur Television</h3>
-            <p class="ledger__copy">
-              A security issue identified on the website of one of Nepal&rsquo;s largest news channels. Reported through the appropriate channel, acknowledged, and quietly patched. No bounty was requested. None was offered. The work, however, was done.
-            </p>
-            <ul class="ledger__meta">
-              <li><span>Type</span> Web application flaw</li>
-              <li><span>Status</span> Fixed &middot; acknowledged</li>
-              <li><span>Disposition</span> responsible disclosure, full stop</li>
-            </ul>
-          </div>
+          <span class="tag">Hackathon &middot; Web</span>
         </li>
 
-        <li class="ledger__row">
-          <div class="ledger__mark">
-            <span class="ledger__index">02</span>
-            <span class="ledger__seal" aria-hidden="true">
-              <svg viewBox="0 0 100 100" width="100" height="100">
-                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="0.8"/>
-                <text x="50" y="38" text-anchor="middle" font-family="Special Elite, monospace" font-size="9" fill="currentColor" letter-spacing="2">REPORTED</text>
-                <text x="50" y="56" text-anchor="middle" font-family="Special Elite, monospace" font-size="14" fill="currentColor" font-weight="700">FIXED</text>
-                <text x="50" y="72" text-anchor="middle" font-family="Special Elite, monospace" font-size="8" fill="currentColor" letter-spacing="2">MMXXV</text>
-              </svg>
-            </span>
+        <li>
+          <span class="num">N&deg;&nbsp;02</span>
+          <div>
+            <h3>Lifeline</h3>
+            <p>Off-grid RF emergency signal system, for when the cell towers blink off.</p>
           </div>
-          <div class="ledger__body">
-            <p class="kicker">Open Source Tool &middot; Used by Millions</p>
-            <h3 class="ledger__title">Monkeytype</h3>
-            <p class="ledger__copy">
-              A flaw found in one of the most popular typing tools on the internet, used by everyone from competitive typists to people who simply like a clean keyboard sound. The author found something he shouldn&rsquo;t have been able to. He reported it. They patched it. He did not, for the record, ask for money.
-            </p>
-            <ul class="ledger__meta">
-              <li><span>Type</span> Web application flaw</li>
-              <li><span>Status</span> Fixed &middot; acknowledged</li>
-              <li><span>Disposition</span> responsible disclosure, no bounty, no hard feelings</li>
-            </ul>
+          <span class="tag">Hackathon &middot; Hardware</span>
+        </li>
+
+        <li>
+          <span class="num">N&deg;&nbsp;03</span>
+          <div>
+            <h3>Sawari</h3>
+            <p>Kathmandu&rsquo;s public bus system, reverse-engineered. Fare, ETA, road conditions.</p>
           </div>
+          <span class="tag">Hackathon &middot; Web</span>
+        </li>
+
+        <li>
+          <span class="num">N&deg;&nbsp;04</span>
+          <div>
+            <h3>AgroPan</h3>
+            <p>Soil monitor and recommendation system, via in-ground sensors and a small dashboard.</p>
+          </div>
+          <span class="tag">Exhibition &middot; Hardware</span>
+        </li>
+
+        <li>
+          <span class="num">N&deg;&nbsp;05</span>
+          <div>
+            <h3>Edu&nbsp;Track&nbsp;Pro</h3>
+            <p>RFID attendance for Nepali schools, designed to replace the morning roll call.</p>
+          </div>
+          <span class="tag">School &middot; Hardware</span>
         </li>
 
       </ol>
     </section>
 
-    <!-- ========================= IV. LEDGER / SKILLS + TIMELINE ========================= -->
-
-    <section id="ledger" class="ledger-section">
-      <div class="section-head">
-        <span class="kicker">Section&nbsp;IV &middot; The Ledger</span>
-        <h2 class="section-title">Tools, Years, Trophies</h2>
-        <p class="section-sub">
-          A short, slightly self-conscious inventory of the things the author knows, the years he learned them in, and a few of the occasions when other people agreed they were useful.
-        </p>
-      </div>
-
-      <div class="ledger-grid">
-
-        <div class="card ledger-card">
-          <p class="kicker">The Tools</p>
-          <ul class="tag-list">
-            <li><strong>HTML</strong><span>fluent</span></li>
-            <li><strong>CSS</strong><span>fluent &middot; opinionated</span></li>
-            <li><strong>JavaScript</strong><span>fluent</span></li>
-            <li><strong>PHP</strong><span>crude, but operational</span></li>
-            <li><strong>MySQL</strong><span>can normalize a schema</span></li>
-            <li><strong>Mongo / Express / React / Node</strong><span>in progress</span></li>
-            <li><strong>Git &amp; GitHub</strong><span>second home</span></li>
-            <li><strong>Linux &amp; the command line</strong><span>where he lives</span></li>
-            <li><strong>Security research</strong><span>recurring habit</span></li>
-          </ul>
-        </div>
-
-        <div class="card ledger-card">
-          <p class="kicker">The Years</p>
-          <ol class="timeline">
-            <li>
-              <span class="timeline__year">2019</span>
-              <span class="timeline__line">Grade 6. The lockdown. <em>Hello, &lt;h1&gt;.</em> First websites, copied from YouTube, hosted on free subdomains.</span>
-            </li>
-            <li>
-              <span class="timeline__year">2020</span>
-              <span class="timeline__line">JavaScript, properly. First interactive things. First itch to make them good.</span>
-            </li>
-            <li>
-              <span class="timeline__year">2021</span>
-              <span class="timeline__line">PHP and MySQL, learned the hard way. The first project that is, technically, full-stack.</span>
-            </li>
-            <li>
-              <span class="timeline__year">2022</span>
-              <span class="timeline__line">First hackathon. First small trophy. The first time a stranger asked what stack he used.</span>
-            </li>
-            <li>
-              <span class="timeline__year">2023</span>
-              <span class="timeline__line">Exhibitions. Hardware starts appearing in the projects. Cables, sensors, the smell of solder.</span>
-            </li>
-            <li>
-              <span class="timeline__year">2024</span>
-              <span class="timeline__line">Cyber security becomes more than a curiosity. First responsible disclosure. GitHub, eighty-odd repos deep.</span>
-            </li>
-            <li>
-              <span class="timeline__year">2025</span>
-              <span class="timeline__line">More disclosures. More hackathons. The portfolio at <em>zenithkandel.com.np</em> goes live, in its first form.</span>
-            </li>
-            <li>
-              <span class="timeline__year">2026</span>
-              <span class="timeline__line">Grade 12. MERN, on purpose. Still learning. Still filing.</span>
-            </li>
-          </ol>
-        </div>
-
-        <div class="card ledger-card ledger-card--trophies">
-          <p class="kicker">A Few Public Notes</p>
-          <ul class="trophy-list">
-            <li>
-              <span class="trophy__mark">&dagger;</span>
-              <span><strong>Winner</strong> &middot; multiple hackathons, at school and city level</span>
-            </li>
-            <li>
-              <span class="trophy__mark">&dagger;</span>
-              <span><strong>Exhibitor</strong> &middot; AgroPan shown at a regional science exhibition</span>
-            </li>
-            <li>
-              <span class="trophy__mark">&dagger;</span>
-              <span><strong>Bug hunter</strong> &middot; two disclosed, two fixed, neither paid for</span>
-            </li>
-            <li>
-              <span class="trophy__mark">&dagger;</span>
-              <span><strong>GitHub</strong> &middot; 80+ repositories, all public, all his</span>
-            </li>
-            <li>
-              <span class="trophy__mark">&dagger;</span>
-              <span><strong>High schooler</strong> &middot; Grade 12, KMSS Bagbazar, currently</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================= V. CORRESPONDENCE ========================= -->
-
-    <section id="correspondence" class="correspondence">
-      <div class="section-head">
-        <span class="kicker">Section&nbsp;V &middot; Correspondence</span>
-        <h2 class="section-title">How to Reach the Editor</h2>
-        <p class="section-sub">
-          Letters, telegrams, pull requests, voice notes, and the occasional postcard are all welcome. The editor answers most of them, eventually.
-        </p>
-      </div>
-
-      <div class="contact">
-
-        <a class="contact-card" href="https://zenithkandel.com.np" target="_blank" rel="noopener">
-          <span class="contact-card__no">01</span>
-          <span class="contact-card__label">Portfolio</span>
-          <span class="contact-card__value">zenithkandel.com.np</span>
-          <span class="contact-card__hint">the previous edition of this site &rarr;</span>
-        </a>
-
-        <a class="contact-card" href="https://github.com/zenithkandel" target="_blank" rel="noopener">
-          <span class="contact-card__no">02</span>
-          <span class="contact-card__label">GitHub</span>
-          <span class="contact-card__value">github.com/zenithkandel</span>
-          <span class="contact-card__hint">eighty-one repositories, in various states &rarr;</span>
-        </a>
-
-        <a class="contact-card" href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener">
-          <span class="contact-card__no">03</span>
-          <span class="contact-card__label">LinkedIn</span>
-          <span class="contact-card__value">linkedin.com/in/zenithkandel</span>
-          <span class="contact-card__hint">the professional version, mostly true &rarr;</span>
-        </a>
-
-        <a class="contact-card" href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener">
-          <span class="contact-card__no">04</span>
-          <span class="contact-card__label">Instagram</span>
-          <span class="contact-card__value">@kandel.zenith</span>
-          <span class="contact-card__hint">the social one, mostly stories &rarr;</span>
-        </a>
-
-        <a class="contact-card" href="mailto:zenithkandel0@gmail.com">
-          <span class="contact-card__no">05</span>
-          <span class="contact-card__label">Email</span>
-          <span class="contact-card__value">zenithkandel0@gmail.com</span>
-          <span class="contact-card__hint">the slow, considered channel &rarr;</span>
-        </a>
-
-        <a class="contact-card" href="https://wa.me/9779806176120" target="_blank" rel="noopener">
-          <span class="contact-card__no">06</span>
-          <span class="contact-card__label">WhatsApp &middot; Phone</span>
-          <span class="contact-card__value">+977 980 617 6120</span>
-          <span class="contact-card__hint">the urgent channel, NTC friendly &rarr;</span>
-        </a>
-
-      </div>
-
-      <p class="postal">
-        <strong>Postal address, for the stubborn:</strong>
-        Bagbazar, Kathmandu, Nepal &middot; Ward&nbsp;29 &middot; c/o KMSS, KM&nbsp;0.0 from the Bagbazar Chowk
+    <section>
+      <h2><span class="sec">&sect;</span> Notes</h2>
+      <p>
+        HTML, CSS, JavaScript, PHP, MySQL &middot; MERN in progress &middot; Two bugs found and responsibly disclosed, both fixed, neither paid for &mdash; <a href="#">Kantipur Television</a> and <a href="#">Monkeytype</a>.
       </p>
     </section>
 
-    <!-- ========================= SECRET / FOOTER ========================= -->
+    <section>
+      <h2><span class="sec">&sect;</span> Contact</h2>
 
-    <div class="secret" aria-hidden="true">
-      <details>
-        <summary>&mdash; a small note, for those who read the colophon &mdash;</summary>
-        <p>
-          The first line of code I ever wrote was on a borrowed laptop, in a room with the curtains drawn, in the third week of a lockdown I did not yet understand. The first bug I ever found was in something I had written myself. Both, in their way, are still true.
-        </p>
-      </details>
-    </div>
+      <dl class="contact">
+        <dt>Web</dt><dd><a href="https://zenithkandel.com.np" target="_blank" rel="noopener">zenithkandel.com.np</a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/zenithkandel" target="_blank" rel="noopener">github.com/zenithkandel</a></dd>
+
+        <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener">linkedin.com/in/zenithkandel</a></dd>
+        <dt>Instagram</dt><dd><a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener">@kandel.zenith</a></dd>
+
+        <dt>Email</dt><dd><a href="mailto:zenithkandel0@gmail.com">zenithkandel0@gmail.com</a></dd>
+        <dt>Phone</dt><dd><a href="https://wa.me/9779806176120" target="_blank" rel="noopener">+977 980 617 6120</a></dd>
+      </dl>
+    </section>
 
   </main>
 
-  <!-- ========================= COLOPHON ========================= -->
-
-  <footer class="colophon">
-    <div class="container colophon__inner">
-      <div class="colophon__row">
-        <div>
-          <p class="kicker">Colophon</p>
-          <p>
-            Set in <em>Fraunces</em> and <em>Inter</em>, with a single accent voice borrowed from <em>Special Elite</em>. Composed by hand in HTML, CSS, and a small amount of JavaScript. Printed on a paper-coloured background with a faint grain, by way of an inline SVG filter. No gradients were harmed in the making of this site.
-          </p>
-        </div>
-        <div>
-          <p class="kicker">ISSN</p>
-          <p>
-            The Zenith Dispatch &middot; Vol. XVII &middot; No. 01 &middot; Established MMIX &middot; &copy; Zenith Kandel, all rights reserved, all mistakes preserved.
-          </p>
-        </div>
-      </div>
-      <div class="colophon__rule"></div>
-      <p class="colophon__sign">&#10086; <span>END OF EDITION</span> &#10086;</p>
-    </div>
+  <footer>
+    <p>Set in <em>Fraunces</em> &amp; <em>Inter</em>. Built by hand. &copy; Zenith Kandel, MMXXVI.</p>
   </footer>
 
   <script src="script.js" defer></script>
