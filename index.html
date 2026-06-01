@@ -2,59 +2,164 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zenith Kandel | Digital Identity</title>
+    <title>Zenith Kandel — Technologist, Builder, Security Researcher</title>
+    <meta name="description" content="Zenith Kandel is a 16-year-old technologist from Kathmandu, Nepal. Builder of award-winning hackathon projects, web developer, and cybersecurity researcher." />
+    <meta name="author" content="Zenith Kandel" />
+    <meta name="keywords" content="Zenith Kandel, portfolio, web developer, Nepal, hackathon, cybersecurity, bug hunter" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet" />
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+
+    <!-- Main Script -->
     <script type="module" src="/src/js/main.js"></script>
   </head>
   <body>
     <!-- Custom Cursor -->
-    <div id="cursor" class="cursor"></div>
+    <div id="cursor" class="cursor">
+      <div class="cursor-dot"></div>
+    </div>
+    <div id="cursor-trail" class="cursor-trail"></div>
 
-    <!-- WebGL/Canvas background container for Prologue -->
+    <!-- 3D Background Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <main class="smooth-scroll-wrapper">
-      
-      <!-- Section: The Prologue -->
-      <section id="prologue" class="section hero">
+    <!-- Floating Navigation -->
+    <nav id="main-nav" class="nav">
+      <a href="#prologue" class="nav-logo" aria-label="Home">ZK</a>
+      <div class="nav-links">
+        <a href="#origin" class="nav-link" data-text="ABOUT">ABOUT</a>
+        <a href="#interventions" class="nav-link" data-text="WORK">WORK</a>
+        <a href="#epilogue" class="nav-link" data-text="CONTACT">CONTACT</a>
+      </div>
+    </nav>
+
+    <!-- Vertical Social Sidebar -->
+    <aside class="social-sidebar" id="social-sidebar">
+      <a href="https://github.com/zenithkandel" target="_blank" rel="noopener" class="sidebar-link" aria-label="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener" class="sidebar-link" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener" class="sidebar-link" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <div class="sidebar-line"></div>
+    </aside>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 1: THE PROLOGUE (Hero)              -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="prologue" class="section hero-section">
         <div class="hero-content">
-          <p class="mono-label">SYSTEM_INIT // 2026</p>
-          <h1 class="hero-title">Zenith Kandel.</h1>
-          <div class="hero-subtitle">
-            <span>Technologist.</span>
-            <span class="divider"></span>
-            <span>Problem Solver.</span>
-            <span class="divider"></span>
-            <span>Grade 12.</span>
+          <div class="hero-left">
+            <p class="hero-location mono-label reveal-up" data-delay="0">
+              <span class="location-dot"></span>
+              KATHMANDU, NEPAL — <span id="current-time">JUN'26</span>
+            </p>
+            <h1 class="hero-title">
+              <span class="title-line reveal-up" data-delay="1">ZENITH</span>
+              <span class="title-line reveal-up" data-delay="2">KANDEL<span class="title-accent">.</span></span>
+            </h1>
+            <div class="hero-tags reveal-up" data-delay="3">
+              <span class="tag">TECHNOLOGIST</span>
+              <span class="tag-divider">◆</span>
+              <span class="tag">BUILDER</span>
+              <span class="tag-divider">◆</span>
+              <span class="tag">SECURITY RESEARCHER</span>
+            </div>
+            <p class="hero-bio reveal-up" data-delay="4">
+              I build systems that solve real problems for real people.<br/>
+              Currently Grade 12 at Kathmandu Model Secondary School, Bagbazar.
+            </p>
+            <a href="#interventions" class="hero-cta reveal-up" data-delay="5">
+              <span>VIEW WORK</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
           </div>
-          <div class="scroll-indicator">
-            <span class="mono-label">SCROLL_DOWN</span>
-            <div class="line"></div>
+          <div class="hero-right reveal-up" data-delay="3">
+            <div class="avatar-container">
+              <img src="/src/assets/hero-avatar.png" alt="Zenith Kandel 3D Avatar" class="hero-avatar" id="hero-avatar" />
+              <div class="avatar-glow"></div>
+            </div>
           </div>
+        </div>
+        <div class="scroll-indicator" id="scroll-indicator">
+          <span class="mono-label">SCROLL</span>
+          <div class="scroll-line"></div>
         </div>
       </section>
 
-      <!-- Section: The Origin -->
-      <section id="origin" class="section origin">
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 2: THE ORIGIN (About)               -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="origin" class="section origin-section">
         <div class="container">
+          <div class="section-label mono-label reveal-up">01 — THE ORIGIN</div>
           <div class="origin-grid">
-            <div class="origin-text reveal-text">
-              <h2 class="section-heading"><span class="mono-label">01 // THE ORIGIN</span></h2>
-              <p class="large-text">It started in lockdown.</p>
-              <p>While the world paused during the COVID-19 pandemic, a Grade 6 student found an opening. What began as simple curiosity about computers evolved into a relentless pursuit of understanding how systems work—and how they break.</p>
-              <p>Today, my focus spans product design, software engineering, hardware, and cybersecurity. I don't just write code; I look for real-world problems and engineer solutions.</p>
+            <div class="origin-narrative">
+              <h2 class="origin-headline reveal-up">
+                It started in<br/><span class="text-accent">lockdown.</span>
+              </h2>
+              <p class="origin-text reveal-up">
+                When COVID-19 shut down the world in 2020, a curious Grade 6 student opened a laptop and started learning. YouTube tutorials became the classroom. HTML, CSS, and JavaScript became the language.
+              </p>
+              <p class="origin-text reveal-up">
+                What began as a lockdown hobby quickly turned into an obsession. I moved from building simple web pages to engineering full-stack applications — PHP backends, MySQL databases, and later exploring the MERN stack.
+              </p>
+              <p class="origin-text reveal-up">
+                But I don't just build things. I break them too. My interest in cybersecurity led me to discover critical vulnerabilities in production systems — including Kantipur Television and the popular typing tool Monkeytype.
+              </p>
             </div>
-            <div class="origin-visual">
-              <div class="cyber-box">
-                <div class="cyber-box-inner">
-                  <span class="mono">LOCATION: KATHMANDU, NEPAL</span>
-                  <span class="mono">STATUS: ACTIVE</span>
-                  <span class="mono">CAPACITY: UNLIMITED</span>
+            <div class="origin-stats">
+              <div class="stat-card reveal-up">
+                <div class="stat-terminal">
+                  <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title mono-label">STATUS.SYS</span>
+                  </div>
+                  <div class="terminal-body">
+                    <div class="stat-row">
+                      <span class="stat-key">CODING_SINCE</span>
+                      <span class="stat-value">2020</span>
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-key">AGE</span>
+                      <span class="stat-value counter-value" data-target="16">0</span>
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-key">GITHUB_REPOS</span>
+                      <span class="stat-value counter-value" data-target="80" data-suffix="+">0</span>
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-key">HACKATHONS_WON</span>
+                      <span class="stat-value">MULTIPLE</span>
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-key">BUGS_REPORTED</span>
+                      <span class="stat-value">CRITICAL</span>
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-key">STATUS</span>
+                      <span class="stat-value status-active"><span class="blink-dot"></span>BUILDING</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,107 +167,249 @@
         </div>
       </section>
 
-      <!-- Section: The Interventions (Projects) -->
-      <section id="interventions" class="section projects">
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 3: INTERVENTIONS (Projects)         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="interventions" class="section projects-section">
         <div class="container">
-          <h2 class="section-heading sticky-heading"><span class="mono-label">02 // INTERVENTIONS</span></h2>
-          
-          <div class="project-dossier" id="proj-1">
-            <div class="dossier-header">
-              <span class="mono">FILE_01</span>
-              <h3>SastoMahango</h3>
-            </div>
-            <div class="dossier-body">
-              <p class="problem-statement"><strong>Anomaly detected:</strong> People are consistently overcharged in local markets.</p>
-              <p class="solution-statement"><strong>Intervention:</strong> A crowdsourced price intelligence platform designed to establish fair market prices and empower consumers with transparent data.</p>
-            </div>
-          </div>
+          <div class="section-label mono-label reveal-up">02 — INTERVENTIONS</div>
+          <h2 class="projects-headline reveal-up">SELECTED<br/>WORKS<span class="text-accent"> /</span></h2>
+          <p class="projects-subtitle reveal-up">Thoughtfully crafted solutions that blend utility and engineering into something functional, impactful, and refined.</p>
 
-          <div class="project-dossier" id="proj-2">
-            <div class="dossier-header">
-              <span class="mono">FILE_02</span>
-              <h3>Lifeline</h3>
-            </div>
-            <div class="dossier-body">
-              <p class="problem-statement"><strong>Anomaly detected:</strong> Communication blackouts in remote regions during emergencies.</p>
-              <p class="solution-statement"><strong>Intervention:</strong> An off-grid emergency communication system utilizing RF technologies, built to provide reliable connectivity without traditional infrastructure.</p>
-            </div>
-          </div>
+          <div class="projects-list">
 
-          <div class="project-dossier" id="proj-3">
-            <div class="dossier-header">
-              <span class="mono">FILE_03</span>
-              <h3>Sawari</h3>
-            </div>
-            <div class="dossier-body">
-              <p class="problem-statement"><strong>Anomaly detected:</strong> Navigating public transit in Kathmandu is chaotic and undocumented.</p>
-              <p class="solution-statement"><strong>Intervention:</strong> A public transportation assistant delivering real-time routes, cost estimates, and road conditions for bus travelers.</p>
-            </div>
-          </div>
+            <!-- Project 01: SastoMahango -->
+            <article class="project-card reveal-up" id="project-01">
+              <div class="project-index">01</div>
+              <div class="project-info">
+                <h3 class="project-name">SastoMahango</h3>
+                <p class="project-tagline">Crowdsourced Price Intelligence</p>
+                <div class="project-detail">
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">PROBLEM</span>
+                    <p>People are consistently overcharged in local markets with no way to verify fair pricing.</p>
+                  </div>
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">SOLUTION</span>
+                    <p>A crowdsourced price index platform that aggregates real purchase data to establish transparent market prices and protect consumers from scams.</p>
+                  </div>
+                </div>
+                <div class="project-tags">
+                  <span class="tech-tag">Web App</span>
+                  <span class="tech-tag">Crowdsourcing</span>
+                  <span class="tech-tag">Data Analytics</span>
+                </div>
+              </div>
+            </article>
 
-          <div class="project-dossier" id="proj-4">
-            <div class="dossier-header">
-              <span class="mono">FILE_04</span>
-              <h3>AgroPan</h3>
-            </div>
-            <div class="dossier-body">
-              <p class="problem-statement"><strong>Anomaly detected:</strong> Agricultural decisions made without empirical data.</p>
-              <p class="solution-statement"><strong>Intervention:</strong> A sensor-driven agricultural monitoring platform that provides soil analysis and actionable insights to optimize crop yield.</p>
-            </div>
-          </div>
+            <!-- Project 02: Lifeline -->
+            <article class="project-card reveal-up" id="project-02">
+              <div class="project-index">02</div>
+              <div class="project-info">
+                <h3 class="project-name">Lifeline</h3>
+                <p class="project-tagline">Off-Grid Emergency Communication</p>
+                <div class="project-detail">
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">PROBLEM</span>
+                    <p>Communication blackouts in remote regions of Nepal during natural disasters and emergencies.</p>
+                  </div>
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">SOLUTION</span>
+                    <p>An RF-based emergency signal system that operates completely off-grid, enabling critical communication in areas with zero cellular infrastructure.</p>
+                  </div>
+                </div>
+                <div class="project-tags">
+                  <span class="tech-tag">RF Technology</span>
+                  <span class="tech-tag">Hardware</span>
+                  <span class="tech-tag">Emergency Systems</span>
+                </div>
+              </div>
+            </article>
 
-          <div class="project-dossier" id="proj-5">
-            <div class="dossier-header">
-              <span class="mono">FILE_05</span>
-              <h3>EduTrack Pro</h3>
-            </div>
-            <div class="dossier-body">
-              <p class="problem-statement"><strong>Anomaly detected:</strong> Inefficient manual tracking in educational institutions.</p>
-              <p class="solution-statement"><strong>Intervention:</strong> An RFID-powered attendance and tracking solution to automate and secure institutional management.</p>
-            </div>
-          </div>
+            <!-- Project 03: Sawari -->
+            <article class="project-card reveal-up" id="project-03">
+              <div class="project-index">03</div>
+              <div class="project-info">
+                <h3 class="project-name">Sawari</h3>
+                <p class="project-tagline">Public Transit Navigator</p>
+                <div class="project-detail">
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">PROBLEM</span>
+                    <p>Navigating Kathmandu's chaotic public bus network is confusing, undocumented, and inaccessible to newcomers.</p>
+                  </div>
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">SOLUTION</span>
+                    <p>A complete public transportation assistant — enter your start and destination, get a full walkthrough: which buses to take, fare costs, ETAs, road conditions, and transfer points.</p>
+                  </div>
+                </div>
+                <div class="project-tags">
+                  <span class="tech-tag">Routing Engine</span>
+                  <span class="tech-tag">Maps</span>
+                  <span class="tech-tag">Real-time Data</span>
+                </div>
+              </div>
+            </article>
 
+            <!-- Project 04: AgroPan -->
+            <article class="project-card reveal-up" id="project-04">
+              <div class="project-index">04</div>
+              <div class="project-info">
+                <h3 class="project-name">AgroPan</h3>
+                <p class="project-tagline">Smart Soil Intelligence</p>
+                <div class="project-detail">
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">PROBLEM</span>
+                    <p>Agricultural decisions in Nepal are made without empirical data, leading to poor crop yields and resource waste.</p>
+                  </div>
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">SOLUTION</span>
+                    <p>A sensor-driven soil monitoring and recommendation system that analyzes soil composition in real-time and provides actionable insights to optimize crop health and yield.</p>
+                  </div>
+                </div>
+                <div class="project-tags">
+                  <span class="tech-tag">IoT Sensors</span>
+                  <span class="tech-tag">Data Pipeline</span>
+                  <span class="tech-tag">Agriculture</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 05: EduTrack Pro -->
+            <article class="project-card reveal-up" id="project-05">
+              <div class="project-index">05</div>
+              <div class="project-info">
+                <h3 class="project-name">EduTrack Pro</h3>
+                <p class="project-tagline">Smart Attendance System</p>
+                <div class="project-detail">
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">PROBLEM</span>
+                    <p>Manual attendance tracking in Nepali schools is slow, error-prone, and vulnerable to manipulation.</p>
+                  </div>
+                  <div class="detail-block">
+                    <span class="detail-label mono-label">SOLUTION</span>
+                    <p>An RFID-powered smart attendance system using student ID cards — instant tap-in, automated records, real-time dashboards for administration, and parent notifications.</p>
+                  </div>
+                </div>
+                <div class="project-tags">
+                  <span class="tech-tag">RFID</span>
+                  <span class="tech-tag">Embedded Systems</span>
+                  <span class="tech-tag">EdTech</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
         </div>
       </section>
 
-      <!-- Section: The Blueprint (Skills & Security) -->
-      <section id="blueprint" class="section blueprint">
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 4: THE ARSENAL (Skills + Security)  -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="blueprint" class="section arsenal-section">
         <div class="container">
-          <h2 class="section-heading"><span class="mono-label">03 // THE BLUEPRINT</span></h2>
-          <div class="blueprint-grid">
-            <div class="stack-panel">
-              <h3 class="mono-heading">CORE_STACK</h3>
-              <ul class="stack-list">
-                <li>HTML / CSS / JavaScript</li>
-                <li>PHP / MySQL</li>
-                <li>React / Node.js (Exploring)</li>
-                <li>Modern Web Architectures</li>
-              </ul>
+          <div class="section-label mono-label reveal-up">03 — THE ARSENAL</div>
+          <div class="arsenal-grid">
+            <div class="arsenal-skills">
+              <h2 class="arsenal-headline reveal-up">Tech<br/>Stack<span class="text-accent">.</span></h2>
+              <div class="skills-grid reveal-up">
+                <div class="skill-chip">HTML5</div>
+                <div class="skill-chip">CSS3</div>
+                <div class="skill-chip">JavaScript</div>
+                <div class="skill-chip">PHP</div>
+                <div class="skill-chip">MySQL</div>
+                <div class="skill-chip">React</div>
+                <div class="skill-chip">Node.js</div>
+                <div class="skill-chip">MongoDB</div>
+                <div class="skill-chip">Express.js</div>
+                <div class="skill-chip">Git & GitHub</div>
+                <div class="skill-chip">REST APIs</div>
+                <div class="skill-chip">Responsive Design</div>
+              </div>
             </div>
-            <div class="security-panel">
-              <h3 class="mono-heading">SECURITY_CLEARANCE</h3>
-              <p>Active interest in vulnerability research and ethical security testing.</p>
-              <div class="bounty-badge">
-                <span class="blink"></span> Vulnerabilities responsibly disclosed.
+            <div class="arsenal-security reveal-up">
+              <div class="classified-panel">
+                <div class="classified-header">
+                  <span class="classified-badge">CLASSIFIED</span>
+                  <h3 class="classified-title">Security<br/>Clearance</h3>
+                </div>
+                <div class="classified-body">
+                  <p class="classified-text">Active interest in vulnerability research and ethical security testing. Responsible disclosure advocate.</p>
+                  <div class="vuln-reports">
+                    <div class="vuln-item">
+                      <div class="vuln-severity critical">CRITICAL</div>
+                      <div class="vuln-target">
+                        <span class="vuln-name">Kantipur Television</span>
+                        <span class="vuln-desc mono-label">News Channel Website — Vulnerability Disclosed</span>
+                      </div>
+                    </div>
+                    <div class="vuln-item">
+                      <div class="vuln-severity high">HIGH</div>
+                      <div class="vuln-target">
+                        <span class="vuln-name">Monkeytype</span>
+                        <span class="vuln-desc mono-label">Popular Typing Tool — Bug Reported</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="security-footer">
+                    <span class="blink-dot"></span>
+                    <span class="mono-label">ACTIVELY HUNTING</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Section: The Epilogue -->
-      <section id="epilogue" class="section footer">
-        <div class="container footer-content">
-          <h2 class="footer-title">Let's build the future.</h2>
-          <div class="social-links">
-            <a href="https://github.com/zenithkandel" target="_blank" class="cyber-link" data-text="GITHUB">GITHUB</a>
-            <a href="https://linkedin.com/in/zenithkandel" target="_blank" class="cyber-link" data-text="LINKEDIN">LINKEDIN</a>
-            <a href="https://zenithkandel.com.np" target="_blank" class="cyber-link" data-text="WEBSITE">WEBSITE</a>
-            <a href="mailto:zenithkandel0@gmail.com" class="cyber-link" data-text="EMAIL">EMAIL</a>
-            <span class="mono-label inline">IG: @kandel.zenith</span>
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 5: THE EPILOGUE (Contact)           -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="epilogue" class="section contact-section">
+        <div class="container">
+          <div class="section-label mono-label reveal-up">04 — CONNECT</div>
+          <h2 class="contact-headline reveal-up">
+            LET'S<br/>BUILD<span class="text-accent">.</span>
+          </h2>
+          <p class="contact-subtitle reveal-up">Have a project in mind? Want to collaborate? Or just want to say hi? I'm always open to conversations.</p>
+
+          <div class="contact-grid reveal-up">
+            <a href="mailto:zenithkandel0@gmail.com" class="contact-card" id="contact-email">
+              <span class="contact-card-label mono-label">EMAIL</span>
+              <span class="contact-card-value">zenithkandel0@gmail.com</span>
+              <svg class="contact-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <a href="tel:+9779806176120" class="contact-card" id="contact-phone">
+              <span class="contact-card-label mono-label">PHONE / WHATSAPP</span>
+              <span class="contact-card-value">+977 9806176120</span>
+              <svg class="contact-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <a href="https://zenithkandel.com.np" target="_blank" rel="noopener" class="contact-card" id="contact-website">
+              <span class="contact-card-label mono-label">PORTFOLIO</span>
+              <span class="contact-card-value">zenithkandel.com.np</span>
+              <svg class="contact-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <a href="https://github.com/zenithkandel" target="_blank" rel="noopener" class="contact-card" id="contact-github">
+              <span class="contact-card-label mono-label">GITHUB</span>
+              <span class="contact-card-value">github.com/zenithkandel</span>
+              <svg class="contact-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener" class="contact-card" id="contact-linkedin">
+              <span class="contact-card-label mono-label">LINKEDIN</span>
+              <span class="contact-card-value">linkedin.com/in/zenithkandel</span>
+              <svg class="contact-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener" class="contact-card" id="contact-instagram">
+              <span class="contact-card-label mono-label">INSTAGRAM</span>
+              <span class="contact-card-value">@kandel.zenith</span>
+              <svg class="contact-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
           </div>
-          <p class="copyright mono-label">&copy; 2026 ZENITH KANDEL. ALL SYSTEMS NOMINAL.</p>
         </div>
+
+        <footer class="site-footer">
+          <p class="mono-label">DESIGNED & BUILT BY ZENITH KANDEL</p>
+          <p class="mono-label footer-copy">&copy; 2026 — ALL SYSTEMS NOMINAL</p>
+        </footer>
       </section>
 
     </main>
