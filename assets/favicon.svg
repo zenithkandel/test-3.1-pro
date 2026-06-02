@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" fill="#f1e8d3"/>
-  <g fill="none" stroke="#1a1612" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="50" cy="50" r="46"/>
-    <text x="50" y="57" text-anchor="middle" font-family="Times New Roman, serif" font-size="60" font-weight="700" fill="#1a1612" stroke="none">Z</text>
-    <text x="50" y="78" text-anchor="middle" font-family="Special Elite, Courier, monospace" font-size="6" letter-spacing="2" fill="#a8321e" stroke="none">DISPATCH</text>
-  </g>
-</svg>
