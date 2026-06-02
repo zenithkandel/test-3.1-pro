@@ -1097,5 +1097,34 @@
           });
       }
     </script>
+
+    <!-- Page-wipe (mirror of index.html, for the back-to-portfolio direction) -->
+    <div class="page-wipe" id="pageWipe" aria-hidden="true" style="position:fixed;inset:0;z-index:9990;background:#bc7155;transform:scaleX(0);transform-origin:right center;pointer-events:none;visibility:hidden;"></div>
+    <style>
+      .page-wipe.is-in  { visibility: visible; animation: cvWipeIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+      .page-wipe.is-out { visibility: visible; animation: cvWipeOut 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+      @keyframes cvWipeIn  { from { transform: scaleX(0); transform-origin: right center; } to { transform: scaleX(1); transform-origin: right center; } }
+      @keyframes cvWipeOut { from { transform: scaleX(1); transform-origin: left center;  } to { transform: scaleX(0); transform-origin: left center;  } }
+    </style>
+    <script>
+      (() => {
+        const wipe = document.getElementById('pageWipe');
+        if (!wipe) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        requestAnimationFrame(() => {
+          wipe.classList.add('is-out');
+          setTimeout(() => wipe.classList.remove('is-out'), 450);
+        });
+
+        document.addEventListener('click', (e) => {
+          const a = e.target.closest('a[href="index.html"]');
+          if (!a) return;
+          e.preventDefault();
+          wipe.classList.add('is-in');
+          setTimeout(() => { window.location.href = a.href; }, 420);
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -45,11 +45,22 @@
         }
     }
 
-    /* ----- Stack rows: assign --i per tool for staggered wave ----- */
+    /* ----- Stack rows: assign --i per tool, then on first reveal
+       add .is-engaged so the CSS tool-wave fires (one-shot, staggered
+       per row). ----- */
     document.querySelectorAll('.stack-row').forEach((row) => {
         row.querySelectorAll('.stack-row__tools li').forEach((li, i) => {
             li.style.setProperty('--i', i);
         });
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    row.classList.add('is-engaged');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.4 });
+        io.observe(row);
     });
 
     /* ----- Section index: draw underline on first reveal ----- */

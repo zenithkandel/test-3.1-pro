@@ -188,27 +188,30 @@
     transition: transform 0.12s linear;
 }
 
-/* ---------- 6. Work · 3-layer parallax on project art ---------- */
+/* ---------- 6. Work · project art depth on hover ---------- */
 .project__art {
     position: relative;
     overflow: visible;
 }
 
-.project__art .layer {
-    transition: transform 0.5s var(--ease-out);
-    transform-origin: center;
-    will-change: transform;
+.project__art::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 60%;
+    height: 30%;
+    background: radial-gradient(ellipse at center, rgba(188, 113, 85, 0.18), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    transform: translateY(0);
+    pointer-events: none;
+    z-index: -1;
 }
 
-.project:hover .project__art .layer-back   { transform: translate3d( 8px, -6px, 0); }
-.project:hover .project__art .layer-mid    { transform: translate3d(-4px,  4px, 0); }
-.project:hover .project__art .layer-front  { transform: translate3d( 2px, -2px, 0) scale(1.04); }
-
-/* On mobile, suppress (we don't have hover). */
-@media (hover: none) {
-    .project:hover .project__art .layer-back,
-    .project:hover .project__art .layer-mid,
-    .project:hover .project__art .layer-front { transform: none; }
+.project:hover .project__art::after {
+    opacity: 1;
+    transform: translateY(8px);
 }
 
 /* ---------- 7. Stack · tool wave (per-li color pulse) ---------- */

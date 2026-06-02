@@ -601,6 +601,15 @@
     .marquee__track {
         animation-duration: 22s;
     }
+
+    /* Disable life-only things on touch. The avatar still breathes
+       and blinks (its pupils run a pre-baked loop instead of
+       cursor-follow in avatar.js). */
+    .section-counter { display: none; }
+    .research-emblem.is-engaged,
+    .contact-emblem.is-engaged {
+        animation: none !important;
+    }
 }
 
 /* ─── REDUCED MOTION ─── */
