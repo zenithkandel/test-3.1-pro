@@ -3,382 +3,511 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Zenith Kandel — High school developer, cybersecurity researcher, and hackathon winner from Kathmandu, Nepal." />
-    <meta name="theme-color" content="#100904" />
+    <meta name="description" content="Zenith Kandel — Developer, security researcher, and high-school builder from Kathmandu, Nepal." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Zenith Kandel — Portfolio" />
+    <meta property="og:description" content="Developer · Security Researcher · Builder. Kathmandu, Nepal." />
+    <meta property="og:type" content="website" />
     <title>Zenith Kandel — Developer & Security Researcher</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23100904'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-size='18' font-weight='600' fill='%23ffedd7'%3EZ%3C/text%3E%3C/svg%3E" />
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000d10'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,sans-serif' font-size='18' font-weight='800' fill='%23ffffff'%3EZ%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
-    <div class="grain" aria-hidden="true"></div>
 
+    <!-- ============ NAVIGATION ============ -->
     <header class="nav" id="nav">
-        <a href="#top" class="nav__brand" aria-label="Zenith Kandel home">
-            <span class="nav__brand-mark">Z</span>
-            <span class="nav__brand-word" data-text="ZENITH">ZENITH</span>
+        <a href="#top" class="nav__brand" aria-label="Zenith Kandel — Home">
+            <span class="nav__mark" aria-hidden="true">ZK</span>
+            <span class="nav__word">Zenith Kandel</span>
         </a>
+
         <nav class="nav__links" aria-label="Primary">
-            <a href="#intro" class="nav__link" data-text="INTRO"><span>INTRO</span></a>
-            <a href="#work" class="nav__link" data-text="WORK"><span>WORK</span></a>
-            <a href="#stack" class="nav__link" data-text="STACK"><span>STACK</span></a>
-            <a href="#research" class="nav__link" data-text="RESEARCH"><span>RESEARCH</span></a>
-            <a href="#contact" class="nav__link" data-text="CONTACT"><span>CONTACT</span></a>
+            <a href="#about"    class="nav__link">About</a>
+            <a href="#work"     class="nav__link">Work</a>
+            <a href="#stack"    class="nav__link">Stack</a>
+            <a href="#research" class="nav__link">Research</a>
+            <a href="#contact"  class="nav__link">Contact</a>
         </nav>
-        <button class="nav__menu" id="navMenu" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span>
+
+        <a href="#contact" class="nav__cta">
+            <span>Hire / Collab</span>
+        </a>
+
+        <button class="nav__menu" id="navMenu" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span><span></span><span></span>
         </button>
     </header>
 
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav class="mobile-menu__nav" aria-label="Mobile">
+            <a href="#about"    class="mobile-menu__link">01 — About</a>
+            <a href="#work"     class="mobile-menu__link">02 — Work</a>
+            <a href="#stack"    class="mobile-menu__link">03 — Stack</a>
+            <a href="#research" class="mobile-menu__link">04 — Research</a>
+            <a href="#contact"  class="mobile-menu__link">05 — Contact</a>
+        </nav>
+    </div>
+
     <main>
+        <!-- ============ HERO · WHITE ============ -->
         <section class="hero" id="top">
-            <div class="hero__bg" aria-hidden="true">
-                <div class="hero__grid"></div>
-                <div class="hero__orb"></div>
-                <div class="hero__scan"></div>
-            </div>
             <div class="hero__inner">
-                <div class="hero__meta">
-                    <span class="hero__pill">PORTFOLIO — 2026</span>
-                    <span class="hero__coords">27.7172° N · 85.3240° E</span>
+
+                <div class="hero__top">
+                    <span class="hero__chip">
+                        <span class="hero__chip-dot" aria-hidden="true"></span>
+                        Available for hackathons, builds, and disclosures
+                    </span>
+                    <span class="hero__loc">KTM / NP · 27.7172° N</span>
                 </div>
-                <h1 class="hero__title">
-                    <span class="reveal" data-text="Building">Building</span>
-                    <span class="reveal hero__title--accent" data-text="software">software</span>
-                    <span class="reveal" data-text="that">that</span>
-                    <span class="reveal" data-text="matters.">matters.</span>
+
+                <h1 class="hero__display">
+                    <span class="hero__line" data-text="Zenith">Zenith</span>
+                    <span class="hero__line hero__line--accent" data-text="Kandel.">Kandel<span class="hero__period">.</span></span>
                 </h1>
-                <div class="hero__right">
-                    <p class="hero__lede">
-                        I'm <span class="hero__lede-name">Zenith Kandel</span> — a seventeen-year-old developer and security researcher from Kathmandu. I build civic tools, off-grid hardware, and I break things to understand them.
+
+                <div class="hero__bottom">
+                    <p class="hero__sub">
+                        Developer. Security researcher. Builder of civic tools and off-grid hardware. Seventeen years old, based in Kathmandu, shipping from a quiet room.
                     </p>
+
                     <div class="hero__cta">
-                        <a href="#work" class="btn btn--filled" data-text="See my work">
-                            <span>See my work</span>
+                        <a href="#work" class="btn btn--primary">
+                            <span>See selected work</span>
+                            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8 H13 M9 4 L13 8 L9 12" stroke-linecap="square"/></svg>
                         </a>
-                        <a href="#contact" class="btn btn--ghost" data-text="Get in touch">
+                        <a href="#contact" class="btn btn--ghost-dark">
                             <span>Get in touch</span>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="hero__scroll" aria-hidden="true">
-                <span>SCROLL TO CONTINUE</span>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1"/></svg>
-            </div>
-            <div class="hero__corner" aria-hidden="true">KTM / NP</div>
-        </section>
 
-        <section class="section" id="intro">
-            <span class="section__index">01 / INTRO</span>
-            <div class="section__split">
-                <h2 class="section__title" data-reveal>
-                    A high schooler<br />
-                    building at the<br />
-                    <span class="section__title--accent">edge of curiosity.</span>
-                </h2>
-                <div class="section__body">
-                    <p data-reveal>
-                        I started writing HTML in 2020 — during the lockdown, in a quiet room, watching strangers teach JavaScript on YouTube. I haven't stopped since. By grade nine I was building crowd-sourced civic tools. By grade eleven, I was reporting security flaws to national broadcasters.
-                    </p>
-                    <p data-reveal>
-                        Today I work across the full stack — HTML, CSS, JavaScript, PHP, MySQL — and I'm migrating toward the MERN ecosystem. I care about three things: shipped products, clean code, and the people on the other end of the screen.
-                    </p>
-                    <div class="section__stats" data-reveal>
-                        <div class="stat">
-                            <span class="stat__num">80+</span>
-                            <span class="stat__label">Repositories on GitHub</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat__num">5</span>
-                            <span class="stat__label">Hackathon-grade projects</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat__num">2</span>
-                            <span class="stat__label">Disclosed vulnerabilities</span>
-                        </div>
+                <div class="hero__foot">
+                    <div class="hero__meta">
+                        <span>Born <em>May 12, 2009</em></span>
+                        <span class="hero__meta-sep" aria-hidden="true"></span>
+                        <span>Grade 12 · KMSS Bagbazar</span>
+                    </div>
+                    <div class="hero__scroll" aria-hidden="true">
+                        <span>Scroll</span>
+                        <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M5 1V12M1 8L5 12L9 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
                     </div>
                 </div>
+
             </div>
-            <span class="vertical-label" aria-hidden="true">/ PROFILE</span>
         </section>
 
-        <div class="dashed-rule" aria-hidden="true"></div>
 
-        <section class="section section--work" id="work">
-            <span class="section__index">02 / WORK</span>
-            <div class="section__split">
-                <h2 class="section__title" data-reveal>
-                    Selected<br />
-                    <span class="section__title--accent">projects.</span>
-                </h2>
-                <div class="section__body">
-                    <p data-reveal>
-                        Every project below was built for a real problem — not a tutorial. Each one was prototyped, demoed, and judged at a hackathon or exhibition. None of them are perfect. All of them work.
+        <!-- ============ ABOUT · OBSIDIAN ============ -->
+        <section class="surface surface--dark" id="about">
+            <div class="section">
+                <div class="section__head">
+                    <span class="section__index">01 — About</span>
+                    <h2 class="section__title">
+                        A high schooler<br />
+                        building at the<br />
+                        edge of curiosity.
+                    </h2>
+                </div>
+
+                <div class="section__body section__body--dark">
+                    <p>
+                        I started writing HTML in 2020. The world had gone quiet — lockdowns, closed schools, an entire childhood paused — and I opened a YouTube tab and taught myself what <code>&lt;html&gt;</code> did. I haven't stopped since.
+                    </p>
+                    <p>
+                        By grade nine I was building crowd-sourced civic tools. By grade eleven I was reporting security flaws to a national news broadcaster. Now I'm in grade twelve, learning the MERN stack, and breaking applications to understand how they think.
+                    </p>
+                    <p>
+                        I compete in hackathons. I win some. I learn from all of them. I care about three things: shipped products, clean code, and the human on the other end of the screen.
                     </p>
                 </div>
+
+                <div class="feature-grid">
+                    <article class="feature" data-reveal>
+                        <span class="feature__num">80+</span>
+                        <h3 class="feature__title">Public repos</h3>
+                        <p class="feature__desc">A strong GitHub profile with experiments, builds, and unfinished things I'm not afraid to ship anyway.</p>
+                        <span class="feature__foot">github.com/zenithkandel</span>
+                    </article>
+
+                    <article class="feature" data-reveal>
+                        <span class="feature__num">05</span>
+                        <h3 class="feature__title">Hackathon builds</h3>
+                        <p class="feature__desc">Selected projects in civic tech, IoT, transit, agriculture, and education — all demoed to live judges.</p>
+                        <span class="feature__foot">2024 → 2025</span>
+                    </article>
+
+                    <article class="feature" data-reveal>
+                        <span class="feature__num">02</span>
+                        <h3 class="feature__title">Disclosed bugs</h3>
+                        <p class="feature__desc">Responsible disclosures at Kantipur Television and Monkeytype — both reported, both patched upstream.</p>
+                        <span class="feature__foot">Vuln research</span>
+                    </article>
+
+                    <article class="feature" data-reveal>
+                        <span class="feature__num">17</span>
+                        <h3 class="feature__title">Years of curiosity</h3>
+                        <p class="feature__desc">Born May 12, 2009. Currently finishing grade twelve at KMSS Bagbazar, Kathmandu, Nepal.</p>
+                        <span class="feature__foot">Still learning</span>
+                    </article>
+                </div>
             </div>
-
-            <ol class="work" role="list">
-                <li class="work__item" data-reveal>
-                    <span class="work__num">01</span>
-                    <div class="work__main">
-                        <div class="work__head">
-                            <h3 class="work__title">Sastomahango</h3>
-                            <span class="work__tag">Civic Tech</span>
-                        </div>
-                        <p class="work__desc">
-                            A crowd-sourced price index for everyday goods. Users report what they paid, the system aggregates prices by locality, and shoppers see whether they're about to be scammed. Built to fight the opacity of Kathmandu's informal markets.
-                        </p>
-                    </div>
-                    <span class="work__year">2024</span>
-                </li>
-
-                <li class="work__item" data-reveal>
-                    <span class="work__num">02</span>
-                    <div class="work__main">
-                        <div class="work__head">
-                            <h3 class="work__title">Lifeline</h3>
-                            <span class="work__tag">Hardware · Off-Grid</span>
-                        </div>
-                        <p class="work__desc">
-                            An off-grid, RF-based emergency signal system. When there's no cellular coverage — landslides, remote valleys, the post-quake window — Lifeline transmits short distress beacons across radio so a receiver in a populated area can relay them.
-                        </p>
-                    </div>
-                    <span class="work__year">2024</span>
-                </li>
-
-                <li class="work__item" data-reveal>
-                    <span class="work__num">03</span>
-                    <div class="work__main">
-                        <div class="work__head">
-                            <h3 class="work__title">Sawari</h3>
-                            <span class="work__tag">Transit · Web App</span>
-                        </div>
-                        <p class="work__desc">
-                            A complete public transport companion for Kathmandu. Enter where you are, enter where you want to go, and Sawari hands you the full walkthrough — the bus, the route, the fare, the road condition, the ETA. Built around the city's actual (chaotic) network.
-                        </p>
-                    </div>
-                    <span class="work__year">2025</span>
-                </li>
-
-                <li class="work__item" data-reveal>
-                    <span class="work__num">04</span>
-                    <div class="work__main">
-                        <div class="work__head">
-                            <h3 class="work__title">AgroPan</h3>
-                            <span class="work__tag">IoT · Agriculture</span>
-                        </div>
-                        <p class="work__desc">
-                            A soil monitoring and recommendation rig. Sensor arrays measure moisture, pH, and nutrients in the field; AgroPan returns a crop recommendation tailored to what's actually in the ground, not what the seed shop is selling.
-                        </p>
-                    </div>
-                    <span class="work__year">2024</span>
-                </li>
-
-                <li class="work__item" data-reveal>
-                    <span class="work__num">05</span>
-                    <div class="work__main">
-                        <div class="work__head">
-                            <h3 class="work__title">Edu Track Pro</h3>
-                            <span class="work__tag">RFID · EdTech</span>
-                        </div>
-                        <p class="work__desc">
-                            A smart attendance system for Nepali schools. Every student taps their ID card on an RFID reader at the gate, attendance is logged instantly, and class teachers see who's actually in the room. Built to replace the paper register that's still standard here.
-                        </p>
-                    </div>
-                    <span class="work__year">2025</span>
-                </li>
-            </ol>
-            <span class="vertical-label" aria-hidden="true">/ SELECTED WORK</span>
         </section>
 
-        <div class="dashed-rule" aria-hidden="true"></div>
 
-        <section class="section" id="stack">
-            <span class="section__index">03 / STACK</span>
-            <div class="section__split">
-                <h2 class="section__title" data-reveal>
-                    Tools I<br />
-                    <span class="section__title--accent">work with.</span>
-                </h2>
-                <div class="section__body">
-                    <p data-reveal>
+        <!-- ============ WORK · WHITE ============ -->
+        <section class="surface surface--light" id="work">
+            <div class="section">
+                <div class="section__head">
+                    <span class="section__index section__index--dark">02 — Work</span>
+                    <h2 class="section__title section__title--dark">
+                        Selected<br />
+                        projects.
+                    </h2>
+                </div>
+
+                <div class="section__body section__body--dark">
+                    <p>
+                        Five projects. Each one was built for a real problem, demoed in front of judges, and pushed past the prototype stage. They live in hackathon halls and school exhibitions — not in tutorial folders.
+                    </p>
+                </div>
+
+                <ol class="project-list" role="list">
+                    <li class="project" data-reveal>
+                        <div class="project__num">01</div>
+                        <div class="project__main">
+                            <div class="project__head">
+                                <h3 class="project__title">Sastomahango</h3>
+                                <span class="project__tag">Civic Tech · Web</span>
+                            </div>
+                            <p class="project__desc">
+                                A crowd-sourced price index for everyday goods. Users report what they paid, the system aggregates prices by locality, and shoppers see whether they're about to get scammed at the bazaar. Built to fight the opacity of Kathmandu's informal markets.
+                            </p>
+                            <div class="project__chips">
+                                <span>PHP</span><span>MySQL</span><span>Crowdsourced data</span><span>Hackathon build</span>
+                            </div>
+                        </div>
+                        <div class="project__year">2024</div>
+                    </li>
+
+                    <li class="project" data-reveal>
+                        <div class="project__num">02</div>
+                        <div class="project__main">
+                            <div class="project__head">
+                                <h3 class="project__title">Lifeline</h3>
+                                <span class="project__tag">Hardware · Off-Grid</span>
+                            </div>
+                            <p class="project__desc">
+                                An off-grid, RF-based emergency signal system. When there's no cellular coverage — landslides, remote valleys, the post-quake window — Lifeline transmits short distress beacons across radio so a receiver in a populated area can relay them to first responders.
+                            </p>
+                            <div class="project__chips">
+                                <span>RF modules</span><span>Arduino</span><span>Resilience tech</span><span>Field-tested</span>
+                            </div>
+                        </div>
+                        <div class="project__year">2024</div>
+                    </li>
+
+                    <li class="project" data-reveal>
+                        <div class="project__num">03</div>
+                        <div class="project__main">
+                            <div class="project__head">
+                                <h3 class="project__title">Sawari</h3>
+                                <span class="project__tag">Transit · Web App</span>
+                            </div>
+                            <p class="project__desc">
+                                A complete public transport companion for Kathmandu. Enter where you are, enter where you want to go, and Sawari hands you the full walkthrough — the bus, the route, the fare, the road condition, the ETA. Built around the city's actual, chaotic network.
+                            </p>
+                            <div class="project__chips">
+                                <span>JavaScript</span><span>Routing logic</span><span>Kathmandu transit</span><span>Live demo</span>
+                            </div>
+                        </div>
+                        <div class="project__year">2025</div>
+                    </li>
+
+                    <li class="project" data-reveal>
+                        <div class="project__num">04</div>
+                        <div class="project__main">
+                            <div class="project__head">
+                                <h3 class="project__title">AgroPan</h3>
+                                <span class="project__tag">IoT · Agriculture</span>
+                            </div>
+                            <p class="project__desc">
+                                A soil monitoring and crop recommendation rig. Sensor arrays measure moisture, pH, and nutrients in the field; AgroPan returns a crop recommendation tailored to what's actually in the ground — not what the seed shop is selling.
+                            </p>
+                            <div class="project__chips">
+                                <span>ESP series</span><span>Sensors</span><span>Precision agriculture</span><span>Field prototype</span>
+                            </div>
+                        </div>
+                        <div class="project__year">2024</div>
+                    </li>
+
+                    <li class="project" data-reveal>
+                        <div class="project__num">05</div>
+                        <div class="project__main">
+                            <div class="project__head">
+                                <h3 class="project__title">Edu Track Pro</h3>
+                                <span class="project__tag">RFID · EdTech</span>
+                            </div>
+                            <p class="project__desc">
+                                A smart attendance system for Nepali schools. Every student taps their ID card on an RFID reader at the gate, attendance is logged instantly, and class teachers see who's actually in the room. Built to replace the paper register that's still standard here.
+                            </p>
+                            <div class="project__chips">
+                                <span>RFID</span><span>PHP</span><span>EdTech</span><span>School pilot</span>
+                            </div>
+                        </div>
+                        <div class="project__year">2025</div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+
+        <!-- ============ STACK · OBSIDIAN ============ -->
+        <section class="surface surface--dark" id="stack">
+            <div class="section">
+                <div class="section__head">
+                    <span class="section__index">03 — Stack</span>
+                    <h2 class="section__title">
+                        Tools I<br />
+                        work with.
+                    </h2>
+                </div>
+
+                <div class="section__body section__body--dark">
+                    <p>
                         I started with the boring fundamentals and I still respect them. The list grows on purpose — only when something earns its place in a real project.
                     </p>
                 </div>
-            </div>
 
-            <div class="stack" data-reveal>
-                <div class="stack__group">
-                    <span class="stack__label">Frontend</span>
-                    <ul class="stack__list">
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </div>
-                <div class="stack__group">
-                    <span class="stack__label">Backend</span>
-                    <ul class="stack__list">
-                        <li>PHP</li>
-                        <li>Node.js</li>
-                        <li>REST APIs</li>
-                    </ul>
-                </div>
-                <div class="stack__group">
-                    <span class="stack__label">Data</span>
-                    <ul class="stack__list">
-                        <li>MySQL</li>
-                        <li>MongoDB</li>
-                    </ul>
-                </div>
-                <div class="stack__group">
-                    <span class="stack__label">Learning</span>
-                    <ul class="stack__list">
-                        <li>React</li>
-                        <li>Express</li>
-                        <li>MongoDB Atlas</li>
-                    </ul>
-                </div>
-                <div class="stack__group">
-                    <span class="stack__label">Security</span>
-                    <ul class="stack__list">
-                        <li>Burp Suite</li>
-                        <li>Recon &amp; Fuzzing</li>
-                        <li>Responsible Disclosure</li>
-                    </ul>
-                </div>
-                <div class="stack__group">
-                    <span class="stack__label">Hardware</span>
-                    <ul class="stack__list">
-                        <li>Arduino</li>
-                        <li>ESP series</li>
-                        <li>RF modules</li>
-                        <li>RFID</li>
-                    </ul>
+                <div class="stack-grid">
+                    <article class="stack-card" data-reveal>
+                        <h3 class="stack-card__label">Frontend</h3>
+                        <ul class="stack-card__list">
+                            <li><span>HTML5</span><i class="bar"><b style="--w:95%"></b></i></li>
+                            <li><span>CSS3</span><i class="bar"><b style="--w:92%"></b></i></li>
+                            <li><span>JavaScript</span><i class="bar"><b style="--w:88%"></b></i></li>
+                        </ul>
+                    </article>
+
+                    <article class="stack-card" data-reveal>
+                        <h3 class="stack-card__label">Backend</h3>
+                        <ul class="stack-card__list">
+                            <li><span>PHP</span><i class="bar"><b style="--w:80%"></b></i></li>
+                            <li><span>Node.js</span><i class="bar"><b style="--w:60%"></b></i></li>
+                            <li><span>REST APIs</span><i class="bar"><b style="--w:75%"></b></i></li>
+                        </ul>
+                    </article>
+
+                    <article class="stack-card" data-reveal>
+                        <h3 class="stack-card__label">Data</h3>
+                        <ul class="stack-card__list">
+                            <li><span>MySQL</span><i class="bar"><b style="--w:82%"></b></i></li>
+                            <li><span>MongoDB</span><i class="bar"><b style="--w:55%"></b></i></li>
+                        </ul>
+                    </article>
+
+                    <article class="stack-card" data-reveal>
+                        <h3 class="stack-card__label">Learning Now</h3>
+                        <ul class="stack-card__list">
+                            <li><span>React</span><i class="bar"><b style="--w:50%"></b></i></li>
+                            <li><span>Express</span><i class="bar"><b style="--w:45%"></b></i></li>
+                            <li><span>MongoDB Atlas</span><i class="bar"><b style="--w:40%"></b></i></li>
+                        </ul>
+                    </article>
+
+                    <article class="stack-card" data-reveal>
+                        <h3 class="stack-card__label">Security</h3>
+                        <ul class="stack-card__list">
+                            <li><span>Burp Suite</span><i class="bar"><b style="--w:70%"></b></i></li>
+                            <li><span>Recon &amp; Fuzzing</span><i class="bar"><b style="--w:65%"></b></i></li>
+                            <li><span>Responsible Disclosure</span><i class="bar"><b style="--w:60%"></b></i></li>
+                        </ul>
+                    </article>
+
+                    <article class="stack-card" data-reveal>
+                        <h3 class="stack-card__label">Hardware</h3>
+                        <ul class="stack-card__list">
+                            <li><span>Arduino</span><i class="bar"><b style="--w:78%"></b></i></li>
+                            <li><span>ESP series</span><i class="bar"><b style="--w:72%"></b></i></li>
+                            <li><span>RF modules</span><i class="bar"><b style="--w:60%"></b></i></li>
+                            <li><span>RFID</span><i class="bar"><b style="--w:75%"></b></i></li>
+                        </ul>
+                    </article>
                 </div>
             </div>
-            <span class="vertical-label" aria-hidden="true">/ ARSENAL</span>
         </section>
 
-        <div class="dashed-rule" aria-hidden="true"></div>
 
-        <section class="section" id="research">
-            <span class="section__index">04 / RESEARCH</span>
-            <div class="section__split">
-                <h2 class="section__title" data-reveal>
-                    Security<br />
-                    <span class="section__title--accent">research.</span>
-                </h2>
-                <div class="section__body">
-                    <p data-reveal>
-                        Bug hunting isn't a hobby for me — it's a way of reading. Every application is a story about assumptions. Some of those assumptions are wrong. Below are the ones I found.
+        <!-- ============ RESEARCH · WHITE ============ -->
+        <section class="surface surface--light" id="research">
+            <div class="section">
+                <div class="section__head">
+                    <span class="section__index section__index--dark">04 — Research</span>
+                    <h2 class="section__title section__title--dark">
+                        Security<br />
+                        research.
+                    </h2>
+                </div>
+
+                <div class="section__body section__body--dark">
+                    <p>
+                        Bug hunting is a way of reading. Every application is a story about assumptions — some of those assumptions are wrong. Below are the ones I found and disclosed.
                     </p>
                 </div>
-            </div>
 
-            <ul class="research" role="list">
-                <li class="research__item" data-reveal>
-                    <div class="research__head">
-                        <span class="research__target">KANTIPUR TELEVISION</span>
-                        <span class="research__status">DISCLOSED</span>
-                    </div>
-                    <h3 class="research__title">Critical flaw on Kantipur.tv</h3>
-                    <p class="research__desc">
-                        A critical issue on the website of one of Nepal's largest news broadcasters. Reported through the proper disclosure channel.
-                    </p>
-                    <span class="research__arrow" aria-hidden="true">↗</span>
-                </li>
-                <li class="research__item" data-reveal>
-                    <div class="research__head">
-                        <span class="research__target">MONKEYTYPE</span>
-                        <span class="research__status">DISCLOSED</span>
-                    </div>
-                    <h3 class="research__title">Bug in Monkeytype</h3>
-                    <p class="research__desc">
-                        A flaw in the popular typing utility used by tens of thousands of typists. Reported, acknowledged, and patched upstream.
-                    </p>
-                    <span class="research__arrow" aria-hidden="true">↗</span>
-                </li>
-            </ul>
-            <span class="vertical-label" aria-hidden="true">/ DISCLOSURES</span>
+                <div class="disclosures">
+                    <article class="disclosure" data-reveal>
+                        <div class="disclosure__top">
+                            <span class="disclosure__target">Kantipur Television</span>
+                            <span class="disclosure__status">Disclosed · 2024</span>
+                        </div>
+                        <h3 class="disclosure__title">Critical flaw on Kantipur.tv</h3>
+                        <p class="disclosure__desc">
+                            A critical issue on the website of one of Nepal's largest news broadcasters. Reported through the proper disclosure channel, acknowledged, and patched upstream.
+                        </p>
+                        <div class="disclosure__foot">
+                            <span>Web</span>
+                            <span class="dot" aria-hidden="true"></span>
+                            <span>Auth boundary</span>
+                            <span class="dot" aria-hidden="true"></span>
+                            <span>Resolved</span>
+                        </div>
+                    </article>
+
+                    <article class="disclosure" data-reveal>
+                        <div class="disclosure__top">
+                            <span class="disclosure__target">Monkeytype</span>
+                            <span class="disclosure__status">Disclosed · 2025</span>
+                        </div>
+                        <h3 class="disclosure__title">Bug in Monkeytype</h3>
+                        <p class="disclosure__desc">
+                            A flaw in the popular open-source typing utility used by tens of thousands of typists worldwide. Reported, acknowledged, and patched upstream.
+                        </p>
+                        <div class="disclosure__foot">
+                            <span>Web</span>
+                            <span class="dot" aria-hidden="true"></span>
+                            <span>Client-side logic</span>
+                            <span class="dot" aria-hidden="true"></span>
+                            <span>Resolved</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <div class="dashed-rule" aria-hidden="true"></div>
 
-        <section class="section section--contact" id="contact">
-            <span class="section__index">05 / CONTACT</span>
-            <div class="section__split">
-                <h2 class="section__title" data-reveal>
-                    Let's build<br />
-                    <span class="section__title--accent">something.</span>
-                </h2>
-                <div class="section__body">
-                    <p data-reveal>
+        <!-- ============ CONTACT · OBSIDIAN ============ -->
+        <section class="surface surface--dark surface--cta" id="contact">
+            <div class="section">
+                <div class="section__head">
+                    <span class="section__index">05 — Contact</span>
+                    <h2 class="section__title">
+                        Let's build<br />
+                        something.
+                    </h2>
+                </div>
+
+                <div class="section__body section__body--dark">
+                    <p>
                         Open to collaborations, hackathon teams, internships, and interesting security disclosures. If you're working on something that actually matters to people, I'd like to hear about it.
                     </p>
-                    <ul class="contact" role="list">
-                        <li class="contact__item" data-reveal>
-                            <span class="contact__label">Email</span>
-                            <a href="mailto:zenithkandel0@gmail.com" class="contact__value" data-text="zenithkandel0@gmail.com">zenithkandel0@gmail.com</a>
+                </div>
+
+                <div class="contact-grid">
+                    <ul class="contact-list" role="list">
+                        <li class="contact-row" data-reveal>
+                            <span class="contact-row__label">Email</span>
+                            <a href="mailto:zenithkandel0@gmail.com" class="contact-row__value">zenithkandel0@gmail.com</a>
                         </li>
-                        <li class="contact__item" data-reveal>
-                            <span class="contact__label">Phone · WhatsApp</span>
-                            <a href="tel:+9779806176120" class="contact__value" data-text="+977 980 617 6120">+977 980 617 6120</a>
+                        <li class="contact-row" data-reveal>
+                            <span class="contact-row__label">Phone / WhatsApp</span>
+                            <a href="tel:+9779806176120" class="contact-row__value">+977 980 617 6120</a>
                         </li>
-                        <li class="contact__item" data-reveal>
-                            <span class="contact__label">Based in</span>
-                            <span class="contact__value">Kathmandu, Nepal</span>
+                        <li class="contact-row" data-reveal>
+                            <span class="contact-row__label">Based in</span>
+                            <span class="contact-row__value contact-row__value--static">Kathmandu, Nepal</span>
+                        </li>
+                        <li class="contact-row" data-reveal>
+                            <span class="contact-row__label">School</span>
+                            <span class="contact-row__value contact-row__value--static">KMSS Bagbazar · Grade 12</span>
+                        </li>
+                    </ul>
+
+                    <ul class="social-list" role="list">
+                        <li data-reveal>
+                            <a href="https://github.com/zenithkandel" target="_blank" rel="noopener noreferrer" class="social">
+                                <span class="social__label">GitHub</span>
+                                <span class="social__handle">@zenithkandel</span>
+                                <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
+                            </a>
+                        </li>
+                        <li data-reveal>
+                            <a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener noreferrer" class="social">
+                                <span class="social__label">LinkedIn</span>
+                                <span class="social__handle">/in/zenithkandel</span>
+                                <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
+                            </a>
+                        </li>
+                        <li data-reveal>
+                            <a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener noreferrer" class="social">
+                                <span class="social__label">Instagram</span>
+                                <span class="social__handle">@kandel.zenith</span>
+                                <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
+                            </a>
+                        </li>
+                        <li data-reveal>
+                            <a href="https://zenithkandel.com.np" target="_blank" rel="noopener noreferrer" class="social">
+                                <span class="social__label">Website</span>
+                                <span class="social__handle">zenithkandel.com.np</span>
+                                <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
+                            </a>
                         </li>
                     </ul>
                 </div>
-            </div>
 
-            <div class="contact__grid" data-reveal>
-                <a href="https://github.com/zenithkandel" target="_blank" rel="noopener noreferrer" class="contact__link">
-                    <span class="contact__link-label">GitHub</span>
-                    <span class="contact__link-handle">@zenithkandel</span>
-                    <span class="contact__link-arrow">↗</span>
-                </a>
-                <a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener noreferrer" class="contact__link">
-                    <span class="contact__link-label">LinkedIn</span>
-                    <span class="contact__link-handle">/in/zenithkandel</span>
-                    <span class="contact__link-arrow">↗</span>
-                </a>
-                <a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener noreferrer" class="contact__link">
-                    <span class="contact__link-label">Instagram</span>
-                    <span class="contact__link-handle">@kandel.zenith</span>
-                    <span class="contact__link-arrow">↗</span>
-                </a>
-                <a href="https://zenithkandel.com.np" target="_blank" rel="noopener noreferrer" class="contact__link">
-                    <span class="contact__link-label">Website</span>
-                    <span class="contact__link-handle">zenithkandel.com.np</span>
-                    <span class="contact__link-arrow">↗</span>
-                </a>
+                <div class="cta-strip" data-reveal>
+                    <a href="mailto:zenithkandel0@gmail.com" class="btn btn--primary btn--lg">
+                        <span>Start a conversation</span>
+                        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8 H13 M9 4 L13 8 L9 12" stroke-linecap="square"/></svg>
+                    </a>
+                </div>
             </div>
-            <span class="vertical-label" aria-hidden="true">/ SIGNAL</span>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer__top">
-            <span class="footer__brand">ZENITH KANDEL</span>
-            <span class="footer__role">Developer · Security Researcher · Grade 12</span>
-        </div>
-        <div class="dashed-rule" aria-hidden="true"></div>
-        <div class="footer__bottom">
-            <span>© 2026 — Built in Kathmandu</span>
-            <span>Last deploy: 06.2026</span>
-            <span>v2.0</span>
+
+    <!-- ============ FOOTER · WHITE ============ -->
+    <footer class="footer surface surface--light">
+        <div class="section">
+            <div class="footer__top">
+                <span class="footer__brand">Zenith Kandel</span>
+                <span class="footer__role">Developer · Security Researcher · Builder</span>
+            </div>
+
+            <hr class="footer__rule" aria-hidden="true" />
+
+            <nav class="footer__nav" aria-label="Footer">
+                <a href="#about"    class="footer__link">About</a>
+                <a href="#work"     class="footer__link">Work</a>
+                <a href="#stack"    class="footer__link">Stack</a>
+                <a href="#research" class="footer__link">Research</a>
+                <a href="#contact"  class="footer__link">Contact</a>
+            </nav>
+
+            <div class="footer__bottom">
+                <span>© 2026 Zenith Kandel — Built in Kathmandu, Nepal.</span>
+                <span class="footer__mono">v 2.0 · 06.2026</span>
+            </div>
         </div>
     </footer>
 
-    <div class="cursor" id="cursor" aria-hidden="true">
-        <span class="cursor__dot"></span>
-    </div>
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
 
     <script src="script.js" defer></script>
 </body>

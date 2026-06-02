@@ -1,0 +1,224 @@
+/* ============================================================
+   nav.css — Sticky top navigation. Frosted, minimal, transparent
+   until scrolled. Mono-mark + section links + status pill.
+   ============================================================ */
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px var(--gutter);
+  transition:
+    background var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    padding var(--dur-base) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.nav.is-scrolled {
+  background: rgba(0, 0, 0, 0.55);
+  border-bottom-color: var(--color-line-soft);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.nav__inner {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Brand mark */
+.nav__mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-roobert);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.01em;
+  color: var(--color-frost-white);
+}
+
+.nav__mark-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gradient-deep-ocean);
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.04),
+    0 0 14px rgba(255, 172, 46, 0.45);
+  animation: pulse 3.4s var(--ease-in-out) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(255,255,255,0.04), 0 0 14px rgba(255,172,46,0.45); }
+  50%      { box-shadow: 0 0 0 8px rgba(255,255,255,0.02), 0 0 22px rgba(255,172,46,0.65); }
+}
+
+.nav__mark-text {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+}
+
+.nav__mark-sub {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  color: var(--color-whisper-gray);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-regular);
+  margin-top: 2px;
+}
+
+/* Centered link list */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.74);
+  border-radius: var(--radius-pill);
+  transition: color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+}
+
+.nav__link:hover { color: var(--color-frost-white); background: rgba(255,255,255,0.04); }
+.nav__link.is-active { color: var(--color-frost-white); background: rgba(255,255,255,0.08); }
+
+.nav__link-index {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ocean-stop-2);
+  margin-right: 6px;
+}
+
+/* Right meta */
+.nav__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.72);
+  font-weight: var(--font-weight-medium);
+}
+
+.nav__status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ocean-stop-1);
+  box-shadow: 0 0 0 3px rgba(160,224,171,0.18);
+  animation: pulse 2.6s var(--ease-in-out) infinite;
+}
+
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-strong);
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.01em;
+  color: var(--color-frost-white);
+  background: rgba(255,255,255,0.04);
+  transition: background var(--dur-base) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.nav__cta:hover { background: rgba(255,255,255,0.10); transform: translateY(-1px); }
+
+/* Mobile toggle */
+.nav__toggle {
+  display: none;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  align-items: center;
+  justify-content: center;
+}
+.nav__toggle span {
+  width: 16px; height: 1px;
+  background: var(--color-frost-white);
+  position: relative;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.nav__toggle span::before,
+.nav__toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0; width: 16px; height: 1px;
+  background: var(--color-frost-white);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.nav__toggle span::before { top: -5px; }
+.nav__toggle span::after  { top:  5px; }
+
+.nav.is-open .nav__toggle span { transform: rotate(45deg); }
+.nav.is-open .nav__toggle span::before { transform: translateY(5px) rotate(0); }
+.nav.is-open .nav__toggle span::after  { transform: translateY(-5px) rotate(0); }
+
+/* Mobile drawer */
+@media (max-width: 880px) {
+  .nav__inner { gap: 12px; }
+  .nav__links { display: none; }
+  .nav__toggle { display: inline-flex; }
+  .nav__status { display: none; }
+  .nav__cta { padding: 8px 14px; font-size: 12px; }
+
+  .nav__drawer {
+    position: fixed;
+    inset: 72px 0 0 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    z-index: calc(var(--z-nav) - 1);
+    display: grid;
+    place-content: center;
+    gap: 20px;
+    padding: 40px 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+  .nav__drawer a {
+    font-size: 28px;
+    font-weight: var(--font-weight-light);
+    letter-spacing: var(--tracking-heading);
+    color: var(--color-frost-white);
+  }
+  .nav.is-open .nav__drawer {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

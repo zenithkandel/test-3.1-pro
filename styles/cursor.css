@@ -1,0 +1,58 @@
+/* ============================================================
+   cursor.css — Custom cursor: small ring + dot. Disabled on
+   touch devices and under reduced-motion.
+   ============================================================ */
+
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  mix-blend-mode: difference;
+  display: none;
+}
+
+.cursor__ring,
+.cursor__dot {
+  position: absolute;
+  top: 0; left: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.cursor__ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  transform: translate(-50%, -50%);
+  transition:
+    width var(--dur-base) var(--ease-out),
+    height var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    background var(--dur-base) var(--ease-out);
+}
+
+.cursor__dot {
+  width: 4px; height: 4px;
+  background: var(--color-frost-white);
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.cursor.is-hover .cursor__ring {
+  width: 64px; height: 64px;
+  border-color: var(--ocean-stop-1);
+  background: rgba(160, 224, 171, 0.10);
+}
+.cursor.is-down .cursor__ring { width: 22px; height: 22px; }
+.cursor.is-down .cursor__dot  { transform: translate(-50%, -50%) scale(2.4); }
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor { display: block; }
+  html, body { cursor: none; }
+  a, button, [data-cursor="hover"] { cursor: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { display: none; }
+  html, body { cursor: auto; }
+}
