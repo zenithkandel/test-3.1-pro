@@ -35,28 +35,26 @@
             nav.classList.toggle('is-scrolled', window.scrollY > 16);
         };
 
-        // Detect dark surfaces
-        const darkSurfaces = $$('.surface--dark');
+        // Single observer: trigger zone is a thin strip just below the nav.
+        // The most recently intersecting section defines the theme.
         const setTheme = (isDark) => nav.classList.toggle('is-on-dark', isDark);
+        const themeSources = $$('.surface, .hero');
 
-        const surfaceObserver = new IntersectionObserver((entries) => {
+        const themeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     setTheme(entry.target.classList.contains('surface--dark'));
                 }
             });
-        }, { rootMargin: '-1% 0px -85% 0px', threshold: 0 });
-        darkSurfaces.forEach(s => surfaceObserver.observe(s));
+        }, { rootMargin: '-80px 0px -90% 0px', threshold: 0 });
+        themeSources.forEach(s => themeObserver.observe(s));
 
-        // Top-of-page = light
-        const topObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTheme(entry.target.classList.contains('surface--dark'));
-                }
-            });
-        }, { threshold: 0.1 });
-        $$('.surface').forEach(s => topObserver.observe(s));
+        // Fallback for very-top-of-page: hero is always light.
+        // Also reset when scrolling back above the first surface.
+        const onScrollTheme = () => {
+            if (window.scrollY < 80) setTheme(false);
+        };
+        window.addEventListener('scroll', onScrollTheme, { passive: true });
 
         // Tick the scroll state via rAF
         const tick = () => {

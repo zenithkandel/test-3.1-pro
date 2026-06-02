@@ -41,15 +41,16 @@
 /* ----- Section title text split (hover) ----- */
 .reveal-line {
     display: block;
-    overflow: hidden;
-    padding-bottom: 0.15em;
-    margin-bottom: 0.05em;
+
 }
 
 [data-text] {
     position: relative;
     display: inline-block;
     vertical-align: top;
+    overflow: hidden;
+    padding-bottom: 0.15em;
+    margin-bottom: -0.15em;
 }
 
 [data-text]::before {
