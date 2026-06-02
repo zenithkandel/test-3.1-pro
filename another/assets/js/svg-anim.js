@@ -43,25 +43,4 @@
         }, { threshold: 0.3 });
         targets.forEach(t => io.observe(t));
     }
-
-    // Code window typing effect on load
-    const codeWindow = document.querySelector('.hero-illustration__svg .hero-window');
-    if (codeWindow) {
-        const codeLines = codeWindow.querySelectorAll('g.hero-code text');
-        codeLines.forEach((line, i) => {
-            const full = line.textContent;
-            line.textContent = '';
-            line.style.opacity = '1';
-            const chars = full.split('');
-            let idx = 0;
-            const type = () => {
-                if (idx <= chars.length) {
-                    line.textContent = chars.slice(0, idx).join('');
-                    idx++;
-                    setTimeout(type, 6 + Math.random() * 14);
-                }
-            };
-            setTimeout(type, 600 + i * 50);
-        });
-    }
 })();

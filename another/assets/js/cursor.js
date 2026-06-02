@@ -46,7 +46,7 @@
     requestAnimationFrame(tick);
 
     // Hover bindings
-    const linkSel   = 'a, button, .btn, .nav__link, .nav__cta, .nav__brand, .feature, .stack-card, .disclosure, .project, .contact-row, .social, [data-magnetic], [role="button"]';
+    const linkSel   = 'a, button, .btn, .nav__link, .nav__cta, .nav__brand, .feature, .disclosure, .project, .contact-row, .social, .stack-row, [role="button"]';
     const textSel   = 'input[type="text"], input[type="email"], textarea, [data-cursor-text]';
 
     document.addEventListener('mouseover', (e) => {

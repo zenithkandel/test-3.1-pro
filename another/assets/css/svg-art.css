@@ -54,14 +54,3 @@
 }
 
 .marquee:hover .marquee__track { animation-play-state: paused; }
-
-/* ----- Hero illustration tweaks ----- */
-.hero-illustration__svg .hero-window {
-    transform-origin: center;
-    animation: windowIn 1.2s var(--ease-out) 0.4s backwards;
-}
-
-@keyframes windowIn {
-    from { opacity: 0; transform: translate(60px, 80px) scale(0.96); }
-    to   { opacity: 1; transform: translate(60px, 80px) scale(1); }
-}

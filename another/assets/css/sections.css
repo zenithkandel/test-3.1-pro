@@ -93,8 +93,10 @@
     overflow: hidden;
     will-change: transform;
     transform-style: preserve-3d;
-    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0);
+    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
 }
+
+.feature:hover { --lift: -6px; }
 
 .feature::before {
     content: '';
@@ -119,7 +121,6 @@
 
 .feature > * { position: relative; z-index: 1; }
 
-.feature:hover { transform: translateY(-6px); }
 .feature:hover::before { opacity: 0.5; }
 
 .feature__num {
@@ -414,9 +415,9 @@
     cursor: none;
     position: relative;
     overflow: hidden;
-    will-change: transform;
-    /* No CSS transform here — magnetic JS owns the transform so both cards behave identically */
 }
+
+.disclosure:hover { transform: translateY(-4px); }
 
 .disclosure::after {
     content: '';
