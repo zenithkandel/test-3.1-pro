@@ -123,74 +123,205 @@
 
         <div class="hero__inner">
           <div class="hero__top">
-            <span class="hero__chip">
-              <span class="hero__chip-dot" aria-hidden="true"></span>
+            <span class="hero__chip" data-egg-dot="status">
+              <span class="hero__chip-dot is-heartbeat" aria-hidden="true"></span>
               Available for hackathons, builds, and disclosures
             </span>
-            <span class="hero__loc">KTM / NP · 27.7172° N</span>
+            <span class="hero__loc">
+              KTM / NP · 27.7172° N ·
+              <span class="hero__clock" data-clock="ktm" aria-label="Local time in Kathmandu">
+                <span class="hero__clock-time" data-clock-time>--:--:--</span>
+              </span>
+            </span>
           </div>
 
           <div class="hero__main">
-            <div class="hero__bottom">
-              <div class="hero__bottom-left">
-                <h1 class="hero__display">
-                  <span class="hero__line" data-text="Zenith">Zenith</span>
-                  <span
-                    class="hero__line hero__line--accent"
-                    data-text="Kandel."
-                    >Kandel<span class="hero__period">.</span></span
-                  >
-                </h1>
-
-                <p class="hero__sub">
-                  Developer. Security researcher. Builder of civic tools and
-                  off-grid hardware. Seventeen years old, based in Kathmandu,
-                  shipping from a quiet room.
-                </p>
-
-                <div class="hero__cta">
-                  <a href="cv.html" class="btn btn--primary">
-                    <span>View Curriculum Vitae</span>
-                    <svg
-                      class="btn__icon"
-                      viewBox="0 0 24 24"
-                      width="14"
-                      height="14"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="square"
-                      aria-hidden="true"
-                    >
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                      <path d="M14 2v6h6" />
-                      <path d="M16 13H8M16 17H8M10 9H8" />
-                    </svg>
-                  </a>
-                  <a href="#contact" class="btn btn--ghost-dark">
-                    <span>Get in touch</span>
-                  </a>
-                </div>
-              </div>
-
-              <div class="hero__portrait" data-parallax="0.05">
-                <div class="hero__portrait-frame">
-                  <img
-                    src="assets/images/me-with-transparent-background.jpg"
-                    alt="Zenith Kandel"
-                    class="hero__portrait-img"
-                    fetchpriority="high"
-                  />
-                  <span class="hero__portrait-cap">
+              <div class="hero__bottom">
+                <div class="hero__bottom-left">
+                  <h1 class="hero__display">
+                    <span class="hero__line" data-text="Zenith">Zenith</span>
                     <span
-                      class="hero__portrait-cap-dot"
-                      aria-hidden="true"
-                    ></span>
-                    <span>PORTRAIT · 2026</span>
-                  </span>
+                      class="hero__line hero__line--accent"
+                      data-text="Kandel."
+                      >Kandel<span class="hero__period is-wobbling">.</span></span
+                    >
+                  </h1>
+
+                  <p class="hero__sub">
+                    Developer. Security researcher. Builder of civic tools and
+                    off-grid hardware. Seventeen years old, based in Kathmandu,
+                    shipping from a quiet room.
+                  </p>
+
+                  <div class="hero__cta">
+                    <a href="cv.html" class="btn btn--primary">
+                      <span>View Curriculum Vitae</span>
+                      <svg
+                        class="btn__icon"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="square"
+                        aria-hidden="true"
+                      >
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <path d="M14 2v6h6" />
+                        <path d="M16 13H8M16 17H8M10 9H8" />
+                      </svg>
+                    </a>
+                    <a href="#contact" class="btn btn--ghost-dark">
+                      <span>Get in touch</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="hero__portrait" data-parallax="0.05">
+                  <div class="hero__portrait-frame">
+                    <svg
+                      class="hero__portrait-svg"
+                      viewBox="0 0 200 200"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-label="Zenith Kandel · portrait"
+                      role="img"
+                    >
+                      <!-- Hair back (behind head, sways with tuft-3) -->
+                      <path
+                        class="avatar-tuft-3"
+                        d="M48 72 Q60 30 100 30 Q140 30 152 72"
+                        fill="#fff"
+                        stroke="#bc7155"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+
+                      <!-- Breath group: head + face + fringe -->
+                      <g class="avatar-breath">
+                        <!-- Head -->
+                        <ellipse
+                          cx="100"
+                          cy="100"
+                          rx="44"
+                          ry="52"
+                          fill="#fff"
+                          stroke="#bc7155"
+                          stroke-width="2"
+                        />
+
+                        <!-- Hair fringe tufts (3, each sways on its own clock) -->
+                        <path
+                          class="avatar-tuft-1"
+                          d="M70 58 Q76 44 88 50"
+                          fill="none"
+                          stroke="#bc7155"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                        <path
+                          class="avatar-tuft-2"
+                          d="M90 50 Q100 38 112 50"
+                          fill="none"
+                          stroke="#bc7155"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                        <path
+                          class="avatar-tuft-3"
+                          d="M114 50 Q126 42 132 60"
+                          fill="none"
+                          stroke="#bc7155"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+
+                        <!-- Ears -->
+                        <path
+                          d="M56 102 Q52 112 58 122"
+                          fill="none"
+                          stroke="#bc7155"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                        />
+                        <path
+                          d="M144 102 Q148 112 142 122"
+                          fill="none"
+                          stroke="#bc7155"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                        />
+
+                        <!-- Eyebrows -->
+                        <line x1="68" y1="86" x2="88" y2="86" stroke="#bc7155" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="112" y1="86" x2="132" y2="86" stroke="#bc7155" stroke-width="2" stroke-linecap="round"/>
+
+                        <!-- Left eye -->
+                        <g class="eye eye-l">
+                          <ellipse class="eye-white" cx="78" cy="100" rx="8" ry="6" fill="#fff" stroke="#bc7155" stroke-width="1.5"/>
+                          <g class="pupil" data-pupil>
+                            <circle cx="78" cy="100" r="2.8" fill="#bc7155"/>
+                          </g>
+                          <ellipse class="lid" cx="78" cy="100" rx="8" ry="6" fill="#bc7155"/>
+                        </g>
+
+                        <!-- Right eye -->
+                        <g class="eye eye-r">
+                          <ellipse class="eye-white" cx="122" cy="100" rx="8" ry="6" fill="#fff" stroke="#bc7155" stroke-width="1.5"/>
+                          <g class="pupil" data-pupil>
+                            <circle cx="122" cy="100" r="2.8" fill="#bc7155"/>
+                          </g>
+                          <ellipse class="lid" cx="122" cy="100" rx="8" ry="6" fill="#bc7155"/>
+                        </g>
+
+                        <!-- Nose -->
+                        <path
+                          d="M100 110 L95 124 L105 124"
+                          fill="none"
+                          stroke="#bc7155"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+
+                        <!-- Mouth -->
+                        <path
+                          d="M88 134 Q100 142 112 134"
+                          fill="none"
+                          stroke="#bc7155"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                      </g>
+
+                      <!-- Shoulders (static, below breath group) -->
+                      <path
+                        d="M28 200 Q60 156 100 154 Q140 156 172 200"
+                        fill="#fff"
+                        stroke="#bc7155"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <!-- Shirt collar -->
+                      <path
+                        d="M82 174 L100 162 L118 174"
+                        fill="none"
+                        stroke="#bc7155"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="hero__portrait-cap">
+                      <span
+                        class="hero__portrait-cap-dot is-heartbeat"
+                        aria-hidden="true"
+                      ></span>
+                      <span>PORTRAIT · 2026</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
           </div>
 
           <div class="hero__foot">

@@ -45,7 +45,7 @@
 
 .hero__portrait-svg .lid {
     transform-origin: center;
-    transform: scaleY(1);
+    transform: scaleY(0);
     will-change: transform;
 }
 
