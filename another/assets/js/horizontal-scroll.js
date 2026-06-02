@@ -7,9 +7,9 @@
     'use strict';
 
     const section = document.querySelector('.horizontal-scroll-section');
-    const sticky  = document.querySelector('.horizontal-scroll-sticky');
-    const track   = document.querySelector('.horizontal-scroll-track');
-    const list    = document.querySelector('.project-list');
+    const sticky = document.querySelector('.horizontal-scroll-sticky');
+    const track = document.querySelector('.horizontal-scroll-track');
+    const list = document.querySelector('.project-list');
     const projects = document.querySelectorAll('.project');
 
     if (!section || !sticky || !track || !list) return;

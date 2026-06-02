@@ -210,21 +210,24 @@
     overflow: visible !important;
 }
 
+.horizontal-scroll-section > .section {
+    padding-bottom: 0;
+}
+
 .horizontal-scroll-sticky {
     position: sticky;
-    top: 0;
+    top: clamp(20px, 3vw, 40px);
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
-    /* Ensure no margin/padding pushes it off-screen */
     margin: 0;
 }
 
 .horizontal-scroll-track {
     width: 100%;
-    margin-top: clamp(30px, 5vw, 60px);
+    margin-top: 0;
     padding-bottom: clamp(60px, 8vw, 120px);
 }
 
