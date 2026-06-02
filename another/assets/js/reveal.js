@@ -1,0 +1,107 @@
+/* ===========================================================
+   REVEAL — IntersectionObserver-based reveal
+   + nav scroll-spy
+   + light/dark nav theming
+   =========================================================== */
+(() => {
+    'use strict';
+
+    const $  = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ----- Reveal ----- */
+    const items = $$('[data-reveal]');
+    if (items.length) {
+        if (reduceMotion) {
+            items.forEach(i => i.classList.add('in-view'));
+        } else {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.10, rootMargin: '0px 0px -6% 0px' });
+            items.forEach(i => io.observe(i));
+        }
+    }
+
+    /* ----- Nav state ----- */
+    const nav = $('#nav');
+    if (nav) {
+        const updateOnScroll = () => {
+            const top = window.__zenithScroll ? window.__zenithScroll.current : window.scrollY;
+            nav.classList.toggle('is-scrolled', top > 16);
+        };
+
+        // Detect dark surfaces
+        const darkSurfaces = $$('.surface--dark');
+        const setTheme = (isDark) => nav.classList.toggle('is-on-dark', isDark);
+
+        const surfaceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTheme(entry.target.classList.contains('surface--dark'));
+                }
+            });
+        }, { rootMargin: '-1% 0px -85% 0px', threshold: 0 });
+        darkSurfaces.forEach(s => surfaceObserver.observe(s));
+
+        // Top-of-page = light
+        const topObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTheme(entry.target.classList.contains('surface--dark'));
+                }
+            });
+        }, { threshold: 0.1 });
+        $$('.surface').forEach(s => topObserver.observe(s));
+
+        // Tick the scroll state via rAF
+        const tick = () => {
+            updateOnScroll();
+            requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+
+        // Active link scroll-spy
+        const links = $$('.nav__link');
+        const targets = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+        if (targets.length) {
+            const spy = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = '#' + entry.target.id;
+                        links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === id));
+                    }
+                });
+            }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+            targets.forEach(t => spy.observe(t));
+        }
+    }
+
+    /* ----- Mobile menu ----- */
+    const btn  = $('#navMenu');
+    const menu = $('#mobileMenu');
+    if (btn && menu) {
+        const close = () => {
+            btn.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('is-open');
+            menu.setAttribute('aria-hidden', 'true');
+        };
+        const open = () => {
+            btn.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            menu.classList.add('is-open');
+            menu.setAttribute('aria-hidden', 'false');
+        };
+        btn.addEventListener('click', () => menu.classList.contains('is-open') ? close() : open());
+        $$('.mobile-menu__link').forEach(a => a.addEventListener('click', close));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+        });
+    }
+})();
