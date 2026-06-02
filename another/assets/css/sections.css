@@ -189,6 +189,7 @@
     align-items: center;
 }
 
+
 .feature__foot::after {
     content: '→';
     color: var(--color-desert-sienna);
