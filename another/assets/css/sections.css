@@ -200,44 +200,69 @@
 }
 
 /* ----- Project list (Work) ----- */
-.project-list {
+.horizontal-scroll-section {
+    height: 300vh;
+    /* Will be adjusted by JS, but good fallback */
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.horizontal-scroll-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    margin-top: clamp(20px, 4vw, 40px);
-    border-top: 1px solid var(--color-obsidian-08);
+    justify-content: center;
+    overflow: hidden;
+    /* Ensure no margin/padding pushes it off-screen */
+    margin: 0;
+}
+
+.horizontal-scroll-sticky .section {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.horizontal-scroll-track {
+    width: 100%;
+    margin-top: clamp(30px, 5vw, 60px);
+    padding-bottom: 40px;
+}
+
+.project-list {
+    display: flex;
+    flex-direction: row;
+    gap: clamp(40px, 6vw, 100px);
+    width: max-content;
+    padding-right: var(--gutter);
 }
 
 .project {
-    display: grid;
-    grid-template-columns: 80px minmax(0, 1fr) 100px;
-    gap: clamp(20px, 4vw, 48px);
-    align-items: start;
-    padding: clamp(28px, 4vw, 44px) 0;
-    border-bottom: 1px solid var(--color-obsidian-08);
-    transition: padding-left var(--t-slow) var(--ease);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: clamp(300px, 35vw, 480px);
+    padding: 0 0 0 clamp(20px, 3vw, 32px);
+    border-left: 1px solid var(--color-obsidian-08);
+    border-bottom: none;
+    transition: border-color var(--t-slow) var(--ease), padding-left var(--t-slow) var(--ease);
     position: relative;
     cursor: none;
+    align-items: flex-start;
 }
 
 .project::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background: var(--color-obsidian-04);
-    transition: width var(--t-slow) var(--ease);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .project:hover {
-    padding-left: 16px;
-}
-
-.project:hover::before {
-    width: 100%;
+    padding-left: clamp(28px, 3.5vw, 40px);
+    border-color: var(--color-desert-sienna);
 }
 
 .project>* {
@@ -340,9 +365,10 @@
     font-size: 17px;
     font-weight: var(--weight-bold);
     color: var(--color-obsidian);
-    text-align: right;
-    padding-top: 8px;
+    text-align: left;
     letter-spacing: 0.04em;
+    margin-top: auto;
+    padding-top: 16px;
 }
 
 /* ----- Stack list (editorial, no progress bars) ----- */
