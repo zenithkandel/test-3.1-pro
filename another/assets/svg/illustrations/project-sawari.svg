@@ -1,0 +1,62 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Corner registration marks -->
+    <path d="M10 10 L10 22 M10 10 L22 10" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+    <path d="M190 10 L190 22 M190 10 L178 10" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+    <path d="M10 190 L10 178 M10 190 L22 190" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+    <path d="M190 190 L190 178 M190 190 L178 190" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+
+    <!-- Map background frame -->
+    <rect x="22" y="22" width="156" height="156" rx="6" fill="none" stroke="#bc7155" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+
+    <!-- Route line (winding) -->
+    <path d="M40 160 Q40 130 70 120 Q100 110 110 90 Q120 70 100 56 Q90 50 80 50" stroke="#bc7155" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Stops along the route -->
+    <!-- Start stop (bottom left) -->
+    <g transform="translate(40, 160)">
+        <circle cx="0" cy="0" r="7" fill="#ffffff" stroke="#bc7155" stroke-width="2"/>
+        <circle cx="0" cy="0" r="2.5" fill="#bc7155"/>
+    </g>
+    <!-- Middle stop (filled) -->
+    <g transform="translate(110, 90)">
+        <circle cx="0" cy="0" r="7" fill="#bc7155" stroke="#bc7155" stroke-width="2"/>
+        <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
+    </g>
+    <!-- End stop (top left area) -->
+    <g transform="translate(80, 50)">
+        <circle cx="0" cy="0" r="7" fill="#ffffff" stroke="#bc7155" stroke-width="2"/>
+        <circle cx="0" cy="0" r="2.5" fill="#bc7155"/>
+    </g>
+
+    <!-- Map pin (top right) - destination -->
+    <g transform="translate(150, 60)">
+        <path d="M0 -16 C-8 -16 -12 -10 -12 -4 C-12 4 0 16 0 16 C0 16 12 4 12 -4 C12 -10 8 -16 0 -16 Z" fill="#ffffff" stroke="#bc7155" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="0" cy="-5" r="3.5" fill="#bc7155"/>
+    </g>
+
+    <!-- Bus (moving along the route) -->
+    <g transform="translate(76, 112)">
+        <!-- bus body -->
+        <rect x="-22" y="-14" width="44" height="24" rx="3" fill="#ffffff" stroke="#bc7155" stroke-width="2"/>
+        <!-- roof line -->
+        <line x1="-22" y1="-7" x2="22" y2="-7" stroke="#bc7155" stroke-width="1" opacity="0.5"/>
+        <!-- windows -->
+        <rect x="-18" y="-4" width="8" height="8" rx="1" fill="none" stroke="#bc7155" stroke-width="1"/>
+        <rect x="-8" y="-4" width="8" height="8" rx="1" fill="none" stroke="#bc7155" stroke-width="1"/>
+        <rect x="2" y="-4" width="8" height="8" rx="1" fill="none" stroke="#bc7155" stroke-width="1"/>
+        <rect x="12" y="-4" width="6" height="8" rx="1" fill="#bc7155"/>
+        <!-- wheels -->
+        <circle cx="-13" cy="12" r="4" fill="#ffffff" stroke="#bc7155" stroke-width="1.8"/>
+        <circle cx="-13" cy="12" r="1.5" fill="#bc7155"/>
+        <circle cx="13" cy="12" r="4" fill="#ffffff" stroke="#bc7155" stroke-width="1.8"/>
+        <circle cx="13" cy="12" r="1.5" fill="#bc7155"/>
+        <!-- door -->
+        <line x1="12" y1="-7" x2="12" y2="10" stroke="#bc7155" stroke-width="1" opacity="0.4"/>
+    </g>
+
+    <!-- Digital ETA chip (bottom right) -->
+    <g transform="translate(154, 152)">
+        <rect x="-22" y="-10" width="44" height="20" rx="3" fill="#bc7155" stroke="#bc7155" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="800" fill="#ffffff" letter-spacing="1">12 MIN</text>
+    </g>
+</svg>
