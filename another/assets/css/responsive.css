@@ -11,7 +11,7 @@
     .section__body { max-width: 100%; }
 
     .contact-grid { grid-template-columns: 1fr; }
-    .feature, .stack-card { min-height: 220px; }
+    .feature { min-height: 220px; }
 
     .hero__bottom { grid-template-columns: 1fr; gap: 40px; }
     .hero__art { max-width: 100%; justify-self: stretch; }
@@ -56,7 +56,7 @@
     .feature-grid, .stack-grid, .disclosures {
         grid-template-columns: 1fr;
     }
-    .feature, .stack-card { min-height: auto; padding: 26px 22px; }
+    .feature { min-height: auto; padding: 26px 22px; }
     .feature__num { font-size: 56px; }
 
     .project { grid-template-columns: 1fr; gap: 8px; }
@@ -74,7 +74,7 @@
 @media (hover: none) {
     body { cursor: auto; }
     .cursor { display: none !important; }
-    button, a, .feature, .stack-card, .disclosure, .project, .contact-row, .social { cursor: pointer; }
+    button, a, .feature, .disclosure, .project, .contact-row, .social, .stack-row { cursor: pointer; }
     .marquee__track { animation-duration: 22s; }
 }
 

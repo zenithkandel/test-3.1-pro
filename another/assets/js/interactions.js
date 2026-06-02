@@ -41,7 +41,7 @@
 
     /* ----- Tilt on feature cards (3D-ish) ----- */
     if (!isTouch && !reduceMotion) {
-        const tiltItems = $$('.feature, .stack-card, .disclosure');
+        const tiltItems = $$('.feature');
         tiltItems.forEach(el => {
             let raf = null;
             let rx = 0, ry = 0, tx = 0, ty = 0;

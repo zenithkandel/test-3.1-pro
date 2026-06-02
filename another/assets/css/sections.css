@@ -298,92 +298,100 @@
     letter-spacing: 0.04em;
 }
 
-/* ----- Stack grid ----- */
-.stack-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--s-23);
+/* ----- Stack list (editorial, no progress bars) ----- */
+.stack-list {
     margin-top: clamp(20px, 4vw, 40px);
+    border-top: 1px solid var(--color-white-08);
 }
 
-.stack-card {
-    background: var(--color-canvas-white);
-    color: var(--color-obsidian);
-    border-radius: var(--radius-card);
-    padding: var(--card-padding);
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    min-height: 280px;
-    transition: transform var(--t-base) var(--ease);
-    cursor: none;
-    will-change: transform;
+.stack-row {
+    display: grid;
+    grid-template-columns: 50px minmax(0, 180px) minmax(0, 1fr);
+    gap: clamp(16px, 3vw, 40px);
+    align-items: baseline;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-white-08);
     position: relative;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0);
+    cursor: none;
+    transition: padding-left 0.35s var(--ease);
 }
 
-.stack-card::before {
+.stack-row::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+    left: -16px; top: 0; bottom: 0;
+    width: 2px;
     background: var(--color-desert-sienna);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.6s var(--ease-out);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 0.4s var(--ease-out);
+    pointer-events: none;
 }
 
-.stack-card:hover { transform: translateY(-6px); }
-.stack-card:hover::before { transform: scaleX(1); }
+.stack-row:hover { padding-left: 12px; }
+.stack-row:hover::before { transform: scaleY(1); }
 
-.stack-card__label {
+.stack-row > * { position: relative; z-index: 1; }
+
+.stack-row__num {
+    font-family: var(--font-mono);
     font-size: 13px;
-    font-weight: var(--weight-bold);
-    letter-spacing: 0.10em;
-    color: var(--color-desert-sienna);
-    text-transform: uppercase;
-}
-
-.stack-card__list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: auto;
-}
-
-.stack-card__list li {
-    display: grid;
-    grid-template-columns: 1fr 90px;
-    align-items: center;
-    gap: 14px;
-    font-size: 17px;
     font-weight: var(--weight-medium);
-    color: var(--color-obsidian);
-    letter-spacing: -0.005em;
+    color: var(--color-desert-sienna);
+    letter-spacing: 0.06em;
+    padding-top: 4px;
 }
 
-.bar {
-    display: block;
-    height: 4px;
-    background: var(--color-obsidian-08);
-    border-radius: var(--radius-pill);
-    overflow: hidden;
+.stack-row__label {
+    font-size: 14px;
+    font-weight: var(--weight-bold);
+    color: var(--color-canvas-white);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding-top: 4px;
 }
 
-.bar b {
-    display: block;
-    height: 100%;
-    width: var(--w, 50%);
-    background: var(--color-obsidian);
-    border-radius: var(--radius-pill);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 1s var(--ease-out) 0.2s;
+.stack-row__tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0;
+    font-size: clamp(20px, 2vw, 28px);
+    font-weight: var(--weight-medium);
+    color: var(--color-slate-mist);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
 }
 
-.in-view .bar b { transform: scaleX(1); }
+.stack-row__tools li {
+    cursor: none;
+    padding: 2px 14px 2px 0;
+    margin-right: 14px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s var(--ease),
+                border-color 0.3s var(--ease),
+                letter-spacing 0.3s var(--ease);
+    position: relative;
+}
+
+.stack-row__tools li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--color-slate-mist);
+    opacity: 0.4;
+}
+
+.stack-row__tools li:hover {
+    color: var(--color-canvas-white);
+    border-bottom-color: var(--color-desert-sienna);
+    letter-spacing: 0.01em;
+}
 
 /* ----- Disclosures (Research) ----- */
 .disclosures {
@@ -402,13 +410,12 @@
     flex-direction: column;
     gap: 16px;
     min-height: 300px;
-    transition: transform var(--t-base) var(--ease);
+    transition: transform 0.3s var(--ease);
     cursor: none;
     position: relative;
     overflow: hidden;
     will-change: transform;
-    transform-style: preserve-3d;
-    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0);
+    /* No CSS transform here — magnetic JS owns the transform so both cards behave identically */
 }
 
 .disclosure::after {
@@ -422,9 +429,10 @@
     border-radius: 50%;
     opacity: 0.6;
     transition: transform var(--t-slow) var(--ease);
+    z-index: 0;
+    pointer-events: none;
 }
 
-.disclosure:hover { transform: translateY(-6px); }
 .disclosure:hover::after { transform: scale(1.15) rotate(45deg); }
 
 .disclosure__top {
