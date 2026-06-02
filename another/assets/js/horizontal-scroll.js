@@ -49,18 +49,15 @@
 
         const sectionRect = section.getBoundingClientRect();
 
-        // Start when the top of the section hits the top of the viewport
-        const start = sectionRect.top;
-        const end = sectionRect.bottom - window.innerHeight;
-
+        // Let start represent how far we've scrolled down into the pinned section timeline
         let progress = 0;
 
-        if (start < 0 && end > 0) {
-            // We are inside the scroll area
-            progress = Math.abs(start) / (sectionRect.height - window.innerHeight);
-        } else if (start <= 0 && end <= 0) {
-            // We are past the scroll area
-            progress = 1;
+        // As soon as the top of `.horizontal-scroll-section` goes above 0, pinning starts
+        if (sectionRect.top <= 0) {
+            const availableScroll = sectionRect.height - window.innerHeight;
+            if (availableScroll > 0) {
+                progress = Math.min(-sectionRect.top / availableScroll, 1);
+            }
         }
 
         const maxTranslate = list.scrollWidth - track.clientWidth + (window.innerWidth * 0.15);
