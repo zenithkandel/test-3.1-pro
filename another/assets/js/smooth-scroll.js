@@ -14,12 +14,12 @@
     if (!body.hasAttribute('data-smooth-scroll')) return;
 
     // Tunables
-    const ease     = 0.10;   // lerp factor (lower = heavier)
+    const ease = 0.10;   // lerp factor (lower = heavier)
     const wheelMul = 1.0;    // wheel delta multiplier
     const touchMul = 1.0;    // touch delta multiplier
 
-    let current  = window.scrollY || html.scrollTop || 0;
-    let target   = current;
+    let current = window.scrollY || html.scrollTop || 0;
+    let target = current;
     let maxScroll = 0;
     let lastTouchY = 0;
     let animating = true;
@@ -39,11 +39,22 @@
     const setSize = () => {
         maxScroll = getMax();
         if (target > maxScroll) target = maxScroll;
+        // Notify other scripts that vertical height might have changed
+        window.dispatchEvent(new Event('scroll'));
     };
 
+    const updateMaxScroll = () => {
+        maxScroll = getMax();
+    };
+    window.addEventListener('resize', updateMaxScroll);
+    window.addEventListener('load', updateMaxScroll);
+    setInterval(updateMaxScroll, 2000); // Polling for safety with dynamic height
+
+
     const onWheel = (e) => {
+        // Allow normal scroll if we are in the horizontal section? 
+        // No, the horizontal section depends on vertical scroll progress of the pin container.
         e.preventDefault();
-        // accumulate target
         const delta = (e.deltaY !== undefined ? e.deltaY : 0) * wheelMul;
         target += delta;
         if (target < 0) target = 0;
@@ -67,13 +78,13 @@
     const onKey = (e) => {
         const step = window.innerHeight * 0.85;
         let handled = true;
-        if (e.key === 'ArrowDown')       target += step;
-        else if (e.key === 'ArrowUp')    target -= step;
-        else if (e.key === 'PageDown')   target += step;
-        else if (e.key === 'PageUp')     target -= step;
-        else if (e.key === 'Home')       target = 0;
-        else if (e.key === 'End')        target = maxScroll;
-        else if (e.key === ' ')          target += (e.shiftKey ? -step : step);
+        if (e.key === 'ArrowDown') target += step;
+        else if (e.key === 'ArrowUp') target -= step;
+        else if (e.key === 'PageDown') target += step;
+        else if (e.key === 'PageUp') target -= step;
+        else if (e.key === 'Home') target = 0;
+        else if (e.key === 'End') target = maxScroll;
+        else if (e.key === ' ') target += (e.shiftKey ? -step : step);
         else handled = false;
         if (handled) {
             e.preventDefault();
@@ -112,22 +123,22 @@
     const mo = new MutationObserver(setSize);
     mo.observe(body, { childList: true, subtree: true });
 
-    window.addEventListener('wheel',       onWheel,       { passive: false });
-    window.addEventListener('touchstart',  onTouchStart,  { passive: true });
-    window.addEventListener('touchmove',   onTouchMove,   { passive: true });
-    window.addEventListener('keydown',     onKey);
-    window.addEventListener('resize',      setSize);
-    window.addEventListener('load',        setSize);
-    document.addEventListener('click',     onAnchorClick);
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('resize', setSize);
+    window.addEventListener('load', setSize);
+    document.addEventListener('click', onAnchorClick);
 
     setSize();
     requestAnimationFrame(tick);
 
     // Public API for other modules
     window.__zenithScroll = {
-        get current()  { return current; },
-        get target()   { return target; },
-        get max()      { return maxScroll; },
+        get current() { return current; },
+        get target() { return target; },
+        get max() { return maxScroll; },
         get progress() { return maxScroll === 0 ? 0 : current / maxScroll; }
     };
 })();
