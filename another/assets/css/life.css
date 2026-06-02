@@ -257,8 +257,8 @@
     transition: none;
 }
 
-/* Research emblem bug (in .section__art) — small sway when section is in view */
-.section__art.is-engaged img {
+/* Research emblem (the bug-in-shield) — slow sway when section is in view */
+.research-emblem.is-engaged {
     animation: bug-sway 3.4s var(--ease) infinite;
 }
 

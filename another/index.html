@@ -727,7 +727,7 @@
               </h2>
             </div>
             <div class="section__art section__art--right" data-parallax="0.06">
-              <img src="assets/svg/illustrations/research-emblem.svg" alt="" />
+              <img src="assets/svg/illustrations/research-emblem.svg" alt="" class="research-emblem" />
             </div>
           </div>
 
@@ -795,7 +795,7 @@
               </h2>
             </div>
             <div class="section__art" data-parallax="0.05">
-              <img src="assets/svg/illustrations/contact-emblem.svg" alt="" />
+              <img src="assets/svg/illustrations/contact-emblem.svg" alt="" class="contact-emblem" />
             </div>
           </div>
 
@@ -978,7 +978,7 @@
     <footer class="footer surface surface--light">
       <div class="section">
         <div class="footer__top">
-          <span class="footer__brand">Zenith Kandel</span>
+          <span class="footer__brand" data-scramble>Zenith Kandel</span>
           <span class="footer__role"
             >Developer · Security Researcher · Builder</span
           >
@@ -994,12 +994,78 @@
           <a href="#contact" class="footer__link">Contact</a>
         </nav>
 
+        <div class="footer__status" data-footer-status>
+          <span>
+            <span class="footer__status-led" aria-hidden="true"></span>
+            <span data-footer-status-text>Status · online · KTM</span>
+          </span>
+          <span data-footer-seen>Last seen · now</span>
+        </div>
+
         <div class="footer__bottom">
           <span>© 2026 Zenith Kandel — Built in Kathmandu, Nepal.</span>
           <span class="footer__mono">v 2.0 · 06.2026</span>
         </div>
       </div>
     </footer>
+
+    <!-- Page-wipe transition overlay -->
+    <div class="page-wipe" id="pageWipe" aria-hidden="true"></div>
+
+    <!-- Section index counter (fixed bottom-left) -->
+    <div class="section-counter" id="sectionCounter" aria-hidden="true">
+      <span data-counter-label>00</span>
+      <span> / 05</span>
+      <span class="section-counter__progress" aria-hidden="true"></span>
+    </div>
+
+    <!-- Easter egg 1: status-dot modal -->
+    <div class="egg-modal" id="eggModal" role="dialog" aria-modal="true" aria-labelledby="eggModalTitle" hidden>
+      <div class="egg-modal__head">
+        <span class="egg-modal__title" id="eggModalTitle">While you were looking…</span>
+        <button class="egg-modal__close" type="button" data-egg-close aria-label="Close message">×</button>
+      </div>
+      <div class="egg-modal__body">
+        <p>
+          Most people scroll past the little pulse in the corner.
+          <strong>You stopped to look at it three times.</strong>
+        </p>
+        <p style="margin-top:10px">
+          That's exactly how every project on this page started — someone noticed a
+          small signal in a quiet room and decided to follow it. The Lifeline
+          beacon. The Sastomahango price tag. A bug in a national broadcaster.
+        </p>
+        <p style="margin-top:10px">
+          If you're working on something that small and worth noticing, I'd like to
+          hear from you.
+        </p>
+      </div>
+      <div class="egg-modal__sign">— Z</div>
+    </div>
+
+    <!-- Easter egg 2: terminal -->
+    <div class="terminal" id="terminal" role="dialog" aria-modal="true" aria-labelledby="terminalTitle" hidden>
+      <div class="terminal__bar">
+        <span class="terminal__dots" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="terminal__title" id="terminalTitle">zenith@portfolio: ~</span>
+        <span class="terminal__hint">esc to close</span>
+      </div>
+      <div class="terminal__out" id="terminalOut" aria-live="polite"></div>
+      <form class="terminal__form" id="terminalForm" autocomplete="off">
+        <span class="terminal__prompt" aria-hidden="true">$</span>
+        <input
+          class="terminal__input"
+          id="terminalInput"
+          type="text"
+          name="cmd"
+          spellcheck="false"
+          autocapitalize="off"
+          autocorrect="off"
+          aria-label="Command"
+          placeholder="type 'help' and press enter"
+        />
+      </form>
+    </div>
 
     <!-- Scripts -->
     <script src="assets/js/lib-bridge.js" defer></script>
@@ -1010,6 +1076,16 @@
     <script src="assets/js/parallax.js" defer></script>
     <script src="assets/js/interactions.js" defer></script>
     <script src="assets/js/svg-anim.js" defer></script>
+    <script src="assets/js/avatar.js" defer></script>
+    <script src="assets/js/section-life.js" defer></script>
+    <script src="assets/js/clock.js" defer></script>
+    <script src="assets/js/section-counter.js" defer></script>
+    <script src="assets/js/page-wipe.js" defer></script>
+    <script src="assets/js/contact-life.js" defer></script>
+    <script src="assets/js/footer-life.js" defer></script>
+    <script src="assets/js/status-egg.js" defer></script>
+    <script src="assets/js/terminal.js" defer></script>
+    <script src="assets/js/life.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>
