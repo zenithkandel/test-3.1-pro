@@ -1,11 +1,25 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="100" r="14" fill="#bc7155"/>
-    <path d="M124 100 A 24 24 0 0 1 100 124 A 24 24 0 0 1 76 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square"/>
-    <path d="M140 100 A 40 40 0 0 1 100 140 A 40 40 0 0 1 60 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square" opacity="0.7"/>
-    <path d="M156 100 A 56 56 0 0 1 100 156 A 56 56 0 0 1 44 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square" opacity="0.45"/>
-    <path d="M172 100 A 72 72 0 0 1 100 172 A 72 72 0 0 1 28 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square" opacity="0.25" stroke-dasharray="2 4"/>
-    <circle cx="100" cy="44" r="2.5" fill="#bc7155"/>
-    <circle cx="156" cy="100" r="2.5" fill="#bc7155"/>
-    <circle cx="100" cy="156" r="2.5" fill="#bc7155"/>
-    <circle cx="44" cy="100" r="2.5" fill="#bc7155"/>
+    <!-- Envelope body -->
+    <rect x="30" y="58" width="140" height="92" rx="4" fill="#ffffff" stroke="#bc7155" stroke-width="2"/>
+
+    <!-- Envelope flap (V) -->
+    <path d="M30 62 L100 116 L170 62" fill="none" stroke="#bc7155" stroke-width="2" stroke-linejoin="round"/>
+
+    <!-- Inner fold lines -->
+    <path d="M30 146 L82 100" fill="none" stroke="#bc7155" stroke-width="1" opacity="0.45"/>
+    <path d="M170 146 L118 100" fill="none" stroke="#bc7155" stroke-width="1" opacity="0.45"/>
+
+    <!-- Corner registration marks -->
+    <path d="M22 50 L22 58 M22 50 L30 50" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+    <path d="M178 50 L178 58 M178 50 L170 50" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+    <path d="M22 158 L22 150 M22 158 L30 158" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+    <path d="M178 158 L178 150 M178 158 L170 158" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
+
+    <!-- Wax-seal style accent dot on the flap -->
+    <circle cx="100" cy="116" r="6" fill="#bc7155"/>
+    <circle cx="100" cy="116" r="2" fill="#ffffff"/>
+
+    <!-- Incoming message lines (inside envelope, peeking through) -->
+    <line x1="50" y1="78" x2="90" y2="78" stroke="#bc7155" stroke-width="1.2" opacity="0.5"/>
+    <line x1="110" y1="78" x2="150" y2="78" stroke="#bc7155" stroke-width="1.2" opacity="0.5"/>
 </svg>

@@ -646,7 +646,7 @@
 }
 
 .contact-row__value:hover {
-    color: var(--color-desert-sienna);
+    /* Color handled by data-text ::before element */
 }
 
 .contact-row__value:hover::after {
