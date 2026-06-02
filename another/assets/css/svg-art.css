@@ -1,0 +1,67 @@
+/* ===========================================================
+   06 · SVG ART — section illustrations & marquee
+   =========================================================== */
+
+/* ----- Marquee strip ----- */
+.marquee {
+    padding: 28px 0;
+    border-top: 1px solid var(--color-obsidian-08);
+    border-bottom: 1px solid var(--color-obsidian-08);
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--surface-canvas-white);
+}
+
+.marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+}
+
+.marquee__group {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0 30px;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    color: var(--color-obsidian);
+    line-height: 1;
+}
+
+.marquee__group span:nth-child(even),
+.marquee__dot {
+    color: var(--color-desert-sienna);
+    font-size: 0.7em;
+    line-height: 1;
+    transform: translateY(-2px);
+}
+
+.marquee__dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-desert-sienna);
+    transform: none;
+    flex-shrink: 0;
+}
+
+@keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+/* ----- Hero illustration tweaks ----- */
+.hero-illustration__svg .hero-window {
+    transform-origin: center;
+    animation: windowIn 1.2s var(--ease-out) 0.4s backwards;
+}
+
+@keyframes windowIn {
+    from { opacity: 0; transform: translate(60px, 80px) scale(0.96); }
+    to   { opacity: 1; transform: translate(60px, 80px) scale(1); }
+}

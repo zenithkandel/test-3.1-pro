@@ -1,0 +1,108 @@
+/* ===========================================================
+   07 · ANIMATIONS — keyframes + reveal utilities
+   =========================================================== */
+
+/* ----- Reveal ----- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+[data-reveal].in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-reveal]:nth-child(1) { transition-delay: 0s; }
+[data-reveal]:nth-child(2) { transition-delay: 0.05s; }
+[data-reveal]:nth-child(3) { transition-delay: 0.10s; }
+[data-reveal]:nth-child(4) { transition-delay: 0.15s; }
+[data-reveal]:nth-child(5) { transition-delay: 0.20s; }
+[data-reveal]:nth-child(6) { transition-delay: 0.25s; }
+
+/* ----- Section title text split (hover) ----- */
+[data-text] {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+[data-text]::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    color: var(--color-desert-sienna);
+    transform: translateY(100%);
+    transition: transform 0.4s var(--ease-out);
+}
+
+[data-text]:hover::before { transform: translateY(0); }
+
+/* ----- Keyframes ----- */
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+@keyframes lineUp { to { transform: translateY(0); } }
+@keyframes lineReveal { to { transform: scaleX(1); } }
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.45; transform: scale(0.78); }
+}
+
+/* ----- Loader ----- */
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--color-obsidian);
+    color: var(--color-canvas-white);
+    display: grid;
+    place-items: center;
+    transition: opacity 0.6s var(--ease-out),
+                visibility 0s linear 0.6s;
+}
+
+.loader.is-done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.loader__bar {
+    width: 200px;
+    height: 2px;
+    background: var(--color-white-08);
+    overflow: hidden;
+    border-radius: var(--radius-pill);
+    position: relative;
+}
+
+.loader__bar span {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    width: 0;
+    background: var(--color-desert-sienna);
+    animation: loadBar 1.6s var(--ease-out) forwards;
+}
+
+@keyframes loadBar {
+    0%   { width: 0; }
+    60%  { width: 70%; }
+    100% { width: 100%; }
+}
+
+.loader__text {
+    font-size: 13px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.20em;
+    color: var(--color-slate-mist);
+}
