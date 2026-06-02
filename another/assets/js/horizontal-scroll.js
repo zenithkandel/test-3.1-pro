@@ -25,7 +25,7 @@
             const startWidth = startSection.offsetWidth;
 
             // Smoother movement calculation
-            const totalWidthToMove = (trackWidth + startWidth) - windowWidth * 0.8; 
+            const totalWidthToMove = (trackWidth + startWidth) - windowWidth * 0.8;
 
             const moveX = progress * totalWidthToMove;
             track.style.transform = `translate3d(-${moveX}px, 0, 0)`;
@@ -36,16 +36,16 @@
                 const rect = card.getBoundingClientRect();
                 const viewportCenter = windowWidth / 2;
                 const cardCenter = rect.left + rect.width / 2;
-                
+
                 // Distance from center of viewport (0 = centered, 1 = at edges)
                 const distFromCenter = Math.abs(viewportCenter - cardCenter);
                 const normalizedDist = Math.min(distFromCenter / (windowWidth * 0.5), 1);
-                
+
                 // Premium focus effect
                 const scale = 1 + (1 - normalizedDist) * 0.08;
                 const opacity = 0.4 + (1 - normalizedDist) * 0.6;
                 const blur = normalizedDist * 4;
-                
+
                 card.style.transform = `scale(${scale})`;
                 card.style.opacity = opacity;
                 card.style.filter = `blur(${blur}px)`;

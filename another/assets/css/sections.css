@@ -206,7 +206,8 @@
 }
 
 .horizontal-pin {
-    height: 600vh; /* more scroll depth for breathing room */
+    height: 600vh;
+    /* more scroll depth for breathing room */
     position: relative;
     background: var(--surface-canvas-white);
 }
@@ -223,24 +224,29 @@
 
 .horizontal-start {
     flex-shrink: 0;
-    width: 60vw; /* take less space to avoid huge gaps before 1st card */
+    width: 60vw;
+    /* take less space to avoid huge gaps before 1st card */
     padding: 0 var(--gutter);
     margin: 0 !important;
 }
 
 .horizontal-track {
     display: flex;
-    gap: 80px; /* larger gap between cards */
-    padding-right: 20vw; /* exit padding */
+    gap: 80px;
+    /* larger gap between cards */
+    padding-right: 20vw;
+    /* exit padding */
     will-change: transform;
     align-items: center;
 }
 
 .horizontal-project {
     flex-shrink: 0;
-    width: clamp(450px, 45vw, 800px); /* larger cards */
+    width: clamp(450px, 45vw, 800px);
+    /* larger cards */
     min-height: 500px;
-    background: var(--color-canvas-white); /* clean white cards */
+    background: var(--color-canvas-white);
+    /* clean white cards */
     border: 1px solid var(--color-obsidian-08);
     border-radius: var(--radius-card);
     padding: clamp(40px, 5vw, 80px);
@@ -248,11 +254,12 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    transition: 
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-        border-color 0.4s var(--ease), 
+    transition:
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s var(--ease),
         box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
     box-shadow: 0 20px 60px -20px rgba(0, 13, 16, 0.05);
