@@ -1,17 +1,17 @@
 /* ===========================================================
-   03 · HERO + CODE WINDOW ILLUSTRATION
+   03 · HERO  ·  Compact two-column layout
+   Left  : heading → description → CTAs → metadata
+   Right : portrait (no frame, no ring, no caption)
    =========================================================== */
 
 .hero {
-    min-height: 100vh;
-    min-height: 100svh;
     background: var(--surface-canvas-white);
     color: var(--color-obsidian);
     position: relative;
     overflow: hidden;
-    padding: clamp(120px, 14vh, 160px) var(--gutter) clamp(40px, 6vh, 60px);
+    padding: clamp(108px, 12vh, 132px) var(--gutter) clamp(36px, 5vh, 56px);
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
 }
 
 .hero__bg {
@@ -37,12 +37,12 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: clamp(28px, 4vh, 60px);
+    gap: clamp(26px, 3.5vh, 42px);
     position: relative;
     z-index: 2;
 }
 
+/* ----- Top bar (chip + location) ----- */
 .hero__top {
     display: flex;
     justify-content: space-between;
@@ -91,17 +91,29 @@
     text-transform: uppercase;
 }
 
+/* ----- Two-column grid : content + portrait ----- */
+.hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(18px, 2.4vh, 28px);
+    max-width: 660px;
+}
+
+/* ----- Display heading ----- */
 .hero__display {
     font-size: var(--text-display);
     line-height: var(--leading-display);
     font-weight: var(--weight-bold);
     letter-spacing: var(--tracking-display);
     color: var(--color-obsidian);
-    margin: clamp(20px, 6vh, 60px) 0 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin: 0;
 }
 
 .hero__line {
@@ -124,131 +136,29 @@
 
 .hero__period { color: var(--color-desert-sienna); }
 
-.hero__bottom {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    gap: clamp(28px, 5vw, 60px);
-    align-items: end;
-    margin-top: clamp(20px, 4vh, 48px);
-    opacity: 0;
-    transform: translateY(10px);
-    animation: rise 0.7s var(--ease) forwards 0.55s;
-}
-
-.hero__bottom-left {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(18px, 3vh, 28px);
-    max-width: 640px;
-}
-
-/* ----- Hero portrait ----- */
-.hero__portrait {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    justify-self: end;
-    align-self: end;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-}
-
-.hero__portrait-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--color-obsidian-04);
-    border: 1.5px solid var(--color-obsidian);
-    box-shadow: 0 30px 80px -20px rgba(0, 13, 16, 0.18);
-    transition: transform 0.6s var(--ease-out),
-                box-shadow 0.6s var(--ease-out);
-}
-
-.hero__portrait:hover .hero__portrait-frame {
-    transform: scale(1.02);
-    box-shadow: 0 40px 100px -25px rgba(0, 13, 16, 0.28);
-}
-
-.hero__portrait-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 22%;
-    display: block;
-    filter: contrast(1.04) brightness(1.02);
-    transition: transform 0.6s var(--ease-out);
-}
-
-.hero__portrait:hover .hero__portrait-img {
-    transform: scale(1.03);
-}
-
-.hero__portrait-cap {
-    position: absolute;
-    left: 50%;
-    bottom: 22px;
-    transform: translateX(-50%);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 14px 7px 12px;
-    background: var(--color-canvas-white);
-    border: 1.5px solid var(--color-obsidian);
-    border-radius: 1000px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: var(--weight-medium);
-    letter-spacing: 0.10em;
-    color: var(--color-obsidian);
-    text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 2;
-    transition: background 0.3s var(--ease), color 0.3s var(--ease);
-}
-
-.hero__portrait:hover .hero__portrait-cap {
-    background: var(--color-obsidian);
-    color: var(--color-canvas-white);
-}
-
-.hero__portrait-cap-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--color-desert-sienna);
-    border-radius: 50%;
-    animation: pulse 1.6s var(--ease) infinite;
-    flex-shrink: 0;
-}
-
+/* ----- Description ----- */
 .hero__sub {
-    font-size: clamp(18px, 1.7vw, 23px);
+    font-size: clamp(18px, 1.55vw, 22px);
     line-height: 1.45;
     color: var(--color-slate-mist);
     max-width: 560px;
     letter-spacing: -0.005em;
     font-weight: var(--weight-regular);
+    margin: 0;
+    opacity: 0;
+    animation: rise 0.7s var(--ease) forwards 0.55s;
 }
 
+/* ----- CTA buttons ----- */
 .hero__cta {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-}
-
-.hero__foot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
-    padding-top: 18px;
-    border-top: 1px solid var(--color-obsidian-08);
     opacity: 0;
-    animation: rise 0.7s var(--ease) forwards 0.9s;
+    animation: rise 0.7s var(--ease) forwards 0.7s;
 }
 
+/* ----- Meta row ----- */
 .hero__meta {
     display: flex;
     align-items: center;
@@ -256,6 +166,9 @@
     font-size: 15px;
     color: var(--color-obsidian);
     flex-wrap: wrap;
+    padding-top: clamp(2px, 0.6vh, 8px);
+    opacity: 0;
+    animation: rise 0.7s var(--ease) forwards 0.85s;
 }
 
 .hero__meta em {
@@ -273,11 +186,50 @@
     opacity: 0.3;
 }
 
+/* ----- Portrait : raw image only, no frame / ring / caption ----- */
+.hero__portrait {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    justify-self: end;
+    align-self: start;
+    will-change: transform;
+    opacity: 0;
+    animation: heroPortraitFade 0.9s var(--ease) forwards 0.45s;
+}
+
+.hero__portrait-img {
+    width: 100%;
+    height: auto;
+    max-height: clamp(360px, 56vh, 560px);
+    object-fit: contain;
+    object-position: center top;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+@keyframes heroPortraitFade {
+    to { opacity: 1; }
+}
+
+/* ----- Foot (scroll cue only) ----- */
+.hero__foot {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-obsidian-08);
+    opacity: 0;
+    animation: rise 0.7s var(--ease) forwards 1s;
+}
+
 .hero__scroll {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: var(--weight-medium);
     letter-spacing: 0.04em;
     color: var(--color-obsidian);
@@ -287,5 +239,5 @@
 
 .hero__scroll:hover { gap: 14px; }
 
-/* ----- SVG float animations ----- */
+/* ----- Utility ----- */
 @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
