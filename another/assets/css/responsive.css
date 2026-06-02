@@ -2,6 +2,7 @@
    08 · RESPONSIVE
    =========================================================== */
 
+/* ─── TABLETS & SMALL DESKTOPS ─── */
 @media (max-width: 1100px) {
     .nav__cta {
         display: none;
@@ -13,12 +14,29 @@
 
     .section__head {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
         align-items: start;
+        position: relative;
     }
 
+    /* Emblem: float to top-right corner as decorative element */
     .section__art {
-        width: 100px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        opacity: 0.18;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .section__art--right {
+        justify-self: end;
+    }
+
+    .section__head-left {
+        position: relative;
+        z-index: 1;
     }
 
     .section__body {
@@ -40,12 +58,13 @@
     }
 
     .hero__portrait {
-        max-width: 380px;
+        max-width: 340px;
         margin: 0 auto;
         justify-self: center;
     }
 }
 
+/* ─── MOBILE LANDSCAPE & SMALL TABLETS ─── */
 @media (max-width: 860px) {
     .nav__links {
         display: none;
@@ -63,7 +82,7 @@
         font-size: clamp(56px, 14vw, 100px);
     }
 
-    /* Horizontal scroll is disabled below 860px, restore vertical project layout */
+    /* Horizontal scroll disabled: restore vertical project layout */
     .horizontal-scroll-section {
         height: auto !important;
         overflow: hidden !important;
@@ -87,13 +106,25 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 32px;
+        gap: 0;
     }
 
     .project {
         width: 100%;
-        border-left: 1px solid var(--color-obsidian-08);
+        border-left: none;
+        border-bottom: 1px solid var(--color-obsidian-08);
+        padding: 28px 0 28px clamp(20px, 3vw, 32px);
+        border-left: 2px solid transparent;
+        transition: border-color var(--t-slow) var(--ease),
+                    padding-left var(--t-slow) var(--ease);
+    }
+
+    .project:last-child {
         border-bottom: none;
+    }
+
+    .project:hover {
+        border-left-color: var(--color-desert-sienna);
     }
 
     .horizontal-scroll-progress {
@@ -118,8 +149,43 @@
     .social__arrow {
         display: none;
     }
+
+    /* Emblem: smaller on tablet */
+    .section__art {
+        width: 70px;
+        opacity: 0.12;
+    }
+
+    /* Mobile menu: premium backdrop */
+    .mobile-menu {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(24px) saturate(1.3);
+        -webkit-backdrop-filter: blur(24px) saturate(1.3);
+    }
+
+    .mobile-menu__link {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.4s var(--ease-out),
+                    transform 0.4s var(--ease-out),
+                    color var(--t-slow) var(--ease),
+                    padding-left var(--t-slow) var(--ease),
+                    border-color var(--t-slow) var(--ease);
+    }
+
+    .mobile-menu.is-open .mobile-menu__link {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .mobile-menu.is-open .mobile-menu__link:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-menu.is-open .mobile-menu__link:nth-child(2) { transition-delay: 0.10s; }
+    .mobile-menu.is-open .mobile-menu__link:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-menu.is-open .mobile-menu__link:nth-child(4) { transition-delay: 0.20s; }
+    .mobile-menu.is-open .mobile-menu__link:nth-child(5) { transition-delay: 0.25s; }
 }
 
+/* ─── MOBILE PORTRAIT ─── */
 @media (max-width: 560px) {
     :root {
         --gutter: 18px;
@@ -127,60 +193,149 @@
     }
 
     .section {
-        padding: 80px var(--gutter);
+        padding: 68px var(--gutter);
+    }
+
+    .hero {
+        padding: clamp(90px, 12vh, 120px) var(--gutter) clamp(28px, 4vh, 44px);
+    }
+
+    .hero__top {
+        margin-bottom: clamp(14px, 3vh, 24px);
+    }
+
+    .hero__chip {
+        font-size: 13px;
+        padding: 7px 12px;
+        gap: 7px;
+    }
+
+    .hero__loc {
+        font-size: 12px;
     }
 
     .hero__display {
-        font-size: clamp(48px, 16vw, 80px);
+        font-size: clamp(44px, 15vw, 72px);
+    }
+
+    .hero__sub {
+        font-size: clamp(16px, 4vw, 19px);
     }
 
     .hero__bottom {
-        gap: 18px;
+        gap: 24px;
     }
 
     .hero__cta {
         flex-direction: column;
         align-items: stretch;
         width: 100%;
+        gap: 10px;
     }
 
     .hero__cta .btn {
         width: 100%;
+        justify-content: center;
+        --pad-y: 16px;
+        font-size: 16px;
     }
 
     .hero__foot {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+        padding-top: 14px;
+    }
+
+    .hero__meta {
+        font-size: 13px;
+    }
+
+    .hero__scroll {
+        font-size: 13px;
     }
 
     .hero__portrait {
-        max-width: 260px;
+        max-width: 220px;
     }
 
     .hero__portrait-cap {
-        font-size: 10px;
-        padding: 6px 12px 6px 10px;
-        bottom: 16px;
+        font-size: 9px;
+        padding: 5px 10px 5px 8px;
+        bottom: 12px;
+        gap: 6px;
     }
 
+    .hero__portrait-cap-dot {
+        width: 5px;
+        height: 5px;
+    }
+
+    /* Section heads on mobile */
+    .section__head {
+        padding-bottom: var(--s-22);
+        margin-bottom: clamp(28px, 4vw, 40px);
+    }
+
+    .section__index {
+        font-size: 13px;
+    }
+
+    .section__title {
+        font-size: clamp(34px, 10vw, 48px);
+        line-height: 1.0;
+    }
+
+    .section__title--dark {
+        font-size: clamp(34px, 10vw, 48px);
+    }
+
+    /* Emblem: very subtle on mobile */
+    .section__art {
+        width: 56px;
+        opacity: 0.08;
+        top: -4px;
+    }
+
+    .section__body {
+        font-size: 15px;
+        margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    /* Feature cards */
     .feature-grid,
     .disclosures {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .feature {
         min-height: auto;
-        padding: 26px 22px;
+        padding: 22px 20px;
+        border-radius: clamp(24px, 5vw, 35px);
     }
 
     .feature__num {
-        font-size: 56px;
+        font-size: 48px;
     }
 
+    .feature__title {
+        font-size: 20px;
+    }
+
+    .feature__desc {
+        font-size: 15px;
+    }
+
+    .feature__foot {
+        font-size: 12px;
+        padding-top: 12px;
+    }
+
+    /* Stack rows */
     .stack-row {
         grid-template-columns: 1fr;
-        gap: 8px;
+        gap: 6px;
         padding: 20px 0;
     }
 
@@ -189,7 +344,8 @@
     }
 
     .stack-row__label {
-        font-size: 12px;
+        font-size: 11px;
+        letter-spacing: 0.14em;
     }
 
     .stack-row__tools {
@@ -201,47 +357,213 @@
         padding-right: 10px;
     }
 
+    /* Projects */
     .project {
         width: 100%;
-        gap: 8px;
+        gap: 10px;
+        padding: 22px 0 22px 16px;
     }
 
     .project__num {
         padding-top: 0;
+        font-size: 13px;
     }
 
     .project__title {
-        font-size: 28px;
+        font-size: clamp(24px, 7vw, 32px);
     }
 
+    .project__tag {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .project__desc {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .project__chips {
+        gap: 6px;
+    }
+
+    .project__chips span {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .project__year {
+        font-size: 14px;
+        padding-top: 10px;
+    }
+
+    /* Disclosure cards */
+    .disclosure {
+        padding: 20px;
+        border-radius: clamp(24px, 5vw, 35px);
+        min-height: auto;
+        gap: 14px;
+    }
+
+    .disclosure__top {
+        padding-bottom: 12px;
+    }
+
+    .disclosure__target {
+        font-size: 13px;
+    }
+
+    .disclosure__status {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    .disclosure__title {
+        font-size: 20px;
+    }
+
+    .disclosure__desc {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .disclosure__foot {
+        font-size: 11px;
+        padding-top: 12px;
+        gap: 8px;
+    }
+
+    /* Contact */
     .contact-row,
     .social {
         grid-template-columns: 1fr;
-        gap: 6px;
-        padding: 18px 0;
+        gap: 4px;
+        padding: 16px 0;
+    }
+
+    .contact-row__label,
+    .social__label {
+        font-size: 11px;
     }
 
     .contact-row__value,
     .social__handle {
-        font-size: 18px;
+        font-size: 17px;
     }
 
+    /* CTA strip */
+    .cta-strip {
+        margin-top: clamp(28px, 5vw, 48px);
+    }
+
+    .cta-strip .btn--lg {
+        width: 100%;
+        justify-content: center;
+        --pad-y: 16px;
+        --pad-x: 24px;
+        font-size: 16px;
+    }
+
+    /* Footer */
     .footer__top,
     .footer__bottom {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
+        gap: 8px;
     }
 
     .footer__brand {
-        font-size: 32px;
+        font-size: 28px;
+    }
+
+    .footer__role {
+        font-size: 11px;
+    }
+
+    .footer__nav {
+        gap: 8px 24px;
+        padding: 20px 0;
+    }
+
+    .footer__link {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+
+    .footer__bottom {
+        font-size: 11px;
+        padding: 16px 0 8px;
+    }
+
+    /* Marquee */
+    .marquee {
+        padding: 20px 0;
     }
 
     .marquee__group {
-        font-size: 28px;
+        font-size: clamp(22px, 7vw, 32px);
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .marquee__dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    /* Mobile menu refinements */
+    .mobile-menu {
+        padding: 90px var(--gutter) 40px;
+    }
+
+    .mobile-menu__link {
+        font-size: clamp(28px, 9vw, 44px);
+        padding: 12px 0;
     }
 }
 
+/* ─── VERY SMALL SCREENS ─── */
+@media (max-width: 380px) {
+    :root {
+        --gutter: 14px;
+    }
+
+    .hero__display {
+        font-size: clamp(38px, 14vw, 56px);
+    }
+
+    .hero__portrait {
+        max-width: 180px;
+    }
+
+    .hero__chip {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .section__title {
+        font-size: clamp(28px, 9vw, 38px);
+    }
+
+    .section__art {
+        width: 44px;
+        opacity: 0.06;
+    }
+
+    .project__title {
+        font-size: 22px;
+    }
+
+    .feature__num {
+        font-size: 40px;
+    }
+
+    .mobile-menu__link {
+        font-size: clamp(24px, 8vw, 36px);
+    }
+}
+
+/* ─── TOUCH DEVICES ─── */
 @media (hover: none) {
     body {
         cursor: auto;
@@ -251,15 +573,29 @@
         display: none !important;
     }
 
+    /* Restore native cursors */
     button,
     a,
+    .btn,
+    .nav__link,
+    .nav__cta,
+    .nav__brand,
+    .nav__menu,
     .feature,
     .disclosure,
     .project,
     .contact-row,
     .social,
-    .stack-row {
-        cursor: pointer;
+    .stack-row,
+    .stack-row__tools li,
+    [role="button"],
+    label,
+    select {
+        cursor: auto !important;
+    }
+
+    a, button, [role="button"] {
+        cursor: pointer !important;
     }
 
     .marquee__track {
@@ -267,6 +603,7 @@
     }
 }
 
+/* ─── REDUCED MOTION ─── */
 @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -285,5 +622,10 @@
 
     .marquee__track {
         animation: none;
+    }
+
+    .mobile-menu__link {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
