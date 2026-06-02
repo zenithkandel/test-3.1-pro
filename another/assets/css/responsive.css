@@ -610,6 +610,15 @@
     .contact-emblem.is-engaged {
         animation: none !important;
     }
+
+    /* Restore native cursors on inputs/textarea so the OS caret
+       shows up on the terminal input. */
+    input, textarea, select {
+        cursor: auto !important;
+    }
+    input[type="text"], input[type="search"], textarea {
+        cursor: text !important;
+    }
 }
 
 /* ─── REDUCED MOTION ─── */

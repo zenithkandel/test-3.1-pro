@@ -218,32 +218,10 @@
     animation-delay: calc(var(--i, 0) * 60ms);
 }
 
-/* ---------- 8. Research · shield bug crawl + slow rotation ---------- */
-.disclosure {
-    --emblem-rotate: 0deg;
-}
-
-.disclosure::after {
-    transform: rotate(var(--emblem-rotate)) scale(1) !important;
-}
-
-.disclosure.is-engaged::after {
-    animation: emblem-rotate 18s linear infinite;
-}
-
-@keyframes emblem-rotate {
-    from { --emblem-rotate: 0deg; }
-    to   { --emblem-rotate: 360deg; }
-}
-
-/* Fallback for browsers that don't animate the custom property:
-   the static rotate on hover is still there. */
-
-.disclosure.is-engaged {
-    transition: none;
-}
-
-/* Research emblem (the bug-in-shield) — slow sway when section is in view */
+/* ---------- 8. Research · shield bug sway when section is in view ----------
+   The disclosure ::after circle keeps its existing hover-only
+   scale+rotate from sections.css. We add a subtle sway to the
+   research emblem image instead. */
 .research-emblem.is-engaged {
     animation: bug-sway 3.4s var(--ease) infinite;
 }
@@ -582,9 +560,8 @@
     .hero__portrait-svg .avatar-tuft-3,
     .hero__portrait-svg.is-blinking .lid,
     .hero__period.is-wobbling,
-    .section__art.is-engaged img,
-    .contact-emblem.is-engaged,
-    .disclosure.is-engaged::after {
+    .research-emblem.is-engaged,
+    .contact-emblem.is-engaged {
         animation: none !important;
     }
 }
