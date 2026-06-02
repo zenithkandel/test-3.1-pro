@@ -51,16 +51,21 @@
     place-items: center;
     width: 32px;
     height: 32px;
-    background: currentColor;
+    background: var(--color-obsidian);
     color: var(--color-canvas-white);
     border-radius: var(--radius-pill);
     font-size: 13px;
     font-weight: var(--weight-extra);
     letter-spacing: -0.02em;
-    transition: background var(--t-slow) var(--ease), transform var(--t-base) var(--ease);
+    transition: background var(--t-slow) var(--ease),
+                color var(--t-slow) var(--ease),
+                transform var(--t-base) var(--ease);
 }
 
-.nav.is-on-dark .nav__mark { color: var(--color-obsidian); background: currentColor; }
+.nav.is-on-dark .nav__mark {
+    background: var(--color-canvas-white);
+    color: var(--color-obsidian);
+}
 
 .nav__brand:hover .nav__mark { transform: rotate(-8deg) scale(1.06); }
 
