@@ -4,87 +4,106 @@
 
 :root {
     /* Colors */
-    --color-obsidian:       #000d10;
-    --color-canvas-white:   #ffffff;
-    --color-slate-mist:     #8e8e95;
-    --color-desert-sienna:  #bc7155;
+    --color-obsidian: #000d10;
+    --color-canvas-white: #ffffff;
+    --color-slate-mist: #8e8e95;
+    --color-desert-sienna: #bc7155;
 
     /* Derived (with opacity) */
     --color-obsidian-90: rgba(0, 13, 16, 0.90);
     --color-obsidian-08: rgba(0, 13, 16, 0.08);
     --color-obsidian-04: rgba(0, 13, 16, 0.04);
     --color-obsidian-12: rgba(0, 13, 16, 0.12);
-    --color-white-08:    rgba(255, 255, 255, 0.08);
-    --color-white-04:    rgba(255, 255, 255, 0.04);
-    --color-sienna-15:   rgba(188, 113, 85, 0.15);
+    --color-white-08: rgba(255, 255, 255, 0.08);
+    --color-white-04: rgba(255, 255, 255, 0.04);
+    --color-sienna-15: rgba(188, 113, 85, 0.15);
 
     /* Surfaces */
     --surface-canvas-white: #ffffff;
-    --surface-obsidian:     #000d10;
+    --surface-obsidian: #000d10;
 
     /* Typography */
     --font-display: 'Inter', 'Helvetica Neue', Helvetica, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-    --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 
-    --text-body-sm:    17px; --leading-body-sm:    1.61; --tracking-body-sm:    0.17px;
-    --text-subheading: 20px; --leading-subheading: 1.20; --tracking-subheading: 0.20px;
-    --text-heading-sm: 30px; --leading-heading-sm: 1.10; --tracking-heading-sm: -0.30px;
-    --text-heading:    52px; --leading-heading:    1.09; --tracking-heading:    -0.52px;
-    --text-heading-lg: 63px; --leading-heading-lg: 0.91; --tracking-heading-lg: -0.63px;
-    --text-display:    clamp(64px, 13vw, 187px);
-    --leading-display: 0.80; --tracking-display:    -0.02em;
+    --text-body-sm: 17px;
+    --leading-body-sm: 1.61;
+    --tracking-body-sm: 0.17px;
+    --text-subheading: 20px;
+    --leading-subheading: 1.20;
+    --tracking-subheading: 0.20px;
+    --text-heading-sm: 30px;
+    --leading-heading-sm: 1.10;
+    --tracking-heading-sm: -0.30px;
+    --text-heading: 52px;
+    --leading-heading: 1.09;
+    --tracking-heading: -0.52px;
+    --text-heading-lg: 63px;
+    --leading-heading-lg: 0.91;
+    --tracking-heading-lg: -0.63px;
+    --text-display: clamp(64px, 13vw, 187px);
+    --leading-display: 0.88;
+    --tracking-display: -0.02em;
 
     --weight-regular: 400;
-    --weight-medium:  500;
-    --weight-semi:    600;
-    --weight-bold:    700;
-    --weight-extra:   800;
+    --weight-medium: 500;
+    --weight-semi: 600;
+    --weight-bold: 700;
+    --weight-extra: 800;
 
     /* Spacing */
-    --s-11:  11px;
-    --s-13:  13px;
-    --s-15:  15px;
-    --s-16:  16px;
-    --s-17:  17px;
-    --s-21:  21px;
-    --s-22:  22px;
-    --s-23:  23px;
-    --s-31:  31px;
-    --s-34:  34px;
-    --s-38:  38px;
-    --s-53:  53px;
-    --s-59:  59px;
-    --s-60:  60px;
-    --s-68:  68px;
+    --s-11: 11px;
+    --s-13: 13px;
+    --s-15: 15px;
+    --s-16: 16px;
+    --s-17: 17px;
+    --s-21: 21px;
+    --s-22: 22px;
+    --s-23: 23px;
+    --s-31: 31px;
+    --s-34: 34px;
+    --s-38: 38px;
+    --s-53: 53px;
+    --s-59: 59px;
+    --s-60: 60px;
+    --s-68: 68px;
     --s-119: 119px;
 
-    --section-gap:  68px;
+    --section-gap: 68px;
     --card-padding: 22px;
-    --element-gap:  23px;
+    --element-gap: 23px;
 
     /* Radii */
-    --radius-pill:   1000px;
-    --radius-card:   45px;
+    --radius-pill: 1000px;
+    --radius-card: 45px;
     --radius-button: 1000px;
 
     /* Motion */
-    --t-fast:   0.18s;
-    --t-base:   0.25s;
-    --t-slow:   0.30s;
+    --t-fast: 0.18s;
+    --t-base: 0.25s;
+    --t-slow: 0.30s;
     --t-slower: 0.55s;
-    --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-in:  cubic-bezier(0.7, 0, 0.84, 0);
+    --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
     --ease-weighted: cubic-bezier(0.05, 0.7, 0.1, 1);
 
     /* Layout */
     --gutter: clamp(20px, 4vw, 60px);
-    --max-w:  1440px;
+    --max-w: 1440px;
 }
 
 /* ----- Reset ----- */
-*, *::before, *::after { box-sizing: border-box; }
-* { margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
 
 html {
     -webkit-text-size-adjust: 100%;
@@ -106,37 +125,108 @@ body {
     cursor: none;
 }
 
-img, svg, video { display: block; max-width: 100%; }
-ul, ol { list-style: none; }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: none; cursor: none; }
-input, textarea { font: inherit; color: inherit; }
+img,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: none;
+}
+
+input,
+textarea {
+    font: inherit;
+    color: inherit;
+}
 
 /* Hide native cursor on every interactive element so the custom cursor is the only one */
-a, button, .btn, .nav__link, .nav__cta, .nav__brand, .nav__menu,
-.feature, .disclosure, .project, .contact-row, .social,
-.stack-row, .stack-row__tools li, [role="button"], label, select {
+a,
+button,
+.btn,
+.nav__link,
+.nav__cta,
+.nav__brand,
+.nav__menu,
+.feature,
+.disclosure,
+.project,
+.contact-row,
+.social,
+.stack-row,
+.stack-row__tools li,
+[role="button"],
+label,
+select {
     cursor: none !important;
 }
 
-::selection { background: var(--color-desert-sienna); color: var(--color-canvas-white); }
+::selection {
+    background: var(--color-desert-sienna);
+    color: var(--color-canvas-white);
+}
 
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--color-canvas-white); }
-::-webkit-scrollbar-thumb { background: var(--color-obsidian); border-radius: var(--radius-pill); }
-::-webkit-scrollbar-thumb:hover { background: var(--color-desert-sienna); }
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-canvas-white);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-obsidian);
+    border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-desert-sienna);
+}
 
 /* ----- Base typography ----- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: var(--weight-bold);
     line-height: 1;
     color: var(--color-obsidian);
     letter-spacing: var(--tracking-heading);
 }
 
-p { color: var(--color-obsidian); }
-strong { font-weight: var(--weight-bold); color: var(--color-obsidian); }
-em { font-style: normal; color: var(--color-obsidian); }
+p {
+    color: var(--color-obsidian);
+}
+
+strong {
+    font-weight: var(--weight-bold);
+    color: var(--color-obsidian);
+}
+
+em {
+    font-style: normal;
+    color: var(--color-obsidian);
+}
+
 code {
     font-family: var(--font-mono);
     font-size: 0.92em;
@@ -152,9 +242,20 @@ code {
     width: 100%;
     overflow: hidden;
 }
-.surface--light { background: var(--surface-canvas-white); color: var(--color-obsidian); }
-.surface--dark  { background: var(--surface-obsidian);    color: var(--color-canvas-white); }
-.surface--cta   { padding-bottom: var(--s-119); }
+
+.surface--light {
+    background: var(--surface-canvas-white);
+    color: var(--color-obsidian);
+}
+
+.surface--dark {
+    background: var(--surface-obsidian);
+    color: var(--color-canvas-white);
+}
+
+.surface--cta {
+    padding-bottom: var(--s-119);
+}
 
 .section {
     max-width: var(--max-w);
@@ -162,12 +263,16 @@ code {
     padding: var(--s-119) var(--gutter);
     position: relative;
 }
-.surface--dark .section { color: var(--color-canvas-white); }
+
+.surface--dark .section {
+    color: var(--color-canvas-white);
+}
 
 /* ----- Custom cursor (macOS style) ----- */
 .cursor {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     z-index: 9999;
     pointer-events: none;
     width: 32px;
@@ -192,8 +297,18 @@ code {
     -moz-user-select: none;
 }
 
-.cursor__arrow   { opacity: 1; }
-.cursor__pointer { opacity: 0; }
-.cursor__text    { opacity: 0; }
+.cursor__arrow {
+    opacity: 1;
+}
 
-.cursor.is-down { transform: scale(0.85); }
+.cursor__pointer {
+    opacity: 0;
+}
+
+.cursor__text {
+    opacity: 0;
+}
+
+.cursor.is-down {
+    transform: scale(0.85);
+}
