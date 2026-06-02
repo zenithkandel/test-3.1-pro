@@ -1,311 +1,55 @@
 /* ===========================================================
-   LIFE · ambient + intentional styles
-   All values use existing color tokens. No theme change.
+   LIFE · minimal set of intentional accents.
+
+   Only the elements that survived the great revert:
+     - live KTM clock in the hero
+     - page-wipe transition between index and cv
+     - footer brand scramble (no styles needed; handled in JS)
    =========================================================== */
 
-/* ---------- 1. Avatar (line-art portrait in hero) ---------- */
-.hero__portrait {
-    position: relative;
+/* ---------- 1. Live KTM clock (hero) ---------- */
+.hero__top-right {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
-.hero__portrait-svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 30px 80px -20px rgba(0, 13, 16, 0.18);
-    transition: transform 0.6s var(--ease-out),
-                box-shadow 0.6s var(--ease-out);
-    background: var(--color-canvas-white);
-}
-
-.hero__portrait:hover .hero__portrait-svg {
-    transform: scale(1.02);
-    box-shadow: 0 40px 100px -25px rgba(0, 13, 16, 0.28);
-}
-
-/* Head + chest: the breath container.
-   The whole portrait breathes very subtly. */
-.hero__portrait-svg .avatar-breath {
-    transform-origin: 50% 80%;
-    animation: breath var(--breath-duration) var(--breath-ease) infinite;
-}
-
-/* Hair tufts: each one sways on its own clock. */
-.hero__portrait-svg .avatar-tuft-1 { transform-origin: 50% 100%; animation: sway-1 var(--sway-1) var(--breath-ease) infinite; }
-.hero__portrait-svg .avatar-tuft-2 { transform-origin: 50% 100%; animation: sway-2 var(--sway-2) var(--breath-ease) infinite; }
-.hero__portrait-svg .avatar-tuft-3 { transform-origin: 50% 100%; animation: sway-3 var(--sway-3) var(--breath-ease) infinite; }
-
-/* Eye groups: pupils translate inside, lids cover briefly. */
-.hero__portrait-svg .pupil {
-    transition: transform 80ms linear;
-    will-change: transform;
-}
-
-.hero__portrait-svg .lid {
-    transform-origin: center;
-    transform: scaleY(0);
-    will-change: transform;
-}
-
-.hero__portrait-svg.is-blinking .lid {
-    animation: blink var(--blink-duration) var(--blink-ease) infinite;
-}
-
-/* ---------- 2. Live KTM clock (hero) ---------- */
 .hero__clock {
     display: inline-flex;
     align-items: baseline;
-    gap: 8px;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.05em;
+    color: var(--color-obsidian);
 }
 
 .hero__clock-time {
     font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: var(--weight-medium);
-    letter-spacing: 0.04em;
-    color: var(--color-obsidian);
     font-variant-numeric: tabular-nums;
-}
-
-/* Live status dot (chip) — heartbeat */
-.hero__chip-dot.is-heartbeat {
-    animation: heartbeat var(--heartbeat-duration) var(--heartbeat-ease) infinite;
-}
-
-/* Portrait cap dot — gentle pulse (already exists in hero.css) — also a
-   slightly faster one for the live indicator. */
-.hero__portrait-cap-dot.is-heartbeat {
-    animation: heartbeat var(--heartbeat-duration) var(--heartbeat-ease) infinite;
-}
-
-/* Hero period wobble (the dot after "Kandel.") */
-.hero__period.is-wobbling {
-    display: inline-block;
-    transform-origin: 50% 100%;
-    animation: period-wobble var(--breath-duration) var(--breath-ease) infinite;
-}
-
-/* ---------- 3. (Section color crossfade removed — would have required
-   per-edge color logic that the current design does not need. The hard
-   boundary between light and dark surfaces is intentional.) ---------- */
-
-/* ---------- 4. Section index draw (the "01 — About" rule) ---------- */
-.section__index {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 4px;
-}
-
-.section__index::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1.5px;
-    background: var(--color-desert-sienna);
-    transform: scaleX(0);
-    transform-origin: left center;
-}
-
-.section__index.in-view::after {
-    animation: section-index-draw 0.9s var(--ease-out) 0.15s forwards;
-}
-
-/* ---------- 5. Section index counter (fixed bottom-left) ---------- */
-.section-counter {
-    position: fixed;
-    left: var(--gutter);
-    bottom: 18px;
-    z-index: 60;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: var(--weight-medium);
-    letter-spacing: 0.10em;
-    color: var(--color-obsidian);
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(8px) saturate(1.2);
-    -webkit-backdrop-filter: blur(8px) saturate(1.2);
-    border: 1px solid var(--color-obsidian-08);
-    border-radius: var(--radius-pill);
-    padding: 6px 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-transform: uppercase;
-    pointer-events: none;
-    transition: color var(--t-slow) var(--ease),
-                background var(--t-slow) var(--ease),
-                border-color var(--t-slow) var(--ease),
-                opacity var(--t-slow) var(--ease);
-    opacity: 0;
-}
-
-.section-counter.is-visible { opacity: 1; }
-
-.section-counter.is-on-dark {
-    color: var(--color-canvas-white);
-    background: rgba(0, 13, 16, 0.7);
-    border-color: var(--color-white-08);
-}
-
-.section-counter__progress {
-    width: 30px;
-    height: 2px;
-    background: currentColor;
-    opacity: 0.18;
-    border-radius: var(--radius-pill);
-    position: relative;
-    overflow: hidden;
-}
-
-.section-counter__progress::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--color-desert-sienna);
-    transform: scaleX(var(--p, 0));
-    transform-origin: left center;
-    transition: transform 0.12s linear;
-}
-
-/* ---------- 6. Work · project art depth on hover ---------- */
-.project__art {
-    position: relative;
-    overflow: visible;
-}
-
-.project__art::after {
-    content: '';
-    position: absolute;
-    left: 10%;
-    right: 10%;
-    top: 60%;
-    height: 30%;
-    background: radial-gradient(ellipse at center, rgba(188, 113, 85, 0.18), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
-    transform: translateY(0);
-    pointer-events: none;
-    z-index: -1;
-}
-
-.project:hover .project__art::after {
-    opacity: 1;
-    transform: translateY(8px);
-}
-
-/* ---------- 7. Stack · tool wave (per-li color pulse) ---------- */
-.stack-row__tools li {
-    position: relative;
-}
-
-.stack-row.is-engaged .stack-row__tools li {
-    animation: tool-flash 0.7s var(--ease) both;
-}
-
-@keyframes tool-flash {
-    0%   { color: var(--color-slate-mist); }
-    35%  { color: var(--color-canvas-white); }
-    65%  { color: var(--color-desert-sienna); }
-    100% { color: var(--color-slate-mist); }
-}
-
-/* Stagger via inline custom property --i on each <li> */
-.stack-row.is-engaged .stack-row__tools li {
-    animation-delay: calc(var(--i, 0) * 60ms);
-}
-
-/* ---------- 8. Research · shield bug sway when section is in view ----------
-   The disclosure ::after circle keeps its existing hover-only
-   scale+rotate from sections.css. We add a subtle sway to the
-   research emblem image instead. */
-.research-emblem.is-engaged {
-    animation: bug-sway 3.4s var(--ease) infinite;
-}
-
-@keyframes bug-sway {
-    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-    50%      { transform: translate3d(2px, -1.5px, 0) rotate(-2deg); }
-}
-
-/* ---------- 9. Contact · envelope flap (when scrolled into view) ---------- */
-.contact-emblem.is-engaged {
-    animation: envelope-flap 1.4s var(--ease) 1;
-    transform-origin: 50% 50%;
-}
-
-@keyframes envelope-flap {
-    0%, 100% { transform: rotate(0deg); }
-    40%      { transform: rotate(-6deg); }
-    60%      { transform: rotate( 3deg); }
-}
-
-/* Copy-to-clipboard value flash */
-.contact-row__value.is-copied {
-    color: var(--color-desert-sienna) !important;
-}
-
-.surface--light .contact-row__value.is-copied {
-    color: var(--color-desert-sienna) !important;
-}
-
-/* "Online now" dot */
-.online-led {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-desert-sienna);
-    margin-left: 8px;
-    vertical-align: middle;
-    animation: heartbeat var(--heartbeat-duration) var(--heartbeat-ease) infinite;
-}
-
-/* ---------- 10. Footer · status row + brand scramble ---------- */
-.footer__status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    font-weight: var(--weight-medium);
-    letter-spacing: 0.06em;
     color: var(--color-slate-mist);
-    text-transform: uppercase;
-    padding: 14px 0;
-    border-top: 1px solid var(--color-obsidian-08);
 }
 
-.footer__status-led {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--color-desert-sienna);
-    margin-right: 8px;
-    vertical-align: middle;
-    animation: heartbeat var(--heartbeat-duration) var(--heartbeat-ease) infinite;
+@media (max-width: 560px) {
+    .hero__clock {
+        font-size: 12px;
+    }
+    .hero__top-right {
+        gap: 12px;
+    }
 }
 
-.footer__brand {
-    /* scramble-friendly: mono variant kept inline by JS */
-    font-variant-numeric: tabular-nums;
-}
-
-/* ---------- 11. Page wipe transition ---------- */
+/* ---------- 2. Page wipe transition ---------- */
 .page-wipe {
     position: fixed;
     inset: 0;
     z-index: 9990;
     background: var(--color-desert-sienna);
     transform: scaleX(0);
-    transform-origin: right center;
     pointer-events: none;
     visibility: hidden;
+    transform-origin: right center;
 }
 
 .page-wipe.is-in {
@@ -318,250 +62,19 @@
     animation: page-wipe-out 0.4s var(--ease-out) forwards;
 }
 
-/* ---------- 12. Easter egg · status modal ---------- */
-.egg-modal {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 150;
-    width: min(380px, calc(100vw - 48px));
-    background: var(--color-canvas-white);
-    color: var(--color-obsidian);
-    border: 1.5px solid var(--color-obsidian);
-    border-radius: var(--radius-card);
-    padding: 22px 24px 20px;
-    box-shadow: 0 30px 80px -20px rgba(0, 13, 16, 0.32);
-    transform: translateY(20px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s var(--ease-out),
-                transform 0.4s var(--ease-out);
-    font-family: var(--font-display);
+@keyframes page-wipe-in {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
 }
 
-.egg-modal.is-open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+@keyframes page-wipe-out {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
 }
 
-.egg-modal__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--color-obsidian-08);
-}
-
-.egg-modal__title {
-    font-size: 13px;
-    font-weight: var(--weight-bold);
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    color: var(--color-desert-sienna);
-}
-
-.egg-modal__close {
-    width: 28px;
-    height: 28px;
-    border: 1px solid var(--color-obsidian-12);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--color-obsidian);
-    display: grid;
-    place-items: center;
-    cursor: none;
-    transition: background var(--t-slow) var(--ease),
-                color var(--t-slow) var(--ease);
-}
-
-.egg-modal__close:hover {
-    background: var(--color-obsidian);
-    color: var(--color-canvas-white);
-}
-
-.egg-modal__body {
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--color-slate-mist);
-    letter-spacing: 0.01em;
-}
-
-.egg-modal__body strong {
-    color: var(--color-obsidian);
-    font-weight: var(--weight-bold);
-}
-
-.egg-modal__sign {
-    margin-top: 14px;
-    font-size: 12px;
-    font-weight: var(--weight-medium);
-    letter-spacing: 0.06em;
-    color: var(--color-obsidian);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.egg-modal__sign::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--color-desert-sienna);
-    border-radius: 50%;
-    display: inline-block;
-    animation: heartbeat var(--heartbeat-duration) var(--heartbeat-ease) infinite;
-}
-
-/* ---------- 13. Easter egg · terminal ---------- */
-.terminal {
-    position: fixed;
-    left: 50%;
-    bottom: 24px;
-    transform: translateX(-50%) translateY(20px);
-    z-index: 160;
-    width: min(720px, calc(100vw - 32px));
-    max-height: 320px;
-    background: var(--color-obsidian);
-    color: var(--color-canvas-white);
-    border: 1.5px solid var(--color-desert-sienna);
-    border-radius: 14px;
-    box-shadow: 0 40px 100px -25px rgba(0, 0, 0, 0.55);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    line-height: 1.55;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.28s var(--ease-out),
-                transform 0.34s var(--ease-out);
-    overflow: hidden;
-}
-
-.terminal.is-open {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-}
-
-.terminal__bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--color-white-08);
-    background: rgba(0, 0, 0, 0.25);
-    font-size: 11px;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.terminal__dots {
-    display: inline-flex;
-    gap: 6px;
-}
-
-.terminal__dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.18);
-    display: inline-block;
-}
-
-.terminal__dots span:nth-child(1) { background: var(--color-desert-sienna); }
-
-.terminal__title {
-    flex: 1;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.terminal__hint {
-    font-size: 10px;
-    color: rgba(255, 255, 255, 0.35);
-}
-
-.terminal__out {
-    flex: 1;
-    padding: 14px 16px 6px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.terminal__out .accent { color: var(--color-desert-sienna); }
-.terminal__out .dim    { color: rgba(255, 255, 255, 0.45); }
-.terminal__out .ok     { color: #b7d4a8; }
-.terminal__out .warn   { color: #e0b87b; }
-
-.terminal__form {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px 14px;
-    border-top: 1px solid var(--color-white-08);
-}
-
-.terminal__prompt {
-    color: var(--color-desert-sienna);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    user-select: none;
-}
-
-.terminal__input {
-    flex: 1;
-    background: transparent;
-    border: 0;
-    color: var(--color-canvas-white);
-    font: inherit;
-    outline: none;
-    padding: 4px 0;
-    caret-color: var(--color-desert-sienna);
-    cursor: none;
-}
-
-.terminal__input::selection { background: var(--color-desert-sienna); color: var(--color-obsidian); }
-
-/* ---------- 14. Mobile / narrow — disable heavy life effects ---------- */
-@media (max-width: 860px) {
-    .section-counter { display: none; }
-}
-
-@media (hover: none) {
-    /* Replace hover-based cues with idle engagement for touch. */
-    .feature,
-    .disclosure,
-    .project,
-    .stack-row,
-    .contact-row,
-    .social {
-        cursor: auto !important;
-    }
-}
-
-/* ---------- 15. Reduced motion overrides (extra safety) ---------- */
+/* ---------- 3. Reduced motion override ---------- */
 @media (prefers-reduced-motion: reduce) {
-    .hero__chip-dot.is-heartbeat,
-    .hero__portrait-cap-dot.is-heartbeat,
-    .online-led,
-    .footer__status-led,
-    .egg-modal__sign::before,
-    .hero__portrait-svg .avatar-breath,
-    .hero__portrait-svg .avatar-tuft-1,
-    .hero__portrait-svg .avatar-tuft-2,
-    .hero__portrait-svg .avatar-tuft-3,
-    .hero__portrait-svg.is-blinking .lid,
-    .hero__period.is-wobbling,
-    .research-emblem.is-engaged,
-    .contact-emblem.is-engaged {
-        animation: none !important;
+    .page-wipe {
+        display: none;
     }
 }

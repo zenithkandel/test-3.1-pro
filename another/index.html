@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/svg-art.css" />
     <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/life.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
 
     <link
@@ -126,7 +127,10 @@
               <span class="hero__chip-dot" aria-hidden="true"></span>
               Available for hackathons, builds, and disclosures
             </span>
-            <span class="hero__loc">KTM / NP · 27.7172° N</span>
+            <div class="hero__top-right">
+              <span class="hero__loc">KTM / NP · 27.7172° N</span>
+              <span class="hero__clock" aria-label="Current time in Kathmandu"><span data-clock-time>--:--:--</span></span>
+            </div>
           </div>
 
           <div class="hero__main">
@@ -846,7 +850,7 @@
     <footer class="footer surface surface--light">
       <div class="section">
         <div class="footer__top">
-          <span class="footer__brand">Zenith Kandel</span>
+          <span class="footer__brand" data-scramble>Zenith Kandel</span>
           <span class="footer__role"
             >Developer · Security Researcher · Builder</span
           >
@@ -869,6 +873,9 @@
       </div>
     </footer>
 
+    <!-- Page-wipe transition overlay -->
+    <div class="page-wipe" id="pageWipe" aria-hidden="true"></div>
+
     <!-- Scripts -->
     <script src="assets/js/cursor.js" defer></script>
     <script src="assets/js/smooth-scroll.js" defer></script>
@@ -877,6 +884,9 @@
     <script src="assets/js/parallax.js" defer></script>
     <script src="assets/js/interactions.js" defer></script>
     <script src="assets/js/svg-anim.js" defer></script>
+    <script src="assets/js/clock.js" defer></script>
+    <script src="assets/js/footer-life.js" defer></script>
+    <script src="assets/js/page-wipe.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>
