@@ -87,26 +87,9 @@
     animation: period-wobble var(--breath-duration) var(--breath-ease) infinite;
 }
 
-/* ---------- 3. Section color crossfade (top edge) ---------- */
-.surface::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: clamp(60px, 8vh, 120px);
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(to bottom, var(--surface-obsidian), transparent);
-    opacity: 0;
-    transition: opacity var(--t-slower) var(--ease);
-}
-
-.surface--light + .surface--dark::before,
-.surface--dark + .surface--light::before,
-.surface + .surface::before {
-    opacity: 0.18;
-}
+/* ---------- 3. (Section color crossfade removed — would have required
+   per-edge color logic that the current design does not need. The hard
+   boundary between light and dark surfaces is intentional.) ---------- */
 
 /* ---------- 4. Section index draw (the "01 — About" rule) ---------- */
 .section__index {
