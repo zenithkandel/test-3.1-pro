@@ -224,7 +224,7 @@
 
 .horizontal-scroll-sticky .section {
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: clamp(80px, 10vw, 140px);
     margin-top: 0;
     margin-bottom: 0;
     width: 100%;
@@ -295,23 +295,12 @@
     z-index: 1;
 }
 
-.project__meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-top: 8px;
-    transition: transform var(--t-slow) var(--ease);
-}
-
-.project:hover .project__meta {
-    transform: translateX(2px);
-}
-
 .project__num {
     font-size: 15px;
     font-weight: var(--weight-bold);
     letter-spacing: 0.08em;
     color: var(--color-desert-sienna);
+    padding-top: 8px;
     transition: transform var(--t-slow) var(--ease);
 }
 
@@ -321,7 +310,7 @@
 }
 
 .project__art {
-    width: clamp(36px, 3.4vw, 48px);
+    width: clamp(64px, 6vw, 88px);
     height: auto;
     flex-shrink: 0;
     transition: transform var(--t-slow) var(--ease);
