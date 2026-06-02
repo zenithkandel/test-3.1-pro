@@ -53,14 +53,15 @@
         maxTranslate = listWidth - containerWidth + (window.innerWidth * 0.08);
 
         if (maxTranslate > 0) {
-            // Measure the section header (the .section above the sticky) so the
-            // section height = header + sticky (100vh). The horizontal travel
-            // is then mapped onto the sticky pinning window, not onto dead
-            // scroll space after the sticky releases.
+            // Measure the section header (the .section above the sticky) and
+            // size the section so that 1px of vertical scroll = 1px of
+            // horizontal card travel. This "locks" the vertical scroll to the
+            // horizontal scroll, so the user can't scroll past the work
+            // section until they've seen every card.
             const headerEl = section.querySelector('.section');
             const headerHeight = headerEl ? headerEl.offsetHeight : 0;
 
-            sectionHeight = headerHeight + window.innerHeight;
+            sectionHeight = headerHeight + maxTranslate + window.innerHeight;
             section.style.height = `${sectionHeight}px`;
         } else {
             section.style.height = '';
@@ -79,11 +80,13 @@
         let progress = 0;
 
         if (sectionTop <= -headerHeight) {
-            // Progress is measured against the sticky pinning window (100vh),
-            // not against the raw horizontal travel distance. This way the
-            // horizontal scroll completes exactly while the sticky is pinned.
+            // Map the vertical scroll (after the header) directly to the
+            // horizontal travel distance. This is the 1:1 lock: scrolling
+            // vertically translates the cards at the same rate, and the
+            // user cannot move on to the next section until every card
+            // has slid through view.
             const scrollPastHeader = -sectionTop - headerHeight;
-            progress = Math.min(scrollPastHeader / window.innerHeight, 1);
+            progress = Math.min(Math.max(scrollPastHeader / maxTranslate, 0), 1);
         }
 
         // Apply the horizontal translation

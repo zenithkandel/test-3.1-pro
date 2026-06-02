@@ -201,7 +201,7 @@
 
 /* ----- Project list (Work) ----- */
 .horizontal-scroll-section {
-    height: 300vh;
+    height: fit-content;
     /* Will be adjusted by JS, but good fallback */
     position: relative;
     padding: 0;
@@ -210,7 +210,7 @@
     overflow: visible !important;
 }
 
-.horizontal-scroll-section > .section {
+.horizontal-scroll-section>.section {
     padding-bottom: 0;
 }
 
@@ -260,6 +260,7 @@
     padding-right: var(--gutter);
     will-change: transform;
     transition: transform 0.05s linear;
+    margin: 0px var(--gutter);
 }
 
 .project {
