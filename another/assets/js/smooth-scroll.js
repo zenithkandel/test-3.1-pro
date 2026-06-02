@@ -23,7 +23,6 @@
     let maxScroll = 0;
     let lastTouchY = 0;
     let animating = true;
-    let programmaticScrollEnd = 0; // timestamp when programmatic scroll ends
 
     const getMax = () => {
         // body's scrollHeight is the reliable one when html/body aren't fixed
@@ -55,7 +54,6 @@
     };
 
     const onTouchMove = (e) => {
-        // Only prevent default when not at scroll boundaries? Let browser do it for bounce.
         const y = e.touches[0].clientY;
         const dy = lastTouchY - y;
         lastTouchY = y;
@@ -90,12 +88,19 @@
         const tgt = document.querySelector(id);
         if (!tgt) return;
         e.preventDefault();
+        // Recalculate max before anchor scroll to capture dynamic heights
+        setSize();
         const y = tgt.getBoundingClientRect().top + window.scrollY - 8;
         target = Math.max(0, Math.min(y, maxScroll));
     };
 
     const tick = () => {
         if (animating) {
+            // Recalculate max every frame to stay in sync with dynamic height changes
+            // (e.g., horizontal scroll section adjusting its height via JS)
+            maxScroll = getMax();
+            if (target > maxScroll) target = maxScroll;
+
             const diff = target - current;
             if (Math.abs(diff) > 0.5) {
                 current += diff * ease;

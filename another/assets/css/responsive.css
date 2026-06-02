@@ -63,15 +63,41 @@
         font-size: clamp(56px, 14vw, 100px);
     }
 
-    .project {
-        grid-template-columns: 50px 1fr;
+    /* Horizontal scroll is disabled below 860px, restore vertical project layout */
+    .horizontal-scroll-section {
+        height: auto !important;
+        overflow: hidden !important;
     }
 
-    .project__year {
-        grid-column: 1 / -1;
-        text-align: left;
-        padding-top: 0;
-        font-size: 14px;
+    .horizontal-scroll-sticky {
+        position: relative;
+        height: auto;
+    }
+
+    .horizontal-scroll-sticky .section {
+        padding-top: var(--s-119);
+        padding-bottom: var(--s-119);
+    }
+
+    .horizontal-scroll-track {
+        overflow: visible;
+    }
+
+    .project-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 32px;
+    }
+
+    .project {
+        width: 100%;
+        border-left: 1px solid var(--color-obsidian-08);
+        border-bottom: none;
+    }
+
+    .horizontal-scroll-progress {
+        display: none;
     }
 
     .feature-grid,
@@ -176,7 +202,7 @@
     }
 
     .project {
-        grid-template-columns: 1fr;
+        width: 100%;
         gap: 8px;
     }
 

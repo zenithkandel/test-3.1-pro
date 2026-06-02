@@ -1,111 +1,135 @@
 /* ===========================================================
    HORIZONTAL SCROLL — Premium Apple-style Project Scroll
+   Pins the work section while scrolling vertically, converting
+   vertical scroll into horizontal translation of project cards.
    =========================================================== */
 (() => {
     'use strict';
 
     const section = document.querySelector('.horizontal-scroll-section');
-    const sticky = document.querySelector('.horizontal-scroll-sticky');
-    const track = document.querySelector('.horizontal-scroll-track');
-    const list = document.querySelector('.project-list');
+    const sticky  = document.querySelector('.horizontal-scroll-sticky');
+    const track   = document.querySelector('.horizontal-scroll-track');
+    const list    = document.querySelector('.project-list');
     const projects = document.querySelectorAll('.project');
 
     if (!section || !sticky || !track || !list) return;
 
-    // We only enable this on non-mobile devices or if width is large enough
+    // Only enable on wider viewports
     const mql = window.matchMedia('(min-width: 860px)');
 
-    let trackWidth, viewportWidth;
+    // Create progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'horizontal-scroll-progress';
+    const progressFill = document.createElement('div');
+    progressFill.className = 'horizontal-scroll-progress__fill';
+    progressBar.appendChild(progressFill);
+    sticky.appendChild(progressBar);
+
+    let maxTranslate = 0;
+    let sectionHeight = 0;
+    let isEnabled = false;
 
     const calculateMetrics = () => {
         if (!mql.matches) {
             // Restore natural behavior for mobile
-            section.style.height = 'auto';
-            track.style.transform = 'none';
-            list.style.transform = 'none';
+            section.style.height = '';
+            list.style.transform = '';
+            progressFill.style.width = '0%';
+            projects.forEach(proj => {
+                proj.style.opacity = '';
+                proj.style.transform = '';
+            });
+            isEnabled = false;
             return;
         }
 
-        // To map 1px of horizontal distance to 1px of vertical scroll
-        // we add the horizontal travel distance to the viewport height.
-        trackWidth = list.scrollWidth;
-        viewportWidth = window.innerWidth;
+        isEnabled = true;
 
-        // Total horizontal distance to travel
-        // Calculate the maximum left transform possible: container width - viewport width
-        // Wait, track is inside section, we need to move the list left by (trackWidth - track.clientWidth + some padding)
+        // The total horizontal distance to scroll: list width minus visible container width
+        const listWidth = list.scrollWidth;
         const containerWidth = track.clientWidth;
-        const maxTranslate = list.scrollWidth - containerWidth + (window.innerWidth * 0.15);
+
+        // Add some padding so the last card has breathing room
+        maxTranslate = listWidth - containerWidth + (window.innerWidth * 0.08);
 
         if (maxTranslate > 0) {
-            section.style.height = `${maxTranslate + window.innerHeight}px`;
+            // Section height = viewport height + horizontal travel distance
+            // This creates a 1:1 ratio of vertical scroll to horizontal movement
+            sectionHeight = maxTranslate + window.innerHeight;
+            section.style.height = `${sectionHeight}px`;
         } else {
-            section.style.height = 'auto';
+            section.style.height = '';
+            maxTranslate = 0;
         }
     };
 
     const updateScroll = () => {
-        if (!mql.matches) return;
+        if (!isEnabled || maxTranslate <= 0) return;
 
-        const sectionRect = section.getBoundingClientRect();
+        // Get the section's position relative to the viewport
+        const sectionTop = section.getBoundingClientRect().top;
+        const availableScroll = sectionHeight - window.innerHeight;
 
-        // Let start represent how far we've scrolled down into the pinned section timeline
         let progress = 0;
 
-        // As soon as the top of `.horizontal-scroll-section` goes above 0, pinning starts
-        if (sectionRect.top <= 0) {
-            const availableScroll = sectionRect.height - window.innerHeight;
-            if (availableScroll > 0) {
-                progress = Math.min(-sectionRect.top / availableScroll, 1);
-            }
+        if (sectionTop <= 0 && availableScroll > 0) {
+            // How far we've scrolled past the section top
+            progress = Math.min(Math.max(-sectionTop / availableScroll, 0), 1);
         }
 
-        const maxTranslate = list.scrollWidth - track.clientWidth + (window.innerWidth * 0.15);
+        // Apply the horizontal translation
+        const translateVal = progress * maxTranslate;
+        list.style.transform = `translate3d(${-translateVal}px, 0, 0)`;
 
-        if (maxTranslate > 0) {
-            const translateVal = progress * maxTranslate;
-            // Use translation instead of scrollLeft for smooth performance
-            list.style.transform = `translate3d(${-translateVal}px, 0, 0)`;
+        // Update progress bar
+        progressFill.style.width = `${(progress * 100).toFixed(1)}%`;
 
-            // Subtle parallax/opacity effects on items
-            projects.forEach((proj) => {
-                const projRect = proj.getBoundingClientRect();
-                const centerOffset = (projRect.left + projRect.width / 2) - window.innerWidth / 2;
+        // Premium parallax effects on individual cards
+        projects.forEach((proj) => {
+            const projRect = proj.getBoundingClientRect();
+            const cardCenter = projRect.left + projRect.width / 2;
+            const viewCenter = window.innerWidth / 2;
 
-                // Normalise the distance from center (-1 to 1 roughly)
-                const distance = Math.min(Math.max(centerOffset / window.innerWidth, -1), 1);
+            // How far from viewport center (-1 to 1)
+            const distance = (cardCenter - viewCenter) / window.innerWidth;
+            const clamped = Math.max(-1, Math.min(1, distance));
+            const absDist = Math.abs(clamped);
 
-                // Opacity curve: brightest at center, fades out slightly on edges
-                const opacity = 1 - Math.abs(distance) * 0.5;
-                const scale = 1 - Math.abs(distance) * 0.03;
+            // Cards closer to center are brighter and slightly larger
+            const opacity = 1 - absDist * 0.45;
+            const scale = 1 - absDist * 0.035;
 
-                proj.style.opacity = opacity.toFixed(2);
-                proj.style.transform = `scale(${scale.toFixed(3)})`;
-            });
+            proj.style.opacity = opacity.toFixed(3);
+            proj.style.transform = `scale(${scale.toFixed(4)})`;
+        });
+    };
+
+    // Use a continuous rAF loop for buttery-smooth updates
+    // This syncs perfectly with the smooth-scroll system which
+    // also uses rAF + window.scrollTo
+    let running = true;
+    const loop = () => {
+        if (running) {
+            updateScroll();
+            requestAnimationFrame(loop);
         }
     };
 
+    // Recalculate on resize
+    let resizeTimer;
     window.addEventListener('resize', () => {
-        calculateMetrics();
-        updateScroll();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            calculateMetrics();
+        }, 100);
     });
 
-    // Tap into smooth scroll or native scroll
-    // Using a simple rAF loop gives the smoothest interpolated result for CSS transforms
-    let ticking = false;
-    const render = () => {
-        updateScroll();
-        ticking = false;
-    };
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(render);
-            ticking = true;
-        }
-    }, { passive: true });
+    // Recalculate after fonts/images load
+    window.addEventListener('load', () => {
+        calculateMetrics();
+    });
 
     // Initial setup
     calculateMetrics();
-    updateScroll();
+    requestAnimationFrame(loop);
 })();
