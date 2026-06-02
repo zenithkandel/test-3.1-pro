@@ -200,10 +200,12 @@
     50%      { transform: translateX(0.6px) rotate(-0.6deg); }
 }
 
-/* ----- Cursor blink (eyelid scaleY) ----- */
+/* ----- Eye blink (eyelid scaleY).
+   Lid is hidden (scaleY 0) for ~92% of the cycle, briefly
+   covers the eye (scaleY 1) for ~6% of the cycle. */
 @keyframes blink {
-    0%, 92%, 100% { transform: scaleY(1);   }
-    94%, 98%      { transform: scaleY(0.05); }
+    0%, 92%, 100% { transform: scaleY(0); }
+    94%, 98%      { transform: scaleY(1); }
 }
 
 /* ----- Period idle wobble (the dot after "Kandel.") ----- */
