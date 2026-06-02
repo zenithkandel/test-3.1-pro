@@ -1,0 +1,154 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-illustration__svg">
+    <defs>
+        <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#000d10" stop-opacity="0.06"/>
+            <stop offset="100%" stop-color="#000d10" stop-opacity="0"/>
+        </linearGradient>
+        <pattern id="dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="1" fill="#000d10" opacity="0.08"/>
+        </pattern>
+    </defs>
+
+    <!-- Soft ground shadow under the window -->
+    <ellipse cx="360" cy="478" rx="280" ry="14" fill="url(#shadow)"/>
+
+    <!-- Floating tag top-left -->
+    <g class="hero-float hero-float--a" transform="translate(20, 20)">
+        <rect x="0" y="0" width="158" height="40" rx="1000" fill="#000d10"/>
+        <circle cx="20" cy="20" r="4" fill="#bc7155"/>
+        <text x="34" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#ffffff" letter-spacing="0.5">v 2.0 · 2026</text>
+    </g>
+
+    <!-- Floating tag top-right -->
+    <g class="hero-float hero-float--b" transform="translate(560, 36)">
+        <rect x="0" y="0" width="140" height="40" rx="1000" fill="#ffffff" stroke="#000d10" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="4" fill="#28C840"/>
+        <text x="34" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#000d10" letter-spacing="0.5">SHIP · READY</text>
+    </g>
+
+    <!-- Code window -->
+    <g class="hero-window" transform="translate(60, 80)">
+        <!-- Window frame -->
+        <rect x="0" y="0" width="600" height="380" rx="14" fill="#ffffff" stroke="#000d10" stroke-width="2"/>
+
+        <!-- Title bar -->
+        <path d="M0 14 Q0 0 14 0 L586 0 Q600 0 600 14 L600 44 L0 44 Z" fill="#ffffff" stroke="#000d10" stroke-width="2"/>
+        <line x1="0" y1="44" x2="600" y2="44" stroke="#000d10" stroke-width="2"/>
+
+        <!-- Traffic lights -->
+        <circle cx="24" cy="22" r="6.5" fill="#FF5F57" stroke="#000d10" stroke-width="0.8"/>
+        <circle cx="44" cy="22" r="6.5" fill="#FEBC2E" stroke="#000d10" stroke-width="0.8"/>
+        <circle cx="64" cy="22" r="6.5" fill="#28C840" stroke="#000d10" stroke-width="0.8"/>
+
+        <!-- File tab -->
+        <rect x="100" y="10" width="120" height="34" rx="6" fill="#ffffff" stroke="#000d10" stroke-width="1.5"/>
+        <text x="160" y="32" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#000d10">zenith.js</text>
+
+        <!-- Code area -->
+        <rect x="0" y="44" width="600" height="336" fill="#ffffff"/>
+
+        <!-- Line numbers gutter -->
+        <rect x="0" y="44" width="48" height="336" fill="#fafafa"/>
+        <line x1="48" y1="44" x2="48" y2="380" stroke="#000d10" stroke-width="1" opacity="0.1"/>
+
+        <!-- Line numbers -->
+        <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8e8e95" text-anchor="end">
+            <text x="40" y="82">1</text>
+            <text x="40" y="108">2</text>
+            <text x="40" y="134">3</text>
+            <text x="40" y="160">4</text>
+            <text x="40" y="186">5</text>
+            <text x="40" y="212">6</text>
+            <text x="40" y="238">7</text>
+            <text x="40" y="264">8</text>
+            <text x="40" y="290">9</text>
+            <text x="40" y="316">10</text>
+            <text x="40" y="342">11</text>
+            <text x="40" y="368">12</text>
+        </g>
+
+        <!-- Code (syntax highlighted) -->
+        <g class="hero-code" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">
+            <text x="68" y="82" fill="#bc7155">const</text>
+            <text x="115" y="82" fill="#000d10">developer</text>
+            <text x="195" y="82" fill="#000d10">=</text>
+            <text x="210" y="82" fill="#bc7155">{</text>
+
+            <text x="88" y="108" fill="#000d10">name</text>
+            <text x="135" y="108" fill="#000d10">:</text>
+            <text x="148" y="108" fill="#28C840">'Zenith Kandel'</text>
+            <text x="280" y="108" fill="#000d10">,</text>
+
+            <text x="88" y="134" fill="#000d10">role</text>
+            <text x="135" y="134" fill="#000d10">:</text>
+            <text x="148" y="134" fill="#28C840">'builder &amp; breaker'</text>
+            <text x="320" y="134" fill="#000d10">,</text>
+
+            <text x="88" y="160" fill="#000d10">stack</text>
+            <text x="135" y="160" fill="#000d10">:</text>
+            <text x="148" y="160" fill="#bc7155">[</text>
+            <text x="158" y="160" fill="#28C840">'JS'</text>
+            <text x="183" y="160" fill="#000d10">,</text>
+            <text x="193" y="160" fill="#28C840">'PHP'</text>
+            <text x="228" y="160" fill="#000d10">,</text>
+            <text x="238" y="160" fill="#28C840">'RF'</text>
+            <text x="263" y="160" fill="#000d10">,</text>
+            <text x="273" y="160" fill="#28C840">'RFID'</text>
+            <text x="312" y="160" fill="#bc7155">]</text>
+            <text x="322" y="160" fill="#000d10">,</text>
+
+            <text x="88" y="186" fill="#000d10">basedIn</text>
+            <text x="155" y="186" fill="#000d10">:</text>
+            <text x="168" y="186" fill="#28C840">'Kathmandu, NP'</text>
+            <text x="320" y="186" fill="#000d10">,</text>
+
+            <text x="88" y="212" fill="#000d10">since</text>
+            <text x="135" y="212" fill="#000d10">:</text>
+            <text x="148" y="212" fill="#bc7155">2009</text>
+            <text x="183" y="212" fill="#000d10">,</text>
+
+            <text x="88" y="238" fill="#000d10">ship</text>
+            <text x="125" y="238" fill="#000d10">:</text>
+            <text x="138" y="238" fill="#bc7155">true</text>
+            <text x="172" y="238" fill="#000d10">,</text>
+
+            <text x="88" y="264" fill="#000d10">hackathons</text>
+            <text x="183" y="264" fill="#000d10">:</text>
+            <text x="196" y="264" fill="#bc7155">5</text>
+            <text x="206" y="264" fill="#000d10">,</text>
+
+            <text x="88" y="290" fill="#000d10">disclosures</text>
+            <text x="188" y="290" fill="#000d10">:</text>
+            <text x="201" y="290" fill="#bc7155">2</text>
+
+            <text x="68" y="316" fill="#bc7155">}</text>
+            <text x="78" y="316" fill="#000d10">;</text>
+
+            <text x="68" y="342" fill="#8e8e95">// shipping from a quiet room · KTM</text>
+        </g>
+
+        <!-- Blinking cursor -->
+        <rect class="hero-cursor" x="290" y="330" width="10" height="18" fill="#000d10"/>
+    </g>
+
+    <!-- Floating card bottom-left -->
+    <g class="hero-float hero-float--c" transform="translate(20, 400)">
+        <rect x="0" y="0" width="180" height="80" rx="22" fill="#000d10"/>
+        <text x="22" y="32" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#8e8e95" letter-spacing="1.5">GITHUB</text>
+        <text x="22" y="60" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.5">80+ repos</text>
+    </g>
+
+    <!-- Floating card bottom-right -->
+    <g class="hero-float hero-float--d" transform="translate(520, 380)">
+        <rect x="0" y="0" width="180" height="100" rx="22" fill="#bc7155"/>
+        <text x="22" y="32" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff" letter-spacing="1.5" opacity="0.7">SECURITY</text>
+        <text x="22" y="60" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.5">2 disclosures</text>
+        <text x="22" y="82" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#ffffff" opacity="0.85">Kantipur · Monkeytype</text>
+    </g>
+
+    <!-- Tiny floating chevron -->
+    <g class="hero-float hero-float--e" transform="translate(640, 280)">
+        <circle cx="0" cy="0" r="16" fill="#ffffff" stroke="#000d10" stroke-width="1.5"/>
+        <path d="M-5 -3 L0 3 L5 -3" stroke="#000d10" stroke-width="1.6" stroke-linecap="square" fill="none"/>
+    </g>
+</svg>

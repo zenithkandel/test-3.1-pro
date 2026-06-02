@@ -12,30 +12,73 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/hero.css" />
+    <link rel="stylesheet" href="assets/css/sections.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/svg-art.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000d10'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,sans-serif' font-size='18' font-weight='800' fill='%23ffffff'%3EZ%3C/text%3E%3C/svg%3E" />
 </head>
-<body>
+<body data-smooth-scroll>
+
+    <!-- Custom cursor (macOS-style) -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+        <div class="cursor__arrow" data-cursor="arrow">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 3.4 L6 25.6 L11.4 21.4 L14.6 28.2 L17.8 26.7 L14.7 19.8 L23 19.8 Z"
+                      fill="#FFFFFF" stroke="#000000" stroke-width="1.6"
+                      stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="cursor__pointer" data-cursor="pointer">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 28 L23 28 L25 22 L25 13.5 C25 12.4 24.1 11.5 23 11.5 L19.5 11.5 L19.5 6.5 C19.5 5.1 18.4 4 17 4 C15.6 4 14.5 5.1 14.5 6.5 L14.5 13 L9 13 C7.9 13 7 13.9 7 15 L7 22 Z"
+                      fill="#FFFFFF" stroke="#000000" stroke-width="1.5"
+                      stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M9 17 L13 17 M9 20 L13 20 M9 23 L13 23 M14.5 11.5 L17 11.5"
+                      stroke="#000000" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+        </div>
+        <div class="cursor__text" data-cursor="text">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5 L21 5 M11 27 L21 27 M16 5 L16 27"
+                      stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M13 3 L19 3 M13 29 L19 29"
+                      stroke="#000000" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Page loader -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader__inner">
+            <div class="loader__bar"><span></span></div>
+            <span class="loader__text">LOADING · KTM / NP</span>
+        </div>
+    </div>
 
     <!-- ============ NAVIGATION ============ -->
     <header class="nav" id="nav">
-        <a href="#top" class="nav__brand" aria-label="Zenith Kandel — Home">
+        <a href="#top" class="nav__brand" aria-label="Zenith Kandel — Home" data-magnetic>
             <span class="nav__mark" aria-hidden="true">ZK</span>
             <span class="nav__word">Zenith Kandel</span>
         </a>
 
         <nav class="nav__links" aria-label="Primary">
-            <a href="#about"    class="nav__link">About</a>
-            <a href="#work"     class="nav__link">Work</a>
-            <a href="#stack"    class="nav__link">Stack</a>
-            <a href="#research" class="nav__link">Research</a>
-            <a href="#contact"  class="nav__link">Contact</a>
+            <a href="#about"    class="nav__link" data-magnetic>About</a>
+            <a href="#work"     class="nav__link" data-magnetic>Work</a>
+            <a href="#stack"    class="nav__link" data-magnetic>Stack</a>
+            <a href="#research" class="nav__link" data-magnetic>Research</a>
+            <a href="#contact"  class="nav__link" data-magnetic>Contact</a>
         </nav>
 
-        <a href="#contact" class="nav__cta">
+        <a href="#contact" class="nav__cta" data-magnetic>
             <span>Hire / Collab</span>
         </a>
 
@@ -46,19 +89,22 @@
 
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <nav class="mobile-menu__nav" aria-label="Mobile">
-            <a href="#about"    class="mobile-menu__link">01 — About</a>
-            <a href="#work"     class="mobile-menu__link">02 — Work</a>
-            <a href="#stack"    class="mobile-menu__link">03 — Stack</a>
-            <a href="#research" class="mobile-menu__link">04 — Research</a>
-            <a href="#contact"  class="mobile-menu__link">05 — Contact</a>
+            <a href="#about"    class="mobile-menu__link" data-magnetic>01 — About</a>
+            <a href="#work"     class="mobile-menu__link" data-magnetic>02 — Work</a>
+            <a href="#stack"    class="mobile-menu__link" data-magnetic>03 — Stack</a>
+            <a href="#research" class="mobile-menu__link" data-magnetic>04 — Research</a>
+            <a href="#contact"  class="mobile-menu__link" data-magnetic>05 — Contact</a>
         </nav>
     </div>
 
     <main>
         <!-- ============ HERO · WHITE ============ -->
         <section class="hero" id="top">
-            <div class="hero__inner">
+            <div class="hero__bg" aria-hidden="true">
+                <div class="hero__dots"></div>
+            </div>
 
+            <div class="hero__inner">
                 <div class="hero__top">
                     <span class="hero__chip">
                         <span class="hero__chip-dot" aria-hidden="true"></span>
@@ -73,18 +119,26 @@
                 </h1>
 
                 <div class="hero__bottom">
-                    <p class="hero__sub">
-                        Developer. Security researcher. Builder of civic tools and off-grid hardware. Seventeen years old, based in Kathmandu, shipping from a quiet room.
-                    </p>
+                    <div class="hero__bottom-left">
+                        <p class="hero__sub">
+                            Developer. Security researcher. Builder of civic tools and off-grid hardware. Seventeen years old, based in Kathmandu, shipping from a quiet room.
+                        </p>
 
-                    <div class="hero__cta">
-                        <a href="#work" class="btn btn--primary">
-                            <span>See selected work</span>
-                            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8 H13 M9 4 L13 8 L9 12" stroke-linecap="square"/></svg>
-                        </a>
-                        <a href="#contact" class="btn btn--ghost-dark">
-                            <span>Get in touch</span>
-                        </a>
+                        <div class="hero__cta">
+                            <a href="#work" class="btn btn--primary" data-magnetic>
+                                <span>See selected work</span>
+                                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8 H13 M9 4 L13 8 L9 12" stroke-linecap="square"/></svg>
+                            </a>
+                            <a href="#contact" class="btn btn--ghost-dark" data-magnetic>
+                                <span>Get in touch</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero__art" data-parallax="0.08">
+                        <div class="hero__art-frame" data-parallax="0.04">
+                            <img src="assets/svg/illustrations/hero-illustration.svg" alt="" class="hero__art-img" />
+                        </div>
                     </div>
                 </div>
 
@@ -99,59 +153,86 @@
                         <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M5 1V12M1 8L5 12L9 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
                     </div>
                 </div>
-
             </div>
         </section>
+
+
+        <!-- ============ MARQUEE STRIP ============ -->
+        <div class="marquee surface surface--light" aria-hidden="true">
+            <div class="marquee__track">
+                <div class="marquee__group">
+                    <span>DEVELOPER</span><span class="marquee__dot"></span>
+                    <span>SECURITY RESEARCHER</span><span class="marquee__dot"></span>
+                    <span>BUILDER</span><span class="marquee__dot"></span>
+                    <span>HACKATHON WINNER</span><span class="marquee__dot"></span>
+                    <span>KATHMANDU · NP</span><span class="marquee__dot"></span>
+                    <span>SINCE 2009</span><span class="marquee__dot"></span>
+                </div>
+                <div class="marquee__group" aria-hidden="true">
+                    <span>DEVELOPER</span><span class="marquee__dot"></span>
+                    <span>SECURITY RESEARCHER</span><span class="marquee__dot"></span>
+                    <span>BUILDER</span><span class="marquee__dot"></span>
+                    <span>HACKATHON WINNER</span><span class="marquee__dot"></span>
+                    <span>KATHMANDU · NP</span><span class="marquee__dot"></span>
+                    <span>SINCE 2009</span><span class="marquee__dot"></span>
+                </div>
+            </div>
+        </div>
 
 
         <!-- ============ ABOUT · OBSIDIAN ============ -->
         <section class="surface surface--dark" id="about">
             <div class="section">
                 <div class="section__head">
-                    <span class="section__index">01 — About</span>
-                    <h2 class="section__title">
-                        A high schooler<br />
-                        building at the<br />
-                        edge of curiosity.
-                    </h2>
+                    <div class="section__head-left">
+                        <span class="section__index">01 — About</span>
+                        <h2 class="section__title" data-reveal data-text="A high schooler building at the edge of curiosity.">
+                            A high schooler<br />
+                            building at the<br />
+                            edge of curiosity.
+                        </h2>
+                    </div>
+                    <div class="section__art" data-parallax="0.05">
+                        <img src="assets/svg/illustrations/about-emblem.svg" alt="" />
+                    </div>
                 </div>
 
                 <div class="section__body section__body--dark">
-                    <p>
+                    <p data-reveal>
                         I started writing HTML in 2020. The world had gone quiet — lockdowns, closed schools, an entire childhood paused — and I opened a YouTube tab and taught myself what <code>&lt;html&gt;</code> did. I haven't stopped since.
                     </p>
-                    <p>
+                    <p data-reveal>
                         By grade nine I was building crowd-sourced civic tools. By grade eleven I was reporting security flaws to a national news broadcaster. Now I'm in grade twelve, learning the MERN stack, and breaking applications to understand how they think.
                     </p>
-                    <p>
+                    <p data-reveal>
                         I compete in hackathons. I win some. I learn from all of them. I care about three things: shipped products, clean code, and the human on the other end of the screen.
                     </p>
                 </div>
 
                 <div class="feature-grid">
-                    <article class="feature" data-reveal>
-                        <span class="feature__num">80+</span>
+                    <article class="feature" data-reveal data-magnetic>
+                        <span class="feature__num" data-counter="80">80+</span>
                         <h3 class="feature__title">Public repos</h3>
                         <p class="feature__desc">A strong GitHub profile with experiments, builds, and unfinished things I'm not afraid to ship anyway.</p>
                         <span class="feature__foot">github.com/zenithkandel</span>
                     </article>
 
-                    <article class="feature" data-reveal>
-                        <span class="feature__num">05</span>
+                    <article class="feature" data-reveal data-magnetic>
+                        <span class="feature__num" data-counter="05">05</span>
                         <h3 class="feature__title">Hackathon builds</h3>
                         <p class="feature__desc">Selected projects in civic tech, IoT, transit, agriculture, and education — all demoed to live judges.</p>
                         <span class="feature__foot">2024 → 2025</span>
                     </article>
 
-                    <article class="feature" data-reveal>
-                        <span class="feature__num">02</span>
+                    <article class="feature" data-reveal data-magnetic>
+                        <span class="feature__num" data-counter="02">02</span>
                         <h3 class="feature__title">Disclosed bugs</h3>
                         <p class="feature__desc">Responsible disclosures at Kantipur Television and Monkeytype — both reported, both patched upstream.</p>
                         <span class="feature__foot">Vuln research</span>
                     </article>
 
-                    <article class="feature" data-reveal>
-                        <span class="feature__num">17</span>
+                    <article class="feature" data-reveal data-magnetic>
+                        <span class="feature__num" data-counter="17">17</span>
                         <h3 class="feature__title">Years of curiosity</h3>
                         <p class="feature__desc">Born May 12, 2009. Currently finishing grade twelve at KMSS Bagbazar, Kathmandu, Nepal.</p>
                         <span class="feature__foot">Still learning</span>
@@ -165,22 +246,27 @@
         <section class="surface surface--light" id="work">
             <div class="section">
                 <div class="section__head">
-                    <span class="section__index section__index--dark">02 — Work</span>
-                    <h2 class="section__title section__title--dark">
-                        Selected<br />
-                        projects.
-                    </h2>
+                    <div class="section__head-left">
+                        <span class="section__index section__index--dark">02 — Work</span>
+                        <h2 class="section__title section__title--dark" data-reveal>
+                            Selected<br />
+                            projects.
+                        </h2>
+                    </div>
+                    <div class="section__art section__art--right" data-parallax="0.06">
+                        <img src="assets/svg/illustrations/work-ornament.svg" alt="" />
+                    </div>
                 </div>
 
                 <div class="section__body section__body--dark">
-                    <p>
+                    <p data-reveal>
                         Five projects. Each one was built for a real problem, demoed in front of judges, and pushed past the prototype stage. They live in hackathon halls and school exhibitions — not in tutorial folders.
                     </p>
                 </div>
 
                 <ol class="project-list" role="list">
                     <li class="project" data-reveal>
-                        <div class="project__num">01</div>
+                        <div class="project__num" data-magnetic>01</div>
                         <div class="project__main">
                             <div class="project__head">
                                 <h3 class="project__title">Sastomahango</h3>
@@ -197,7 +283,7 @@
                     </li>
 
                     <li class="project" data-reveal>
-                        <div class="project__num">02</div>
+                        <div class="project__num" data-magnetic>02</div>
                         <div class="project__main">
                             <div class="project__head">
                                 <h3 class="project__title">Lifeline</h3>
@@ -214,7 +300,7 @@
                     </li>
 
                     <li class="project" data-reveal>
-                        <div class="project__num">03</div>
+                        <div class="project__num" data-magnetic>03</div>
                         <div class="project__main">
                             <div class="project__head">
                                 <h3 class="project__title">Sawari</h3>
@@ -231,7 +317,7 @@
                     </li>
 
                     <li class="project" data-reveal>
-                        <div class="project__num">04</div>
+                        <div class="project__num" data-magnetic>04</div>
                         <div class="project__main">
                             <div class="project__head">
                                 <h3 class="project__title">AgroPan</h3>
@@ -248,7 +334,7 @@
                     </li>
 
                     <li class="project" data-reveal>
-                        <div class="project__num">05</div>
+                        <div class="project__num" data-magnetic>05</div>
                         <div class="project__main">
                             <div class="project__head">
                                 <h3 class="project__title">Edu Track Pro</h3>
@@ -272,21 +358,26 @@
         <section class="surface surface--dark" id="stack">
             <div class="section">
                 <div class="section__head">
-                    <span class="section__index">03 — Stack</span>
-                    <h2 class="section__title">
-                        Tools I<br />
-                        work with.
-                    </h2>
+                    <div class="section__head-left">
+                        <span class="section__index">03 — Stack</span>
+                        <h2 class="section__title" data-reveal>
+                            Tools I<br />
+                            work with.
+                        </h2>
+                    </div>
+                    <div class="section__art" data-parallax="0.05">
+                        <img src="assets/svg/illustrations/stack-emblem.svg" alt="" />
+                    </div>
                 </div>
 
                 <div class="section__body section__body--dark">
-                    <p>
+                    <p data-reveal>
                         I started with the boring fundamentals and I still respect them. The list grows on purpose — only when something earns its place in a real project.
                     </p>
                 </div>
 
                 <div class="stack-grid">
-                    <article class="stack-card" data-reveal>
+                    <article class="stack-card" data-reveal data-magnetic>
                         <h3 class="stack-card__label">Frontend</h3>
                         <ul class="stack-card__list">
                             <li><span>HTML5</span><i class="bar"><b style="--w:95%"></b></i></li>
@@ -295,7 +386,7 @@
                         </ul>
                     </article>
 
-                    <article class="stack-card" data-reveal>
+                    <article class="stack-card" data-reveal data-magnetic>
                         <h3 class="stack-card__label">Backend</h3>
                         <ul class="stack-card__list">
                             <li><span>PHP</span><i class="bar"><b style="--w:80%"></b></i></li>
@@ -304,7 +395,7 @@
                         </ul>
                     </article>
 
-                    <article class="stack-card" data-reveal>
+                    <article class="stack-card" data-reveal data-magnetic>
                         <h3 class="stack-card__label">Data</h3>
                         <ul class="stack-card__list">
                             <li><span>MySQL</span><i class="bar"><b style="--w:82%"></b></i></li>
@@ -312,7 +403,7 @@
                         </ul>
                     </article>
 
-                    <article class="stack-card" data-reveal>
+                    <article class="stack-card" data-reveal data-magnetic>
                         <h3 class="stack-card__label">Learning Now</h3>
                         <ul class="stack-card__list">
                             <li><span>React</span><i class="bar"><b style="--w:50%"></b></i></li>
@@ -321,7 +412,7 @@
                         </ul>
                     </article>
 
-                    <article class="stack-card" data-reveal>
+                    <article class="stack-card" data-reveal data-magnetic>
                         <h3 class="stack-card__label">Security</h3>
                         <ul class="stack-card__list">
                             <li><span>Burp Suite</span><i class="bar"><b style="--w:70%"></b></i></li>
@@ -330,7 +421,7 @@
                         </ul>
                     </article>
 
-                    <article class="stack-card" data-reveal>
+                    <article class="stack-card" data-reveal data-magnetic>
                         <h3 class="stack-card__label">Hardware</h3>
                         <ul class="stack-card__list">
                             <li><span>Arduino</span><i class="bar"><b style="--w:78%"></b></i></li>
@@ -348,21 +439,26 @@
         <section class="surface surface--light" id="research">
             <div class="section">
                 <div class="section__head">
-                    <span class="section__index section__index--dark">04 — Research</span>
-                    <h2 class="section__title section__title--dark">
-                        Security<br />
-                        research.
-                    </h2>
+                    <div class="section__head-left">
+                        <span class="section__index section__index--dark">04 — Research</span>
+                        <h2 class="section__title section__title--dark" data-reveal>
+                            Security<br />
+                            research.
+                        </h2>
+                    </div>
+                    <div class="section__art section__art--right" data-parallax="0.06">
+                        <img src="assets/svg/illustrations/research-emblem.svg" alt="" />
+                    </div>
                 </div>
 
                 <div class="section__body section__body--dark">
-                    <p>
+                    <p data-reveal>
                         Bug hunting is a way of reading. Every application is a story about assumptions — some of those assumptions are wrong. Below are the ones I found and disclosed.
                     </p>
                 </div>
 
                 <div class="disclosures">
-                    <article class="disclosure" data-reveal>
+                    <article class="disclosure" data-reveal data-magnetic>
                         <div class="disclosure__top">
                             <span class="disclosure__target">Kantipur Television</span>
                             <span class="disclosure__status">Disclosed · 2024</span>
@@ -380,7 +476,7 @@
                         </div>
                     </article>
 
-                    <article class="disclosure" data-reveal>
+                    <article class="disclosure" data-reveal data-magnetic>
                         <div class="disclosure__top">
                             <span class="disclosure__target">Monkeytype</span>
                             <span class="disclosure__status">Disclosed · 2025</span>
@@ -406,15 +502,20 @@
         <section class="surface surface--dark surface--cta" id="contact">
             <div class="section">
                 <div class="section__head">
-                    <span class="section__index">05 — Contact</span>
-                    <h2 class="section__title">
-                        Let's build<br />
-                        something.
-                    </h2>
+                    <div class="section__head-left">
+                        <span class="section__index">05 — Contact</span>
+                        <h2 class="section__title" data-reveal>
+                            Let's build<br />
+                            something.
+                        </h2>
+                    </div>
+                    <div class="section__art" data-parallax="0.05">
+                        <img src="assets/svg/illustrations/contact-emblem.svg" alt="" />
+                    </div>
                 </div>
 
                 <div class="section__body section__body--dark">
-                    <p>
+                    <p data-reveal>
                         Open to collaborations, hackathon teams, internships, and interesting security disclosures. If you're working on something that actually matters to people, I'd like to hear about it.
                     </p>
                 </div>
@@ -423,11 +524,11 @@
                     <ul class="contact-list" role="list">
                         <li class="contact-row" data-reveal>
                             <span class="contact-row__label">Email</span>
-                            <a href="mailto:zenithkandel0@gmail.com" class="contact-row__value">zenithkandel0@gmail.com</a>
+                            <a href="mailto:zenithkandel0@gmail.com" class="contact-row__value" data-magnetic data-text="zenithkandel0@gmail.com">zenithkandel0@gmail.com</a>
                         </li>
                         <li class="contact-row" data-reveal>
                             <span class="contact-row__label">Phone / WhatsApp</span>
-                            <a href="tel:+9779806176120" class="contact-row__value">+977 980 617 6120</a>
+                            <a href="tel:+9779806176120" class="contact-row__value" data-magnetic data-text="+977 980 617 6120">+977 980 617 6120</a>
                         </li>
                         <li class="contact-row" data-reveal>
                             <span class="contact-row__label">Based in</span>
@@ -441,28 +542,28 @@
 
                     <ul class="social-list" role="list">
                         <li data-reveal>
-                            <a href="https://github.com/zenithkandel" target="_blank" rel="noopener noreferrer" class="social">
+                            <a href="https://github.com/zenithkandel" target="_blank" rel="noopener noreferrer" class="social" data-magnetic>
                                 <span class="social__label">GitHub</span>
                                 <span class="social__handle">@zenithkandel</span>
                                 <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
                             </a>
                         </li>
                         <li data-reveal>
-                            <a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener noreferrer" class="social">
+                            <a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener noreferrer" class="social" data-magnetic>
                                 <span class="social__label">LinkedIn</span>
                                 <span class="social__handle">/in/zenithkandel</span>
                                 <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
                             </a>
                         </li>
                         <li data-reveal>
-                            <a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener noreferrer" class="social">
+                            <a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener noreferrer" class="social" data-magnetic>
                                 <span class="social__label">Instagram</span>
                                 <span class="social__handle">@kandel.zenith</span>
                                 <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
                             </a>
                         </li>
                         <li data-reveal>
-                            <a href="https://zenithkandel.com.np" target="_blank" rel="noopener noreferrer" class="social">
+                            <a href="https://zenithkandel.com.np" target="_blank" rel="noopener noreferrer" class="social" data-magnetic>
                                 <span class="social__label">Website</span>
                                 <span class="social__handle">zenithkandel.com.np</span>
                                 <svg class="social__arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 L12 4 M6 4 H12 V10" stroke-linecap="square"/></svg>
@@ -472,7 +573,7 @@
                 </div>
 
                 <div class="cta-strip" data-reveal>
-                    <a href="mailto:zenithkandel0@gmail.com" class="btn btn--primary btn--lg">
+                    <a href="mailto:zenithkandel0@gmail.com" class="btn btn--primary btn--lg" data-magnetic>
                         <span>Start a conversation</span>
                         <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8 H13 M9 4 L13 8 L9 12" stroke-linecap="square"/></svg>
                     </a>
@@ -493,11 +594,11 @@
             <hr class="footer__rule" aria-hidden="true" />
 
             <nav class="footer__nav" aria-label="Footer">
-                <a href="#about"    class="footer__link">About</a>
-                <a href="#work"     class="footer__link">Work</a>
-                <a href="#stack"    class="footer__link">Stack</a>
-                <a href="#research" class="footer__link">Research</a>
-                <a href="#contact"  class="footer__link">Contact</a>
+                <a href="#about"    class="footer__link" data-magnetic>About</a>
+                <a href="#work"     class="footer__link" data-magnetic>Work</a>
+                <a href="#stack"    class="footer__link" data-magnetic>Stack</a>
+                <a href="#research" class="footer__link" data-magnetic>Research</a>
+                <a href="#contact"  class="footer__link" data-magnetic>Contact</a>
             </nav>
 
             <div class="footer__bottom">
@@ -507,8 +608,14 @@
         </div>
     </footer>
 
-    <div class="cursor" id="cursor" aria-hidden="true"></div>
-
-    <script src="script.js" defer></script>
+    <!-- Scripts -->
+    <script src="assets/js/cursor.js" defer></script>
+    <script src="assets/js/smooth-scroll.js" defer></script>
+    <script src="assets/js/reveal.js" defer></script>
+    <script src="assets/js/parallax.js" defer></script>
+    <script src="assets/js/interactions.js" defer></script>
+    <script src="assets/js/text-effects.js" defer></script>
+    <script src="assets/js/svg-anim.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>

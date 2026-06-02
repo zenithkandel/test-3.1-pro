@@ -1,0 +1,29 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Shield outline -->
+    <path d="M100 18 L160 40 L160 100 C160 138 134 164 100 178 C66 164 40 138 40 100 L40 40 Z"
+          fill="none" stroke="#bc7155" stroke-width="2" stroke-linejoin="round"/>
+
+    <!-- Inner border -->
+    <path d="M100 32 L148 50 L148 100 C148 130 128 152 100 164 C72 152 52 130 52 100 L52 50 Z"
+          fill="none" stroke="#bc7155" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+
+    <!-- Bug body -->
+    <g transform="translate(100, 96)">
+        <!-- Body -->
+        <ellipse cx="0" cy="6" rx="22" ry="28" fill="#ffffff" stroke="#bc7155" stroke-width="2"/>
+        <!-- Center line -->
+        <line x1="0" y1="-18" x2="0" y2="32" stroke="#bc7155" stroke-width="1.5"/>
+        <!-- Body segments -->
+        <line x1="-22" y1="-6" x2="22" y2="-6" stroke="#bc7155" stroke-width="1.2" opacity="0.6"/>
+        <line x1="-22" y1="6" x2="22" y2="6" stroke="#bc7155" stroke-width="1.2" opacity="0.6"/>
+        <line x1="-20" y1="18" x2="20" y2="18" stroke="#bc7155" stroke-width="1.2" opacity="0.6"/>
+        <!-- Head -->
+        <circle cx="0" cy="-22" r="6" fill="#ffffff" stroke="#bc7155" stroke-width="2"/>
+        <!-- Antennae -->
+        <path d="M-3 -27 Q-8 -34 -10 -38" stroke="#bc7155" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <path d="M3 -27 Q8 -34 10 -38" stroke="#bc7155" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <!-- Legs -->
+        <path d="M-22 -8 L-34 -14 M-22 0 L-36 0 M-22 8 L-34 14" stroke="#bc7155" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M22 -8 L34 -14 M22 0 L36 0 M22 8 L34 14" stroke="#bc7155" stroke-width="1.4" stroke-linecap="round"/>
+    </g>
+</svg>

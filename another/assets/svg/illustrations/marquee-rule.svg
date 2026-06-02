@@ -1,0 +1,6 @@
+<svg width="600" height="40" viewBox="0 0 600 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Horizontal line with dot -->
+    <line x1="0" y1="20" x2="270" y2="20" stroke="#000d10" stroke-width="1" stroke-dasharray="2 4" opacity="0.4"/>
+    <line x1="330" y1="20" x2="600" y2="20" stroke="#000d10" stroke-width="1" stroke-dasharray="2 4" opacity="0.4"/>
+    <circle cx="300" cy="20" r="4" fill="#bc7155"/>
+</svg>
