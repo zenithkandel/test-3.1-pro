@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zenith Kandel — High school developer, cybersecurity researcher, and hackathon winner from Kathmandu, Nepal." />
+    <meta name="theme-color" content="#100904" />
+    <title>Zenith Kandel — Developer & Security Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23100904'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-size='18' font-weight='600' fill='%23ffedd7'%3EZ%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+        <a href="#top" class="nav__brand" aria-label="Zenith Kandel home">
+            <span class="nav__brand-mark">Z</span>
+            <span class="nav__brand-word" data-text="ZENITH">ZENITH</span>
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+            <a href="#intro" class="nav__link" data-text="INTRO"><span>INTRO</span></a>
+            <a href="#work" class="nav__link" data-text="WORK"><span>WORK</span></a>
+            <a href="#stack" class="nav__link" data-text="STACK"><span>STACK</span></a>
+            <a href="#research" class="nav__link" data-text="RESEARCH"><span>RESEARCH</span></a>
+            <a href="#contact" class="nav__link" data-text="CONTACT"><span>CONTACT</span></a>
+        </nav>
+        <button class="nav__menu" id="navMenu" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero" id="top">
+            <div class="hero__bg" aria-hidden="true">
+                <div class="hero__grid"></div>
+                <div class="hero__orb"></div>
+                <div class="hero__scan"></div>
+            </div>
+            <div class="hero__inner">
+                <div class="hero__meta">
+                    <span class="hero__pill">PORTFOLIO — 2026</span>
+                    <span class="hero__coords">27.7172° N · 85.3240° E</span>
+                </div>
+                <h1 class="hero__title">
+                    <span class="reveal" data-text="Building">Building</span>
+                    <span class="reveal hero__title--accent" data-text="software">software</span>
+                    <span class="reveal" data-text="that">that</span>
+                    <span class="reveal" data-text="matters.">matters.</span>
+                </h1>
+                <div class="hero__right">
+                    <p class="hero__lede">
+                        I'm <span class="hero__lede-name">Zenith Kandel</span> — a seventeen-year-old developer and security researcher from Kathmandu. I build civic tools, off-grid hardware, and I break things to understand them.
+                    </p>
+                    <div class="hero__cta">
+                        <a href="#work" class="btn btn--filled" data-text="See my work">
+                            <span>See my work</span>
+                        </a>
+                        <a href="#contact" class="btn btn--ghost" data-text="Get in touch">
+                            <span>Get in touch</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__scroll" aria-hidden="true">
+                <span>SCROLL TO CONTINUE</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1"/></svg>
+            </div>
+            <div class="hero__corner" aria-hidden="true">KTM / NP</div>
+        </section>
+
+        <section class="section" id="intro">
+            <span class="section__index">01 / INTRO</span>
+            <div class="section__split">
+                <h2 class="section__title" data-reveal>
+                    A high schooler<br />
+                    building at the<br />
+                    <span class="section__title--accent">edge of curiosity.</span>
+                </h2>
+                <div class="section__body">
+                    <p data-reveal>
+                        I started writing HTML in 2020 — during the lockdown, in a quiet room, watching strangers teach JavaScript on YouTube. I haven't stopped since. By grade nine I was building crowd-sourced civic tools. By grade eleven, I was reporting security flaws to national broadcasters.
+                    </p>
+                    <p data-reveal>
+                        Today I work across the full stack — HTML, CSS, JavaScript, PHP, MySQL — and I'm migrating toward the MERN ecosystem. I care about three things: shipped products, clean code, and the people on the other end of the screen.
+                    </p>
+                    <div class="section__stats" data-reveal>
+                        <div class="stat">
+                            <span class="stat__num">80+</span>
+                            <span class="stat__label">Repositories on GitHub</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__num">5</span>
+                            <span class="stat__label">Hackathon-grade projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__num">2</span>
+                            <span class="stat__label">Disclosed vulnerabilities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="vertical-label" aria-hidden="true">/ PROFILE</span>
+        </section>
+
+        <div class="dashed-rule" aria-hidden="true"></div>
+
+        <section class="section section--work" id="work">
+            <span class="section__index">02 / WORK</span>
+            <div class="section__split">
+                <h2 class="section__title" data-reveal>
+                    Selected<br />
+                    <span class="section__title--accent">projects.</span>
+                </h2>
+                <div class="section__body">
+                    <p data-reveal>
+                        Every project below was built for a real problem — not a tutorial. Each one was prototyped, demoed, and judged at a hackathon or exhibition. None of them are perfect. All of them work.
+                    </p>
+                </div>
+            </div>
+
+            <ol class="work" role="list">
+                <li class="work__item" data-reveal>
+                    <span class="work__num">01</span>
+                    <div class="work__main">
+                        <div class="work__head">
+                            <h3 class="work__title">Sastomahango</h3>
+                            <span class="work__tag">Civic Tech</span>
+                        </div>
+                        <p class="work__desc">
+                            A crowd-sourced price index for everyday goods. Users report what they paid, the system aggregates prices by locality, and shoppers see whether they're about to be scammed. Built to fight the opacity of Kathmandu's informal markets.
+                        </p>
+                    </div>
+                    <span class="work__year">2024</span>
+                </li>
+
+                <li class="work__item" data-reveal>
+                    <span class="work__num">02</span>
+                    <div class="work__main">
+                        <div class="work__head">
+                            <h3 class="work__title">Lifeline</h3>
+                            <span class="work__tag">Hardware · Off-Grid</span>
+                        </div>
+                        <p class="work__desc">
+                            An off-grid, RF-based emergency signal system. When there's no cellular coverage — landslides, remote valleys, the post-quake window — Lifeline transmits short distress beacons across radio so a receiver in a populated area can relay them.
+                        </p>
+                    </div>
+                    <span class="work__year">2024</span>
+                </li>
+
+                <li class="work__item" data-reveal>
+                    <span class="work__num">03</span>
+                    <div class="work__main">
+                        <div class="work__head">
+                            <h3 class="work__title">Sawari</h3>
+                            <span class="work__tag">Transit · Web App</span>
+                        </div>
+                        <p class="work__desc">
+                            A complete public transport companion for Kathmandu. Enter where you are, enter where you want to go, and Sawari hands you the full walkthrough — the bus, the route, the fare, the road condition, the ETA. Built around the city's actual (chaotic) network.
+                        </p>
+                    </div>
+                    <span class="work__year">2025</span>
+                </li>
+
+                <li class="work__item" data-reveal>
+                    <span class="work__num">04</span>
+                    <div class="work__main">
+                        <div class="work__head">
+                            <h3 class="work__title">AgroPan</h3>
+                            <span class="work__tag">IoT · Agriculture</span>
+                        </div>
+                        <p class="work__desc">
+                            A soil monitoring and recommendation rig. Sensor arrays measure moisture, pH, and nutrients in the field; AgroPan returns a crop recommendation tailored to what's actually in the ground, not what the seed shop is selling.
+                        </p>
+                    </div>
+                    <span class="work__year">2024</span>
+                </li>
+
+                <li class="work__item" data-reveal>
+                    <span class="work__num">05</span>
+                    <div class="work__main">
+                        <div class="work__head">
+                            <h3 class="work__title">Edu Track Pro</h3>
+                            <span class="work__tag">RFID · EdTech</span>
+                        </div>
+                        <p class="work__desc">
+                            A smart attendance system for Nepali schools. Every student taps their ID card on an RFID reader at the gate, attendance is logged instantly, and class teachers see who's actually in the room. Built to replace the paper register that's still standard here.
+                        </p>
+                    </div>
+                    <span class="work__year">2025</span>
+                </li>
+            </ol>
+            <span class="vertical-label" aria-hidden="true">/ SELECTED WORK</span>
+        </section>
+
+        <div class="dashed-rule" aria-hidden="true"></div>
+
+        <section class="section" id="stack">
+            <span class="section__index">03 / STACK</span>
+            <div class="section__split">
+                <h2 class="section__title" data-reveal>
+                    Tools I<br />
+                    <span class="section__title--accent">work with.</span>
+                </h2>
+                <div class="section__body">
+                    <p data-reveal>
+                        I started with the boring fundamentals and I still respect them. The list grows on purpose — only when something earns its place in a real project.
+                    </p>
+                </div>
+            </div>
+
+            <div class="stack" data-reveal>
+                <div class="stack__group">
+                    <span class="stack__label">Frontend</span>
+                    <ul class="stack__list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="stack__group">
+                    <span class="stack__label">Backend</span>
+                    <ul class="stack__list">
+                        <li>PHP</li>
+                        <li>Node.js</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+                <div class="stack__group">
+                    <span class="stack__label">Data</span>
+                    <ul class="stack__list">
+                        <li>MySQL</li>
+                        <li>MongoDB</li>
+                    </ul>
+                </div>
+                <div class="stack__group">
+                    <span class="stack__label">Learning</span>
+                    <ul class="stack__list">
+                        <li>React</li>
+                        <li>Express</li>
+                        <li>MongoDB Atlas</li>
+                    </ul>
+                </div>
+                <div class="stack__group">
+                    <span class="stack__label">Security</span>
+                    <ul class="stack__list">
+                        <li>Burp Suite</li>
+                        <li>Recon &amp; Fuzzing</li>
+                        <li>Responsible Disclosure</li>
+                    </ul>
+                </div>
+                <div class="stack__group">
+                    <span class="stack__label">Hardware</span>
+                    <ul class="stack__list">
+                        <li>Arduino</li>
+                        <li>ESP series</li>
+                        <li>RF modules</li>
+                        <li>RFID</li>
+                    </ul>
+                </div>
+            </div>
+            <span class="vertical-label" aria-hidden="true">/ ARSENAL</span>
+        </section>
+
+        <div class="dashed-rule" aria-hidden="true"></div>
+
+        <section class="section" id="research">
+            <span class="section__index">04 / RESEARCH</span>
+            <div class="section__split">
+                <h2 class="section__title" data-reveal>
+                    Security<br />
+                    <span class="section__title--accent">research.</span>
+                </h2>
+                <div class="section__body">
+                    <p data-reveal>
+                        Bug hunting isn't a hobby for me — it's a way of reading. Every application is a story about assumptions. Some of those assumptions are wrong. Below are the ones I found.
+                    </p>
+                </div>
+            </div>
+
+            <ul class="research" role="list">
+                <li class="research__item" data-reveal>
+                    <div class="research__head">
+                        <span class="research__target">KANTIPUR TELEVISION</span>
+                        <span class="research__status">DISCLOSED</span>
+                    </div>
+                    <h3 class="research__title">Critical flaw on Kantipur.tv</h3>
+                    <p class="research__desc">
+                        A critical issue on the website of one of Nepal's largest news broadcasters. Reported through the proper disclosure channel.
+                    </p>
+                    <span class="research__arrow" aria-hidden="true">↗</span>
+                </li>
+                <li class="research__item" data-reveal>
+                    <div class="research__head">
+                        <span class="research__target">MONKEYTYPE</span>
+                        <span class="research__status">DISCLOSED</span>
+                    </div>
+                    <h3 class="research__title">Bug in Monkeytype</h3>
+                    <p class="research__desc">
+                        A flaw in the popular typing utility used by tens of thousands of typists. Reported, acknowledged, and patched upstream.
+                    </p>
+                    <span class="research__arrow" aria-hidden="true">↗</span>
+                </li>
+            </ul>
+            <span class="vertical-label" aria-hidden="true">/ DISCLOSURES</span>
+        </section>
+
+        <div class="dashed-rule" aria-hidden="true"></div>
+
+        <section class="section section--contact" id="contact">
+            <span class="section__index">05 / CONTACT</span>
+            <div class="section__split">
+                <h2 class="section__title" data-reveal>
+                    Let's build<br />
+                    <span class="section__title--accent">something.</span>
+                </h2>
+                <div class="section__body">
+                    <p data-reveal>
+                        Open to collaborations, hackathon teams, internships, and interesting security disclosures. If you're working on something that actually matters to people, I'd like to hear about it.
+                    </p>
+                    <ul class="contact" role="list">
+                        <li class="contact__item" data-reveal>
+                            <span class="contact__label">Email</span>
+                            <a href="mailto:zenithkandel0@gmail.com" class="contact__value" data-text="zenithkandel0@gmail.com">zenithkandel0@gmail.com</a>
+                        </li>
+                        <li class="contact__item" data-reveal>
+                            <span class="contact__label">Phone · WhatsApp</span>
+                            <a href="tel:+9779806176120" class="contact__value" data-text="+977 980 617 6120">+977 980 617 6120</a>
+                        </li>
+                        <li class="contact__item" data-reveal>
+                            <span class="contact__label">Based in</span>
+                            <span class="contact__value">Kathmandu, Nepal</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact__grid" data-reveal>
+                <a href="https://github.com/zenithkandel" target="_blank" rel="noopener noreferrer" class="contact__link">
+                    <span class="contact__link-label">GitHub</span>
+                    <span class="contact__link-handle">@zenithkandel</span>
+                    <span class="contact__link-arrow">↗</span>
+                </a>
+                <a href="https://www.linkedin.com/in/zenithkandel" target="_blank" rel="noopener noreferrer" class="contact__link">
+                    <span class="contact__link-label">LinkedIn</span>
+                    <span class="contact__link-handle">/in/zenithkandel</span>
+                    <span class="contact__link-arrow">↗</span>
+                </a>
+                <a href="https://instagram.com/kandel.zenith" target="_blank" rel="noopener noreferrer" class="contact__link">
+                    <span class="contact__link-label">Instagram</span>
+                    <span class="contact__link-handle">@kandel.zenith</span>
+                    <span class="contact__link-arrow">↗</span>
+                </a>
+                <a href="https://zenithkandel.com.np" target="_blank" rel="noopener noreferrer" class="contact__link">
+                    <span class="contact__link-label">Website</span>
+                    <span class="contact__link-handle">zenithkandel.com.np</span>
+                    <span class="contact__link-arrow">↗</span>
+                </a>
+            </div>
+            <span class="vertical-label" aria-hidden="true">/ SIGNAL</span>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__top">
+            <span class="footer__brand">ZENITH KANDEL</span>
+            <span class="footer__role">Developer · Security Researcher · Grade 12</span>
+        </div>
+        <div class="dashed-rule" aria-hidden="true"></div>
+        <div class="footer__bottom">
+            <span>© 2026 — Built in Kathmandu</span>
+            <span>Last deploy: 06.2026</span>
+            <span>v2.0</span>
+        </div>
+    </footer>
+
+    <div class="cursor" id="cursor" aria-hidden="true">
+        <span class="cursor__dot"></span>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
