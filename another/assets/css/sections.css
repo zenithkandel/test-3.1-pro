@@ -222,18 +222,10 @@
     margin: 0;
 }
 
-.horizontal-scroll-sticky .section {
-    padding-top: 0;
-    padding-bottom: clamp(80px, 10vw, 140px);
-    margin-top: 0;
-    margin-bottom: 0;
-    width: 100%;
-}
-
 .horizontal-scroll-track {
     width: 100%;
     margin-top: clamp(30px, 5vw, 60px);
-    padding-bottom: 40px;
+    padding-bottom: clamp(60px, 8vw, 120px);
 }
 
 /* Progress bar at bottom of sticky viewport */
@@ -282,7 +274,18 @@
 }
 
 .project::before {
-    display: none;
+    content: '';
+    display: block;
+    width: clamp(32px, 3.4vw, 44px);
+    height: 2px;
+    background: var(--color-desert-sienna);
+    margin-bottom: 4px;
+    border-radius: var(--radius-pill);
+    transition: width var(--t-slow) var(--ease);
+}
+
+.project:hover::before {
+    width: clamp(56px, 5vw, 72px);
 }
 
 .project:hover {
@@ -310,7 +313,7 @@
 }
 
 .project__art {
-    width: clamp(64px, 6vw, 88px);
+    width: clamp(72px, 6.8vw, 100px);
     height: auto;
     flex-shrink: 0;
     transition: transform var(--t-slow) var(--ease);
@@ -336,13 +339,13 @@
 
 .project__head {
     display: flex;
-    align-items: baseline;
-    gap: 14px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .project__title {
-    font-size: clamp(28px, 3.4vw, 40px);
+    font-size: clamp(30px, 3.6vw, 42px);
     line-height: 1.05;
     font-weight: var(--weight-bold);
     letter-spacing: -0.02em;

@@ -53,9 +53,14 @@
         maxTranslate = listWidth - containerWidth + (window.innerWidth * 0.08);
 
         if (maxTranslate > 0) {
-            // Section height = viewport height + horizontal travel distance
-            // This creates a 1:1 ratio of vertical scroll to horizontal movement
-            sectionHeight = maxTranslate + window.innerHeight;
+            // Measure the section header (the .section above the sticky) so the
+            // section height = header + sticky (100vh). The horizontal travel
+            // is then mapped onto the sticky pinning window, not onto dead
+            // scroll space after the sticky releases.
+            const headerEl = section.querySelector('.section');
+            const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+
+            sectionHeight = headerHeight + window.innerHeight;
             section.style.height = `${sectionHeight}px`;
         } else {
             section.style.height = '';
@@ -68,13 +73,17 @@
 
         // Get the section's position relative to the viewport
         const sectionTop = section.getBoundingClientRect().top;
-        const availableScroll = sectionHeight - window.innerHeight;
+        const headerEl = section.querySelector('.section');
+        const headerHeight = headerEl ? headerEl.offsetHeight : 0;
 
         let progress = 0;
 
-        if (sectionTop <= 0 && availableScroll > 0) {
-            // How far we've scrolled past the section top
-            progress = Math.min(Math.max(-sectionTop / availableScroll, 0), 1);
+        if (sectionTop <= -headerHeight) {
+            // Progress is measured against the sticky pinning window (100vh),
+            // not against the raw horizontal travel distance. This way the
+            // horizontal scroll completes exactly while the sticky is pinned.
+            const scrollPastHeader = -sectionTop - headerHeight;
+            progress = Math.min(scrollPastHeader / window.innerHeight, 1);
         }
 
         // Apply the horizontal translation
