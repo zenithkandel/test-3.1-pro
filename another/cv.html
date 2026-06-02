@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zenith Kandel — Curriculum Vitae</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --green: #1b4332;
+        --green-mid: #2d6a4f;
+        --gold: #c9a84c;
+        --gold-bg: #f5edd0;
+        --text: #1a1a1a;
+        --muted: #4a4a4a;
+        --light: #888;
+        --rule: #dedad4;
+        --tag-bg: #f4f2ee;
+      }
+
+      body {
+        font-family: "Mulish", sans-serif;
+        background: #e4e0da;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px 80px;
+      }
+
+      /* ── DOWNLOAD BUTTON ── */
+      #dlBtn {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 22px;
+        background: var(--green);
+        color: #fff;
+        border: none;
+        padding: 13px 32px;
+        font-family: "Mulish", sans-serif;
+        font-size: 12.5px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 3px;
+        box-shadow: 0 5px 20px rgba(27, 67, 50, 0.4);
+        transition:
+          background 0.18s,
+          color 0.18s,
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      #dlBtn:hover {
+        background: var(--gold);
+        color: var(--green);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 26px rgba(201, 168, 76, 0.45);
+      }
+      #dlBtn:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+        transform: none;
+      }
+      #dlBtn svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+
+      /* ── CV SHELL ── */
+      #cv {
+        width: 794px;
+        background: #fff;
+        box-shadow: 0 16px 56px rgba(0, 0, 0, 0.22);
+        position: relative;
+      }
+
+      /* Left accent stripe */
+      #cv::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--green) 0%, var(--gold) 100%);
+        z-index: 1;
+      }
+
+      /* ── HEADER ── */
+      .hd {
+        background: var(--green);
+        padding: 42px 52px 42px 58px;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Decorative ring 1 */
+      .hd::before {
+        content: "";
+        position: absolute;
+        right: -55px;
+        top: -55px;
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(201, 168, 76, 0.16);
+      }
+      /* Decorative ring 2 */
+      .hd::after {
+        content: "";
+        position: absolute;
+        right: 90px;
+        bottom: -90px;
+        width: 175px;
+        height: 175px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .hd-name {
+        font-family: "Playfair Display", serif;
+        font-size: 46px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 2;
+      }
+      .hd-title {
+        font-size: 11.5px;
+        font-weight: 500;
+        color: var(--gold);
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        position: relative;
+        z-index: 2;
+      }
+      .hd-bar {
+        width: 52px;
+        height: 2px;
+        background: var(--gold);
+        margin-bottom: 22px;
+      }
+
+      /* Contact row */
+      .contacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        position: relative;
+        z-index: 2;
+      }
+      .ci {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 11.5px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.78);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .ci:hover {
+        color: var(--gold);
+      }
+      .ci svg {
+        width: 13px;
+        height: 13px;
+        fill: var(--gold);
+        flex-shrink: 0;
+      }
+
+      /* ── BODY ── */
+      .bd {
+        padding: 34px 52px 44px 58px;
+      }
+
+      /* ── SECTION ── */
+      .sec {
+        margin-bottom: 26px;
+      }
+
+      .sec-hd {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 15px;
+      }
+      .sec-hd > span {
+        font-family: "Playfair Display", serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--green);
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .sec-hd::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--rule);
+      }
+
+      /* Summary */
+      .summary {
+        border-left: 3px solid var(--gold);
+        padding-left: 15px;
+        font-size: 12.5px;
+        line-height: 1.92;
+        color: var(--muted);
+      }
+
+      /* Education */
+      .edu-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .edu-deg {
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .edu-school {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--green);
+        margin-bottom: 2px;
+      }
+      .edu-sub {
+        font-size: 12px;
+        color: var(--light);
+      }
+      .edu-year {
+        background: var(--gold-bg);
+        border: 1px solid rgba(201, 168, 76, 0.55);
+        color: var(--green);
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        padding: 4px 13px;
+        border-radius: 2px;
+        white-space: nowrap;
+      }
+
+      /* Skills */
+      .skill-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 28px;
+      }
+      .sg-label {
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 7px;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .tag {
+        background: var(--tag-bg);
+        border: 1px solid #ddd9d3;
+        color: var(--text);
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 2px;
+      }
+
+      /* Projects */
+      .proj {
+        padding-bottom: 17px;
+        margin-bottom: 17px;
+        border-bottom: 1px solid #eceae5;
+      }
+      .proj:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+      .proj-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 5px;
+      }
+      .proj-name {
+        font-family: "Playfair Display", serif;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .proj-badge {
+        font-size: 9.5px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--green);
+        background: var(--gold-bg);
+        border: 1px solid rgba(201, 168, 76, 0.62);
+        padding: 3px 9px;
+        border-radius: 2px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .proj-desc {
+        font-size: 12px;
+        line-height: 1.74;
+        color: var(--muted);
+      }
+
+      /* Security Cards */
+      .sec-card {
+        background: #f5faf7;
+        border-left: 4px solid var(--green);
+        padding: 12px 16px;
+        margin-bottom: 10px;
+      }
+      .sec-card:last-child {
+        margin-bottom: 0;
+      }
+      .sec-card-t {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--green);
+        margin-bottom: 4px;
+      }
+      .sec-card-d {
+        font-size: 12px;
+        line-height: 1.66;
+        color: var(--muted);
+      }
+
+      /* Achievements */
+      .ach {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+      .ach:last-child {
+        margin-bottom: 0;
+      }
+      .ach-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--gold);
+        flex-shrink: 0;
+        margin-top: 5px;
+      }
+      .ach-text {
+        font-size: 12.5px;
+        color: var(--muted);
+        line-height: 1.66;
+      }
+      .ach-text b {
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      /* Footer */
+      .ft {
+        background: var(--green);
+        padding: 13px 58px;
+        text-align: center;
+      }
+      .ft p {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.09em;
+      }
+
+      /* Print overrides */
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+        }
+        #dlBtn {
+          display: none !important;
+        }
+        #cv {
+          box-shadow: none;
+          width: 100%;
+        }
+        #cv::before {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- DOWNLOAD BUTTON -->
+    <button id="dlBtn" onclick="doDownload()">
+      <svg viewBox="0 0 24 24">
+        <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+      </svg>
+      Download as PDF
+    </button>
+
+    <!-- ═══════════ CV ═══════════ -->
+    <div id="cv">
+      <!-- ─── HEADER ─── -->
+      <div class="hd">
+        <div class="hd-name">Zenith Kandel</div>
+        <div class="hd-title">
+          Full Stack Developer &nbsp;&bull;&nbsp; Cybersecurity Researcher
+          &nbsp;&bull;&nbsp; Hackathon Champion
+        </div>
+        <div class="hd-bar"></div>
+
+        <div class="contacts">
+          <a href="tel:+9779806176120" class="ci">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"
+              />
+            </svg>
+            +977 9806176120
+          </a>
+
+          <!-- ⚠ Replace with your real email address -->
+          <span class="ci">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"
+              />
+            </svg>
+            zenithkandel0@gmail.com
+          </span>
+
+          <a href="https://zenithkandel.com.np" class="ci">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16.36,14C16.44,13.34 16.5,12.68 16.5,12C16.5,11.32 16.44,10.66 16.36,10H19.74C19.9,10.64 20,11.31 20,12C20,12.69 19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12C9.5,11.32 9.56,10.65 9.66,10H14.34C14.43,10.65 14.5,11.32 14.5,12C14.5,12.68 14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12C4,11.31 4.1,10.64 4.26,10H7.64C7.56,10.66 7.5,11.32 7.5,12C7.5,12.68 7.56,13.34 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+              />
+            </svg>
+            zenithkandel.com.np
+          </a>
+
+          <a href="https://github.com/zenithkandel" class="ci">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"
+              />
+            </svg>
+            github.com/zenithkandel
+          </a>
+
+          <a href="https://www.linkedin.com/in/zenithkandel" class="ci">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"
+              />
+            </svg>
+            linkedin.com/in/zenithkandel
+          </a>
+
+          <span class="ci">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12,2C8.13,2 5,5.13 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9C19,5.13 15.87,2 12,2M12,11.5C10.62,11.5 9.5,10.38 9.5,9C9.5,7.62 10.62,6.5 12,6.5C13.38,6.5 14.5,7.62 14.5,9C14.5,10.38 13.38,11.5 12,11.5Z"
+              />
+            </svg>
+            Kathmandu, Nepal
+          </span>
+
+          <span class="ci">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M9,11H7V9H9M13,11H11V9H13M17,11H15V9H17M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V8H19V19Z"
+              />
+            </svg>
+            DOB: 12 May 2009
+          </span>
+        </div>
+      </div>
+      <!-- end header -->
+
+      <!-- ─── BODY ─── -->
+      <div class="bd">
+        <!-- PROFESSIONAL SUMMARY -->
+        <div class="sec">
+          <div class="sec-hd"><span>Professional Summary</span></div>
+          <p class="summary">
+            Self-taught full stack developer and cybersecurity researcher based
+            in Kathmandu, Nepal, with over 6 years of hands-on programming
+            experience initiated self-directed during COVID-19 lockdowns.
+            Currently a Grade 12 student at Kathmandu Model Secondary School
+            with a consistent record of building award-winning, real-world
+            applications at national hackathons and technology exhibitions.
+            Maintains 80+ open-source repositories on GitHub and has responsibly
+            disclosed critical security vulnerabilities in live production
+            platforms. Actively deepening expertise toward the MERN stack while
+            pursuing advanced interests in ethical hacking and vulnerability
+            research.
+          </p>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="sec">
+          <div class="sec-hd"><span>Education</span></div>
+          <div class="edu-row">
+            <div>
+              <div class="edu-deg">
+                Higher Secondary Education — Grade 11 &amp; 12
+              </div>
+              <div class="edu-school">Kathmandu Model Secondary School</div>
+              <div class="edu-sub">Bagbazar, Kathmandu, Nepal</div>
+            </div>
+            <div class="edu-year">2024 – 2026</div>
+          </div>
+        </div>
+
+        <!-- TECHNICAL SKILLS -->
+        <div class="sec">
+          <div class="sec-hd"><span>Technical Skills</span></div>
+          <div class="skill-grid">
+            <div>
+              <div class="sg-label">Frontend Development</div>
+              <div class="tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Responsive Design</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="sg-label">Backend &amp; Database</div>
+              <div class="tags">
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">REST APIs</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="sg-label">Cybersecurity</div>
+              <div class="tags">
+                <span class="tag">Bug Hunting</span>
+                <span class="tag">Vulnerability Research</span>
+                <span class="tag">Responsible Disclosure</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="sg-label">Hardware &amp; IoT</div>
+              <div class="tags">
+                <span class="tag">RFID Systems</span>
+                <span class="tag">RF Communication</span>
+                <span class="tag">IoT Sensors</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="sg-label">Tools &amp; Platforms</div>
+              <div class="tags">
+                <span class="tag">Git &amp; GitHub</span>
+                <span class="tag">VS Code</span>
+                <span class="tag">CLI Tools</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="sg-label">Currently Learning — MERN</div>
+              <div class="tags">
+                <span class="tag">React.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">MongoDB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HACKATHON PROJECTS -->
+        <div class="sec">
+          <div class="sec-hd"><span>Hackathon Projects</span></div>
+
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">
+                Sastomahango &mdash; Crowd-Sourced Price Index
+              </div>
+              <span class="proj-badge">Hackathon Project</span>
+            </div>
+            <div class="proj-desc">
+              A community-driven platform allowing Nepali consumers to report
+              and track real-time market prices of everyday commodities,
+              combating vendor overpricing through transparent, crowd-verified
+              data. Empowers citizens to make informed purchasing decisions and
+              exposes unjustified price hikes across local markets.
+            </div>
+          </div>
+
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">
+                Lifeline &mdash; Off-Grid RF Emergency Communication System
+              </div>
+              <span class="proj-badge">Hackathon Project</span>
+            </div>
+            <div class="proj-desc">
+              A radio frequency–based emergency signalling system designed for
+              off-grid and remote areas of Nepal. Enables distress communication
+              and community coordination during natural disasters or
+              connectivity failures with zero dependency on internet or cellular
+              infrastructure — purpose-built for Nepal's geography.
+            </div>
+          </div>
+
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">
+                Sawari &mdash; Kathmandu Public Transit Navigator
+              </div>
+              <span class="proj-badge">Hackathon Project</span>
+            </div>
+            <div class="proj-desc">
+              A comprehensive public transportation assistant for Kathmandu
+              offering end-to-end journey planning across the city's bus
+              network. Features include fare estimation, real-time road
+              condition updates, ETA calculations, multi-leg route guidance, and
+              complete walkthrough directions from any origin to destination.
+            </div>
+          </div>
+
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">
+                AgroPan &mdash; IoT Soil Monitoring &amp; Crop Advisory
+              </div>
+              <span class="proj-badge">Hackathon Project</span>
+            </div>
+            <div class="proj-desc">
+              An agriculture-tech solution using physical soil sensors and
+              detectors to monitor real-time field conditions including pH
+              levels, moisture content, and nutrient composition. Delivers
+              crop-specific cultivation recommendations to Nepali farmers,
+              promoting data-driven farming and improving yield outcomes.
+            </div>
+          </div>
+
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">
+                EduTrack Pro &mdash; RFID Smart Attendance System
+              </div>
+              <span class="proj-badge">Hackathon Project</span>
+            </div>
+            <div class="proj-desc">
+              An automated student attendance management system for Nepali
+              schools leveraging RFID-enabled student ID cards. Eliminates
+              manual roll-calls entirely, reduces administrative overhead, and
+              provides real-time attendance tracking with reporting dashboards
+              tailored for school administrators and class teachers.
+            </div>
+          </div>
+        </div>
+
+        <!-- SECURITY RESEARCH -->
+        <div class="sec">
+          <div class="sec-hd">
+            <span>Security Research &amp; Responsible Disclosure</span>
+          </div>
+
+          <div class="sec-card">
+            <div class="sec-card-t">
+              Kantipur Television — Critical Vulnerability Discovery
+            </div>
+            <div class="sec-card-d">
+              Identified and responsibly disclosed a critical security
+              vulnerability in the production web platform of Kantipur
+              Television, one of Nepal's foremost national news organisations.
+              Contribution directly strengthened platform security and protected
+              user data across a large audience base.
+            </div>
+          </div>
+
+          <div class="sec-card">
+            <div class="sec-card-t">MonkeyType — Security Bug Report</div>
+            <div class="sec-card-d">
+              Discovered and reported a security vulnerability in MonkeyType, a
+              globally popular open-source typing speed measurement platform
+              used by millions worldwide. Demonstrates proactive engagement with
+              international platform security and responsible coordination with
+              project maintainers.
+            </div>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="sec">
+          <div class="sec-hd"><span>Achievements &amp; Recognition</span></div>
+
+          <div class="ach">
+            <div class="ach-dot"></div>
+            <div class="ach-text">
+              <b>Consistent Hackathon &amp; Exhibition Winner</b> — Sustained
+              multi-year track record of winning national-level hackathons and
+              technology exhibitions in Nepal, with award-winning projects
+              spanning civic-tech, agri-tech, emergency systems, IoT, and
+              education technology.
+            </div>
+          </div>
+
+          <div class="ach">
+            <div class="ach-dot"></div>
+            <div class="ach-text">
+              <b>Self-Taught Developer Since Age 12</b> — Began learning web
+              development independently via YouTube and online resources during
+              COVID-19 lockdowns in Grade 6, building progressive proficiency in
+              HTML, CSS, JavaScript, PHP, and MySQL entirely through
+              self-directed study.
+            </div>
+          </div>
+
+          <div class="ach">
+            <div class="ach-dot"></div>
+            <div class="ach-text">
+              <b>80+ Public GitHub Repositories</b> — Maintains a substantial
+              and active open-source presence on GitHub with over 80
+              repositories, demonstrating sustained technical output, wide
+              project diversity, and ongoing commitment to the developer
+              community.
+            </div>
+          </div>
+
+          <div class="ach">
+            <div class="ach-dot"></div>
+            <div class="ach-text">
+              <b>Responsible Cybersecurity Researcher</b> — Voluntarily
+              disclosed critical vulnerabilities in two live production
+              platforms — one national media organisation and one globally used
+              open-source tool — demonstrating professional integrity and
+              ethical standards in security research.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end body -->
+
+      <!-- FOOTER -->
+      <div class="ft">
+        <p>
+          References available upon request &nbsp;&bull;&nbsp;
+          zenithkandel.com.np &nbsp;&bull;&nbsp; github.com/zenithkandel
+          &nbsp;&bull;&nbsp; Kathmandu, Nepal &nbsp;&bull;&nbsp; June 2026
+        </p>
+      </div>
+    </div>
+    <!-- end #cv -->
+
+    <script>
+      function doDownload() {
+        const btn = document.getElementById("dlBtn");
+        const original = btn.innerHTML;
+
+        btn.disabled = true;
+        btn.innerHTML = `
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;animation:spin .9s linear infinite">
+          <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+        </svg>
+        Generating PDF…`;
+
+        const el = document.getElementById("cv");
+
+        html2pdf()
+          .set({
+            margin: 0,
+            filename: "Zenith_Kandel_CV.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: {
+              scale: 2,
+              useCORS: true,
+              allowTaint: false,
+              logging: false,
+            },
+            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          })
+          .from(el)
+          .save()
+          .then(() => {
+            btn.disabled = false;
+            btn.innerHTML = original;
+          })
+          .catch(() => {
+            btn.disabled = false;
+            btn.innerHTML = original;
+            alert(
+              "PDF generation failed. Try using Ctrl+P → Save as PDF as an alternative.",
+            );
+          });
+      }
+    </script>
+
+    <style>
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </body>
+</html>
