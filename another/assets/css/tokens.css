@@ -114,8 +114,8 @@ input, textarea { font: inherit; color: inherit; }
 
 /* Hide native cursor on every interactive element so the custom cursor is the only one */
 a, button, .btn, .nav__link, .nav__cta, .nav__brand, .nav__menu,
-.feature, .stack-card, .disclosure, .project, .contact-row, .social,
-[data-magnetic], [role="button"], label, select {
+.feature, .disclosure, .project, .contact-row, .social,
+.stack-row, .stack-row__tools li, [role="button"], label, select {
     cursor: none !important;
 }
 
