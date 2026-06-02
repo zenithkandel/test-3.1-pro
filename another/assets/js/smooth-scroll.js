@@ -39,22 +39,11 @@
     const setSize = () => {
         maxScroll = getMax();
         if (target > maxScroll) target = maxScroll;
-        // Notify other scripts that vertical height might have changed
-        window.dispatchEvent(new Event('scroll'));
     };
-
-    const updateMaxScroll = () => {
-        maxScroll = getMax();
-    };
-    window.addEventListener('resize', updateMaxScroll);
-    window.addEventListener('load', updateMaxScroll);
-    setInterval(updateMaxScroll, 2000); // Polling for safety with dynamic height
-
 
     const onWheel = (e) => {
-        // Allow normal scroll if we are in the horizontal section? 
-        // No, the horizontal section depends on vertical scroll progress of the pin container.
         e.preventDefault();
+        // accumulate target
         const delta = (e.deltaY !== undefined ? e.deltaY : 0) * wheelMul;
         target += delta;
         if (target < 0) target = 0;

@@ -44,19 +44,6 @@
         margin: 0 auto;
         justify-self: center;
     }
-
-    .horizontal-inner {
-        align-items: flex-start;
-        padding-top: 10vh;
-    }
-
-    .horizontal-track {
-        gap: 20px;
-    }
-
-    .horizontal-project {
-        width: 85vw;
-    }
 }
 
 @media (max-width: 860px) {
