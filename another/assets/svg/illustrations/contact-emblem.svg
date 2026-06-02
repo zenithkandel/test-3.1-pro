@@ -1,13 +1,11 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Outer ring (broadcasting waves) -->
-    <circle cx="100" cy="100" r="90" fill="none" stroke="#bc7155" stroke-width="1" stroke-dasharray="2 5" opacity="0.4"/>
-    <circle cx="100" cy="100" r="72" fill="none" stroke="#bc7155" stroke-width="1" stroke-dasharray="2 5" opacity="0.6"/>
-    <circle cx="100" cy="100" r="54" fill="none" stroke="#bc7155" stroke-width="1.5"/>
-
-    <!-- Inner pin shape -->
-    <g transform="translate(100, 100)">
-        <path d="M0 -34 C-16 -34 -28 -22 -28 -6 C-28 14 0 38 0 38 C0 38 28 14 28 -6 C28 -22 16 -34 0 -34 Z"
-              fill="#bc7155" stroke="#ffffff" stroke-width="2"/>
-        <circle cx="0" cy="-6" r="10" fill="#ffffff"/>
-    </g>
+    <circle cx="100" cy="100" r="14" fill="#bc7155"/>
+    <path d="M124 100 A 24 24 0 0 1 100 124 A 24 24 0 0 1 76 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square"/>
+    <path d="M140 100 A 40 40 0 0 1 100 140 A 40 40 0 0 1 60 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square" opacity="0.7"/>
+    <path d="M156 100 A 56 56 0 0 1 100 156 A 56 56 0 0 1 44 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square" opacity="0.45"/>
+    <path d="M172 100 A 72 72 0 0 1 100 172 A 72 72 0 0 1 28 100" stroke="#bc7155" stroke-width="1.5" fill="none" stroke-linecap="square" opacity="0.25" stroke-dasharray="2 4"/>
+    <circle cx="100" cy="44" r="2.5" fill="#bc7155"/>
+    <circle cx="156" cy="100" r="2.5" fill="#bc7155"/>
+    <circle cx="100" cy="156" r="2.5" fill="#bc7155"/>
+    <circle cx="44" cy="100" r="2.5" fill="#bc7155"/>
 </svg>

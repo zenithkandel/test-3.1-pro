@@ -1,5 +1,5 @@
 /* ===========================================================
-   INTERACTIONS — magnetic buttons, hover tilt, scroll counter
+   INTERACTIONS — hover tilt, scroll counter
    =========================================================== */
 (() => {
     'use strict';
@@ -7,37 +7,6 @@
     const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isTouch = window.matchMedia('(hover: none)').matches;
-
-    /* ----- Magnetic buttons ----- */
-    if (!isTouch && !reduceMotion) {
-        const magnets = $$('[data-magnetic]');
-        magnets.forEach(el => {
-            const strength = 0.28;
-            let raf = null;
-            let tx = 0, ty = 0, x = 0, y = 0;
-
-            const onMove = (e) => {
-                const rect = el.getBoundingClientRect();
-                const cx = rect.left + rect.width / 2;
-                const cy = rect.top + rect.height / 2;
-                tx = (e.clientX - cx) * strength;
-                ty = (e.clientY - cy) * strength;
-            };
-
-            const onLeave = () => { tx = 0; ty = 0; };
-
-            const tick = () => {
-                x += (tx - x) * 0.18;
-                y += (ty - y) * 0.18;
-                el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
-                raf = requestAnimationFrame(tick);
-            };
-
-            el.addEventListener('mousemove', onMove, { passive: true });
-            el.addEventListener('mouseleave', onLeave, { passive: true });
-            raf = requestAnimationFrame(tick);
-        });
-    }
 
     /* ----- Tilt on feature cards (3D-ish) ----- */
     if (!isTouch && !reduceMotion) {
@@ -50,8 +19,8 @@
                 const rect = el.getBoundingClientRect();
                 const px = (e.clientX - rect.left) / rect.width;
                 const py = (e.clientY - rect.top) / rect.height;
-                tx = (px - 0.5) * 6;   // -3..3 deg
-                ty = -(py - 0.5) * 6;  // -3..3 deg
+                tx = (px - 0.5) * 6;
+                ty = -(py - 0.5) * 6;
             };
 
             const onLeave = () => { tx = 0; ty = 0; };
