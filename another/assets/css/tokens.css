@@ -112,6 +112,13 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: none; cursor: none; }
 input, textarea { font: inherit; color: inherit; }
 
+/* Hide native cursor on every interactive element so the custom cursor is the only one */
+a, button, .btn, .nav__link, .nav__cta, .nav__brand, .nav__menu,
+.feature, .stack-card, .disclosure, .project, .contact-row, .social,
+[data-magnetic], [role="button"], label, select {
+    cursor: none !important;
+}
+
 ::selection { background: var(--color-desert-sienna); color: var(--color-canvas-white); }
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -156,3 +163,37 @@ code {
     position: relative;
 }
 .surface--dark .section { color: var(--color-canvas-white); }
+
+/* ----- Custom cursor (macOS style) ----- */
+.cursor {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    width: 32px;
+    height: 32px;
+    will-change: transform;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.cursor__arrow,
+.cursor__pointer,
+.cursor__text {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: opacity 0.15s var(--ease);
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.cursor__arrow   { opacity: 1; }
+.cursor__pointer { opacity: 0; }
+.cursor__text    { opacity: 0; }
+
+.cursor.is-down { transform: scale(0.85); }

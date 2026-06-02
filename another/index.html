@@ -29,30 +29,9 @@
 
     <!-- Custom cursor (macOS-style) -->
     <div class="cursor" id="cursor" aria-hidden="true">
-        <div class="cursor__arrow" data-cursor="arrow">
-            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 3.4 L6 25.6 L11.4 21.4 L14.6 28.2 L17.8 26.7 L14.7 19.8 L23 19.8 Z"
-                      fill="#FFFFFF" stroke="#000000" stroke-width="1.6"
-                      stroke-linejoin="round" stroke-linecap="round"/>
-            </svg>
-        </div>
-        <div class="cursor__pointer" data-cursor="pointer">
-            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 28 L23 28 L25 22 L25 13.5 C25 12.4 24.1 11.5 23 11.5 L19.5 11.5 L19.5 6.5 C19.5 5.1 18.4 4 17 4 C15.6 4 14.5 5.1 14.5 6.5 L14.5 13 L9 13 C7.9 13 7 13.9 7 15 L7 22 Z"
-                      fill="#FFFFFF" stroke="#000000" stroke-width="1.5"
-                      stroke-linejoin="round" stroke-linecap="round"/>
-                <path d="M9 17 L13 17 M9 20 L13 20 M9 23 L13 23 M14.5 11.5 L17 11.5"
-                      stroke="#000000" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
-            </svg>
-        </div>
-        <div class="cursor__text" data-cursor="text">
-            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11 5 L21 5 M11 27 L21 27 M16 5 L16 27"
-                      stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
-                <path d="M13 3 L19 3 M13 29 L19 29"
-                      stroke="#000000" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-        </div>
+        <img class="cursor__arrow"   data-cursor="arrow"   src="assets/svg/cursors/arrow.svg"   alt="" draggable="false" />
+        <img class="cursor__pointer" data-cursor="pointer" src="assets/svg/cursors/pointer.svg" alt="" draggable="false" />
+        <img class="cursor__text"    data-cursor="text"    src="assets/svg/cursors/text.svg"    alt="" draggable="false" />
     </div>
 
     <!-- Page loader -->
@@ -614,7 +593,6 @@
     <script src="assets/js/reveal.js" defer></script>
     <script src="assets/js/parallax.js" defer></script>
     <script src="assets/js/interactions.js" defer></script>
-    <script src="assets/js/text-effects.js" defer></script>
     <script src="assets/js/svg-anim.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </body>

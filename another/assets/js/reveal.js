@@ -32,8 +32,7 @@
     const nav = $('#nav');
     if (nav) {
         const updateOnScroll = () => {
-            const top = window.__zenithScroll ? window.__zenithScroll.current : window.scrollY;
-            nav.classList.toggle('is-scrolled', top > 16);
+            nav.classList.toggle('is-scrolled', window.scrollY > 16);
         };
 
         // Detect dark surfaces

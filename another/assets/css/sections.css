@@ -92,6 +92,8 @@
     position: relative;
     overflow: hidden;
     will-change: transform;
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0);
 }
 
 .feature::before {
@@ -318,6 +320,8 @@
     will-change: transform;
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0);
 }
 
 .stack-card::before {
@@ -403,6 +407,8 @@
     position: relative;
     overflow: hidden;
     will-change: transform;
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0);
 }
 
 .disclosure::after {

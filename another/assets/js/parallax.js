@@ -25,17 +25,15 @@
     };
 
     const tick = () => {
-        const scroll = window.__zenithScroll ? window.__zenithScroll.current : window.scrollY;
+        const scroll = window.scrollY;
         elems.forEach(item => {
             if (!item.rect) return;
             const top = item.rect.top + scroll;
             const center = top + item.rect.height / 2;
             const vh = window.innerHeight;
-            // distance from center of viewport, normalized
             const dist = (center - (scroll + vh / 2)) / vh;
-            // clamp
             const d = Math.max(-1, Math.min(1, dist));
-            const y = -d * 60 * item.strength * 10; // tuned scale
+            const y = -d * 60 * item.strength * 10;
             item.el.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`;
         });
         requestAnimationFrame(tick);
