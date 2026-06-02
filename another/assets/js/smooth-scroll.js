@@ -1,128 +1,122 @@
 /* ===========================================================
-   SMOOTH-SCROLL — Lenis-powered weighted scroller.
-
-   Preserves the legacy public API (window.__zenithScroll) so
-   parallax.js, horizontal-scroll.js, and any future module can
-   read the same shape they used to read from the old wheel-driven
-   implementation:
-
-       window.__zenithScroll.current   // current scrollY
-       window.__zenithScroll.target    // current scrollY (Lenis drives directly)
-       window.__zenithScroll.max       // max scrollY
-       window.__zenithScroll.progress  // 0..1
-
-   Behavior preserved from the old version:
-     - Disabled on touch devices (native scroll is faster).
-     - Disabled if the user prefers reduced motion.
-     - Disabled if the body does NOT have data-smooth-scroll.
-     - Anchor links animate via lenis.scrollTo with the same -8 offset.
-     - Keyboard nav (Arrows, PgUp/PgDn, Home/End, Space) still works.
-     - GSAP ScrollTrigger is wired to Lenis if both are present.
-
-   If Lenis failed to load (CDN blocked, offline, etc.) we still
-   expose the same API and just fall back to native scroll — the
-   site never breaks.
+   SMOOTH-SCROLL — weighted/momentum scroller
+   Keeps body in normal flow; only intercepts wheel events
+   and animates window.scrollTo for the weighted feel.
+   
+   TOUCH DEVICES: Completely disabled. Mobile browsers have
+   GPU-optimized native touch scrolling that's far smoother
+   than any JS implementation. Apple, Stripe, Linear all do this.
    =========================================================== */
 (() => {
     'use strict';
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Skip entirely on touch devices — native scroll is superior
     const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
     if (isTouch) return;
-    if (!document.body.hasAttribute('data-smooth-scroll')) return;
 
-    const init = () => initLenis();
+    const html = document.documentElement;
+    const body = document.body;
 
-    if (window.__zenithLibsReady) {
-        init();
-    } else {
-        window.addEventListener('zenith:libs-ready', init, { once: true });
-        // Safety: if the bridge never fires within 6s, init anyway
-        // (will fall through to the no-Lenis fallback).
-        setTimeout(() => { if (!window.__zenithScroll) init(); }, 6000);
-    }
+    if (!body.hasAttribute('data-smooth-scroll')) return;
 
-    function initLenis() {
-        const getMax = () => Math.max(
-            document.body.scrollHeight,
-            document.documentElement.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.offsetHeight
-        ) - window.innerHeight;
+    // Tunables
+    const ease = 0.10;   // lerp factor (lower = heavier)
+    const wheelMul = 1.0;    // wheel delta multiplier
 
-        /* ----- Fallback: no Lenis, expose native API ----- */
-        if (typeof window.Lenis !== 'function') {
-            window.__zenithScroll = {
-                get current()  { return window.scrollY || 0; },
-                get target()   { return window.scrollY || 0; },
-                get max()      { return Math.max(0, getMax()); },
-                get progress() {
-                    const m = Math.max(0, getMax());
-                    return m === 0 ? 0 : (window.scrollY || 0) / m;
-                },
-            };
-            return;
-        }
+    let current = window.scrollY || html.scrollTop || 0;
+    let target = current;
+    let maxScroll = 0;
 
-        /* ----- Lenis path ----- */
-        const lenis = new window.Lenis({
-            duration: 1.15,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true,
-            wheelMultiplier: 1.0,
-            touchMultiplier: 1.6,
-        });
+    const getMax = () => {
+        const sh = Math.max(
+            body.scrollHeight,
+            html.scrollHeight,
+            body.offsetHeight,
+            html.offsetHeight
+        );
+        return Math.max(0, sh - window.innerHeight);
+    };
 
-        /* ----- GSAP / ScrollTrigger bridge (optional) ----- */
-        if (window.gsap && window.ScrollTrigger) {
-            window.gsap.ticker.add((time) => lenis.raf(time * 1000));
-            window.gsap.ticker.lagSmoothing(0);
-            lenis.on('scroll', window.ScrollTrigger.update);
-        } else {
-            const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
-            requestAnimationFrame(raf);
-        }
+    const setSize = () => {
+        maxScroll = getMax();
+        if (target > maxScroll) target = maxScroll;
+    };
 
-        /* ----- Public API (legacy-compatible shape) ----- */
-        window.__zenithScroll = {
-            get current()  { return lenis.scroll; },
-            get target()   { return lenis.scroll; },
-            get max()      { return lenis.limit; },
-            get progress() { return lenis.progress; },
-        };
+    const onWheel = (e) => {
+        e.preventDefault();
+        const delta = (e.deltaY !== undefined ? e.deltaY : 0) * wheelMul;
+        target += delta;
+        if (target < 0) target = 0;
+        if (target > maxScroll) target = maxScroll;
+    };
 
-        /* ----- Anchor click ----- */
-        document.addEventListener('click', (e) => {
-            const a = e.target.closest('a[href^="#"]');
-            if (!a) return;
-            const id = a.getAttribute('href');
-            if (id === '#' || id.length < 2) return;
-            const tgt = document.querySelector(id);
-            if (!tgt) return;
+    const onKey = (e) => {
+        const step = window.innerHeight * 0.85;
+        let handled = true;
+        if (e.key === 'ArrowDown') target += step;
+        else if (e.key === 'ArrowUp') target -= step;
+        else if (e.key === 'PageDown') target += step;
+        else if (e.key === 'PageUp') target -= step;
+        else if (e.key === 'Home') target = 0;
+        else if (e.key === 'End') target = maxScroll;
+        else if (e.key === ' ') target += (e.shiftKey ? -step : step);
+        else handled = false;
+        if (handled) {
             e.preventDefault();
-            lenis.scrollTo(tgt, { offset: -8 });
-        });
+            if (target < 0) target = 0;
+            if (target > maxScroll) target = maxScroll;
+        }
+    };
 
-        /* ----- Keyboard navigation (Lenis does NOT intercept these) ----- */
-        const step = () => window.innerHeight * 0.85;
-        window.addEventListener('keydown', (e) => {
-            const t = lenis.scroll;
-            let next = null;
-            switch (e.key) {
-                case 'ArrowDown': next = t + step(); break;
-                case 'ArrowUp':   next = t - step(); break;
-                case 'PageDown':  next = t + step(); break;
-                case 'PageUp':    next = t - step(); break;
-                case 'Home':      next = 0; break;
-                case 'End':       next = lenis.limit; break;
-                case ' ':
-                    next = t + (e.shiftKey ? -step() : step());
-                    break;
-            }
-            if (next === null) return;
-            e.preventDefault();
-            next = Math.max(0, Math.min(next, lenis.limit));
-            lenis.scrollTo(next, { lock: false, force: false });
-        });
-    }
+    const onAnchorClick = (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        const id = a.getAttribute('href');
+        if (id === '#' || id.length < 2) return;
+        const tgt = document.querySelector(id);
+        if (!tgt) return;
+        e.preventDefault();
+        setSize();
+        const y = tgt.getBoundingClientRect().top + window.scrollY - 8;
+        target = Math.max(0, Math.min(y, maxScroll));
+    };
+
+    const tick = () => {
+        // Recalculate max every frame for dynamic height changes
+        maxScroll = getMax();
+        if (target > maxScroll) target = maxScroll;
+
+        const diff = target - current;
+        if (Math.abs(diff) > 0.5) {
+            current += diff * ease;
+            window.scrollTo(0, current);
+        } else if (current !== target) {
+            current = target;
+            window.scrollTo(0, current);
+        }
+        requestAnimationFrame(tick);
+    };
+
+    // Watch for content height changes
+    const mo = new MutationObserver(setSize);
+    mo.observe(body, { childList: true, subtree: true });
+
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('resize', setSize);
+    window.addEventListener('load', setSize);
+    document.addEventListener('click', onAnchorClick);
+
+    setSize();
+    requestAnimationFrame(tick);
+
+    // Public API for other modules
+    window.__zenithScroll = {
+        get current() { return current; },
+        get target() { return target; },
+        get max() { return maxScroll; },
+        get progress() { return maxScroll === 0 ? 0 : current / maxScroll; }
+    };
 })();
