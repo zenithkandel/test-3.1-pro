@@ -295,18 +295,47 @@
     z-index: 1;
 }
 
+.project__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 8px;
+    transition: transform var(--t-slow) var(--ease);
+}
+
+.project:hover .project__meta {
+    transform: translateX(2px);
+}
+
 .project__num {
     font-size: 15px;
     font-weight: var(--weight-bold);
     letter-spacing: 0.08em;
     color: var(--color-desert-sienna);
-    padding-top: 8px;
     transition: transform var(--t-slow) var(--ease);
 }
 
 .project:hover .project__num {
     transform: scale(1.1);
     transform-origin: left;
+}
+
+.project__art {
+    width: clamp(36px, 3.4vw, 48px);
+    height: auto;
+    flex-shrink: 0;
+    transition: transform var(--t-slow) var(--ease);
+}
+
+.project__art img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s var(--ease-out);
+}
+
+.project:hover .project__art img {
+    transform: rotate(-4deg) scale(1.04);
 }
 
 .project__main {
