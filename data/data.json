@@ -101,7 +101,7 @@
     "index": "02 — Work",
     "title": ["Selected", "projects."],
     "intro": "Five projects. Each one was built for a real problem, demoed in front of judges, and pushed past the prototype stage. They live in hackathon halls and school exhibitions — not in tutorial folders.",
-    "ornament": "assets/svg/illustrations/work-ornament.svg",
+    "ornament": "assets/svg/emblems/work.svg",
     "projects": [
       {
         "num": "01",
@@ -110,7 +110,7 @@
         "description": "A crowd-sourced price index for everyday goods. Users report what they paid, the system aggregates prices by locality, and shoppers see whether they're about to get scammed at the bazaar. Built to fight the opacity of Kathmandu's informal markets.",
         "chips": ["PHP", "MySQL", "Crowdsourced data", "Hackathon build"],
         "year": "2024",
-        "illustration": "assets/svg/illustrations/project-sastomahango.svg"
+        "illustration": "assets/svg/projects/sastomahango.svg"
       },
       {
         "num": "02",
@@ -119,7 +119,7 @@
         "description": "An off-grid, RF-based emergency signal system. When there's no cellular coverage — landslides, remote valleys, the post-quake window — Lifeline transmits short distress beacons across radio so a receiver in a populated area can relay them to first responders.",
         "chips": ["RF modules", "Arduino", "Resilience tech", "Field-tested"],
         "year": "2024",
-        "illustration": "assets/svg/illustrations/project-lifeline.svg"
+        "illustration": "assets/svg/projects/lifeline.svg"
       },
       {
         "num": "03",
@@ -128,7 +128,7 @@
         "description": "A complete public transport companion for Kathmandu. Enter where you are, enter where you want to go, and Sawari hands you the full walkthrough — the bus, the route, the fare, the road condition, the ETA. Built around the city's actual, chaotic network.",
         "chips": ["JavaScript", "Routing logic", "Kathmandu transit", "Live demo"],
         "year": "2025",
-        "illustration": "assets/svg/illustrations/project-sawari.svg"
+        "illustration": "assets/svg/projects/sawari.svg"
       },
       {
         "num": "04",
@@ -137,7 +137,7 @@
         "description": "A soil monitoring and crop recommendation rig. Sensor arrays measure moisture, pH, and nutrients in the field; AgroPan returns a crop recommendation tailored to what's actually in the ground — not what the seed shop is selling.",
         "chips": ["ESP series", "Sensors", "Precision agriculture", "Field prototype"],
         "year": "2024",
-        "illustration": "assets/svg/illustrations/project-agropan.svg"
+        "illustration": "assets/svg/projects/agropan.svg"
       },
       {
         "num": "05",
@@ -146,7 +146,7 @@
         "description": "A smart attendance system for Nepali schools. Every student taps their ID card on an RFID reader at the gate, attendance is logged instantly, and class teachers see who's actually in the room. Built to replace the paper register that's still standard here.",
         "chips": ["RFID", "PHP", "EdTech", "School pilot"],
         "year": "2025",
-        "illustration": "assets/svg/illustrations/project-edutrackpro.svg"
+        "illustration": "assets/svg/projects/edutrackpro.svg"
       }
     ]
   },
@@ -155,7 +155,7 @@
     "index": "03 — Stack",
     "title": ["Tools I", "work with."],
     "intro": "I started with the boring fundamentals and I still respect them. The list grows on purpose — only when something earns its place in a real project.",
-    "emblem": "assets/svg/illustrations/stack-emblem.svg",
+    "emblem": "assets/svg/emblems/stack.svg",
     "rows": [
       {
         "num": "01",
@@ -194,7 +194,7 @@
     "index": "04 — Research",
     "title": ["Security", "research."],
     "intro": "Bug hunting is a way of reading. Every application is a story about assumptions — some of those assumptions are wrong. Below are the ones I found and disclosed.",
-    "emblem": "assets/svg/illustrations/research-emblem.svg",
+    "emblem": "assets/svg/emblems/research.svg",
     "disclosures": [
       {
         "target": "Kantipur Television",
@@ -217,7 +217,7 @@
     "index": "05 — Contact",
     "title": ["Let's build", "something."],
     "intro": "Open to collaborations, hackathon teams, internships, and interesting security disclosures. If you're working on something that actually matters to people, I'd like to hear about it.",
-    "emblem": "assets/svg/illustrations/contact-emblem.svg",
+    "emblem": "assets/svg/emblems/contact.svg",
     "fields": [
       { "label": "Email", "type": "link", "value": "zenithkandel0@gmail.com", "href": "mailto:zenithkandel0@gmail.com" },
       { "label": "Phone / WhatsApp", "type": "link", "value": "+977 980 617 6120", "href": "tel:+9779806176120" },
