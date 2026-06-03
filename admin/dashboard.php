@@ -442,86 +442,78 @@ $csrf = csrf_token();
       color: var(--sienna);
     }
 
-    /* ── FILE LIST ── */
-    .file-list {
-      max-height: 340px;
-      overflow-y: auto;
-    }
+    /* ── FILE BROWSER ── */
+    .fb-upload { margin-bottom: 24px; }
+    .fb-upload__target { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .upload-zone { border: 2px dashed var(--border); border-radius: 8px; padding: 28px 20px; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
+    .upload-zone:hover, .upload-zone.dragover { border-color: var(--sienna); background: rgba(188,113,85,0.04); }
+    .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    .upload-zone__text { font-size: 13px; color: #888; }
+    .upload-zone__text strong { color: var(--sienna); }
+    .upload-zone__hint { font-size: 11px; color: #555; margin-top: 4px; }
+    .upload-path { margin-top: 10px; display: inline-block; background: var(--input-bg); padding: 6px 14px; border-radius: 4px; font-family: var(--mono); font-size: 12px; color: var(--sienna); }
 
-    .file-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin-bottom: 4px;
-      font-size: 12px;
-      transition: background 0.15s;
-    }
+    .fb-browse { border-top: 1px solid var(--border); padding-top: 20px; }
+    .fb-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+    .fb-toolbar__right { display: flex; align-items: center; gap: 12px; }
+    .fb-count { font-size: 12px; color: #555; }
 
-    .file-item:hover {
-      background: rgba(255, 255, 255, 0.02);
-    }
+    .fb-breadcrumb { display: flex; align-items: center; gap: 0; font-size: 13px; flex-wrap: wrap; }
+    .fb-crumb { color: var(--mist); cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: all 0.15s; }
+    .fb-crumb:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .fb-crumb--active { color: var(--white); cursor: default; }
+    .fb-crumb--active:hover { background: none; }
+    .fb-sep { color: #444; margin: 0 2px; font-size: 11px; }
 
-    .file-item__name {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #bbb;
-      min-width: 0;
+    .fb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+    .fb-card {
+      background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; transition: border-color 0.15s; position: relative;
     }
-
-    .file-item__name span {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .fb-card:hover { border-color: var(--border-focus); }
+    .fb-card__thumb {
+      height: 120px; display: flex; align-items: center; justify-content: center;
+      background: #0a0d0e; border-bottom: 1px solid var(--border); overflow: hidden;
     }
-
-    .file-item__icon {
-      font-size: 14px;
-      flex-shrink: 0;
+    .fb-card__thumb img { max-width: 100%; max-height: 100%; object-fit: contain; padding: 12px; }
+    .fb-card__thumb--icon { font-size: 36px; color: #333; }
+    .fb-card__body { padding: 10px 12px; }
+    .fb-card__name {
+      font-size: 12px; color: #bbb; overflow: hidden; text-overflow: ellipsis;
+      white-space: nowrap; margin-bottom: 4px;
     }
-
-    .file-item__size {
-      color: #555;
-      font-family: var(--mono);
-      font-size: 11px;
-      margin-left: 12px;
-      flex-shrink: 0;
+    .fb-card__meta { font-size: 11px; color: #555; font-family: var(--mono); }
+    .fb-card__actions {
+      position: absolute; top: 8px; right: 8px; display: flex; gap: 4px;
+      opacity: 0; transition: opacity 0.15s;
     }
-
-    .file-item__actions {
-      display: flex;
-      gap: 4px;
-      flex-shrink: 0;
-      margin-left: 12px;
+    .fb-card:hover .fb-card__actions { opacity: 1; }
+    .fb-card__btn {
+      width: 28px; height: 28px; border-radius: 4px; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.15s; font-size: 13px;
+      background: rgba(0,0,0,0.6); color: #aaa; backdrop-filter: blur(4px);
     }
+    .fb-card__btn:hover { color: var(--white); background: rgba(0,0,0,0.8); }
+    .fb-card__btn--del:hover { color: var(--danger); background: rgba(220,50,50,0.3); }
+    .fb-empty { color: #444; font-size: 13px; padding: 32px; text-align: center; }
 
-    .file-item__btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
-      border: 1px solid transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      cursor: pointer;
-      transition: all 0.15s;
-      font-size: 13px;
-      background: none;
+    .fb-img-preview {
+      position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.85);
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s;
     }
-
-    .file-item__btn:hover {
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.05);
-      border-color: var(--border);
+    .fb-img-preview.open { opacity: 1; pointer-events: auto; }
+    .fb-img-preview img { max-width: 90vw; max-height: 90vh; border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+    .fb-img-preview__close {
+      position: absolute; top: 20px; right: 24px; font-size: 28px; color: #888;
+      cursor: pointer; transition: color 0.15s; background: none; border: none;
     }
-
-    .file-item__btn--del:hover {
-      color: var(--danger);
-      background: var(--danger-bg);
+    .fb-img-preview__close:hover { color: var(--white); }
+    .fb-img-preview__info {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.7); padding: 8px 16px; border-radius: 6px;
+      font-size: 12px; color: #aaa; font-family: var(--mono); white-space: nowrap;
     }
 
     /* ── STATUS ── */
@@ -1199,7 +1191,7 @@ $csrf = csrf_token();
           <div class="fb-breadcrumb" id="fbBreadcrumb"></div>
           <div class="fb-toolbar__right">
             <span class="fb-count" id="fbCount"></span>
-            <button class="btn btn--ghost btn--sm" onclick="listFiles()">Refresh</button>
+            <button class="btn btn--ghost btn--sm" onclick="fbNavigate(fbCurrent)">Refresh</button>
           </div>
         </div>
         <div id="fileGrid" class="fb-grid"></div>
@@ -1755,17 +1747,18 @@ function addProject() {
     }
 
     document.getElementById('fileInput').addEventListener('change', function () {
+      const folder = document.getElementById('uploadFolder').value;
       if (this.files[0]) {
         const fd = new FormData();
         fd.append('file', this.files[0]);
-        fd.append('folder', document.getElementById('uploadFolder').value);
+        fd.append('folder', folder);
         fetch(API + '?action=upload', { method: 'POST', headers: { 'X-CSRF-TOKEN': CSRF }, body: fd })
           .then(r => r.json()).then(d => {
             if (d.ok) {
               status('Uploaded: ' + d.path, true);
               document.getElementById('uploadResult').innerHTML =
                 '<div class="upload-path">' + esc(d.path) + '</div>';
-              listFiles();
+              fbNavigate(folder);
             } else status(d.error, false);
           }).catch(() => status('Upload failed', false));
         this.value = '';
@@ -1776,49 +1769,106 @@ function addProject() {
     dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
     dz.addEventListener('drop', e => {
       e.preventDefault(); dz.classList.remove('dragover');
+      const folder = document.getElementById('uploadFolder').value;
       if (e.dataTransfer.files[0]) {
         const fd = new FormData();
         fd.append('file', e.dataTransfer.files[0]);
-        fd.append('folder', document.getElementById('uploadFolder').value);
+        fd.append('folder', folder);
         fetch(API + '?action=upload', { method: 'POST', headers: { 'X-CSRF-TOKEN': CSRF }, body: fd })
           .then(r => r.json()).then(d => {
             if (d.ok) {
               status('Uploaded: ' + d.path, true);
               document.getElementById('uploadResult').innerHTML =
                 '<div class="upload-path">' + esc(d.path) + '</div>';
-              listFiles();
+              fbNavigate(folder);
             } else status(d.error, false);
           }).catch(() => status('Upload failed', false));
       }
     });
 
     /* ── File Browser ── */
-    async function listFiles() {
-      const dir = document.getElementById('browseDir').value;
+    let fbCurrent = '';
+    const IMGLIKE = /\.(jpg|jpeg|png|gif|webp|svg)$/i;
+    const ASSETS = '../assets/';
+
+    function fbBreadcrumb(dir) {
+      const bc = document.getElementById('fbBreadcrumb');
+      const parts = dir ? dir.split('/') : [];
+      let html = '<span class="fb-crumb' + (!dir ? ' fb-crumb--active' : '') + '" onclick="fbNavigate(\'\')">assets/</span>';
+      let path = '';
+      parts.forEach((p, i) => {
+        path += (path ? '/' : '') + p;
+        const isLast = i === parts.length - 1;
+        html += '<span class="fb-sep">/</span>' +
+          '<span class="fb-crumb' + (isLast ? ' fb-crumb--active' : '') + '" onclick="fbNavigate(\'' + esc(path) + '\')">' + esc(p) + '</span>';
+      });
+      bc.innerHTML = html;
+    }
+
+    async function fbNavigate(dir) {
+      fbCurrent = dir;
+      fbBreadcrumb(dir);
+      const el = document.getElementById('fileGrid');
+      const empty = document.getElementById('fileListEmpty');
+      const count = document.getElementById('fbCount');
+      el.innerHTML = '<div style="color:#444;font-size:12px;padding:16px">Loading…</div>';
+      empty.style.display = 'none';
       try {
         const r = await fetch(API + '?action=list&dir=' + encodeURIComponent(dir));
         const d = await r.json();
-        const el = document.getElementById('fileList');
-        if (!d.ok || !d.files.length) { el.innerHTML = '<div style="color:#555;font-size:12px;padding:12px">No files found</div>'; return; }
+        if (!d.ok || !d.files.length) { el.innerHTML = ''; empty.style.display = ''; count.textContent = ''; return; }
+        count.textContent = d.files.length + ' file' + (d.files.length !== 1 ? 's' : '');
         el.innerHTML = d.files.map(f => {
-          const icon = f.type.includes('svg') ? '&#9670;' : f.type.includes('image') ? '&#9634;' : '&#9644;';
-          return '<div class="file-item">' +
-            '<div class="file-item__name"><span class="file-item__icon">' + icon + '</span><span>' + esc(f.name) + '</span></div>' +
-            '<span class="file-item__size">' + f.size + '</span>' +
-            '<div class="file-item__actions">' +
-            '<button class="file-item__btn" onclick="downloadFile(\'' + esc(f.path) + '\')" title="Download">&#8595;</button>' +
-            '<button class="file-item__btn file-item__btn--del" onclick="deleteFile(\'' + esc(f.path) + '\',\'' + esc(f.name) + '\')" title="Delete">&times;</button>' +
-            '</div></div>';
+          const isImg = IMGLIKE.test(f.name);
+          const isSvg = /\.svg$/i.test(f.name);
+          const thumb = isImg
+            ? '<img src="' + esc(ASSETS + f.path) + '" alt="" loading="lazy" onerror="this.parentElement.innerHTML=\'<span class=fb-card__thumb--icon>&#9634;</span>\'">'
+            : '<span class="fb-card__thumb--icon">' + (f.type.includes('javascript') ? '&#9881;' : f.type.includes('css') ? '&#9883;' : '&#9644;') + '</span>';
+          const click = isImg ? ' onclick="fbPreview(\'' + esc(ASSETS + f.path) + '\',\'' + esc(f.name) + '\',' + f.raw_size + ')" style="cursor:pointer"' : '';
+          return '<div class="fb-card">' +
+            '<div class="fb-card__thumb"' + click + '>' + thumb + '</div>' +
+            '<div class="fb-card__body">' +
+              '<div class="fb-card__name" title="' + esc(f.name) + '">' + esc(f.name) + '</div>' +
+              '<div class="fb-card__meta">' + f.size + '</div>' +
+            '</div>' +
+            '<div class="fb-card__actions">' +
+              '<button class="fb-card__btn" onclick="downloadFile(\'' + esc(f.path) + '\')" title="Download">&#8595;</button>' +
+              '<button class="fb-card__btn fb-card__btn--del" onclick="deleteFile(\'' + esc(f.path) + '\',\'' + esc(f.name) + '\')" title="Delete">&times;</button>' +
+            '</div>' +
+          '</div>';
         }).join('');
-      } catch { document.getElementById('fileList').innerHTML = '<div style="color:#555;font-size:12px">Error</div>'; }
+      } catch { el.innerHTML = '<div style="color:#555;font-size:12px">Error loading files</div>'; }
     }
+
+    function fbPreview(src, name, size) {
+      let box = document.getElementById('fbPreviewBox');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = 'fbPreviewBox';
+        box.className = 'fb-img-preview';
+        box.innerHTML = '<button class="fb-img-preview__close" onclick="fbClosePreview()">&times;</button><img><div class="fb-img-preview__info"></div>';
+        box.addEventListener('click', e => { if (e.target === box) fbClosePreview(); });
+        document.body.appendChild(box);
+      }
+      const img = box.querySelector('img');
+      const info = box.querySelector('.fb-img-preview__info');
+      img.src = src;
+      info.textContent = name + (size ? ' — ' + (size > 1024 ? (size / 1024).toFixed(1) + ' KB' : size + ' B') : '');
+      box.classList.add('open');
+    }
+    function fbClosePreview() {
+      const box = document.getElementById('fbPreviewBox');
+      if (box) { box.classList.remove('open'); box.querySelector('img').src = ''; }
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fbClosePreview(); });
+
     async function deleteFile(path, name) {
       if (!confirm('Delete ' + name + '?')) return;
       try {
         const r = await fetch(API + '?action=delete', { method: 'POST', headers: hdrs(true), body: JSON.stringify({ path }) });
         const d = await r.json();
         status(d.ok ? 'Deleted ' + name : (d.error || 'Failed'), !!d.ok);
-        listFiles();
+        fbNavigate(fbCurrent);
       } catch { status('Delete failed', false); }
     }
     function downloadFile(path) {
@@ -1871,7 +1921,7 @@ function addProject() {
 
     /* ── Init ── */
     loadData();
-    listFiles();
+    fbNavigate('');
   </script>
 </body>
 

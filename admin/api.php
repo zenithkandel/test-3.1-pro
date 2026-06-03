@@ -171,6 +171,7 @@ switch ($action) {
                     'name' => $item,
                     'path' => $rel,
                     'size' => format_size((int)filesize($full)),
+                    'raw_size' => (int)filesize($full),
                     'type' => mime_content_type($full) ?: 'application/octet-stream',
                 ];
             }
