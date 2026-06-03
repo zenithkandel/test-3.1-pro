@@ -44,7 +44,8 @@
     },
     "born": "May 12, 2009",
     "school": "Grade 12 · KMSS Bagbazar",
-    "scrollText": "Scroll"
+    "scrollText": "Scroll",
+    "clockAriaLabel": "Current time in Kathmandu"
   },
 
   "marquee": [
@@ -274,6 +275,8 @@
       { "label": "Contact", "href": "#contact" }
     ],
     "cta": "Hire / Collab",
+    "ctaHref": "#contact",
+    "menuAriaLabel": "Open menu",
     "mobileLinks": [
       { "num": "01", "label": "About", "href": "#about" },
       { "num": "02", "label": "Work", "href": "#work" },

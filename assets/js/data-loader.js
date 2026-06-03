@@ -161,6 +161,7 @@
         $('meta[property="og:title"]')?.setAttribute('content', data.meta.ogTitle);
         $('meta[property="og:description"]')?.setAttribute('content', data.meta.ogDescription);
         $('meta[name="theme-color"]')?.setAttribute('content', data.meta.themeColor);
+        $('meta[property="og:type"]')?.setAttribute('content', data.meta.ogType);
 
         /* Favicon */
         const init = data.meta.faviconInitial || 'Z';
@@ -180,14 +181,18 @@
         /* Brand / Nav */
         const navBrand = $('.nav__brand');
         if (navBrand) {
+            navBrand.setAttribute('href', data.brand.homeHref);
             navBrand.setAttribute('aria-label', data.brand.name + ' — Home');
             navBrand.querySelector('.nav__word').textContent = data.brand.name;
             navBrand.querySelector('.nav__mark').textContent = data.brand.initials;
         }
         const navLinks = $('.nav__links');
         if (navLinks) renderNavLinks(navLinks, data.nav.links);
-        const navCta = $('.nav__cta span');
-        if (navCta) navCta.textContent = data.nav.cta;
+        const navCta = $('.nav__cta');
+        if (navCta) {
+            navCta.setAttribute('href', data.nav.ctaHref);
+            navCta.querySelector('span').textContent = data.nav.cta;
+        }
         const mobileMenu = $('#mobileMenu .mobile-menu__nav');
         if (mobileMenu) renderMobileLinks(mobileMenu, data.nav.mobileLinks);
 
