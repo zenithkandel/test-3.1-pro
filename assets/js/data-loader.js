@@ -196,6 +196,10 @@
         const mobileMenu = $('#mobileMenu .mobile-menu__nav');
         if (mobileMenu) renderMobileLinks(mobileMenu, data.nav.mobileLinks);
 
+        /* Mobile menu button aria-label */
+        const menuBtn = $('#navMenu');
+        if (menuBtn && data.nav.menuAriaLabel) menuBtn.setAttribute('aria-label', data.nav.menuAriaLabel);
+
         /* Loader */
         const loaderText = $('.loader__text');
         if (loaderText) loaderText.textContent = data.brand.loaderText;
