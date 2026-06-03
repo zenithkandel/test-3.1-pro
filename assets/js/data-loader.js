@@ -252,6 +252,10 @@
         const heroScroll = $('.hero__scroll span');
         if (heroScroll && data.hero.scrollText) heroScroll.textContent = data.hero.scrollText;
 
+        /* Hero clock aria-label */
+        const heroClock = $('.hero__clock');
+        if (heroClock && data.hero.clockAriaLabel) heroClock.setAttribute('aria-label', data.hero.clockAriaLabel);
+
         /* Marquee */
         const marqueeTrack = $('.marquee__track');
         if (marqueeTrack) renderMarquee(marqueeTrack, data.marquee);
