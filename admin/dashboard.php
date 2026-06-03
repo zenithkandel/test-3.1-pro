@@ -686,8 +686,8 @@ $csrf = csrf_token();
 
     .img-picker__preview {
       width: 100%;
-      min-height: 80px;
-      max-height: 200px;
+      min-height: 120px;
+      max-height: 240px;
       border-radius: 6px;
       border: 1px solid var(--border);
       background: var(--input-bg);
@@ -695,10 +695,11 @@ $csrf = csrf_token();
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      position: relative;
     }
 
     .img-picker__preview img {
-      max-height: 180px;
+      max-height: 220px;
       max-width: 100%;
       object-fit: contain;
       border-radius: 4px;
@@ -707,6 +708,63 @@ $csrf = csrf_token();
     .img-picker__preview .placeholder {
       color: #444;
       font-size: 12px;
+    }
+
+    .img-picker__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 6px;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      background: var(--input-bg);
+    }
+
+    .img-picker__thumb {
+      aspect-ratio: 1;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0d0e;
+      transition: border-color 0.15s, opacity 0.15s;
+      position: relative;
+    }
+
+    .img-picker__thumb:hover {
+      border-color: var(--sienna);
+    }
+
+    .img-picker__thumb.selected {
+      border-color: var(--sienna);
+    }
+
+    .img-picker__thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .img-picker__thumb-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      font-size: 9px;
+      color: #aaa;
+      padding: 2px 3px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: center;
+      backdrop-filter: blur(2px);
     }
 
     .img-picker__path {
@@ -1617,7 +1675,6 @@ function addProject() {
       const id = containerId;
       const accept = opts.accept || '.jpg,.jpeg,.png,.gif,.webp,.svg';
       const folder = opts.folder || 'images';
-      const folderLabel = opts.folderLabel || folder;
       el.innerHTML = `
     <div class="img-picker">
       <div class="img-picker__preview" id="${id}-preview">
@@ -1625,55 +1682,67 @@ function addProject() {
       </div>
       <div class="img-picker__path" id="${id}-path"></div>
       <div class="img-picker__row">
-        <select class="form-select" id="${id}-select" onchange="onPickerSelect('${id}')">
-          <option value="">— Select existing —</option>
-        </select>
         <label class="btn btn--ghost btn--sm" style="cursor:pointer;white-space:nowrap">
-          Upload <input type="file" accept="${accept}" style="display:none" onchange="onPickerUpload('${id}',this.files[0])">
+          Upload new <input type="file" accept="${accept}" style="display:none" onchange="onPickerUpload('${id}',this.files[0])">
         </label>
       </div>
+      <div class="img-picker__grid" id="${id}-grid"></div>
     </div>`;
       pickers[id] = { folder, accept, inputId: opts.inputId };
-      populatePickerDropdown(id).then(() => {
+      populatePickerGrid(id).then(() => {
         const currentVal = document.getElementById(opts.inputId)?.value || '';
         if (currentVal) updatePickerPreview(id, currentVal);
       });
     }
 
-    async function populatePickerDropdown(id) {
+    async function populatePickerGrid(id) {
       const p = pickers[id];
       if (!p) return;
-      const sel = document.getElementById(id + '-select');
+      const grid = document.getElementById(id + '-grid');
       try {
         const r = await fetch(API + '?action=list&dir=' + encodeURIComponent(p.folder));
         const d = await r.json();
         if (d.ok && d.files.length) {
           const currentVal = document.getElementById(p.inputId)?.value || '';
-          sel.innerHTML = '<option value="">— Select existing —</option>' +
-            d.files.filter(f => /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(f.name))
-              .map(f => `<option value="${esc(f.path)}" ${f.path === currentVal ? 'selected' : ''}>${esc(f.name)} (${f.size})</option>`)
-              .join('');
+          const imgFiles = d.files.filter(f => !f.is_dir && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(f.name));
+          const ASSETS_BASE = '../';
+          grid.innerHTML = imgFiles.map(f => {
+            const isSelected = f.path === currentVal;
+            return '<div class="img-picker__thumb' + (isSelected ? ' selected' : '') + '" ' +
+              'data-path="' + esc(f.path) + '" ' +
+              'onclick="onPickerThumbClick(\'' + esc(id) + '\',\'' + esc(f.path) + '\')" ' +
+              'title="' + esc(f.name) + '">' +
+              '<img src="' + esc(ASSETS_BASE + f.path) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' +
+              '<span class="img-picker__thumb-name">' + esc(f.name) + '</span>' +
+            '</div>';
+          }).join('');
+        } else {
+          grid.innerHTML = '<div style="color:#444;font-size:11px;grid-column:1/-1;text-align:center;padding:8px">No images found</div>';
         }
-      } catch { }
+      } catch {
+        grid.innerHTML = '<div style="color:#555;font-size:11px;grid-column:1/-1;text-align:center;padding:8px">Error loading</div>';
+      }
     }
 
-    function onPickerSelect(id) {
+    function onPickerThumbClick(id, path) {
       const p = pickers[id];
-      const val = document.getElementById(id + '-select').value;
-      if (val && p.inputId) {
+      if (p.inputId) document.getElementById(p.inputId).value = path;
+      if (p.inputId) {
         const inputEl = document.getElementById(p.inputId);
-        inputEl.value = val;
-        /* Also update the matching data-path or data-list element */
         if (inputEl.dataset.path) {
-          const dp = document.querySelector(`[data-path="${inputEl.dataset.path}"]`);
-          if (dp && dp !== inputEl) dp.value = val;
+          const dp = document.querySelector('[data-path="' + inputEl.dataset.path + '"]');
+          if (dp && dp !== inputEl) dp.value = path;
         }
         if (inputEl.dataset.list) {
-          const dl = document.querySelector(`[data-list="${inputEl.dataset.list}"][data-idx="${inputEl.dataset.idx}"][data-key="${inputEl.dataset.key}"]`);
-          if (dl && dl !== inputEl) dl.value = val;
+          const dl = document.querySelector('[data-list="' + inputEl.dataset.list + '"][data-idx="' + inputEl.dataset.idx + '"][data-key="' + inputEl.dataset.key + '"]');
+          if (dl && dl !== inputEl) dl.value = path;
         }
       }
-      updatePickerPreview(id, val);
+      document.querySelectorAll('#' + id + '-grid .img-picker__thumb').forEach(t => t.classList.remove('selected'));
+      const grid = document.getElementById(id + '-grid');
+      const match = grid.querySelector('[data-path="' + path + '"]');
+      if (match) match.classList.add('selected');
+      updatePickerPreview(id, path);
     }
 
     function updatePickerPreview(id, path) {
@@ -1698,9 +1767,7 @@ function addProject() {
         const d = await r.json();
         if (d.ok) {
           if (p.inputId) document.getElementById(p.inputId).value = d.path;
-          await populatePickerDropdown(id);
-          const sel = document.getElementById(id + '-select');
-          sel.value = d.path;
+          await populatePickerGrid(id);
           updatePickerPreview(id, d.path);
           status('Uploaded: ' + d.path, true);
         } else { status(d.error || 'Upload failed', false); }
@@ -1708,10 +1775,9 @@ function addProject() {
     }
 
     function refreshPicker(id) {
-      populatePickerDropdown(id).then(() => {
+      populatePickerGrid(id).then(() => {
         const p = pickers[id];
         const val = document.getElementById(p.inputId)?.value || '';
-        document.getElementById(id + '-select').value = val;
         updatePickerPreview(id, val);
       });
     }
