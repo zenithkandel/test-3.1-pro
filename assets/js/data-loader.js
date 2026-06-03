@@ -356,9 +356,17 @@
         window.dispatchEvent(new CustomEvent('data-loaded', { detail: data }));
     }
 
-    /* ---- Fetch & boot ---- */
-    fetch('data/data.json')
-        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(apply)
-        .catch(err => console.error('[data-loader] Failed to load data.json:', err));
+    /* ---- Sync XHR so DOM is populated before defer scripts run ---- */
+    try {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'data/data.json', false); /* false = synchronous */
+        xhr.send();
+        if (xhr.status >= 200 && xhr.status < 300) {
+            apply(JSON.parse(xhr.responseText));
+        } else {
+            console.error('[data-loader] HTTP ' + xhr.status);
+        }
+    } catch (e) {
+        console.error('[data-loader] Failed to load data.json:', e);
+    }
 })();
