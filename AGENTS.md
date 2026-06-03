@@ -13,10 +13,10 @@ Vanilla HTML/CSS/JS. No build tools, no npm, no bundler, no CI, no tests.
 
 ## Two pages
 
-| Page | Route | Notes |
-|------|-------|-------|
+| Page      | Route                | Notes                                                               |
+| --------- | -------------------- | ------------------------------------------------------------------- |
 | Portfolio | `another/index.html` | Main page with sections hero, about, work, stack, research, contact |
-| CV | `another/cv.html` | Print-ready; `html2pdf` download button (CDN) |
+| CV        | `another/cv.html`    | Print-ready; `html2pdf` download button (CDN)                       |
 
 A page-wipe transition animates between them via `page-wipe.js` + sessionStorage.
 
