@@ -4,7 +4,8 @@
     "description": "Zenith Kandel — Developer, security researcher, and high-school builder from Kathmandu, Nepal.",
     "ogTitle": "Zenith Kandel — Portfolio",
     "ogDescription": "Developer · Security Researcher · Builder. Kathmandu, Nepal.",
-    "themeColor": "#ffffff"
+    "themeColor": "#ffffff",
+    "faviconInitial": "Z"
   },
 
   "brand": {
@@ -12,6 +13,12 @@
     "initials": "ZK",
     "tagline": "Developer · Security Researcher · Builder",
     "loaderText": "LOADING · KTM / NP"
+  },
+
+  "cursors": {
+    "arrow": "assets/svg/cursors/arrow.svg",
+    "pointer": "assets/svg/cursors/pointer.svg",
+    "text": "assets/svg/cursors/text.svg"
   },
 
   "hero": {
@@ -34,7 +41,8 @@
       "href": "#contact"
     },
     "born": "May 12, 2009",
-    "school": "Grade 12 · KMSS Bagbazar"
+    "school": "Grade 12 · KMSS Bagbazar",
+    "scrollText": "Scroll"
   },
 
   "marquee": [
@@ -54,7 +62,7 @@
       "edge of curiosity."
     ],
     "paragraphs": [
-      "I started writing HTML in 2020. The world had gone quiet — lockdowns, closed schools, an entire childhood paused — and I opened a YouTube tab and taught myself what <html> did. I haven't stopped since.",
+      "I started writing HTML in 2020. The world had gone quiet — lockdowns, closed schools, an entire childhood paused — and I opened a YouTube tab and taught myself what <code>&lt;html&gt;</code> did. I haven't stopped since.",
       "By grade nine I was building crowd-sourced civic tools. By grade eleven I was reporting security flaws to a national news broadcaster. Now I'm in grade twelve, learning the MERN stack, and breaking applications to understand how they think.",
       "I compete in hackathons. I win some. I learn from all of them. I care about three things: shipped products, clean code, and the human on the other end of the screen."
     ],

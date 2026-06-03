@@ -1,54 +1,13 @@
 /* ===========================================================
-   DATA-LOADER — fetches data.json and populates the DOM
-   Uses data-bind attributes to map JSON paths to elements.
+   DATA-LOADER — fetches data.json and populates the DOM.
+   Runs synchronously (no defer) so the DOM is ready before
+   any deferred scripts initialise.
    =========================================================== */
 (() => {
     'use strict';
 
     const $ = (sel, ctx) => (ctx || document).querySelector(sel);
     const $$ = (sel, ctx) => [...(ctx || document).querySelectorAll(sel)];
-
-    function setBindings(root, data) {
-        /* Simple text binding: data-bind="path.to.value" */
-        $$('[data-bind]', root).forEach(el => {
-            const path = el.getAttribute('data-bind');
-            const val = resolve(path, data);
-            if (val == null) return;
-            el.textContent = val;
-        });
-
-        /* InnerHTML binding: data-bind-html="path" */
-        $$('[data-bind-html]', root).forEach(el => {
-            const path = el.getAttribute('data-bind-html');
-            const val = resolve(path, data);
-            if (val == null) return;
-            el.innerHTML = val;
-        });
-
-        /* Src binding: data-bind-src="path" */
-        $$('[data-bind-src]', root).forEach(el => {
-            const path = el.getAttribute('data-bind-src');
-            const val = resolve(path, data);
-            if (val) el.setAttribute('src', val);
-        });
-
-        /* Href binding: data-bind-href="path" */
-        $$('[data-bind-href]', root).forEach(el => {
-            const path = el.getAttribute('data-bind-href');
-            const val = resolve(path, data);
-            if (val) el.setAttribute('href', val);
-        });
-
-        /* Generic attribute binding: data-bind-attr: attributeName="path" */
-        $$('[data-bind-attr\\:a]', root).forEach(el => {
-            const val = resolve(el.getAttribute('data-bind-attr:a'), data);
-            if (val) el.setAttribute('alt', val);
-        });
-        $$('[data-bind-attr\\:href]', root).forEach(el => {
-            const val = resolve(el.getAttribute('data-bind-attr:href'), data);
-            if (val) el.setAttribute('href', val);
-        });
-    }
 
     function resolve(path, obj) {
         return path.split('.').reduce((acc, key) => {
@@ -57,12 +16,18 @@
         }, obj);
     }
 
-    /* ---- Template renderers for dynamic lists ---- */
+    function esc(str) {
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
 
-    function renderFeatures(container, features, data) {
+    /* ---- Template renderers ---- */
+
+    function renderFeatures(container, features) {
         container.innerHTML = features.map(f => `
             <article class="feature" data-reveal>
-                <span class="feature__num" data-counter="${f.number}">${f.number}</span>
+                <span class="feature__num" data-counter="${esc(f.number)}">${esc(f.number)}</span>
                 <h3 class="feature__title">${esc(f.title)}</h3>
                 <p class="feature__desc">${esc(f.description)}</p>
                 <span class="feature__foot">${esc(f.foot)}</span>
@@ -187,21 +152,30 @@
         container.innerHTML = lines.join('<br />');
     }
 
-    function esc(str) {
-        const d = document.createElement('div');
-        d.textContent = str;
-        return d.innerHTML;
-    }
-
     /* ---- Main apply function ---- */
 
     function apply(data) {
-        /* Meta */
+        /* Meta / Head */
         document.title = data.meta.title;
         $('meta[name="description"]')?.setAttribute('content', data.meta.description);
         $('meta[property="og:title"]')?.setAttribute('content', data.meta.ogTitle);
         $('meta[property="og:description"]')?.setAttribute('content', data.meta.ogDescription);
         $('meta[name="theme-color"]')?.setAttribute('content', data.meta.themeColor);
+
+        /* Favicon */
+        const init = data.meta.faviconInitial || 'Z';
+        const faviconHref = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000d10'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,sans-serif' font-size='18' font-weight='800' fill='%23ffffff'%3E${encodeURIComponent(init)}%3C/text%3E%3C/svg%3E`;
+        $('link[rel="icon"]')?.setAttribute('href', faviconHref);
+
+        /* Cursor paths */
+        if (data.cursors) {
+            const arrow = $('[data-cursor="arrow"]');
+            const pointer = $('[data-cursor="pointer"]');
+            const textCur = $('[data-cursor="text"]');
+            if (arrow) arrow.setAttribute('src', data.cursors.arrow);
+            if (pointer) pointer.setAttribute('src', data.cursors.pointer);
+            if (textCur) textCur.setAttribute('src', data.cursors.text);
+        }
 
         /* Brand / Nav */
         const navBrand = $('.nav__brand');
@@ -224,19 +198,16 @@
         /* Hero */
         const heroChip = $('.hero__chip');
         if (heroChip) {
-            heroChip.querySelector('.hero__chip-dot'); // dot stays
-            const chipText = heroChip.childNodes;
-            for (const n of chipText) {
-                if (n.nodeType === 3) { n.textContent = '\n              '; break; }
-            }
-            /* rebuild chip to keep the dot */
             heroChip.innerHTML = `<span class="hero__chip-dot" aria-hidden="true"></span>\n              ${esc(data.hero.chip)}`;
         }
         const heroLoc = $('.hero__loc');
         if (heroLoc) heroLoc.textContent = data.hero.location;
 
         const heroLines = $$('.hero__line');
-        if (heroLines[0]) { heroLines[0].textContent = data.hero.firstName; heroLines[0].setAttribute('data-text', data.hero.firstName); }
+        if (heroLines[0]) {
+            heroLines[0].textContent = data.hero.firstName;
+            heroLines[0].setAttribute('data-text', data.hero.firstName);
+        }
         if (heroLines[1]) {
             heroLines[1].innerHTML = `${esc(data.hero.lastName)}<span class="hero__period">.</span>`;
             heroLines[1].setAttribute('data-text', data.hero.lastName);
@@ -256,7 +227,10 @@
         }
 
         const heroImg = $('.hero__portrait-img');
-        if (heroImg) { heroImg.setAttribute('src', data.hero.portrait.src); heroImg.setAttribute('alt', data.hero.portrait.alt); }
+        if (heroImg) {
+            heroImg.setAttribute('src', data.hero.portrait.src);
+            heroImg.setAttribute('alt', data.hero.portrait.alt);
+        }
         const heroCap = $('.hero__portrait-cap span:last-child');
         if (heroCap) heroCap.textContent = data.hero.portrait.caption;
 
@@ -264,6 +238,10 @@
         if (heroBorn) heroBorn.innerHTML = `Born <em>${esc(data.hero.born)}</em>`;
         const heroSchool = $('.hero__meta span:nth-child(3)');
         if (heroSchool) heroSchool.textContent = data.hero.school;
+
+        /* Hero scroll text */
+        const heroScroll = $('.hero__scroll span');
+        if (heroScroll && data.hero.scrollText) heroScroll.textContent = data.hero.scrollText;
 
         /* Marquee */
         const marqueeTrack = $('.marquee__track');
@@ -274,7 +252,6 @@
         if (aboutIndex) aboutIndex.textContent = data.about.index;
         const aboutTitle = $('#about .section__title');
         if (aboutTitle) renderAboutTitle(aboutTitle, data.about.title);
-
         const aboutBody = $('#about .section__body');
         if (aboutBody) {
             aboutBody.innerHTML = data.about.paragraphs.map(p =>
@@ -359,7 +336,7 @@
     /* ---- Sync XHR so DOM is populated before defer scripts run ---- */
     try {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'data/data.json', false); /* false = synchronous */
+        xhr.open('GET', 'data/data.json', false);
         xhr.send();
         if (xhr.status >= 200 && xhr.status < 300) {
             apply(JSON.parse(xhr.responseText));
