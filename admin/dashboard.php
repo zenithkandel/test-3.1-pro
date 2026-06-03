@@ -223,6 +223,26 @@ a { color: inherit; text-decoration: none; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+/* ── IMAGE PICKER ── */
+.img-picker { display: flex; flex-direction: column; gap: 10px; }
+.img-picker__row { display: flex; gap: 8px; align-items: center; }
+.img-picker__row .form-select { flex: 1; }
+.img-picker__row .btn { flex-shrink: 0; }
+.img-picker__preview {
+  width: 100%; min-height: 80px; max-height: 200px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--input-bg);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.img-picker__preview img {
+  max-height: 180px; max-width: 100%; object-fit: contain; border-radius: 4px;
+}
+.img-picker__preview .placeholder { color: #444; font-size: 12px; }
+.img-picker__path {
+  font-family: var(--mono); font-size: 11px; color: var(--sienna);
+  background: var(--input-bg); padding: 4px 10px; border-radius: 4px;
+  border: 1px solid var(--border); word-break: break-all;
+}
 </style>
 </head>
 <body>
@@ -345,14 +365,9 @@ a { color: inherit; text-decoration: none; }
     <div class="form-section">
       <div class="form-section__title">Portrait</div>
       <div class="form-grid">
-        <div class="form-group form-group--full"><label class="form-label">Image Path</label>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input class="form-input" data-path="hero.portrait.src" id="heroPortraitSrc">
-            <label class="btn btn--ghost btn--sm" style="white-space:nowrap;cursor:pointer">
-              Upload <input type="file" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="uploadForInput('heroPortraitSrc',this.files[0])">
-            </label>
-          </div>
-          <div class="form-hint">Relative to project root, e.g. assets/images/photo.jpg</div>
+        <div class="form-group form-group--full"><label class="form-label">Image</label>
+          <input type="hidden" data-path="hero.portrait.src" id="heroPortraitSrc">
+          <div id="picker-hero-portrait"></div>
         </div>
         <div class="form-group"><label class="form-label">Alt Text</label>
           <input class="form-input" data-path="hero.portrait.alt"></div>
@@ -454,13 +469,9 @@ a { color: inherit; text-decoration: none; }
           <textarea class="form-textarea" rows="2" id="workTitleEditor"></textarea></div>
         <div class="form-group form-group--full"><label class="form-label">Intro Paragraph</label>
           <textarea class="form-textarea" rows="3" data-path="work.intro"></textarea></div>
-        <div class="form-group form-group--full"><label class="form-label">Ornament SVG Path</label>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input class="form-input" data-path="work.ornament" id="workOrnament">
-            <label class="btn btn--ghost btn--sm" style="white-space:nowrap;cursor:pointer">
-              Upload <input type="file" accept=".svg" style="display:none" onchange="uploadForInput('workOrnament',this.files[0],'svg')">
-            </label>
-          </div>
+        <div class="form-group form-group--full"><label class="form-label">Ornament SVG</label>
+          <input type="hidden" data-path="work.ornament" id="workOrnament">
+          <div id="picker-work-ornament"></div>
         </div>
       </div>
     </div>
@@ -489,13 +500,9 @@ a { color: inherit; text-decoration: none; }
           <textarea class="form-textarea" rows="2" id="stackTitleEditor"></textarea></div>
         <div class="form-group form-group--full"><label class="form-label">Intro Paragraph</label>
           <textarea class="form-textarea" rows="3" data-path="stack.intro"></textarea></div>
-        <div class="form-group form-group--full"><label class="form-label">Emblem SVG Path</label>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input class="form-input" data-path="stack.emblem" id="stackEmblem">
-            <label class="btn btn--ghost btn--sm" style="white-space:nowrap;cursor:pointer">
-              Upload <input type="file" accept=".svg" style="display:none" onchange="uploadForInput('stackEmblem',this.files[0],'svg')">
-            </label>
-          </div>
+        <div class="form-group form-group--full"><label class="form-label">Emblem SVG</label>
+          <input type="hidden" data-path="stack.emblem" id="stackEmblem">
+          <div id="picker-stack-emblem"></div>
         </div>
       </div>
     </div>
@@ -524,13 +531,9 @@ a { color: inherit; text-decoration: none; }
           <textarea class="form-textarea" rows="2" id="researchTitleEditor"></textarea></div>
         <div class="form-group form-group--full"><label class="form-label">Intro Paragraph</label>
           <textarea class="form-textarea" rows="3" data-path="research.intro"></textarea></div>
-        <div class="form-group form-group--full"><label class="form-label">Emblem SVG Path</label>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input class="form-input" data-path="research.emblem" id="researchEmblem">
-            <label class="btn btn--ghost btn--sm" style="white-space:nowrap;cursor:pointer">
-              Upload <input type="file" accept=".svg" style="display:none" onchange="uploadForInput('researchEmblem',this.files[0],'svg')">
-            </label>
-          </div>
+        <div class="form-group form-group--full"><label class="form-label">Emblem SVG</label>
+          <input type="hidden" data-path="research.emblem" id="researchEmblem">
+          <div id="picker-research-emblem"></div>
         </div>
       </div>
     </div>
@@ -559,13 +562,9 @@ a { color: inherit; text-decoration: none; }
           <textarea class="form-textarea" rows="2" id="contactTitleEditor"></textarea></div>
         <div class="form-group form-group--full"><label class="form-label">Intro Paragraph</label>
           <textarea class="form-textarea" rows="3" data-path="contact.intro"></textarea></div>
-        <div class="form-group form-group--full"><label class="form-label">Emblem SVG Path</label>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input class="form-input" data-path="contact.emblem" id="contactEmblem">
-            <label class="btn btn--ghost btn--sm" style="white-space:nowrap;cursor:pointer">
-              Upload <input type="file" accept=".svg" style="display:none" onchange="uploadForInput('contactEmblem',this.files[0],'svg')">
-            </label>
-          </div>
+        <div class="form-group form-group--full"><label class="form-label">Emblem SVG</label>
+          <input type="hidden" data-path="contact.emblem" id="contactEmblem">
+          <div id="picker-contact-emblem"></div>
         </div>
       </div>
     </div>
@@ -869,19 +868,19 @@ function populateWorkProjects() {
           <textarea class="form-textarea" rows="3" data-list="work.projects" data-idx="${i}" data-key="description">${esc(p.description)}</textarea></div>
         <div class="form-group form-group--full"><label class="form-label">Tech Chips (comma separated)</label>
           <input class="form-input" data-list="work.projects" data-idx="${i}" data-key="chips" value="${esc(Array.isArray(p.chips) ? p.chips.join(', ') : '')}"></div>
-        <div class="form-group form-group--full"><label class="form-label">Illustration SVG Path</label>
-          <div style="display:flex;gap:8px;align-items:center">
-            <input class="form-input" data-list="work.projects" data-idx="${i}" data-key="illustration" value="${esc(p.illustration)}">
-            <label class="btn btn--ghost btn--sm" style="white-space:nowrap;cursor:pointer">
-              Upload <input type="file" accept=".svg" style="display:none" onchange="uploadForListItem('work.projects',${i},'illustration',this.files[0])">
-            </label>
-          </div>
+        <div class="form-group form-group--full"><label class="form-label">Illustration SVG</label>
+          <input type="hidden" data-list="work.projects" data-idx="${i}" data-key="illustration" id="projIllustration${i}" value="${esc(p.illustration)}">
+          <div id="picker-proj-${i}"></div>
         </div>
       </div>
     </div>
   `).join('');
+  projects.forEach((p, i) => {
+    createImagePicker('picker-proj-' + i, {
+      folder: 'svg/projects', accept: '.svg', inputId: 'projIllustration' + i
+    });
+  });
 }
-function addProject() {
   const arr = get('work.projects') || [];
   const n = String(arr.length + 1).padStart(2, '0');
   arr.push({ num: n, title: 'New Project', tag: 'Category', description: '', chips: [], year: '2025', illustration: '' });
@@ -1069,6 +1068,103 @@ function collectListInputs(listPath) {
 
 /* ── Helpers ── */
 function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+/* ── Image Picker ── */
+const pickers = {};
+function createImagePicker(containerId, opts) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const id = containerId;
+  const accept = opts.accept || '.jpg,.jpeg,.png,.gif,.webp,.svg';
+  const folder = opts.folder || 'images';
+  const folderLabel = opts.folderLabel || folder;
+  el.innerHTML = `
+    <div class="img-picker">
+      <div class="img-picker__preview" id="${id}-preview">
+        <span class="placeholder">No image selected</span>
+      </div>
+      <div class="img-picker__path" id="${id}-path"></div>
+      <div class="img-picker__row">
+        <select class="form-select" id="${id}-select" onchange="onPickerSelect('${id}')">
+          <option value="">— Select existing —</option>
+        </select>
+        <label class="btn btn--ghost btn--sm" style="cursor:pointer;white-space:nowrap">
+          Upload <input type="file" accept="${accept}" style="display:none" onchange="onPickerUpload('${id}',this.files[0])">
+        </label>
+      </div>
+    </div>`;
+  pickers[id] = { folder, accept, inputId: opts.inputId };
+  populatePickerDropdown(id);
+}
+
+async function populatePickerDropdown(id) {
+  const p = pickers[id];
+  if (!p) return;
+  const sel = document.getElementById(id + '-select');
+  try {
+    const r = await fetch(API + '?action=list&dir=' + encodeURIComponent(p.folder));
+    const d = await r.json();
+    if (d.ok && d.files.length) {
+      const currentVal = document.getElementById(p.inputId)?.value || '';
+      sel.innerHTML = '<option value="">— Select existing —</option>' +
+        d.files.filter(f => /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(f.name))
+          .map(f => `<option value="${esc(f.path)}" ${f.path === currentVal ? 'selected' : ''}>${esc(f.name)} (${f.size})</option>`)
+          .join('');
+    }
+  } catch {}
+}
+
+function onPickerSelect(id) {
+  const p = pickers[id];
+  const val = document.getElementById(id + '-select').value;
+  if (val && p.inputId) {
+    document.getElementById(p.inputId).value = val;
+    // trigger change on data-path input for saveSection
+    const dpInput = document.querySelector(`[data-path="${document.getElementById(p.inputId).dataset.path}"]`);
+    if (dpInput) dpInput.value = val;
+  }
+  updatePickerPreview(id, val);
+}
+
+function updatePickerPreview(id, path) {
+  const preview = document.getElementById(id + '-preview');
+  const pathEl = document.getElementById(id + '-path');
+  if (path) {
+    preview.innerHTML = `<img src="../${esc(path)}" onerror="this.parentElement.innerHTML='<span class=placeholder>Preview unavailable</span>'">`;
+    pathEl.textContent = path;
+  } else {
+    preview.innerHTML = '<span class="placeholder">No image selected</span>';
+    pathEl.textContent = '';
+  }
+}
+
+async function onPickerUpload(id, file) {
+  const p = pickers[id];
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('folder', p.folder);
+  try {
+    const r = await fetch(API + '?action=upload', { method: 'POST', headers: { 'X-CSRF-TOKEN': CSRF }, body: fd });
+    const d = await r.json();
+    if (d.ok) {
+      if (p.inputId) document.getElementById(p.inputId).value = d.path;
+      await populatePickerDropdown(id);
+      const sel = document.getElementById(id + '-select');
+      sel.value = d.path;
+      updatePickerPreview(id, d.path);
+      status('Uploaded: ' + d.path, true);
+    } else { status(d.error || 'Upload failed', false); }
+  } catch { status('Upload failed', false); }
+}
+
+function refreshPicker(id) {
+  populatePickerDropdown(id).then(() => {
+    const p = pickers[id];
+    const val = document.getElementById(p.inputId)?.value || '';
+    document.getElementById(id + '-select').value = val;
+    updatePickerPreview(id, val);
+  });
+}
 
 /* ── File Upload ── */
 async function uploadForInput(inputId, file, folderOverride) {
