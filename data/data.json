@@ -5,6 +5,7 @@
     "ogTitle": "Zenith Kandel — Portfolio",
     "ogDescription": "Developer · Security Researcher · Builder. Kathmandu, Nepal.",
     "themeColor": "#ffffff",
+    "ogType": "website",
     "faviconInitial": "Z"
   },
 
@@ -12,7 +13,8 @@
     "name": "Zenith Kandel",
     "initials": "ZK",
     "tagline": "Developer · Security Researcher · Builder",
-    "loaderText": "LOADING · KTM / NP"
+    "loaderText": "LOADING · KTM / NP",
+    "homeHref": "#top"
   },
 
   "cursors": {
@@ -25,7 +27,7 @@
     "chip": "Available for hackathons, builds, and disclosures",
     "location": "KTM / NP · 27.7172° N",
     "firstName": "Zenith",
-    "lastName": "Kandel.",
+    "lastName": "Kandel",
     "subtitle": "Developer. Security researcher. Builder of civic tools and off-grid hardware. Seventeen years old, based in Kathmandu, shipping from a quiet room.",
     "portrait": {
       "src": "assets/images/me-with-transparent-background.jpg",
