@@ -1,0 +1,288 @@
+{
+  "meta": {
+    "title": "Zenith Kandel — Developer & Security Researcher",
+    "description": "Zenith Kandel — Developer, security researcher, and high-school builder from Kathmandu, Nepal.",
+    "ogTitle": "Zenith Kandel — Portfolio",
+    "ogDescription": "Developer · Security Researcher · Builder. Kathmandu, Nepal.",
+    "themeColor": "#ffffff",
+    "ogType": "website",
+    "faviconInitial": "Z"
+  },
+
+  "brand": {
+    "name": "Zenith Kandel",
+    "initials": "ZK",
+    "tagline": "Developer · Security Researcher · Builder",
+    "loaderText": "LOADING · KTM / NP",
+    "homeHref": "#top"
+  },
+
+  "cursors": {
+    "arrow": "assets/svg/cursors/arrow.svg",
+    "pointer": "assets/svg/cursors/pointer.svg",
+    "text": "assets/svg/cursors/text.svg"
+  },
+
+  "hero": {
+    "chip": "Available for hackathons, builds, and disclosures",
+    "location": "KTM / NP · 27.7172° N",
+    "firstName": "Zenith",
+    "lastName": "Kandel",
+    "subtitle": "Developer. Security researcher. Builder of civic tools and off-grid hardware. Seventeen years old, based in Kathmandu, shipping from a quiet room.",
+    "portrait": {
+      "src": "assets/images/me-with-transparent-background.jpg",
+      "alt": "Zenith Kandel",
+      "caption": "PORTRAIT · 2026"
+    },
+    "ctaPrimary": {
+      "text": "View Curriculum Vitae",
+      "href": "cv.html"
+    },
+    "ctaSecondary": {
+      "text": "Get in touch",
+      "href": "#contact"
+    },
+    "born": "May 12, 2009",
+    "school": "Grade 12 · KMSS Bagbazar",
+    "scrollText": "Scroll",
+    "clockAriaLabel": "Current time in Kathmandu"
+  },
+
+  "marquee": [
+    "DEVELOPER",
+    "SECURITY RESEARCHER",
+    "BUILDER",
+    "HACKATHON WINNER",
+    "KATHMANDU · NP",
+    "SINCE 2009"
+  ],
+
+  "about": {
+    "index": "01 — About",
+    "title": [
+      "A high schooler",
+      "building at the",
+      "edge of curiosity."
+    ],
+    "paragraphs": [
+      "I started writing HTML in 2020. The world had gone quiet — lockdowns, closed schools, an entire childhood paused — and I opened a YouTube tab and taught myself what <code>&lt;html&gt;</code> did. I haven't stopped since.",
+      "By grade nine I was building crowd-sourced civic tools. By grade eleven I was reporting security flaws to a national news broadcaster. Now I'm in grade twelve, learning the MERN stack, and breaking applications to understand how they think.",
+      "I compete in hackathons. I win some. I learn from all of them. I care about three things: shipped products, clean code, and the human on the other end of the screen."
+    ],
+    "features": [
+      {
+        "number": "80+",
+        "title": "Public repos",
+        "description": "A strong GitHub profile with experiments, builds, and unfinished things I'm not afraid to ship anyway.",
+        "foot": "github.com/zenithkandel"
+      },
+      {
+        "number": "05",
+        "title": "Hackathon builds",
+        "description": "Selected projects in civic tech, IoT, transit, agriculture, and education — all demoed to live judges.",
+        "foot": "2024 → 2025"
+      },
+      {
+        "number": "02",
+        "title": "Disclosed bugs",
+        "description": "Responsible disclosures at Kantipur Television and Monkeytype — both reported, both patched upstream.",
+        "foot": "Vuln research"
+      },
+      {
+        "number": "17",
+        "title": "Years of curiosity",
+        "description": "Born May 12, 2009. Currently finishing grade twelve at KMSS Bagbazar, Kathmandu, Nepal.",
+        "foot": "Still learning"
+      }
+    ]
+  },
+
+  "work": {
+    "index": "02 — Work",
+    "title": ["Selected", "projects."],
+    "intro": "Five projects. Each one was built for a real problem, demoed in front of judges, and pushed past the prototype stage. They live in hackathon halls and school exhibitions — not in tutorial folders.",
+    "ornament": "assets/svg/emblems/work.svg",
+    "projects": [
+      {
+        "num": "01",
+        "title": "Sastomahango",
+        "tag": "Civic Tech · Web",
+        "description": "A crowd-sourced price index for everyday goods. Users report what they paid, the system aggregates prices by locality, and shoppers see whether they're about to get scammed at the bazaar. Built to fight the opacity of Kathmandu's informal markets.",
+        "chips": ["PHP", "MySQL", "Crowdsourced data", "Hackathon build"],
+        "year": "2024",
+        "illustration": "assets/svg/projects/sastomahango.svg"
+      },
+      {
+        "num": "02",
+        "title": "Lifeline",
+        "tag": "Hardware · Off-Grid",
+        "description": "An off-grid, RF-based emergency signal system. When there's no cellular coverage — landslides, remote valleys, the post-quake window — Lifeline transmits short distress beacons across radio so a receiver in a populated area can relay them to first responders.",
+        "chips": ["RF modules", "Arduino", "Resilience tech", "Field-tested"],
+        "year": "2024",
+        "illustration": "assets/svg/projects/lifeline.svg"
+      },
+      {
+        "num": "03",
+        "title": "Sawari",
+        "tag": "Transit · Web App",
+        "description": "A complete public transport companion for Kathmandu. Enter where you are, enter where you want to go, and Sawari hands you the full walkthrough — the bus, the route, the fare, the road condition, the ETA. Built around the city's actual, chaotic network.",
+        "chips": ["JavaScript", "Routing logic", "Kathmandu transit", "Live demo"],
+        "year": "2025",
+        "illustration": "assets/svg/projects/sawari.svg"
+      },
+      {
+        "num": "04",
+        "title": "AgroPan",
+        "tag": "IoT · Agriculture",
+        "description": "A soil monitoring and crop recommendation rig. Sensor arrays measure moisture, pH, and nutrients in the field; AgroPan returns a crop recommendation tailored to what's actually in the ground — not what the seed shop is selling.",
+        "chips": ["ESP series", "Sensors", "Precision agriculture", "Field prototype"],
+        "year": "2024",
+        "illustration": "assets/svg/projects/agropan.svg"
+      },
+      {
+        "num": "05",
+        "title": "Edu Track Pro",
+        "tag": "RFID · EdTech",
+        "description": "A smart attendance system for Nepali schools. Every student taps their ID card on an RFID reader at the gate, attendance is logged instantly, and class teachers see who's actually in the room. Built to replace the paper register that's still standard here.",
+        "chips": ["RFID", "PHP", "EdTech", "School pilot"],
+        "year": "2025",
+        "illustration": "assets/svg/projects/edutrackpro.svg"
+      }
+    ]
+  },
+
+  "stack": {
+    "index": "03 — Stack",
+    "title": ["Tools I", "work with."],
+    "intro": "I started with the boring fundamentals and I still respect them. The list grows on purpose — only when something earns its place in a real project.",
+    "emblem": "assets/svg/emblems/stack.svg",
+    "rows": [
+      {
+        "num": "01",
+        "label": "Frontend",
+        "tools": ["HTML5", "CSS3", "JavaScript"]
+      },
+      {
+        "num": "02",
+        "label": "Backend",
+        "tools": ["PHP", "Node.js", "REST APIs"]
+      },
+      {
+        "num": "03",
+        "label": "Data",
+        "tools": ["MySQL", "MongoDB"]
+      },
+      {
+        "num": "04",
+        "label": "Learning Now",
+        "tools": ["React", "Express", "MongoDB Atlas"]
+      },
+      {
+        "num": "05",
+        "label": "Security",
+        "tools": ["Burp Suite", "Recon & Fuzzing", "Responsible Disclosure"]
+      },
+      {
+        "num": "06",
+        "label": "Hardware",
+        "tools": ["Arduino", "ESP series", "RF modules", "RFID"]
+      }
+    ]
+  },
+
+  "research": {
+    "index": "04 — Research",
+    "title": ["Security", "research."],
+    "intro": "Bug hunting is a way of reading. Every application is a story about assumptions — some of those assumptions are wrong. Below are the ones I found and disclosed.",
+    "emblem": "assets/svg/emblems/research.svg",
+    "disclosures": [
+      {
+        "target": "Kantipur Television",
+        "status": "Disclosed · 2024",
+        "title": "Critical flaw on Kantipur.tv",
+        "description": "A critical issue on the website of one of Nepal's largest news broadcasters. Reported through the proper disclosure channel, acknowledged, and patched upstream.",
+        "tags": ["Web", "Auth boundary", "Resolved"]
+      },
+      {
+        "target": "Monkeytype",
+        "status": "Disclosed · 2025",
+        "title": "Bug in Monkeytype",
+        "description": "A flaw in the popular open-source typing utility used by tens of thousands of typists worldwide. Reported, acknowledged, and patched upstream.",
+        "tags": ["Web", "Client-side logic", "Resolved"]
+      }
+    ]
+  },
+
+  "contact": {
+    "index": "05 — Contact",
+    "title": ["Let's build", "something."],
+    "intro": "Open to collaborations, hackathon teams, internships, and interesting security disclosures. If you're working on something that actually matters to people, I'd like to hear about it.",
+    "emblem": "assets/svg/emblems/contact.svg",
+    "fields": [
+      { "label": "Email", "type": "link", "value": "zenithkandel0@gmail.com", "href": "mailto:zenithkandel0@gmail.com" },
+      { "label": "Phone / WhatsApp", "type": "link", "value": "+977 980 617 6120", "href": "tel:+9779806176120" },
+      { "label": "Based in", "type": "text", "value": "Kathmandu, Nepal" },
+      { "label": "School", "type": "text", "value": "KMSS Bagbazar · Grade 12" }
+    ],
+    "socials": [
+      {
+        "label": "GitHub",
+        "handle": "@zenithkandel",
+        "url": "https://github.com/zenithkandel"
+      },
+      {
+        "label": "LinkedIn",
+        "handle": "/in/zenithkandel",
+        "url": "https://www.linkedin.com/in/zenithkandel"
+      },
+      {
+        "label": "Instagram",
+        "handle": "@kandel.zenith",
+        "url": "https://instagram.com/kandel.zenith"
+      },
+      {
+        "label": "Website",
+        "handle": "zenithkandel.com.np",
+        "url": "https://zenithkandel.com.np"
+      }
+    ],
+    "ctaButton": {
+      "text": "Start a conversation",
+      "href": "mailto:zenithkandel0@gmail.com"
+    }
+  },
+
+  "footer": {
+    "brand": "Zenith Kandel",
+    "role": "Developer · Security Researcher · Builder",
+    "links": [
+      { "label": "About", "href": "#about" },
+      { "label": "Work", "href": "#work" },
+      { "label": "Stack", "href": "#stack" },
+      { "label": "Research", "href": "#research" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "copyright": "© 2026 Zenith Kandel — Built in Kathmandu, Nepal.",
+    "version": "v 2.0 · 06.2026"
+  },
+
+  "nav": {
+    "links": [
+      { "label": "About", "href": "#about" },
+      { "label": "Work", "href": "#work" },
+      { "label": "Stack", "href": "#stack" },
+      { "label": "Research", "href": "#research" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": "Hire / Collab",
+    "ctaHref": "#contact",
+    "menuAriaLabel": "Open menu",
+    "mobileLinks": [
+      { "num": "01", "label": "About", "href": "#about" },
+      { "num": "02", "label": "Work", "href": "#work" },
+      { "num": "03", "label": "Stack", "href": "#stack" },
+      { "num": "04", "label": "Research", "href": "#research" },
+      { "num": "05", "label": "Contact", "href": "#contact" }
+    ]
+  }
+}

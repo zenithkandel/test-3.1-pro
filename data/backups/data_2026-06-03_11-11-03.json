@@ -27,12 +27,12 @@
         "lastName": "Kandel",
         "subtitle": "Developer. Security researcher. Builder of civic tools and off-grid hardware. Seventeen years old, based in Kathmandu, shipping from a quiet room.",
         "portrait": {
-            "src": "assets/images/me-with-transparent-background.jpg",
+            "src": "assets/images/New_Project_11_.png",
             "alt": "Zenith Kandel",
-            "caption": "2026"
+            "caption": "PORTRAIT · 2026"
         },
         "ctaPrimary": {
-            "text": "View CV",
+            "text": "View Curriculum Vitae",
             "href": "cv.html"
         },
         "ctaSecondary": {

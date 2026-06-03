@@ -29,10 +29,10 @@
         "portrait": {
             "src": "assets/images/me-with-transparent-background.jpg",
             "alt": "Zenith Kandel",
-            "caption": "2026"
+            "caption": "PORTRAIT · 2026"
         },
         "ctaPrimary": {
-            "text": "View CV",
+            "text": "View Curriculum Vitae",
             "href": "cv.html"
         },
         "ctaSecondary": {
