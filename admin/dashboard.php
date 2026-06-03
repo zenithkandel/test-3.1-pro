@@ -1817,13 +1817,20 @@ function addProject() {
         const r = await fetch(API + '?action=list&dir=' + encodeURIComponent(dir));
         const d = await r.json();
         if (!d.ok || !d.files.length) { el.innerHTML = ''; empty.style.display = ''; count.textContent = ''; return; }
-        count.textContent = d.files.length + ' file' + (d.files.length !== 1 ? 's' : '');
+        count.textContent = d.files.length + ' item' + (d.files.length !== 1 ? 's' : '');
         el.innerHTML = d.files.map(f => {
+          if (f.is_dir) {
+            return '<div class="fb-card" onclick="fbNavigate(\'' + esc(f.path.replace(/^assets\//, '')) + '\')" style="cursor:pointer">' +
+              '<div class="fb-card__thumb"><span class="fb-card__thumb--icon">&#128193;</span></div>' +
+              '<div class="fb-card__body">' +
+                '<div class="fb-card__name" title="' + esc(f.name) + '">' + esc(f.name) + '/</div>' +
+                '<div class="fb-card__meta">folder</div>' +
+              '</div></div>';
+          }
           const isImg = IMGLIKE.test(f.name);
-          const isSvg = /\.svg$/i.test(f.name);
           const thumb = isImg
             ? '<img src="' + esc(ASSETS + f.path) + '" alt="" loading="lazy" onerror="this.parentElement.innerHTML=\'<span class=fb-card__thumb--icon>&#9634;</span>\'">'
-            : '<span class="fb-card__thumb--icon">' + (f.type.includes('javascript') ? '&#9881;' : f.type.includes('css') ? '&#9883;' : '&#9644;') + '</span>';
+            : '<span class="fb-card__thumb--icon">' + (f.type && f.type.includes('javascript') ? '&#9881;' : f.type && f.type.includes('css') ? '&#9883;' : '&#9644;') + '</span>';
           const click = isImg ? ' onclick="fbPreview(\'' + esc(ASSETS + f.path) + '\',\'' + esc(f.name) + '\',' + f.raw_size + ')" style="cursor:pointer"' : '';
           return '<div class="fb-card">' +
             '<div class="fb-card__thumb"' + click + '>' + thumb + '</div>' +
@@ -1832,8 +1839,8 @@ function addProject() {
               '<div class="fb-card__meta">' + f.size + '</div>' +
             '</div>' +
             '<div class="fb-card__actions">' +
-              '<button class="fb-card__btn" onclick="downloadFile(\'' + esc(f.path) + '\')" title="Download">&#8595;</button>' +
-              '<button class="fb-card__btn fb-card__btn--del" onclick="deleteFile(\'' + esc(f.path) + '\',\'' + esc(f.name) + '\')" title="Delete">&times;</button>' +
+              '<button class="fb-card__btn" onclick="event.stopPropagation();downloadFile(\'' + esc(f.path) + '\')" title="Download">&#8595;</button>' +
+              '<button class="fb-card__btn fb-card__btn--del" onclick="event.stopPropagation();deleteFile(\'' + esc(f.path) + '\',\'' + esc(f.name) + '\')" title="Delete">&times;</button>' +
             '</div>' +
           '</div>';
         }).join('');

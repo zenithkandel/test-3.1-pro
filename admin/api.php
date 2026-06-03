@@ -165,18 +165,29 @@ switch ($action) {
         foreach ($items as $item) {
             if ($item === '.' || $item === '..') continue;
             $full = $target . '/' . $item;
-            if (is_file($full)) {
-                $rel = 'assets/' . ($dir_param ? $dir_param . '/' : '') . $item;
+            $rel = 'assets/' . ($dir_param ? $dir_param . '/' : '') . $item;
+            if (is_dir($full)) {
+                $files[] = [
+                    'name' => $item,
+                    'path' => $rel,
+                    'is_dir' => true,
+                ];
+            } elseif (is_file($full)) {
                 $files[] = [
                     'name' => $item,
                     'path' => $rel,
                     'size' => format_size((int)filesize($full)),
                     'raw_size' => (int)filesize($full),
                     'type' => mime_content_type($full) ?: 'application/octet-stream',
+                    'is_dir' => false,
                 ];
             }
         }
-        usort($files, fn($a, $b) => strcmp($a['name'], $b['name']));
+        usort($files, function ($a, $b) {
+            if ($a['is_dir'] && !$b['is_dir']) return -1;
+            if (!$a['is_dir'] && $b['is_dir']) return 1;
+            return strcmp($a['name'], $b['name']);
+        });
         ok(['files' => $files, 'count' => count($files)]);
         break;
 
