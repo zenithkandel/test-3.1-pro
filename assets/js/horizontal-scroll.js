@@ -33,6 +33,8 @@
         if (!mql.matches) {
             // Restore natural behavior for mobile
             section.style.height = '';
+            sticky.style.height = '';
+            sticky.style.top = '';
             list.style.transform = '';
             progressFill.style.width = '0%';
             projects.forEach(proj => {
@@ -45,6 +47,9 @@
 
         isEnabled = true;
 
+        // Set sticky height to fit content so we can align its bottom with the viewport bottom
+        sticky.style.height = 'fit-content';
+
         // The total horizontal distance to scroll: list width minus visible container width
         const listWidth = list.scrollWidth;
         const containerWidth = track.clientWidth;
@@ -53,18 +58,22 @@
         maxTranslate = listWidth - containerWidth + (window.innerWidth * 0.08);
 
         if (maxTranslate > 0) {
-            // Measure the section header (the .section above the sticky) and
-            // size the section so that 1px of vertical scroll = 1px of
-            // horizontal card travel. This "locks" the vertical scroll to the
-            // horizontal scroll, so the user can't scroll past the work
-            // section until they've seen every card.
+            // Measure the section header (the .section above the sticky)
             const headerEl = section.querySelector('.section');
             const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+            const stickyHeight = sticky.offsetHeight;
 
-            sectionHeight = headerHeight + maxTranslate + window.innerHeight;
+            // Pin the sticky element such that its bottom aligns with the viewport bottom
+            const stickyTop = window.innerHeight - stickyHeight;
+            sticky.style.top = `${stickyTop}px`;
+
+            // The total height of the section is the header + the sticky height + horizontal travel
+            sectionHeight = headerHeight + stickyHeight + maxTranslate;
             section.style.height = `${sectionHeight}px`;
         } else {
             section.style.height = '';
+            sticky.style.height = '';
+            sticky.style.top = '';
             maxTranslate = 0;
         }
     };
@@ -76,17 +85,21 @@
         const sectionTop = section.getBoundingClientRect().top;
         const headerEl = section.querySelector('.section');
         const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+        const stickyHeight = sticky.offsetHeight;
+
+        // Pin position: bottom of cards aligns with bottom of viewport
+        const stickyTop = window.innerHeight - stickyHeight;
+        
+        // triggerDepth: vertical scroll past which horizontal travel starts
+        const triggerDepth = headerHeight - stickyTop;
 
         let progress = 0;
 
-        if (sectionTop <= -headerHeight) {
-            // Map the vertical scroll (after the header) directly to the
-            // horizontal travel distance. This is the 1:1 lock: scrolling
-            // vertically translates the cards at the same rate, and the
-            // user cannot move on to the next section until every card
-            // has slid through view.
-            const scrollPastHeader = -sectionTop - headerHeight;
-            progress = Math.min(Math.max(scrollPastHeader / maxTranslate, 0), 1);
+        if (sectionTop <= -triggerDepth) {
+            // Map the vertical scroll (after the trigger depth) directly to
+            // the horizontal travel distance.
+            const scrollPastTrigger = -sectionTop - triggerDepth;
+            progress = Math.min(Math.max(scrollPastTrigger / maxTranslate, 0), 1);
         }
 
         // Apply the horizontal translation

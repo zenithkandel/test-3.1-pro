@@ -217,8 +217,8 @@
 
 .horizontal-scroll-sticky {
     position: sticky;
-    top: clamp(20px, 3vw, 40px);
-    height: 100vh;
+    top: 0; /* Will be set dynamically by JS */
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
