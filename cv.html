@@ -8,12 +8,56 @@
       content="Zenith Kandel — Curriculum Vitae. Developer, security researcher, builder. Kathmandu, Nepal."
     />
     <title>Zenith Kandel — Curriculum Vitae</title>
+
+    <link rel="canonical" href="https://zenithkandel.com.np/cv.html" />
+
+    <!-- Open Graph & Social Cards metadata -->
+    <meta property="og:title" content="Zenith Kandel — Curriculum Vitae" />
+    <meta property="og:description" content="Zenith Kandel — Curriculum Vitae. Developer, security researcher, builder. Kathmandu, Nepal." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://zenithkandel.com.np/assets/images/me-with-transparent-background.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://zenithkandel.com.np/assets/images/me-with-transparent-background.jpg" />
+
+    <!-- Preload key visual assets for loading performance -->
+    <link rel="preload" href="assets/svg/cursors/arrow.svg" as="image" />
+    <link rel="preload" href="assets/svg/cursors/pointer.svg" as="image" />
+    <link rel="preload" href="assets/svg/cursors/text.svg" as="image" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Zenith Kandel",
+      "jobTitle": "Full Stack Developer & Cybersecurity Researcher",
+      "url": "https://zenithkandel.com.np/cv.html",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kathmandu",
+        "addressCountry": "NP"
+      },
+      "sameAs": [
+        "https://github.com/zenithkandel",
+        "https://www.linkedin.com/in/zenithkandel",
+        "https://instagram.com/kandel.zenith"
+      ],
+      "knowsAbout": [
+        "Full Stack Development",
+        "Cybersecurity Research",
+        "Vulnerability Disclosure",
+        "IoT & Hardware Design"
+      ]
+    }
+    </script>
+
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000d10'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,sans-serif' font-size='18' font-weight='800' fill='%23ffffff'%3EZ%3C/text%3E%3C/svg%3E"
@@ -672,6 +716,11 @@
         .tag:hover {
           background: var(--color-obsidian-04);
           color: var(--color-obsidian);
+        }
+
+        .sec {
+          page-break-inside: avoid;
+          break-inside: avoid;
         }
       }
 
