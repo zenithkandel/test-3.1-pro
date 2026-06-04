@@ -191,7 +191,7 @@
     right: 8px;
     height: 2px;
     background: currentColor;
-    border-radius: 2px;
+    border-radius: 0;
     transition: transform var(--t-base) var(--ease), opacity var(--t-base) var(--ease);
 }
 
