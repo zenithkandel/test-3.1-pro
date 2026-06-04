@@ -1,13 +1,78 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="100" r="88" fill="none" stroke="#bc7155" stroke-width="1.5" stroke-dasharray="2 6" opacity="0.5"/>
-    <circle cx="100" cy="100" r="72" fill="none" stroke="#bc7155" stroke-width="1.5"/>
-    <line x1="100" y1="20" x2="100" y2="32" stroke="#bc7155" stroke-width="1.5"/>
-    <line x1="100" y1="168" x2="100" y2="180" stroke="#bc7155" stroke-width="1.5"/>
-    <line x1="20" y1="100" x2="32" y2="100" stroke="#bc7155" stroke-width="1.5"/>
-    <line x1="168" y1="100" x2="180" y2="100" stroke="#bc7155" stroke-width="1.5"/>
-    <text x="100" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#bc7155" letter-spacing="-3">ZK</text>
-    <circle cx="100" cy="20" r="2.5" fill="#bc7155"/>
-    <circle cx="100" cy="180" r="2.5" fill="#bc7155"/>
-    <circle cx="20" cy="100" r="2.5" fill="#bc7155"/>
-    <circle cx="180" cy="100" r="2.5" fill="#bc7155"/>
+    <defs>
+        <!-- Sienna Gradient for primary elements -->
+        <linearGradient id="sienna-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#bc7155" />
+            <stop offset="50%" stop-color="#d98f72" />
+            <stop offset="100%" stop-color="#914d33" />
+        </linearGradient>
+        <!-- Soft Radial Glow Background -->
+        <radialGradient id="glow-bg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#bc7155" stop-opacity="0.12" />
+            <stop offset="100%" stop-color="#bc7155" stop-opacity="0" />
+        </radialGradient>
+    </defs>
+
+    <!-- Corner registration marks -->
+    <g stroke="#bc7155" stroke-width="1" opacity="0.3">
+        <path d="M12 12 L12 22 M12 12 L22 12"/>
+        <path d="M188 12 L188 22 M188 12 L178 12"/>
+        <path d="M12 188 L12 178 M12 188 L22 188"/>
+        <path d="M188 188 L188 178 M188 188 L178 188"/>
+    </g>
+
+    <!-- Background Glow -->
+    <circle cx="100" cy="100" r="85" fill="url(#glow-bg)" />
+
+    <!-- Outer Bezel Rings -->
+    <circle cx="100" cy="100" r="86" stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.15" />
+    <circle cx="100" cy="100" r="80" stroke="url(#sienna-gradient)" stroke-width="1.2" opacity="0.3" />
+    
+    <!-- Precision Radial Ticks (using dashed stroke technique) -->
+    <circle cx="100" cy="100" r="77" stroke="url(#sienna-gradient)" stroke-width="3" stroke-dasharray="1 3.5" opacity="0.25" />
+    <circle cx="100" cy="100" r="70" stroke="url(#sienna-gradient)" stroke-width="0.6" stroke-dasharray="4 8" opacity="0.15" />
+
+    <!-- Crosshair Axes -->
+    <g stroke="url(#sienna-gradient)" stroke-width="0.6" opacity="0.2">
+        <line x1="100" y1="20" x2="100" y2="180" stroke-dasharray="3 6" />
+        <line x1="20" y1="100" x2="180" y2="100" stroke-dasharray="3 6" />
+    </g>
+
+    <!-- Cardinal Marks -->
+    <g font-family="Inter, system-ui, sans-serif" font-size="7" font-weight="800" fill="#bc7155" letter-spacing="0.05em" opacity="0.6">
+        <text x="100" y="32" text-anchor="middle">N</text>
+        <text x="169" y="102.5" text-anchor="middle">E</text>
+        <text x="100" y="174" text-anchor="middle">S</text>
+        <text x="31" y="102.5" text-anchor="middle">W</text>
+    </g>
+
+    <!-- Faceted 3D Compass Star -->
+    <g transform="translate(100, 100)">
+        <!-- Top Point -->
+        <path d="M0 0 L0 -50 L11 -12 Z" fill="#bc7155" opacity="0.9" />
+        <path d="M0 0 L0 -50 L-11 -12 Z" fill="#bc7155" opacity="0.5" />
+        
+        <!-- Right Point -->
+        <path d="M0 0 L50 0 L12 11 Z" fill="#bc7155" opacity="0.9" />
+        <path d="M0 0 L50 0 L12 -11 Z" fill="#bc7155" opacity="0.5" />
+        
+        <!-- Bottom Point -->
+        <path d="M0 0 L0 50 L-11 12 Z" fill="#bc7155" opacity="0.9" />
+        <path d="M0 0 L0 50 L11 12 Z" fill="#bc7155" opacity="0.5" />
+        
+        <!-- Left Point -->
+        <path d="M0 0 L-50 0 L-12 -11 Z" fill="#bc7155" opacity="0.9" />
+        <path d="M0 0 L-50 0 L-12 11 Z" fill="#bc7155" opacity="0.5" />
+
+        <!-- Accent Intercardinal Diamonds -->
+        <path d="M0 0 L22 -22 L8 -8 Z" fill="#bc7155" opacity="0.8" />
+        <path d="M0 0 L22 -22 L8 -8 Z" fill="#bc7155" opacity="0.4" transform="scale(1, -1)" />
+        <path d="M0 0 L-22 -22 L-8 -8 Z" fill="#bc7155" opacity="0.8" transform="scale(1, -1)" />
+        <path d="M0 0 L-22 -22 L-8 -8 Z" fill="#bc7155" opacity="0.4" />
+    </g>
+
+    <!-- Central Monogram Core -->
+    <circle cx="100" cy="100" r="14" fill="#000d10" stroke="url(#sienna-gradient)" stroke-width="1.5" />
+    <circle cx="100" cy="100" r="10" stroke="url(#sienna-gradient)" stroke-width="0.5" opacity="0.5" />
+    <text x="100" y="103" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" font-weight="900" fill="url(#sienna-gradient)" letter-spacing="-0.02em">ZK</text>
 </svg>

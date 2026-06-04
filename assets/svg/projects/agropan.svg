@@ -1,76 +1,74 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Sienna Gradient for primary elements -->
+        <linearGradient id="sienna-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#bc7155" />
+            <stop offset="50%" stop-color="#d98f72" />
+            <stop offset="100%" stop-color="#914d33" />
+        </linearGradient>
+        <!-- Soft Radial Glow Background -->
+        <radialGradient id="glow-bg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#bc7155" stop-opacity="0.14" />
+            <stop offset="100%" stop-color="#bc7155" stop-opacity="0" />
+        </radialGradient>
+    </defs>
+
     <!-- Corner registration marks -->
-    <path d="M10 10 L10 22 M10 10 L22 10" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
-    <path d="M190 10 L190 22 M190 10 L178 10" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
-    <path d="M10 190 L10 178 M10 190 L22 190" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
-    <path d="M190 190 L190 178 M190 190 L178 190" stroke="#bc7155" stroke-width="1.5" stroke-linecap="square"/>
-
-    <!-- Ground / soil cross-section pot -->
-    <g transform="translate(100, 100)">
-        <!-- pot outline -->
-        <path d="M-58 4 L-50 60 L50 60 L58 4 Z" fill="none" stroke="#bc7155" stroke-width="2" stroke-linejoin="round"/>
-        <!-- soil surface line -->
-        <line x1="-58" y1="4" x2="58" y2="4" stroke="#bc7155" stroke-width="1.5"/>
-        <!-- soil layers (dotted lines) -->
-        <line x1="-52" y1="20" x2="52" y2="20" stroke="#bc7155" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
-        <line x1="-50" y1="36" x2="50" y2="36" stroke="#bc7155" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>
-        <!-- soil particles -->
-        <circle cx="-30" cy="30" r="1.5" fill="#bc7155" opacity="0.6"/>
-        <circle cx="-12" cy="46" r="1.5" fill="#bc7155" opacity="0.6"/>
-        <circle cx="14" cy="28" r="1.5" fill="#bc7155" opacity="0.6"/>
-        <circle cx="30" cy="44" r="1.5" fill="#bc7155" opacity="0.6"/>
-        <circle cx="-22" cy="52" r="1.2" fill="#bc7155" opacity="0.5"/>
-        <circle cx="20" cy="52" r="1.2" fill="#bc7155" opacity="0.5"/>
+    <g stroke="#bc7155" stroke-width="1" opacity="0.3">
+        <path d="M12 12 L12 22 M12 12 L22 12"/>
+        <path d="M188 12 L188 22 M188 12 L178 12"/>
+        <path d="M12 188 L12 178 M12 188 L22 188"/>
+        <path d="M188 188 L188 178 M188 188 L178 188"/>
     </g>
 
-    <!-- Plant above ground -->
-    <g transform="translate(70, 100)">
-        <!-- stem -->
-        <path d="M0 0 Q-2 -16 0 -32 Q2 -42 0 -52" stroke="#bc7155" stroke-width="2" stroke-linecap="round" fill="none"/>
-        <!-- left leaf -->
-        <path d="M0 -20 Q-14 -22 -18 -32 Q-10 -32 0 -22 Z" fill="#ffffff" stroke="#bc7155" stroke-width="1.8" stroke-linejoin="round"/>
-        <line x1="-2" y1="-22" x2="-12" y2="-28" stroke="#bc7155" stroke-width="1" opacity="0.5"/>
-        <!-- right leaf -->
-        <path d="M0 -32 Q14 -34 18 -44 Q10 -44 0 -34 Z" fill="#ffffff" stroke="#bc7155" stroke-width="1.8" stroke-linejoin="round"/>
-        <line x1="2" y1="-34" x2="12" y2="-40" stroke="#bc7155" stroke-width="1" opacity="0.5"/>
-        <!-- top sprout -->
-        <path d="M0 -52 Q-6 -58 -2 -64 Q0 -66 2 -64 Q6 -58 0 -52 Z" fill="#bc7155" stroke="#bc7155" stroke-width="1.5"/>
+    <!-- Background Glow -->
+    <circle cx="100" cy="100" r="80" fill="url(#glow-bg)" />
+
+    <!-- Technical Sensor Waves (Background) -->
+    <g stroke="url(#sienna-gradient)" stroke-width="0.6" opacity="0.15" fill="none">
+        <circle cx="100" cy="95" r="70" stroke-dasharray="3 6" />
+        <circle cx="100" cy="95" r="54" stroke-dasharray="6 6" />
     </g>
 
-    <!-- Sensor probe (right of plant) -->
-    <g transform="translate(130, 100)">
-        <!-- probe body / head -->
-        <rect x="-10" y="-26" width="20" height="14" rx="2" fill="#ffffff" stroke="#bc7155" stroke-width="2"/>
-        <!-- display -->
-        <rect x="-7" y="-23" width="14" height="6" rx="1" fill="none" stroke="#bc7155" stroke-width="1" opacity="0.5"/>
-        <!-- bars on display -->
-        <rect x="-5" y="-22" width="1.5" height="3" fill="#bc7155"/>
-        <rect x="-2.5" y="-22" width="1.5" height="3" fill="#bc7155"/>
-        <rect x="0" y="-22" width="1.5" height="3" fill="#bc7155"/>
-        <rect x="2.5" y="-22" width="1.5" height="3" fill="#bc7155" opacity="0.4"/>
-        <!-- stem of probe -->
-        <line x1="0" y1="-12" x2="0" y2="4" stroke="#bc7155" stroke-width="2" stroke-linecap="round"/>
-        <!-- tip (in soil) -->
-        <path d="M-4 4 L0 16 L4 4 Z" fill="#bc7155" stroke="#bc7155" stroke-width="1.5" stroke-linejoin="round"/>
-        <!-- sensor rings on tip -->
-        <line x1="-3" y1="8" x2="3" y2="8" stroke="#ffffff" stroke-width="1"/>
-        <line x1="-2.5" y1="11" x2="2.5" y2="11" stroke="#ffffff" stroke-width="1"/>
+    <!-- Primary Leaf Illustration -->
+    <!-- Symmetric, elegant Bezier leaf outline -->
+    <path d="M 100 40 C 60 65 60 115 100 140 C 140 115 140 65 100 40 Z" fill="url(#sienna-gradient)" fill-opacity="0.06" stroke="url(#sienna-gradient)" stroke-width="1.8" stroke-linejoin="round" />
+    
+    <!-- Inner Leaf Accent Border -->
+    <path d="M 100 48 C 66 70 66 110 100 132 C 134 110 134 70 100 48 Z" stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.25" fill="none" />
+
+    <!-- Tech Circuit Veins (Integrating Nature and Data) -->
+    <g stroke="url(#sienna-gradient)" stroke-linecap="round" fill="none">
+        <!-- Main Stem -->
+        <line x1="100" y1="40" x2="100" y2="152" stroke-width="1.8" />
+        
+        <!-- Vein Set 1 (Top) -->
+        <path d="M 100 65 L 86 79 L 78 79" stroke-width="1" opacity="0.7" />
+        <path d="M 100 65 L 114 79 L 122 79" stroke-width="1" opacity="0.7" />
+        
+        <!-- Vein Set 2 (Middle, with circuit nodes) -->
+        <path d="M 100 90 L 80 110 L 70 110" stroke-width="1.2" />
+        <path d="M 100 90 L 120 110 L 130 110" stroke-width="1.2" />
+        
+        <!-- Vein Set 3 (Bottom, with circuit nodes) -->
+        <path d="M 100 115 L 85 130 L 80 130" stroke-width="1" opacity="0.6" />
+        <path d="M 100 115 L 115 130 L 120 130" stroke-width="1" opacity="0.6" />
     </g>
 
-    <!-- Water drops (left side, falling toward soil) -->
-    <g transform="translate(38, 50)">
-        <path d="M0 -8 C-4 -2 -4 2 0 4 C4 2 4 -2 0 -8 Z" fill="#ffffff" stroke="#bc7155" stroke-width="1.5" stroke-linejoin="round"/>
-    </g>
-    <g transform="translate(56, 70)">
-        <path d="M0 -6 C-3 -1 -3 2 0 3 C3 2 3 -1 0 -6 Z" fill="#bc7155" stroke="#bc7155" stroke-width="1.2" stroke-linejoin="round"/>
-    </g>
-    <g transform="translate(36, 82)">
-        <path d="M0 -5 C-2.5 -1 -2.5 1.5 0 2.5 C2.5 1.5 2.5 -1 0 -5 Z" fill="none" stroke="#bc7155" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
+    <!-- Circuit Nodes (Terminal dots) -->
+    <g fill="#bc7155">
+        <circle cx="70" cy="110" r="2.5" />
+        <circle cx="130" cy="110" r="2.5" />
+        <circle cx="78" cy="79" r="1.5" opacity="0.7" />
+        <circle cx="122" cy="79" r="1.5" opacity="0.7" />
+        <circle cx="80" cy="130" r="1.5" opacity="0.6" />
+        <circle cx="120" cy="130" r="1.5" opacity="0.6" />
     </g>
 
-    <!-- PH / data label -->
-    <g transform="translate(160, 38)">
-        <rect x="-18" y="-8" width="36" height="16" rx="2" fill="none" stroke="#bc7155" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
-        <text x="0" y="4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="800" fill="#bc7155" letter-spacing="1">pH 6.5</text>
+    <!-- Suspended Water Droplet (Falling from stem) -->
+    <g transform="translate(100, 162)">
+        <path d="M 0 -10 C -4 -5 -6 -1 -6 3 A 6 6 0 0 0 6 3 C 6 -1 4 -5 0 -10 Z" fill="url(#sienna-gradient)" fill-opacity="0.3" stroke="url(#sienna-gradient)" stroke-width="1.2" stroke-linejoin="round" />
+        <!-- Glint -->
+        <circle cx="-2" cy="2" r="1" fill="#ffffff" opacity="0.6" />
     </g>
 </svg>
