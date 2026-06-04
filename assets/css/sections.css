@@ -2,6 +2,13 @@
    04 · SECTIONS — about, work, stack, research, contact
    =========================================================== */
 
+/* ----- Parallax Utility ----- */
+.parallax-el {
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0px);
+    will-change: transform;
+}
+
+
 /* ----- Section head ----- */
 .section__head {
     display: grid;
@@ -98,6 +105,7 @@
     margin-top: clamp(40px, 6vw, 68px);
 }
 
+
 .feature {
     background: var(--color-canvas-white);
     color: var(--color-obsidian);
@@ -107,18 +115,15 @@
     flex-direction: column;
     gap: 14px;
     min-height: 280px;
-    transition: transform var(--t-base) var(--ease);
+    transition: opacity var(--t-base) var(--ease), background var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease);
     cursor: none;
     position: relative;
     overflow: hidden;
     will-change: transform;
     transform-style: preserve-3d;
-    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--py, 0px)) translateX(var(--px, 0px));
 }
 
-.feature:hover {
-    --lift: -6px;
-}
 
 .feature::before {
     content: '';
