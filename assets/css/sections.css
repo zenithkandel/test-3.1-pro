@@ -217,7 +217,8 @@
 
 .horizontal-scroll-sticky {
     position: sticky;
-    top: 0; /* Will be set dynamically by JS */
+    top: 0;
+    /* Will be set dynamically by JS */
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -901,30 +902,4 @@
 
 .btn:hover svg {
     transform: translateX(3px);
-}
-
-/* ----- Spotlight Scroll-Glow & Mask reveals ----- */
-html {
-    position: relative;
-}
-
-html::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(circle at 50% calc(var(--scroll-pct, 0) * 100%), rgba(188, 113, 85, 0.04) 0%, transparent 60%);
-    z-index: 9995;
-    will-change: background;
-}
-
-.mask-reveal-target {
-    clip-path: inset(10% 10% 10% 10% round 24px);
-    transform: scale(0.96);
-    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.reveal-masked {
-    clip-path: inset(0% 0% 0% 0% round 0px) !important;
-    transform: scale(1) !important;
 }

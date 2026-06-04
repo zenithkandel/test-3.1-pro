@@ -35,6 +35,7 @@
     .hero__clock {
         font-size: 12px;
     }
+
     .hero__top-right {
         gap: 12px;
     }
@@ -45,19 +46,41 @@
     position: fixed;
     inset: 0;
     z-index: 9990;
-    background: transparent;
+    background: var(--color-desert-sienna);
+    transform: scaleX(0);
     pointer-events: none;
     visibility: hidden;
+    transform-origin: right center;
 }
 
-.page-wipe svg {
-    width: 100vw;
-    height: 100vh;
-    display: block;
+.page-wipe.is-in {
+    visibility: visible;
+    animation: page-wipe-in 0.4s var(--ease-out) forwards;
 }
 
-.page-wipe path {
-    fill: var(--color-desert-sienna);
+.page-wipe.is-out {
+    visibility: visible;
+    animation: page-wipe-out 0.4s var(--ease-out) forwards;
+}
+
+@keyframes page-wipe-in {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes page-wipe-out {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
 }
 
 /* ---------- 3. Reduced motion override ---------- */
