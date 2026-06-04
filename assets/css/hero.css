@@ -87,7 +87,7 @@
     width: 8px;
     height: 8px;
     background: var(--color-desert-sienna);
-    border-radius: 0;
+    border-radius: 50%;
     animation: pulse 1.6s var(--ease) infinite;
 }
 
@@ -170,7 +170,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
-    border-radius: 0;
+    border-radius: 50%;
     overflow: hidden;
     /* background: var(--color-obsidian-04); */
     /* border: 1.5px solid var(--color-obsidian); */
@@ -209,7 +209,7 @@
     padding: 7px 16px;
     background: var(--color-canvas-white);
     border: 1.5px solid var(--color-obsidian);
-    border-radius: 0;
+    border-radius: 1000px;
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: var(--weight-medium);
@@ -230,7 +230,7 @@
     width: 6px;
     height: 6px;
     background: var(--color-desert-sienna);
-    border-radius: 0;
+    border-radius: 50%;
     animation: pulse 1.6s var(--ease) infinite;
     flex-shrink: 0;
 }
@@ -282,7 +282,7 @@
 .hero__meta-sep {
     width: 4px;
     height: 4px;
-    border-radius: 0;
+    border-radius: 50%;
     background: var(--color-obsidian);
     opacity: 0.3;
 }

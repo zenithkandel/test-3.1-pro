@@ -79,9 +79,9 @@
     --element-gap: 23px;
 
     /* Radii */
-    --radius-pill: 0px;
-    --radius-card: 0px;
-    --radius-button: 0px;
+    --radius-pill: 1000px;
+    --radius-card: 45px;
+    --radius-button: 1000px;
 
     /* Motion */
     --t-fast: 0.18s;
@@ -292,7 +292,7 @@ code {
     color: var(--color-desert-sienna);
     padding: 1px 6px;
     background: var(--color-obsidian-04);
-    border-radius: 0;
+    border-radius: 4px;
 }
 
 /* ----- Surfaces ----- */

@@ -97,8 +97,8 @@
         --font-display: 'Inter', 'Helvetica Neue', Helvetica, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
         --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 
-        --radius-pill: 0px;
-        --radius-card: 0px;
+        --radius-pill: 1000px;
+        --radius-card: 20px;
 
         --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
         --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -117,6 +117,22 @@
         --color-white-08: rgba(255, 255, 255, 0.08);
         --color-white-04: rgba(255, 255, 255, 0.04);
         --color-sienna-15: rgba(188, 113, 85, 0.20);
+      }
+
+      /* Ensure text/foreground elements on dark surfaces remain white in dark mode */
+      html.dark-mode .hd,
+      body.dark-mode .hd,
+      html.dark-mode .cv-topbar,
+      body.dark-mode .cv-topbar,
+      html.dark-mode .ft,
+      body.dark-mode .ft {
+        --color-canvas-white: #ffffff;
+        --color-obsidian: #000d10;
+      }
+
+      /* Ensure selected text remains readable in dark mode */
+      html.dark-mode ::selection {
+        color: #ffffff;
       }
 
       /* Smooth theme blending */
@@ -195,6 +211,12 @@
 
       .cv-back:hover svg {
         transform: translateX(-3px);
+      }
+
+      .cv-topbar__actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
       }
 
       /* Theme Toggle */
@@ -318,7 +340,7 @@
         top: -60px;
         width: 240px;
         height: 240px;
-        border-radius: 0;
+        border-radius: 50%;
         border: 1.5px solid var(--color-sienna-15);
         pointer-events: none;
       }
@@ -330,7 +352,7 @@
         bottom: -80px;
         width: 180px;
         height: 180px;
-        border-radius: 0;
+        border-radius: 50%;
         border: 1.5px solid var(--color-white-08);
         pointer-events: none;
       }
@@ -622,7 +644,7 @@
       .ach-dot {
         width: 6px;
         height: 6px;
-        border-radius: 0;
+        border-radius: 50%;
         background: var(--color-desert-sienna);
         flex-shrink: 0;
         margin-top: 6px;
@@ -820,20 +842,22 @@
           </svg>
           <span>Back to Portfolio</span>
         </a>
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          aria-label="Toggle theme"
-        >
-          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
-          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>
-        </button>
-        <button id="dlBtn" onclick="doDownload()">
-          <svg viewBox="0 0 24 24">
-            <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
-          </svg>
-          Download PDF
-        </button>
+        <div class="cv-topbar__actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>
+          </button>
+          <button id="dlBtn" onclick="doDownload()">
+            <svg viewBox="0 0 24 24">
+              <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+            </svg>
+            Download PDF
+          </button>
+        </div>
       </div>
     </div>
 

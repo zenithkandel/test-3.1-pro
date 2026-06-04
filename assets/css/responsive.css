@@ -312,7 +312,7 @@
     .feature {
         min-height: auto;
         padding: 22px 20px;
-        border-radius: 0;
+        border-radius: clamp(24px, 5vw, 35px);
     }
 
     .feature__num {
@@ -400,7 +400,7 @@
     /* Disclosure cards */
     .disclosure {
         padding: 20px;
-        border-radius: 0;
+        border-radius: clamp(24px, 5vw, 35px);
         min-height: auto;
         gap: 14px;
     }
