@@ -1,24 +1,4 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <!-- Sienna Gradient for primary elements -->
-        <linearGradient id="sienna-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#bc7155" />
-            <stop offset="50%" stop-color="#d98f72" />
-            <stop offset="100%" stop-color="#914d33" />
-        </linearGradient>
-        <!-- Fade-out Gradient for pulse graph fill -->
-        <linearGradient id="pulse-fade" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#bc7155" stop-opacity="0.15" />
-            <stop offset="100%" stop-color="#bc7155" stop-opacity="0" />
-        </linearGradient>
-        <!-- Soft Radial Glow Background -->
-        <radialGradient id="glow-bg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#bc7155" stop-opacity="0.12" />
-            <stop offset="100%" stop-color="#bc7155" stop-opacity="0" />
-        </radialGradient>
-    </defs>
-
-    <!-- Corner registration marks -->
     <g stroke="#bc7155" stroke-width="1" opacity="0.3">
         <path d="M12 12 L12 22 M12 12 L22 12"/>
         <path d="M188 12 L188 22 M188 12 L178 12"/>
@@ -26,33 +6,12 @@
         <path d="M188 188 L188 178 M188 188 L178 188"/>
     </g>
 
-    <!-- Background Glow -->
-    <circle cx="100" cy="100" r="80" fill="url(#glow-bg)" />
-
-    <!-- Broadcast Waves (Concentric transmission rings) -->
-    <g stroke="url(#sienna-gradient)" stroke-linecap="round" fill="none">
-        <circle cx="100" cy="85" r="12" stroke-width="1" opacity="0.6" />
-        <circle cx="100" cy="85" r="28" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.4" />
-        <circle cx="100" cy="85" r="48" stroke-width="0.8" stroke-dasharray="6 8" opacity="0.25" />
-        <circle cx="100" cy="85" r="68" stroke-width="0.6" stroke-dasharray="2 8" opacity="0.12" />
-    </g>
-
-    <!-- Transmission Source Core -->
-    <circle cx="100" cy="85" r="4" fill="url(#sienna-gradient)" />
-    <!-- Pulse Ring -->
-    <circle cx="100" cy="85" r="7" stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.8" />
-
-    <!-- Mountain Silhouette (Clean, single-attribute opacity backdrop) -->
-    <g transform="translate(0, 5)">
-        <path d="M 16 165 L 45 132 L 60 144 L 88 114 L 115 138 L 138 120 L 160 144 L 170 134 L 184 165 Z" fill="url(#pulse-fade)" stroke="url(#sienna-gradient)" stroke-width="0.8" stroke-linejoin="round" opacity="0.3" />
-        <line x1="16" y1="165" x2="184" y2="165" stroke="url(#sienna-gradient)" stroke-width="1" opacity="0.4" />
-        <!-- Miniature tower on peak -->
-        <line x1="88" y1="114" x2="88" y2="104" stroke="#bc7155" stroke-width="1" />
-        <circle cx="88" cy="102" r="1.5" fill="#bc7155" />
-    </g>
-
-    <!-- Glowing Heartbeat / Lifeline Pulse Line -->
-    <path d="M 20 120 L 68 120 L 76 120 L 82 92 L 88 152 L 96 104 L 102 126 L 108 120 L 180 120" stroke="url(#sienna-gradient)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-    <!-- Pulse Line Fill (Glow tail underneath) -->
-    <path d="M 20 120 L 68 120 L 76 120 L 82 92 L 88 152 L 96 104 L 102 126 L 108 120 L 180 120 L 180 170 L 20 170 Z" fill="url(#pulse-fade)" />
+    <!-- Concentric Waves from Top-Center -->
+    <circle cx="100" cy="80" r="4" fill="#bc7155"/>
+    <circle cx="100" cy="80" r="20" fill="none" stroke="#bc7155" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="100" cy="80" r="40" fill="none" stroke="#bc7155" stroke-width="1" opacity="0.4" stroke-dasharray="6 4"/>
+    <circle cx="100" cy="80" r="60" fill="none" stroke="#bc7155" stroke-width="0.8" opacity="0.2" stroke-dasharray="4 6"/>
+    
+    <!-- Clean ECG Pulse Line Cutting Through -->
+    <path d="M 30 140 L 75 140 L 85 120 L 100 160 L 115 110 L 125 140 L 170 140" fill="none" stroke="#bc7155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

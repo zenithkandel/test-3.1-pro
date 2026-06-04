@@ -1,19 +1,5 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <!-- Sienna Gradient for primary elements -->
-        <linearGradient id="sienna-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#bc7155" />
-            <stop offset="50%" stop-color="#d98f72" />
-            <stop offset="100%" stop-color="#914d33" />
-        </linearGradient>
-        <!-- Soft Radial Glow Background -->
-        <radialGradient id="glow-bg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#bc7155" stop-opacity="0.14" />
-            <stop offset="100%" stop-color="#bc7155" stop-opacity="0" />
-        </radialGradient>
-    </defs>
-
-    <!-- Corner registration marks -->
+    <!-- Corner marks -->
     <g stroke="#bc7155" stroke-width="1" opacity="0.3">
         <path d="M12 12 L12 22 M12 12 L22 12"/>
         <path d="M188 12 L188 22 M188 12 L178 12"/>
@@ -21,66 +7,22 @@
         <path d="M188 188 L188 178 M188 188 L178 188"/>
     </g>
 
-    <!-- Background Glow -->
-    <circle cx="100" cy="100" r="80" fill="url(#glow-bg)" />
-
-    <!-- Orbital Ring (Perspective Ellipse) -->
-    <ellipse cx="100" cy="100" rx="76" ry="34" stroke="url(#sienna-gradient)" stroke-width="1" stroke-dasharray="6 6" opacity="0.25" transform="rotate(-8 100 100)" />
-    <!-- Orbiting nodes -->
-    <g transform="rotate(-8 100 100)">
-        <circle cx="24" cy="100" r="3" fill="#bc7155" />
-        <circle cx="176" cy="100" r="4" fill="#bc7155" />
-        <circle cx="100" cy="66" r="2" fill="#bc7155" opacity="0.5" />
-    </g>
-
-    <!-- Vertical Connection Pipelines (Dashed lines connecting layers) -->
-    <g stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.3" stroke-dasharray="3 3">
-        <line x1="55" y1="65" x2="55" y2="135" />
-        <line x1="145" y1="65" x2="145" y2="135" />
-        <line x1="100" y1="45" x2="100" y2="155" />
-    </g>
-
-    <!-- LAYER 1: Bottom Layer (Data Store / Foundation) -->
-    <g transform="translate(0, 35)">
-        <!-- Layer outline -->
-        <path d="M100 80 L145 100 L100 120 L55 100 Z" fill="#000d10" fill-opacity="0.85" stroke="url(#sienna-gradient)" stroke-width="1.5" />
-        <!-- Grid pattern inside bottom layer -->
-        <path d="M70 100 L100 113 L130 100 M85 100 L100 107 L115 100" stroke="#bc7155" stroke-width="0.6" opacity="0.25" />
-        <!-- Data blocks -->
-        <rect x="94" y="94" width="12" height="6" fill="#bc7155" opacity="0.3" transform="rotate(-30 100 100)" />
-    </g>
-
-    <!-- LAYER 2: Middle Layer (Logic / APIs) -->
-    <g transform="translate(0, 0)">
-        <!-- Layer outline -->
-        <path d="M100 80 L145 100 L100 120 L55 100 Z" fill="#000d10" fill-opacity="0.85" stroke="url(#sienna-gradient)" stroke-width="1.8" />
-        <!-- Circuit node pattern -->
-        <circle cx="100" cy="100" r="3" fill="#bc7155" />
-        <line x1="100" y1="100" x2="80" y2="92" stroke="#bc7155" stroke-width="1" opacity="0.6" />
-        <line x1="100" y1="100" x2="120" y2="108" stroke="#bc7155" stroke-width="1" opacity="0.6" />
-        <line x1="100" y1="100" x2="100" y2="90" stroke="#bc7155" stroke-width="0.8" opacity="0.4" />
-        <circle cx="80" cy="92" r="1.5" fill="#bc7155" />
-        <circle cx="120" cy="108" r="1.5" fill="#bc7155" />
-    </g>
-
-    <!-- LAYER 3: Top Layer (Frontend / User Interface) -->
-    <g transform="translate(0, -35)">
-        <!-- Layer outline -->
-        <path d="M100 80 L145 100 L100 120 L55 100 Z" fill="#000d10" fill-opacity="0.85" stroke="url(#sienna-gradient)" stroke-width="1.5" />
-        <!-- UI elements -->
-        <!-- Header -->
-        <path d="M75 89 L100 100 L125 89" stroke="#bc7155" stroke-width="1" opacity="0.4" />
-        <!-- Cards -->
-        <path d="M70 96 L85 103 L85 109 L70 102 Z" fill="#bc7155" opacity="0.2" stroke="#bc7155" stroke-width="0.6" />
-        <path d="M115 96 L130 103 L130 109 L115 102 Z" fill="#bc7155" opacity="0.3" stroke="#bc7155" stroke-width="0.6" />
-        <!-- Mini Chart/Graph -->
-        <path d="M90 104 L95 101 L100 106 L105 101 L110 106" stroke="#bc7155" stroke-width="0.8" fill="none" opacity="0.6" />
-    </g>
-
-    <!-- Glowing Node Connectors (Beams) -->
-    <g stroke="url(#sienna-gradient)" stroke-width="1" opacity="0.6">
-        <circle cx="100" cy="65" r="2" fill="#bc7155" />
-        <circle cx="100" cy="100" r="2" fill="#bc7155" />
-        <circle cx="100" cy="135" r="2" fill="#bc7155" />
-    </g>
+    <!-- Abstract Flat Stack -->
+    <!-- Top Layer -->
+    <rect x="50" y="50" width="100" height="24" rx="2" fill="#bc7155" fill-opacity="0.1" stroke="#bc7155" stroke-width="2"/>
+    <circle cx="65" cy="62" r="4" fill="#bc7155" opacity="0.8"/>
+    <line x1="80" y1="62" x2="135" y2="62" stroke="#bc7155" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 4"/>
+    
+    <!-- Middle Layer -->
+    <rect x="50" y="88" width="100" height="24" rx="2" fill="#bc7155" fill-opacity="0.05" stroke="#bc7155" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="135" cy="100" r="4" fill="#bc7155" opacity="0.6"/>
+    <line x1="65" y1="100" x2="120" y2="100" stroke="#bc7155" stroke-width="1.5" opacity="0.4" stroke-dasharray="4 4"/>
+    
+    <!-- Bottom Layer -->
+    <rect x="50" y="126" width="100" height="24" rx="2" fill="none" stroke="#bc7155" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="100" cy="138" r="4" fill="#bc7155" opacity="0.4"/>
+    
+    <!-- Connecting Vertical Lines -->
+    <line x1="65" y1="74" x2="65" y2="88" stroke="#bc7155" stroke-width="1.5" opacity="0.4" stroke-dasharray="2 2"/>
+    <line x1="135" y1="112" x2="135" y2="126" stroke="#bc7155" stroke-width="1.5" opacity="0.3" stroke-dasharray="2 2"/>
 </svg>

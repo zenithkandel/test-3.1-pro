@@ -1,19 +1,4 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <!-- Sienna Gradient for primary elements -->
-        <linearGradient id="sienna-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#bc7155" />
-            <stop offset="50%" stop-color="#d98f72" />
-            <stop offset="100%" stop-color="#914d33" />
-        </linearGradient>
-        <!-- Soft Radial Glow Background -->
-        <radialGradient id="glow-bg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#bc7155" stop-opacity="0.14" />
-            <stop offset="100%" stop-color="#bc7155" stop-opacity="0" />
-        </radialGradient>
-    </defs>
-
-    <!-- Corner registration marks -->
     <g stroke="#bc7155" stroke-width="1" opacity="0.3">
         <path d="M12 12 L12 22 M12 12 L22 12"/>
         <path d="M188 12 L188 22 M188 12 L178 12"/>
@@ -21,54 +6,17 @@
         <path d="M188 188 L188 178 M188 188 L178 188"/>
     </g>
 
-    <!-- Background Glow -->
-    <circle cx="100" cy="100" r="80" fill="url(#glow-bg)" />
-
-    <!-- Radar Sweep Arc (Abstract background) -->
-    <path d="M 60 70 A 55 55 0 0 1 150 120" stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.12" />
-    <path d="M 70 80 A 40 40 0 0 1 138 120" stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.2" />
-
-    <!-- Main Shield Outline (Symmetric, elegant Bezier curve) -->
-    <g transform="translate(0, -2)">
-        <!-- Outer Shield -->
-        <path d="M 100 48 Q 122 41 148 41 Q 148 88 100 155 Q 52 88 52 41 Q 78 41 100 48 Z" fill="#000d10" fill-opacity="0.75" stroke="url(#sienna-gradient)" stroke-width="1.8" stroke-linejoin="round" />
-        <!-- Inner Shield Accent Line -->
-        <path d="M 100 56 Q 118 50 140 50 Q 140 88 100 144 Q 60 88 60 50 Q 82 50 100 56 Z" stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.25" />
-    </g>
-
-    <!-- Research Data Node Network (Within the shield) -->
-    <g transform="translate(0, -2)">
-        <!-- Node Connections (Lines) -->
-        <g stroke="#bc7155" stroke-width="0.8" opacity="0.4">
-            <line x1="82" y1="75" x2="100" y2="66" />
-            <line x1="118" y1="75" x2="100" y2="66" />
-            <line x1="82" y1="75" x2="74" y2="105" />
-            <line x1="118" y1="75" x2="126" y2="105" />
-            <line x1="74" y1="105" x2="100" y2="122" />
-            <line x1="126" y1="105" x2="100" y2="122" />
-            <line x1="100" y1="92" x2="82" y2="75" />
-            <line x1="100" y1="92" x2="118" y2="75" />
-            <line x1="100" y1="92" x2="74" y2="105" />
-            <line x1="100" y1="92" x2="126" y2="105" />
-            <line x1="100" y1="92" x2="100" y2="122" />
-        </g>
-        
-        <!-- Network Nodes (Circles) -->
-        <circle cx="100" cy="66" r="3" fill="#bc7155" />
-        <circle cx="82" cy="75" r="2.5" fill="#bc7155" />
-        <circle cx="118" cy="75" r="2.5" fill="#bc7155" />
-        <circle cx="74" cy="105" r="2.5" fill="#bc7155" />
-        <circle cx="126" cy="105" r="2.5" fill="#bc7155" />
-        <circle cx="100" cy="122" r="3" fill="#bc7155" />
-
-        <!-- Scanner Crosshairs -->
-        <g stroke="url(#sienna-gradient)" stroke-width="0.6" opacity="0.3">
-            <line x1="100" y1="75" x2="100" y2="115" stroke-dasharray="2 2" />
-            <line x1="80" y1="95" x2="120" y2="95" stroke-dasharray="2 2" />
-        </g>
-
-        <!-- Central Scanner Core / Target -->
-        <circle cx="100" cy="95" r="9" stroke="url(#sienna-gradient)" stroke-width="1.2" />
-        <circle cx="100" cy="95" r="4" fill="url(#sienna-gradient)" />
-    </g>
+    <!-- Minimalist Shield -->
+    <path d="M 60 55 L 140 55 C 140 100 115 130 100 145 C 85 130 60 100 60 55 Z" fill="none" stroke="#bc7155" stroke-width="2" stroke-linejoin="round"/>
+    
+    <!-- Inner Accent -->
+    <path d="M 70 65 L 130 65 C 130 95 110 115 100 128 C 90 115 70 95 70 65 Z" fill="#bc7155" fill-opacity="0.05" stroke="#bc7155" stroke-width="1" opacity="0.5" stroke-linejoin="round"/>
+    
+    <!-- Search / Scanner Element -->
+    <circle cx="100" cy="85" r="14" fill="none" stroke="#bc7155" stroke-width="1.5"/>
+    <line x1="110" y1="95" x2="120" y2="105" stroke="#bc7155" stroke-width="1.5" stroke-linecap="round"/>
+    
+    <circle cx="100" cy="85" r="4" fill="#bc7155" opacity="0.8"/>
+    <!-- Scan line -->
+    <line x1="50" y1="85" x2="150" y2="85" stroke="#bc7155" stroke-width="0.8" opacity="0.3" stroke-dasharray="4 4"/>
 </svg>

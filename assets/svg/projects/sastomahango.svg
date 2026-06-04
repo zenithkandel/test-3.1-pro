@@ -1,19 +1,4 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <!-- Sienna Gradient for primary elements -->
-        <linearGradient id="sienna-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#bc7155" />
-            <stop offset="50%" stop-color="#d98f72" />
-            <stop offset="100%" stop-color="#914d33" />
-        </linearGradient>
-        <!-- Soft Radial Glow Background -->
-        <radialGradient id="glow-bg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#bc7155" stop-opacity="0.14" />
-            <stop offset="100%" stop-color="#bc7155" stop-opacity="0" />
-        </radialGradient>
-    </defs>
-
-    <!-- Corner registration marks -->
     <g stroke="#bc7155" stroke-width="1" opacity="0.3">
         <path d="M12 12 L12 22 M12 12 L22 12"/>
         <path d="M188 12 L188 22 M188 12 L178 12"/>
@@ -21,56 +6,20 @@
         <path d="M188 188 L188 178 M188 188 L178 188"/>
     </g>
 
-    <!-- Background Glow -->
-    <circle cx="100" cy="100" r="80" fill="url(#glow-bg)" />
-
-    <!-- 1. Background Isometric Platform (Data grid) -->
-    <g transform="translate(90, 120) rotate(-30) skewX(30)">
-        <!-- Platform card -->
-        <rect x="-50" y="-30" width="100" height="60" rx="4" fill="#000d10" stroke="url(#sienna-gradient)" stroke-width="1.2" />
-        
-        <!-- Grid lines -->
-        <path d="M-30 -30 L-30 30 M-10 -30 L-10 30 M10 -30 L10 30 M30 -30 L30 30" stroke="#bc7155" stroke-width="0.5" opacity="0.12" />
-        <path d="M-50 -10 L50 -10 M-50 10 L50 10" stroke="#bc7155" stroke-width="0.5" opacity="0.12" />
-
-        <!-- Chart comparison bars (rendered in isometric) -->
-        <!-- Higher/Original price (Deemphasized sienna) -->
-        <rect x="-38" y="-5" width="14" height="20" rx="1" fill="#bc7155" fill-opacity="0.25" stroke="url(#sienna-gradient)" stroke-width="0.8" />
-        <!-- Lower/Best price (Sasto - Highlighted sienna) -->
-        <rect x="18" y="-18" width="14" height="33" rx="1" fill="url(#sienna-gradient)" />
-        
-        <!-- Interactive target dot -->
-        <circle cx="25" cy="-18" r="2.5" fill="#ffffff" />
-    </g>
-
-    <!-- 2. Tag Shadow on Platform -->
-    <ellipse cx="106" cy="94" rx="28" ry="10" fill="#000d10" opacity="0.5" transform="rotate(-12 106 94)" />
-
-    <!-- 3. Floating Price Tag (2D tilted above the platform for depth) -->
-    <g transform="translate(112, 74) rotate(-12)">
-        <!-- Tag loop string -->
-        <path d="M-42 0 C-62 -10 -74 15 -58 25" stroke="#bc7155" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.4" />
-        
-        <!-- Tag body -->
-        <path d="M-36 -16 L12 -16 L28 0 L12 16 L-36 16 Q-40 16 -40 12 L-40 -12 Q-40 -16 -36 -16 Z" fill="#000d10" stroke="url(#sienna-gradient)" stroke-width="1.8" stroke-linejoin="round" />
-        
-        <!-- Tag hole and inner ring -->
-        <circle cx="18" cy="0" r="4.5" fill="none" stroke="#bc7155" stroke-width="1" opacity="0.5" />
-        <circle cx="18" cy="0" r="2" fill="#bc7155" />
-
-        <!-- Tag divider line -->
-        <line x1="-8" y1="-16" x2="-8" y2="16" stroke="url(#sienna-gradient)" stroke-width="0.8" opacity="0.3" />
-
-        <!-- Text NPR -->
-        <text x="-24" y="5" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="900" fill="url(#sienna-gradient)" letter-spacing="0.02em">NPR</text>
-    </g>
-
-    <!-- Floating Sparkles / Value indicators -->
-    <g fill="#bc7155">
-        <!-- Sparkle 1 -->
-        <path d="M 45 60 L 47 65 L 52 67 L 47 69 L 45 74 L 43 69 L 38 67 L 43 65 Z" opacity="0.8" />
-        <!-- Sparkle 2 -->
-        <circle cx="160" cy="130" r="2" opacity="0.5" />
-        <circle cx="168" cy="122" r="1" opacity="0.3" />
-    </g>
+    <!-- Minimalist Bar Chart (Comparison) -->
+    <line x1="40" y1="140" x2="160" y2="140" stroke="#bc7155" stroke-width="1.5" opacity="0.3"/>
+    
+    <!-- High Bar -->
+    <rect x="60" y="60" width="24" height="80" rx="2" fill="none" stroke="#bc7155" stroke-width="1.5" opacity="0.4"/>
+    <!-- Low Bar -->
+    <rect x="95" y="90" width="24" height="50" rx="2" fill="#bc7155" fill-opacity="0.1" stroke="#bc7155" stroke-width="2"/>
+    
+    <!-- Trend Line -->
+    <path d="M 72 60 L 107 90" fill="none" stroke="#bc7155" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4" opacity="0.6"/>
+    
+    <!-- Minimalist Tag Floating -->
+    <path d="M 120 50 L 160 50 L 160 80 L 140 100 L 120 80 Z" fill="none" stroke="#bc7155" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="140" cy="65" r="3" fill="#bc7155" opacity="0.8"/>
+    <!-- Tag String -->
+    <path d="M 140 62 Q 135 40 107 90" fill="none" stroke="#bc7155" stroke-width="1" opacity="0.4"/>
 </svg>
