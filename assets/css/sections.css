@@ -550,15 +550,12 @@
     flex-direction: column;
     gap: 16px;
     min-height: 300px;
-    transition: transform 0.3s var(--ease);
+    transition: opacity 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease);
     cursor: none;
     position: relative;
     overflow: hidden;
 }
 
-.disclosure:hover {
-    transform: translateY(-4px);
-}
 
 .disclosure::after {
     content: '';
