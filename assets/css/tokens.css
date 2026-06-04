@@ -22,6 +22,11 @@
     --surface-canvas-white: #ffffff;
     --surface-obsidian: #000d10;
 
+    /* Nav & UI Translucencies */
+    --nav-scrolled-bg: rgba(255, 255, 255, 0.92);
+    --nav-scrolled-bg-dark: rgba(0, 13, 16, 0.85);
+    --mobile-menu-bg: rgba(255, 255, 255, 0.92);
+
     /* Typography */
     --font-display: 'Inter', 'Helvetica Neue', Helvetica, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
@@ -91,6 +96,57 @@
     /* Layout */
     --gutter: clamp(20px, 4vw, 60px);
     --max-w: 1440px;
+}
+
+/* ===========================================================
+   DARK MODE OVERRIDES — Swap base directions & translucencies
+   =========================================================== */
+html.dark-mode,
+body.dark-mode {
+    --color-obsidian: #ffffff;
+    --color-canvas-white: #000d10;
+    --color-slate-mist: #a1a1aa; /* slightly lighter for optimal dark readability */
+
+    --surface-canvas-white: #000d10;
+    --surface-obsidian: #0a171a; /* slightly lighter than canvas-white for layout layering */
+
+    --color-obsidian-90: rgba(255, 255, 255, 0.90);
+    --color-obsidian-08: rgba(255, 255, 255, 0.08);
+    --color-obsidian-04: rgba(255, 255, 255, 0.04);
+    --color-obsidian-12: rgba(255, 255, 255, 0.12);
+    --color-white-08: rgba(255, 255, 255, 0.08);
+    --color-white-04: rgba(255, 255, 255, 0.04);
+    --color-sienna-15: rgba(188, 113, 85, 0.20);
+
+    --nav-scrolled-bg: rgba(0, 13, 16, 0.85);
+    --nav-scrolled-bg-dark: rgba(0, 13, 16, 0.85);
+    --mobile-menu-bg: rgba(0, 13, 16, 0.92);
+}
+
+/* Ensure text/foreground elements on dark surfaces remain white in dark mode */
+html.dark-mode .surface--dark,
+body.dark-mode .surface--dark,
+html.dark-mode .nav.is-on-dark,
+html.dark-mode .btn--ghost-light,
+html.dark-mode .loader {
+    --color-canvas-white: #ffffff;
+    --color-obsidian: #000d10;
+}
+
+/* Ensure selected text remains readable in dark mode */
+html.dark-mode ::selection {
+    color: #ffffff;
+}
+
+/* ===========================================================
+   THEME TRANSITIONS — Smooth blending on toggle
+   =========================================================== */
+body, .surface, .nav, .section, .feature, .disclosure, .project, .stack-row, .contact-row, .social, .btn, code, .nav__mark, .mobile-menu {
+    transition: background var(--t-slow) var(--ease), 
+                background-color var(--t-slow) var(--ease), 
+                color var(--t-slow) var(--ease), 
+                border-color var(--t-slow) var(--ease),
+                box-shadow var(--t-slow) var(--ease);
 }
 
 /* ----- Reset ----- */

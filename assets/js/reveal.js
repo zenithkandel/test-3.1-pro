@@ -37,7 +37,12 @@
 
         // Single observer: trigger zone is a thin strip just below the nav.
         // The most recently intersecting section defines the theme.
-        const setTheme = (isDark) => nav.classList.toggle('is-on-dark', isDark);
+        let lastSectionWasDark = false;
+        const setTheme = (isDark) => {
+            lastSectionWasDark = isDark;
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            nav.classList.toggle('is-on-dark', isDark || isDarkMode);
+        };
         const themeSources = $$('.surface, .hero');
 
         const themeObserver = new IntersectionObserver((entries) => {
@@ -52,9 +57,15 @@
         // Fallback for very-top-of-page: hero is always light.
         // Also reset when scrolling back above the first surface.
         const onScrollTheme = () => {
-            if (window.scrollY < 80) setTheme(false);
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            if (window.scrollY < 80) setTheme(isDarkMode);
         };
         window.addEventListener('scroll', onScrollTheme, { passive: true });
+
+        // Sync visual theme change immediately on toggle click
+        window.addEventListener('theme-change', () => {
+            setTheme(lastSectionWasDark);
+        });
 
         // Tick the scroll state via rAF
         const tick = () => {
