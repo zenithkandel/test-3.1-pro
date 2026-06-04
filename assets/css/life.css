@@ -45,31 +45,19 @@
     position: fixed;
     inset: 0;
     z-index: 9990;
-    background: var(--color-desert-sienna);
-    transform: scaleX(0);
+    background: transparent;
     pointer-events: none;
     visibility: hidden;
-    transform-origin: right center;
 }
 
-.page-wipe.is-in {
-    visibility: visible;
-    animation: page-wipe-in 0.4s var(--ease-out) forwards;
+.page-wipe svg {
+    width: 100vw;
+    height: 100vh;
+    display: block;
 }
 
-.page-wipe.is-out {
-    visibility: visible;
-    animation: page-wipe-out 0.4s var(--ease-out) forwards;
-}
-
-@keyframes page-wipe-in {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-}
-
-@keyframes page-wipe-out {
-    from { transform: scaleX(1); }
-    to   { transform: scaleX(0); }
+.page-wipe path {
+    fill: var(--color-desert-sienna);
 }
 
 /* ---------- 3. Reduced motion override ---------- */

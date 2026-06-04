@@ -20,32 +20,60 @@
     if (!wipe) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-
-    // ---------- Pick the origin ----------
-    // Priority: 1) stored value from previous page (means we
-    //             got here via a wipe from the other side),
-    //          2) data-wipe-origin attribute on the wipe div,
-    //          3) right (default for index).
-    let origin = null;
-    try {
-        const stored = sessionStorage.getItem('zenith:wipeOrigin');
-        if (stored === 'left' || stored === 'right') {
-            origin = stored;
-            sessionStorage.removeItem('zenith:wipeOrigin');
-        }
-    } catch (_) {}
-    if (!origin) {
-        const attr = (wipe.getAttribute('data-wipe-origin') || '').toLowerCase();
-        origin = (attr === 'left' || attr === 'right') ? attr : 'right';
+    if (reduceMotion) {
+        // Fallback for prefers-reduced-motion: reveal instantly
+        wipe.style.display = 'none';
+        return;
     }
 
-    wipe.style.transformOrigin = origin === 'left' ? 'left center' : 'right center';
+    // Inject SVG dynamically so HTML files stay clean
+    wipe.innerHTML = `
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path id="wipePath" d="M 100 0 L 100 100 L 100 100 L 100 0 Z"></path>
+        </svg>
+    `;
+    const path = document.getElementById('wipePath');
+    if (!path) return;
+
+    // Morph the SVG path points using bezier curves to produce a liquid-wipe look
+    const animatePath = (isIn, callback) => {
+        const duration = 480;
+        const start = performance.now();
+
+        const tick = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            // Cubic ease out
+            const progress = isIn ? 1 - Math.pow(1 - t, 3) : Math.pow(1 - t, 3);
+
+            // Left boundary of the wave
+            const x = 100 - progress * 100;
+            // Control point pulls to create wave curve
+            const controlX = x - Math.sin(progress * Math.PI) * 25;
+
+            let d;
+            if (isIn) {
+                // Wipe in: block enters from the right to cover screen
+                d = `M 100 0 L 100 100 L ${x} 100 Q ${controlX} 50 ${x} 0 Z`;
+            } else {
+                // Wipe out: block exits to the left to reveal screen
+                d = `M ${x} 0 Q ${controlX} 50 ${x} 100 L 0 100 L 0 0 Z`;
+            }
+
+            path.setAttribute('d', d);
+
+            if (t < 1) {
+                requestAnimationFrame(tick);
+            } else if (callback) {
+                callback();
+            }
+        };
+        requestAnimationFrame(tick);
+    };
 
     // ---------- Wipe out on load (reveal this page) ----------
-    requestAnimationFrame(() => {
-        wipe.classList.add('is-out');
-        setTimeout(() => wipe.classList.remove('is-out'), 450);
+    wipe.style.visibility = 'visible';
+    animatePath(false, () => {
+        wipe.style.visibility = 'hidden';
     });
 
     // ---------- Intercept link clicks ----------
@@ -71,13 +99,10 @@
         if (dest === here) return;
 
         e.preventDefault();
-        // The destination page will use the same origin so the
-        // wipe continues in the same direction.
-        try { sessionStorage.setItem('zenith:wipeOrigin', origin); } catch (_) {}
 
-        wipe.classList.add('is-in');
-        setTimeout(() => {
+        wipe.style.visibility = 'visible';
+        animatePath(true, () => {
             window.location.href = a.href;
-        }, 420);
+        });
     });
 })();

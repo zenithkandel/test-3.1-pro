@@ -39,34 +39,7 @@
         });
     }
 
-    /* ----- Counter (data-counter) ----- */
-    if (!reduceMotion) {
-        const counters = $$('[data-counter]');
-        const animate = (el) => {
-            const target = parseInt(el.dataset.counter, 10) || 0;
-            const original = el.textContent.trim();
-            const suffix = original.replace(/[0-9]/g, '');
-            const dur = 1400;
-            const start = performance.now();
-            const ease = (t) => 1 - Math.pow(1 - t, 3);
-            const tick = (now) => {
-                const t = Math.min(1, (now - start) / dur);
-                const v = Math.round(target * ease(t));
-                el.textContent = String(v).padStart(original.length - suffix.length, '0') + suffix;
-                if (t < 1) requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-        };
-
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animate(entry.target);
-                    io.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(c => io.observe(c));
-    }
+    /* ----- Counter (data-counter) -----
+       Upgraded to scroll-bound interpolation in scroll-interactions.js
+    ------------------------------------- */
 })();
