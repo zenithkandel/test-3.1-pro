@@ -92,50 +92,73 @@ switch ($action) {
     case 'upload':
         if ($method !== 'POST') err('Method not allowed', 405);
         require_csrf();
-        if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
-            $code = $_FILES['file']['error'] ?? -1;
-            $messages = [
-                UPLOAD_ERR_INI_SIZE   => 'File exceeds server limit',
-                UPLOAD_ERR_FORM_SIZE  => 'File exceeds form limit',
-                UPLOAD_ERR_PARTIAL    => 'File only partially uploaded',
-                UPLOAD_ERR_NO_FILE    => 'No file selected',
-                UPLOAD_ERR_NO_TMP_DIR => 'Server misconfiguration',
-                UPLOAD_ERR_CANT_WRITE => 'Failed to write to disk',
-                UPLOAD_ERR_EXTENSION  => 'Upload blocked by extension',
-            ];
-            err($messages[$code] ?? 'Upload error #' . $code);
-        }
-        $file = $_FILES['file'];
-        if ($file['size'] > MAX_UPLOAD_SIZE) err('File exceeds 10MB limit');
-        $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        if (!in_array($ext, ALLOWED_UPLOAD_EXTENSIONS, true)) {
-            err('File type "' . $ext . '" not allowed');
-        }
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mime = finfo_file($finfo, $file['tmp_name']);
-        finfo_close($finfo);
-        if (!in_array($mime, ALLOWED_UPLOAD_TYPES, true)) {
-            err('MIME type "' . $mime . '" not allowed');
-        }
+        
         $folder = preg_replace('#[^a-zA-Z0-9_\-/]#', '', $_POST['folder'] ?? '');
         $folder = trim($folder, '/');
         $dest_dir = ASSETS_DIR . ($folder ? '/' . $folder : '');
         if (!is_dir($dest_dir)) {
             if (!@mkdir($dest_dir, 0755, true)) err('Failed to create directory');
         }
-        $safe_name = preg_replace('#[^a-zA-Z0-9._\-]#', '_', $file['name']);
-        $safe_name = preg_replace('#_+#', '_', $safe_name);
-        $safe_name = ltrim($safe_name, '_');
-        if ($safe_name === '') $safe_name = 'upload_' . time() . '.' . $ext;
-        $dest = $dest_dir . '/' . $safe_name;
-        if (file_exists($dest)) {
-            $base = pathinfo($safe_name, PATHINFO_FILENAME);
-            $dest = $dest_dir . '/' . $base . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
-            $safe_name = basename($dest);
+
+        $uploaded_files = [];
+        $files_to_process = [];
+
+        if (isset($_FILES['file'])) {
+            $files_to_process[] = $_FILES['file'];
+        } elseif (isset($_FILES['files']) && is_array($_FILES['files']['name'])) {
+            $count = count($_FILES['files']['name']);
+            for ($i = 0; $i < $count; $i++) {
+                $files_to_process[] = [
+                    'name'     => $_FILES['files']['name'][$i],
+                    'type'     => $_FILES['files']['type'][$i],
+                    'tmp_name' => $_FILES['files']['tmp_name'][$i],
+                    'error'    => $_FILES['files']['error'][$i],
+                    'size'     => $_FILES['files']['size'][$i],
+                ];
+            }
+        } else {
+            err('No files uploaded');
         }
-        if (!move_uploaded_file($file['tmp_name'], $dest)) err('Failed to save file', 500);
-        $relative = 'assets/' . ($folder ? $folder . '/' : '') . $safe_name;
-        ok(['path' => $relative, 'name' => $safe_name]);
+
+        foreach ($files_to_process as $file) {
+            if ($file['error'] !== UPLOAD_ERR_OK) continue;
+            if ($file['size'] > MAX_UPLOAD_SIZE) continue;
+            
+            $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+            if (!in_array($ext, ALLOWED_UPLOAD_EXTENSIONS, true)) continue;
+
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime = finfo_file($finfo, $file['tmp_name']);
+            finfo_close($finfo);
+            if (!in_array($mime, ALLOWED_UPLOAD_TYPES, true)) continue;
+
+            $safe_name = preg_replace('#[^a-zA-Z0-9._\-]#', '_', $file['name']);
+            $safe_name = preg_replace('#_+#', '_', $safe_name);
+            $safe_name = ltrim($safe_name, '_');
+            if ($safe_name === '') $safe_name = 'upload_' . time() . '_' . bin2hex(random_bytes(2)) . '.' . $ext;
+            
+            $dest = $dest_dir . '/' . $safe_name;
+            if (file_exists($dest)) {
+                $base = pathinfo($safe_name, PATHINFO_FILENAME);
+                $dest = $dest_dir . '/' . $base . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+                $safe_name = basename($dest);
+            }
+
+            if (move_uploaded_file($file['tmp_name'], $dest)) {
+                $relative = 'assets/' . ($folder ? $folder . '/' : '') . $safe_name;
+                $uploaded_files[] = ['path' => $relative, 'name' => $safe_name];
+            }
+        }
+
+        if (empty($uploaded_files)) {
+            err('Failed to upload files. Check file size and type.');
+        }
+
+        if (count($uploaded_files) === 1 && isset($_FILES['file'])) {
+            ok($uploaded_files[0]);
+        } else {
+            ok(['files' => $uploaded_files, 'path' => $uploaded_files[0]['path']]);
+        }
         break;
 
     case 'delete':

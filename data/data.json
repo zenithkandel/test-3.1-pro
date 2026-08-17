@@ -364,7 +364,11 @@
       "longDescription": "Sastomahango was built to address the lack of transparent pricing in traditional Nepali retail and vegetable markets (Bazaars). By allowing shoppers across various municipal wards to submit crowdsourced prices and receipts in real time, the platform calculates median price corridors and alerts consumers about sudden artificial inflation.",
       "chips": ["PHP", "MySQL", "Crowdsourced data", "Hackathon build", "REST API"],
       "illustration": "assets/svg/projects/sastomahango.svg",
+      "coverImage": "assets/svg/projects/sastomahango.svg",
       "image": "assets/svg/projects/sastomahango.svg",
+      "images": [
+        "assets/svg/projects/sastomahango.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": ""
     },
@@ -382,7 +386,11 @@
       "longDescription": "Designed specifically for Nepal's challenging Himalayan topography and disaster vulnerability. Lifeline operates on unlicensed sub-GHz ISM radio bands, broadcasting ultra-low-power distress packets containing GPS coordinates and casualty status without relying on cellular towers or internet infrastructure.",
       "chips": ["RF modules", "Arduino", "Resilience tech", "Field-tested", "Sub-GHz"],
       "illustration": "assets/svg/projects/lifeline.svg",
+      "coverImage": "assets/svg/projects/lifeline.svg",
       "image": "assets/svg/projects/lifeline.svg",
+      "images": [
+        "assets/svg/projects/lifeline.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": ""
     },
@@ -400,7 +408,11 @@
       "longDescription": "Kathmandu's public transit network lacks official schedules and centralized route maps. Sawari models microbus routes, Sajha Yatayat lines, and tempo corridors with localized graph algorithms to provide multi-modal route guidance, accurate fare estimates, and transfer hints.",
       "chips": ["JavaScript", "Routing logic", "Kathmandu transit", "Live demo", "Leaflet Maps"],
       "illustration": "assets/svg/projects/sawari.svg",
+      "coverImage": "assets/svg/projects/sawari.svg",
       "image": "assets/svg/projects/sawari.svg",
+      "images": [
+        "assets/svg/projects/sawari.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": "https://zenithkandel.com.np"
     },
@@ -418,7 +430,11 @@
       "longDescription": "AgroPan combines multi-parameter NPK soil sensor probes with ESP microcontroller nodes to measure real-time soil chemistry. Data is transmitted to a local dashboard that matches environmental parameters against regional agronomic datasets for optimal seasonal crop selection.",
       "chips": ["ESP series", "Sensors", "Precision agriculture", "Field prototype", "IoT"],
       "illustration": "assets/svg/projects/agropan.svg",
+      "coverImage": "assets/svg/projects/agropan.svg",
       "image": "assets/svg/projects/agropan.svg",
+      "images": [
+        "assets/svg/projects/agropan.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": ""
     },
@@ -436,7 +452,11 @@
       "longDescription": "Paper roll-calls consume significant classroom teaching time in government and private secondary schools. EduTrack Pro deploys high-frequency RFID scanners with local edge caching to log 1,000+ student arrivals per hour, automatically generating SMS notices to parents and daily analytics for headmasters.",
       "chips": ["RFID", "PHP", "MySQL", "EdTech", "School pilot"],
       "illustration": "assets/svg/projects/edutrackpro.svg",
+      "coverImage": "assets/svg/projects/edutrackpro.svg",
       "image": "assets/svg/projects/edutrackpro.svg",
+      "images": [
+        "assets/svg/projects/edutrackpro.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": ""
     },
@@ -454,7 +474,11 @@
       "longDescription": "Identified an access control flaw allowing unauthorized administrative access. Coordinated responsibly with the technical infrastructure team at Kantipur Television to verify the root cause and validate the patch before publication.",
       "chips": ["Vulnerability Research", "Responsible Disclosure", "Web Security", "Auth Bypass"],
       "illustration": "assets/svg/emblems/research.svg",
+      "coverImage": "assets/svg/emblems/research.svg",
       "image": "assets/svg/emblems/research.svg",
+      "images": [
+        "assets/svg/emblems/research.svg"
+      ],
       "githubUrl": "",
       "liveUrl": ""
     },
@@ -472,7 +496,11 @@
       "longDescription": "Discovered an edge-case logic flaw during typing session telemetry processing. Submitted detailed steps to reproduce to the open-source repository maintainers, which was confirmed and merged into the main release.",
       "chips": ["Open Source", "Client-side Logic", "Bug Disclosure", "Community Patch"],
       "illustration": "assets/svg/emblems/research.svg",
+      "coverImage": "assets/svg/emblems/research.svg",
       "image": "assets/svg/emblems/research.svg",
+      "images": [
+        "assets/svg/emblems/research.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": ""
     },
@@ -490,7 +518,11 @@
       "longDescription": "Built with custom 3D-printed enclosure, 18650 lithium power management, OLED display, and keyboard module. Communicates over 433MHz / 915MHz LoRa mesh with end-to-end symmetric encryption.",
       "chips": ["LoRa", "Arduino", "C++", "Mesh Network", "Hardware"],
       "illustration": "assets/svg/emblems/stack.svg",
+      "coverImage": "assets/svg/emblems/stack.svg",
       "image": "assets/svg/emblems/stack.svg",
+      "images": [
+        "assets/svg/emblems/stack.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": ""
     },
@@ -508,7 +540,11 @@
       "longDescription": "A command-line tool written in Python & Bash that audits security headers (CSP, HSTS, X-Frame-Options, CORS) across government web assets to identify misconfigurations and produce remediation checklists.",
       "chips": ["Python", "Security Audit", "Recon", "CLI Tool", "Bash"],
       "illustration": "assets/svg/emblems/stack.svg",
+      "coverImage": "assets/svg/emblems/stack.svg",
       "image": "assets/svg/emblems/stack.svg",
+      "images": [
+        "assets/svg/emblems/stack.svg"
+      ],
       "githubUrl": "https://github.com/zenithkandel",
       "liveUrl": ""
     }
