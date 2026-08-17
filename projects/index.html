@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Zenith Kandel — Projects Archive. Civic tech, off-grid disaster hardware, transit companions, and security vulnerability disclosures."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Zenith Kandel — Projects & Archive" />
+    <meta
+      property="og:description"
+      content="All builds, hardware prototypes, civic tools, and security research by Zenith Kandel."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://zenithkandel.com.np/assets/images/me-with-transparent-background.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Projects &amp; Archive — Zenith Kandel</title>
+
+    <link rel="canonical" href="https://zenithkandel.com.np/projects/" />
+
+    <!-- Preload key cursor assets -->
+    <link rel="preload" href="../assets/svg/cursors/arrow.svg" as="image" />
+    <link rel="preload" href="../assets/svg/cursors/pointer.svg" as="image" />
+    <link rel="preload" href="../assets/svg/cursors/text.svg" as="image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Core & Modular Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../assets/css/nav.css" />
+    <link rel="stylesheet" href="../assets/css/hero.css" />
+    <link rel="stylesheet" href="../assets/css/sections.css" />
+    <link rel="stylesheet" href="../assets/css/footer.css" />
+    <link rel="stylesheet" href="../assets/css/svg-art.css" />
+    <link rel="stylesheet" href="../assets/css/animations.css" />
+    <link rel="stylesheet" href="../assets/css/life.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/projects.css" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000d10'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,sans-serif' font-size='18' font-weight='800' fill='%23ffffff'%3EZ%3C/text%3E%3C/svg%3E"
+    />
+  </head>
+  <body class="surface--light">
+    <!-- Custom cursor (macOS-style) -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <img
+        class="cursor__arrow"
+        data-cursor="arrow"
+        src="../assets/svg/cursors/arrow.svg"
+        alt=""
+        draggable="false"
+      />
+      <img
+        class="cursor__pointer"
+        data-cursor="pointer"
+        src="../assets/svg/cursors/pointer.svg"
+        alt=""
+        draggable="false"
+      />
+      <img
+        class="cursor__text"
+        data-cursor="text"
+        src="../assets/svg/cursors/text.svg"
+        alt=""
+        draggable="false"
+      />
+    </div>
+
+    <!-- Page loader -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader__inner">
+        <div class="loader__bar"><span></span></div>
+        <span class="loader__text">ARCHIVE · KTM / NP</span>
+      </div>
+    </div>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="../index.html#work" class="nav__brand" aria-label="Zenith Kandel — Back to Portfolio">
+          <span class="nav__mark" aria-hidden="true">ZK</span>
+          <span class="nav__word">← Back to Portfolio</span>
+        </a>
+
+        <div class="nav__actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>
+          </button>
+
+          <a href="../cv.html" class="nav__cta">
+            <span>View CV</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============ HERO ARCHIVE ============ -->
+      <section class="archive-hero">
+        <div class="archive-hero__inner">
+          <div class="archive-hero__top">
+            <span class="archive-hero__badge">
+              <span class="archive-hero__badge-dot" aria-hidden="true"></span>
+              02 — Complete Project Archive
+            </span>
+            <span class="hero__loc">Kathmandu · Nepal</span>
+          </div>
+
+          <h1 class="archive-hero__title">
+            All builds, experiments<br />
+            <span class="hero__line--accent">&amp; disclosures<span class="hero__period">.</span></span>
+          </h1>
+
+          <p class="archive-hero__sub">
+            A comprehensive catalogue of civic-tech platforms, disaster resilience hardware, transit navigators, smart agricultural rigs, and responsible cybersecurity vulnerability disclosures.
+          </p>
+
+          <div class="archive-stats">
+            <div class="archive-stat">
+              <span class="archive-stat__num" data-stat-total>15+</span>
+              <span class="archive-stat__label">Total Projects</span>
+            </div>
+            <div class="archive-stat">
+              <span class="archive-stat__num" data-stat-categories>5</span>
+              <span class="archive-stat__label">Domains</span>
+            </div>
+            <div class="archive-stat">
+              <span class="archive-stat__num">80+</span>
+              <span class="archive-stat__label">GitHub Repos</span>
+            </div>
+            <div class="archive-stat">
+              <span class="archive-stat__num" data-stat-disclosures>02</span>
+              <span class="archive-stat__label">Disclosed Flaws</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STICKY CONTROLS & FILTER TOOLBAR ============ -->
+      <section class="archive-controls">
+        <div class="archive-controls__inner">
+          <div class="archive-controls__row">
+            <div class="search-box">
+              <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="text"
+                class="search-box__input"
+                id="searchInput"
+                placeholder="Search by title, stack, keyword, or problem..."
+                aria-label="Search projects"
+              />
+              <button class="search-box__clear" id="searchClear" aria-label="Clear search">&times;</button>
+              <span class="search-box__kbd" aria-hidden="true">/</span>
+            </div>
+
+            <div class="archive-status__sort">
+              <label for="sortSelect" class="archive-status__label" style="font-size:12px;color:var(--color-slate-mist);">Sort by:</label>
+              <select id="sortSelect" class="archive-status__select">
+                <option value="newest">Year (Newest first)</option>
+                <option value="oldest">Year (Oldest first)</option>
+                <option value="alpha">Alphabetical (A-Z)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Category filter tabs -->
+          <div class="category-pills" id="categoryPills" role="tablist">
+            <!-- Rendered by projects.js -->
+          </div>
+
+          <!-- Secondary Tag cloud -->
+          <div class="tag-filters" id="tagFilters">
+            <!-- Rendered by projects.js -->
+          </div>
+
+          <!-- Results counter -->
+          <div class="archive-status">
+            <span class="archive-status__count" id="resultsCount">Loading projects…</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS GRID ============ -->
+      <section class="archive-grid-section">
+        <div class="archive-grid" id="projectsGrid">
+          <!-- Dynamically populated by projects.js -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+          <div class="empty-state__icon">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <h3 class="empty-state__title">No projects match your query</h3>
+          <p class="empty-state__text">Try adjusting your keywords or clearing the category and technology filters.</p>
+          <button class="btn btn--primary" id="resetFilters" style="margin-top:12px;">
+            <span>Reset All Filters</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ PROJECT QUICK-VIEW MODAL ============ -->
+    <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="project-modal__backdrop"></div>
+      <div class="project-modal__dialog" id="projectModalDialog">
+        <!-- Rendered by projects.js -->
+      </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer surface surface--light">
+      <div class="section">
+        <div class="footer__top">
+          <span class="footer__brand" data-scramble aria-label="Zenith Kandel">Zenith Kandel</span>
+          <span class="footer__role">Developer · Security Researcher · Builder</span>
+        </div>
+
+        <hr class="footer__rule" aria-hidden="true" />
+
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="../index.html#about" class="footer__link">About</a>
+          <a href="../index.html#work" class="footer__link">Work</a>
+          <a href="../index.html#stack" class="footer__link">Stack</a>
+          <a href="../index.html#research" class="footer__link">Research</a>
+          <a href="../index.html#contact" class="footer__link">Contact</a>
+        </nav>
+
+        <div class="footer__bottom">
+          <span>© 2026 Zenith Kandel — Built in Kathmandu, Nepal.</span>
+          <span class="footer__mono">v 2.0 · Projects Archive</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Page-wipe transition overlay -->
+    <div class="page-wipe" id="pageWipe" aria-hidden="true"></div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/cursor.js" defer></script>
+    <script src="../assets/js/reveal.js" defer></script>
+    <script src="../assets/js/footer-life.js" defer></script>
+    <script src="../assets/js/page-wipe.js" defer></script>
+    <script src="../assets/js/projects.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  </body>
+</html>
