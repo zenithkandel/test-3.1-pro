@@ -68,28 +68,10 @@
             liveUrl: p.liveUrl || p.live || ''
         }));
 
-        renderStats();
         renderCategoryFilters();
         renderTagFilters();
         applyFilters();
         initModalEvents();
-    }
-
-    /* ---- Render Stats Strip ---- */
-    function renderStats() {
-        const totalCount = allProjects.length;
-        const featuredCount = allProjects.filter(p => p.featured).length;
-        const categories = new Set(allProjects.map(p => p.category)).size;
-        const disclosures = allProjects.filter(p => p.category === 'Security Research').length || 2;
-
-        const elTotal = $('[data-stat-total]');
-        if (elTotal) elTotal.textContent = totalCount + '+';
-
-        const elCat = $('[data-stat-categories]');
-        if (elCat) elCat.textContent = categories;
-
-        const elDisc = $('[data-stat-disclosures]');
-        if (elDisc) elDisc.textContent = disclosures;
     }
 
     /* ---- Render Filter Controls ---- */

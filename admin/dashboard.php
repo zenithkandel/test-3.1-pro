@@ -805,6 +805,7 @@ $csrf = csrf_token();
     <div class="sidebar__item" data-panel="marquee"><span class="sidebar__icon">&#8644;</span> Marquee</div>
     <div class="sidebar__item" data-panel="about"><span class="sidebar__icon">&#9998;</span> About</div>
     <div class="sidebar__item" data-panel="work"><span class="sidebar__icon">&#9874;</span> Work / Projects</div>
+    <div class="sidebar__item" data-panel="archive"><span class="sidebar__icon">&#128196;</span> All Projects Archive</div>
     <div class="sidebar__item" data-panel="stack"><span class="sidebar__icon">&#9881;</span> Stack</div>
     <div class="sidebar__item" data-panel="research"><span class="sidebar__icon">&#128270;</span> Research</div>
     <div class="sidebar__item" data-panel="contact"><span class="sidebar__icon">&#9993;</span> Contact</div>
@@ -1052,6 +1053,30 @@ $csrf = csrf_token();
         <div class="btn-row">
           <button class="btn btn--ghost btn--sm" onclick="addProject()">+ Add Project</button>
           <button class="btn btn--primary" onclick="saveWork()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── ALL PROJECTS ARCHIVE ─── -->
+    <div class="panel" id="panel-archive">
+      <div class="panel__head">
+        <div>
+          <div class="panel__title">All Projects Archive</div>
+          <div class="panel__subtitle">Complete catalogue displayed on <code>projects/index.html</code> (supports images, tags, search, and featured toggle)</div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px;flex-wrap:wrap">
+          <input type="text" id="adminProjectSearch" class="form-input" style="max-width:320px;" placeholder="Filter project list..." oninput="filterAdminProjects(this.value)">
+          <div class="btn-row" style="margin:0">
+            <button class="btn btn--ghost btn--sm" onclick="addArchiveProject()">+ Add Project</button>
+            <button class="btn btn--primary" onclick="saveArchiveProjects()">Save All Projects</button>
+          </div>
+        </div>
+        <div class="list-editor" id="archiveProjects"></div>
+        <div class="btn-row" style="margin-top:16px;">
+          <button class="btn btn--ghost btn--sm" onclick="addArchiveProject()">+ Add Project</button>
+          <button class="btn btn--primary" onclick="saveArchiveProjects()">Save All Projects</button>
         </div>
       </div>
     </div>
@@ -1335,6 +1360,7 @@ $csrf = csrf_token();
       populateAboutFeatures();
       populateWorkTitle();
       populateWorkProjects();
+      populateArchiveProjects();
       populateStackTitle();
       populateStackRows();
       populateResearchTitle();
@@ -1496,6 +1522,157 @@ function addProject() {
       });
       try { DATA.work.title = JSON.parse(document.getElementById('workTitleEditor').value); } catch { }
       await saveData();
+    }
+
+    /* ── All Projects Archive ── */
+    function populateArchiveProjects() {
+      let projects = get('projects');
+      if (!projects || !Array.isArray(projects) || !projects.length) {
+        projects = get('work.projects') || [];
+        DATA.projects = projects.map(p => ({
+          ...p,
+          category: p.category || (p.tag ? p.tag.split('·')[0].trim() : 'General'),
+          featured: true,
+          badge: p.badge || 'Featured',
+          longDescription: p.longDescription || p.description,
+          githubUrl: p.githubUrl || '',
+          liveUrl: p.liveUrl || ''
+        }));
+      }
+      const el = document.getElementById('archiveProjects');
+      if (!el) return;
+      el.innerHTML = DATA.projects.map((p, i) => `
+    <div class="list-item" data-archive-idx="${i}" data-title="${esc(p.title || '')}" data-cat="${esc(p.category || '')}">
+      <div class="list-item__header">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="list-item__title">${esc(p.title || 'Project ' + (i + 1))}</span>
+          ${p.featured ? '<span style="background:var(--sienna-15);color:var(--sienna);border:1px solid var(--sienna);padding:2px 8px;border-radius:1000px;font-size:10px;font-weight:700;">★ FEATURED</span>' : ''}
+          <span style="color:#666;font-size:11px;font-family:var(--mono);">${esc(p.year || '')}</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <button type="button" class="btn btn--ghost btn--sm" style="padding:2px 8px;font-size:11px;" onclick="moveArchiveProject(${i}, -1)" ${i === 0 ? 'disabled' : ''}>↑</button>
+          <button type="button" class="btn btn--ghost btn--sm" style="padding:2px 8px;font-size:11px;" onclick="moveArchiveProject(${i}, 1)" ${i === DATA.projects.length - 1 ? 'disabled' : ''}>↓</button>
+          <button type="button" class="list-item__remove" onclick="removeArchiveProject(${i})">&times;</button>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Project Title</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="title" value="${esc(p.title)}"></div>
+        <div class="form-group"><label class="form-label">Tag Line (e.g. Civic Tech · Web)</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="tag" value="${esc(p.tag)}"></div>
+        <div class="form-group"><label class="form-label">Category</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="category" value="${esc(p.category || '')}"></div>
+        <div class="form-group"><label class="form-label">Year</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="year" value="${esc(p.year)}"></div>
+        <div class="form-group"><label class="form-label">Status Badge (e.g. Hackathon Build, Live Demo)</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="badge" value="${esc(p.badge || '')}"></div>
+        <div class="form-group"><label class="form-label">Featured on Home Carousel?</label>
+          <select class="form-select" data-list="projects" data-idx="${i}" data-key="featured">
+            <option value="true" ${p.featured ? 'selected' : ''}>Yes (Show in Carousel)</option>
+            <option value="false" ${!p.featured ? 'selected' : ''}>No (Archive Only)</option>
+          </select></div>
+        <div class="form-group form-group--full"><label class="form-label">Short Description (Cards)</label>
+          <textarea class="form-textarea" rows="2" data-list="projects" data-idx="${i}" data-key="description">${esc(p.description)}</textarea></div>
+        <div class="form-group form-group--full"><label class="form-label">Long Description (Quick Details Modal)</label>
+          <textarea class="form-textarea" rows="4" data-list="projects" data-idx="${i}" data-key="longDescription">${esc(p.longDescription || p.description)}</textarea></div>
+        <div class="form-group form-group--full"><label class="form-label">Tech Stack Chips (comma separated)</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="chips" value="${esc(Array.isArray(p.chips) ? p.chips.join(', ') : '')}"></div>
+        <div class="form-group"><label class="form-label">GitHub Repository URL</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="githubUrl" value="${esc(p.githubUrl || '')}"></div>
+        <div class="form-group"><label class="form-label">Live Demo URL</label>
+          <input class="form-input" data-list="projects" data-idx="${i}" data-key="liveUrl" value="${esc(p.liveUrl || '')}"></div>
+        <div class="form-group form-group--full"><label class="form-label">Project Illustration / Image</label>
+          <input type="hidden" data-list="projects" data-idx="${i}" data-key="illustration" id="archiveProjIllustration${i}" value="${esc(p.illustration || p.image || '')}">
+          <div id="picker-archive-proj-${i}"></div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+      DATA.projects.forEach((p, i) => {
+        createImagePicker('picker-archive-proj-' + i, {
+          folder: 'svg/projects', accept: '.svg,.jpg,.jpeg,.png,.webp', inputId: 'archiveProjIllustration' + i
+        });
+      });
+    }
+
+    function addArchiveProject() {
+      const arr = get('projects') || [];
+      const n = String(arr.length + 1).padStart(2, '0');
+      arr.push({
+        id: 'project-' + Date.now(),
+        num: n,
+        title: 'New Project',
+        tag: 'Web · Tool',
+        category: 'Web Apps',
+        year: '2025',
+        featured: false,
+        badge: '',
+        description: '',
+        longDescription: '',
+        chips: [],
+        illustration: 'assets/svg/emblems/work.svg',
+        image: 'assets/svg/emblems/work.svg',
+        githubUrl: '',
+        liveUrl: ''
+      });
+      DATA.projects = arr;
+      populateArchiveProjects();
+    }
+
+    function removeArchiveProject(i) {
+      if (confirm('Delete this project from archive?')) {
+        DATA.projects.splice(i, 1);
+        populateArchiveProjects();
+      }
+    }
+
+    function moveArchiveProject(i, dir) {
+      collectListInputs('projects');
+      const target = i + dir;
+      if (target < 0 || target >= DATA.projects.length) return;
+      const temp = DATA.projects[i];
+      DATA.projects[i] = DATA.projects[target];
+      DATA.projects[target] = temp;
+      populateArchiveProjects();
+    }
+
+    function filterAdminProjects(q) {
+      const query = (q || '').trim().toLowerCase();
+      document.querySelectorAll('#archiveProjects .list-item').forEach(item => {
+        const title = (item.dataset.title || '').toLowerCase();
+        const cat = (item.dataset.cat || '').toLowerCase();
+        const match = !query || title.includes(query) || cat.includes(query);
+        item.style.display = match ? '' : 'none';
+      });
+    }
+
+    async function saveArchiveProjects() {
+      collectListInputs('projects');
+      if (Array.isArray(DATA.projects)) {
+        DATA.projects.forEach((p, i) => {
+          if (typeof p.chips === 'string') p.chips = p.chips.split(',').map(s => s.trim()).filter(Boolean);
+          p.featured = p.featured === true || p.featured === 'true';
+          p.image = p.illustration;
+          p.num = String(i + 1).padStart(2, '0');
+        });
+
+        // Sync featured projects with DATA.work.projects for landing page carousel
+        const featured = DATA.projects.filter(p => p.featured);
+        if (featured.length > 0) {
+          DATA.work.projects = featured.map((p, idx) => ({
+            num: String(idx + 1).padStart(2, '0'),
+            title: p.title,
+            tag: p.tag,
+            description: p.description,
+            chips: p.chips,
+            year: p.year,
+            illustration: p.illustration
+          }));
+        }
+      }
+      await saveData();
+      populateWorkProjects();
     }
 
     /* ── Stack ── */
