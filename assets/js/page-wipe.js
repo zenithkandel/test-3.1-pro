@@ -49,11 +49,6 @@
     });
 
     // ---------- Intercept link clicks ----------
-    const filename = (href) => {
-        try { return href.split('/').pop().toLowerCase(); }
-        catch (_) { return ''; }
-    };
-
     document.addEventListener('click', (e) => {
         const a = e.target.closest('a');
         if (!a) return;
@@ -61,14 +56,34 @@
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         if (e.button !== 0) return;
 
-        const href = a.getAttribute('href') || '';
-        if (!href) return;
-        if (/^https?:|^mailto:|^tel:|^#/.test(href)) return;
+        const rawHref = a.getAttribute('href') || '';
+        if (!rawHref) return;
+        if (/^(mailto:|tel:|javascript:|#)/i.test(rawHref)) return;
 
-        const dest = filename(href);
-        const here = filename(window.location.pathname) || 'index.html';
-        if (dest !== 'cv.html' && dest !== 'index.html') return;
-        if (dest === here) return;
+        let targetUrl;
+        try {
+            targetUrl = new URL(a.href, window.location.href);
+        } catch (_) {
+            return;
+        }
+
+        // Only intercept same-origin navigation
+        if (targetUrl.origin !== window.location.origin) return;
+
+        const normalize = (p) => {
+            let path = p.toLowerCase().replace(/\\/g, '/');
+            if (path.endsWith('/')) path += 'index.html';
+            return path;
+        };
+
+        const targetPath = normalize(targetUrl.pathname);
+        const currentPath = normalize(window.location.pathname);
+
+        // Same page navigation (e.g. anchor links) is handled natively
+        if (targetPath === currentPath) return;
+
+        // Check if destination is an HTML page or root/folder index
+        if (!/\.(html|htm)$/i.test(targetPath) && !targetPath.endsWith('/index.html')) return;
 
         e.preventDefault();
         // The destination page will use the same origin so the
@@ -81,3 +96,4 @@
         }, 420);
     });
 })();
+

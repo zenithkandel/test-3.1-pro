@@ -428,6 +428,93 @@
     padding-top: 16px;
 }
 
+/* ----- View All Projects Card ----- */
+.project--view-all {
+    background: linear-gradient(145deg, rgba(188, 113, 85, 0.06) 0%, rgba(0, 13, 16, 0.02) 100%);
+    border-left: 2px solid var(--color-desert-sienna) !important;
+    border-radius: 0 24px 24px 0;
+    padding-right: clamp(16px, 2vw, 24px);
+    transition: background var(--t-slow) var(--ease),
+                border-color var(--t-slow) var(--ease),
+                transform var(--t-base) var(--ease),
+                box-shadow var(--t-base) var(--ease);
+}
+
+.project--view-all:hover {
+    background: linear-gradient(145deg, rgba(188, 113, 85, 0.12) 0%, rgba(0, 13, 16, 0.05) 100%);
+    box-shadow: 0 20px 40px -15px rgba(188, 113, 85, 0.15);
+}
+
+.project__view-all-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 20px;
+    color: inherit;
+    text-decoration: none;
+    cursor: none;
+}
+
+.project__archive-badge {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: var(--color-sienna-15);
+    border: 1.5px solid var(--color-desert-sienna);
+    color: var(--color-desert-sienna);
+    display: grid;
+    place-items: center;
+    transition: transform var(--t-slow) var(--ease),
+                background var(--t-slow) var(--ease),
+                color var(--t-slow) var(--ease);
+}
+
+.project--view-all:hover .project__archive-badge {
+    transform: rotate(10deg) scale(1.1);
+    background: var(--color-desert-sienna);
+    color: var(--color-canvas-white);
+}
+
+.project__tag--accent {
+    color: var(--color-desert-sienna) !important;
+    border-color: rgba(188, 113, 85, 0.4) !important;
+    background: var(--color-sienna-15) !important;
+    font-weight: var(--weight-bold) !important;
+}
+
+.project__title-sub {
+    color: var(--color-desert-sienna);
+    font-weight: var(--weight-extra);
+}
+
+.project__view-all-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: var(--weight-bold);
+    color: var(--color-desert-sienna);
+    margin-top: auto;
+    padding-top: 16px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: gap var(--t-slow) var(--ease), color var(--t-slow) var(--ease);
+}
+
+.project--view-all:hover .project__view-all-action {
+    gap: 14px;
+    color: var(--color-obsidian);
+}
+
+.project--view-all:hover .project__view-all-action svg {
+    transform: translateX(4px);
+}
+
+.project__view-all-action svg {
+    transition: transform var(--t-slow) var(--ease);
+}
+
 /* ----- Stack list (editorial, no progress bars) ----- */
 .stack-list {
     margin-top: clamp(20px, 4vw, 40px);

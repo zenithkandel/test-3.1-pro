@@ -127,6 +127,14 @@
         border-left-color: var(--color-desert-sienna);
     }
 
+    .project.project--view-all {
+        border-left: 3px solid var(--color-desert-sienna) !important;
+        border-radius: var(--radius-card);
+        padding: 24px 20px;
+        margin-top: 20px;
+        border-bottom: 1px solid var(--color-obsidian-08);
+    }
+
     .horizontal-scroll-progress {
         display: none;
     }
