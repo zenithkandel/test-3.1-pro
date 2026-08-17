@@ -1056,6 +1056,13 @@ $csrf = csrf_token();
     let DATA = {};
     let isDirty = false;
 
+    function esc(s) {
+      if (s == null) return '';
+      const d = document.createElement('div');
+      d.textContent = String(s);
+      return d.innerHTML;
+    }
+
     function hdrs(json) {
       const h = { 'X-CSRF-TOKEN': CSRF };
       if (json) h['Content-Type'] = 'application/json';

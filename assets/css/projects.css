@@ -1,6 +1,6 @@
 /* ===========================================================
    09 · PROJECTS ARCHIVE — High-Impact Editorial Catalogue
-   Tactile CTAs, distinct search bar, 16:9 banners & galleries
+   High-contrast chips, tactile CTAs, distinct search bar & galleries
    =========================================================== */
 
 /* ----- Main Layout ----- */
@@ -9,10 +9,6 @@
     padding-bottom: clamp(60px, 8vw, 100px);
     min-height: 100vh;
     background: var(--surface-canvas-white);
-}
-
-.dark-mode .archive-main {
-    background: var(--surface-obsidian);
 }
 
 .archive-container {
@@ -31,10 +27,6 @@
     gap: 14px;
     padding-bottom: clamp(20px, 3vh, 28px);
     border-bottom: 1px solid var(--color-obsidian-08);
-}
-
-.dark-mode .archive-header {
-    border-bottom-color: var(--color-white-08);
 }
 
 .archive-header__index {
@@ -102,7 +94,7 @@
     width: 100%;
     padding: 14px 44px 14px 48px;
     background: var(--color-obsidian-04);
-    border: 1.5px solid var(--color-obsidian-08);
+    border: 1.5px solid var(--color-obsidian-12);
     border-radius: 14px;
     font-family: var(--font-display);
     font-size: 15px;
@@ -113,22 +105,10 @@
     transition: all var(--t-base) var(--ease);
 }
 
-.dark-mode .archive-search-input {
-    background: var(--color-white-04);
-    border-color: var(--color-white-08);
-    color: var(--color-canvas-white);
-}
-
 .archive-search-input:focus {
-    background: var(--color-canvas-white);
+    background: var(--surface-canvas-white);
     border-color: var(--color-desert-sienna);
-    box-shadow: 0 0 0 3px rgba(188, 113, 85, 0.15);
-}
-
-.dark-mode .archive-search-input:focus {
-    background: #0d1416;
-    border-color: var(--color-desert-sienna);
-    box-shadow: 0 0 0 3px rgba(188, 113, 85, 0.25);
+    box-shadow: 0 0 0 3px rgba(188, 113, 85, 0.2);
 }
 
 .archive-search-wrap:focus-within .archive-search-icon {
@@ -160,11 +140,6 @@
     transition: all var(--t-base) var(--ease);
 }
 
-.dark-mode .archive-search-clear {
-    background: var(--color-white-08);
-    color: var(--color-canvas-white);
-}
-
 .archive-search-clear.is-visible {
     opacity: 1;
     pointer-events: auto;
@@ -172,7 +147,7 @@
 
 .archive-search-clear:hover {
     background: var(--color-desert-sienna);
-    color: #fff;
+    color: #ffffff;
 }
 
 /* Text-Based Category Navigation */
@@ -205,10 +180,6 @@
 
 .archive-cat-btn:hover {
     color: var(--color-obsidian);
-}
-
-.dark-mode .archive-cat-btn:hover {
-    color: var(--color-canvas-white);
 }
 
 .archive-cat-btn.is-active {
@@ -244,10 +215,6 @@
     align-items: flex-start;
     transition: border-color var(--t-slow) var(--ease),
                 padding-left var(--t-slow) var(--ease);
-}
-
-.dark-mode .archive-item {
-    border-left-color: var(--color-white-08);
 }
 
 .archive-item::before {
@@ -305,11 +272,6 @@
     cursor: pointer;
 }
 
-.dark-mode .archive-item__banner {
-    background: var(--color-white-04);
-    border-color: var(--color-white-08);
-}
-
 .archive-item__banner img {
     width: 100%;
     height: 100%;
@@ -326,10 +288,10 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background: rgba(0, 13, 16, 0.75);
+    background: rgba(0, 13, 16, 0.8);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    color: #fff;
+    color: #ffffff;
     font-size: 11px;
     font-weight: var(--weight-bold);
     font-family: var(--font-mono);
@@ -350,10 +312,6 @@
     border: 1px solid var(--color-obsidian-08);
     border-radius: var(--radius-pill);
     transition: border-color var(--t-slow) var(--ease);
-}
-
-.dark-mode .archive-item__tag {
-    border-color: var(--color-white-08);
 }
 
 .archive-item:hover .archive-item__tag {
@@ -386,6 +344,7 @@
     margin: 0;
 }
 
+/* Crisp, High-Contrast Tech Chips */
 .archive-item__chips {
     display: flex;
     flex-wrap: wrap;
@@ -398,26 +357,17 @@
     font-weight: var(--weight-medium);
     letter-spacing: 0.02em;
     color: var(--color-obsidian);
-    padding: 4px 10px;
+    padding: 5px 12px;
     background: var(--color-obsidian-04);
+    border: 1px solid var(--color-obsidian-08);
     border-radius: var(--radius-pill);
-    transition: background var(--t-slow) var(--ease),
-                color var(--t-slow) var(--ease);
+    transition: all var(--t-base) var(--ease);
 }
 
-.dark-mode .archive-item__chips span {
-    background: var(--color-white-04);
-    color: var(--color-canvas-white);
-}
-
-.archive-item:hover .archive-item__chips span:hover {
-    background: var(--color-obsidian);
-    color: var(--color-canvas-white);
-}
-
-.dark-mode .archive-item:hover .archive-item__chips span:hover {
+.archive-item__chips span:hover {
     background: var(--color-desert-sienna);
-    color: #fff;
+    border-color: var(--color-desert-sienna);
+    color: #ffffff;
 }
 
 /* ----- High-Tactility CTAs ----- */
@@ -430,10 +380,6 @@
     width: 100%;
     margin-top: auto;
     flex-wrap: wrap;
-}
-
-.dark-mode .archive-item__footer {
-    border-top-color: var(--color-white-08);
 }
 
 .archive-cta-btn {
@@ -454,57 +400,34 @@
 }
 
 .archive-cta-btn--primary {
-    background: var(--color-obsidian);
-    color: var(--color-canvas-white);
-    border: 1px solid var(--color-obsidian);
+    background: var(--color-desert-sienna);
+    border: 1px solid var(--color-desert-sienna);
+    color: #ffffff;
 }
 
 .archive-cta-btn--primary:hover {
-    background: var(--color-desert-sienna);
-    border-color: var(--color-desert-sienna);
-    color: #fff;
+    background: #cf8165;
+    border-color: #cf8165;
     transform: translateY(-1px);
-}
-
-.dark-mode .archive-cta-btn--primary {
-    background: var(--color-desert-sienna);
-    border-color: var(--color-desert-sienna);
-    color: #fff;
-}
-
-.dark-mode .archive-cta-btn--primary:hover {
-    background: #d48366;
-    border-color: #d48366;
 }
 
 .archive-cta-btn--secondary {
     background: var(--color-obsidian-04);
     color: var(--color-obsidian);
-    border: 1px solid var(--color-obsidian-08);
-}
-
-.dark-mode .archive-cta-btn--secondary {
-    background: var(--color-white-04);
-    color: var(--color-canvas-white);
-    border-color: var(--color-white-08);
+    border: 1px solid var(--color-obsidian-12);
 }
 
 .archive-cta-btn--secondary:hover {
     background: var(--color-obsidian);
-    color: var(--color-canvas-white);
+    color: var(--surface-canvas-white);
     border-color: var(--color-obsidian);
     transform: translateY(-1px);
-}
-
-.dark-mode .archive-cta-btn--secondary:hover {
-    background: var(--color-white-08);
-    border-color: var(--color-white-12);
 }
 
 .archive-cta-btn--ghost {
     background: transparent;
     color: var(--color-desert-sienna);
-    border: 1px solid rgba(188, 113, 85, 0.3);
+    border: 1px solid rgba(188, 113, 85, 0.35);
     margin-left: auto;
 }
 
@@ -532,9 +455,9 @@
 }
 
 .archive-empty__btn {
-    background: var(--color-obsidian);
-    border: 1px solid var(--color-obsidian);
-    color: var(--color-canvas-white);
+    background: var(--color-desert-sienna);
+    border: 1px solid var(--color-desert-sienna);
+    color: #ffffff;
     padding: 10px 22px;
     border-radius: 8px;
     font-family: var(--font-display);
@@ -544,14 +467,9 @@
     transition: all var(--t-base) var(--ease);
 }
 
-.dark-mode .archive-empty__btn {
-    background: var(--color-desert-sienna);
-    border-color: var(--color-desert-sienna);
-}
-
 .archive-empty__btn:hover {
-    background: var(--color-desert-sienna);
-    border-color: var(--color-desert-sienna);
+    background: #cf8165;
+    border-color: #cf8165;
 }
 
 /* ----- Multi-Image Modal Lightbox / Gallery ----- */
@@ -599,11 +517,6 @@
     transition: transform 0.25s var(--ease-out);
 }
 
-.dark-mode .archive-modal__dialog {
-    background: #091214;
-    border-color: var(--color-white-08);
-}
-
 .archive-modal.is-open .archive-modal__dialog {
     transform: translateY(0);
 }
@@ -625,16 +538,10 @@
     transition: all var(--t-base) var(--ease);
 }
 
-.dark-mode .archive-modal__close {
-    background: var(--color-white-04);
-    border-color: var(--color-white-08);
-    color: var(--color-canvas-white);
-}
-
 .archive-modal__close:hover {
     background: var(--color-desert-sienna);
     border-color: var(--color-desert-sienna);
-    color: #fff;
+    color: #ffffff;
 }
 
 /* Modal Gallery Carousel */
@@ -670,7 +577,7 @@
     border-radius: 50%;
     background: rgba(0, 13, 16, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    color: #ffffff;
     font-size: 18px;
     display: grid;
     place-items: center;
@@ -721,10 +628,6 @@
     border-bottom: 1px solid var(--color-obsidian-08);
 }
 
-.dark-mode .archive-modal__head {
-    border-bottom-color: var(--color-white-08);
-}
-
 .archive-modal__index {
     font-family: var(--font-mono);
     font-size: 12px;
@@ -767,15 +670,11 @@
 .archive-modal__chips span {
     font-size: 12px;
     font-weight: var(--weight-medium);
-    padding: 5px 12px;
+    padding: 6px 14px;
     background: var(--color-obsidian-04);
+    border: 1px solid var(--color-obsidian-08);
     border-radius: var(--radius-pill);
     color: var(--color-obsidian);
-}
-
-.dark-mode .archive-modal__chips span {
-    background: var(--color-white-04);
-    color: var(--color-canvas-white);
 }
 
 .archive-modal__actions {
@@ -784,10 +683,6 @@
     padding-top: 16px;
     border-top: 1px solid var(--color-obsidian-08);
     flex-wrap: wrap;
-}
-
-.dark-mode .archive-modal__actions {
-    border-top-color: var(--color-white-08);
 }
 
 /* ----- Responsive Adjustments ----- */
